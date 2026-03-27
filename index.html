@@ -46,11 +46,90 @@ HTML
             width: 250px; /* ¡50% más pequeño! */
             border-radius: 10px; /* Curva más pequeña al encogerse */
         }
-        /* MARCAS INFINITAS REALES */
-        .marcas-wrap { width: 100%; overflow: hidden; background: rgba(255,102,0,0.1); margin-top: 15px; padding: 10px 0; display: flex; }
-        .marcas-mover { display: flex; animation: slide 20s linear infinite; white-space: nowrap; }
-        .marcas-mover span { font-size: 2rem; font-weight: 900; padding: 0 60px; color: rgba(255,255,255,0.3); letter-spacing: 5px; }
-        @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        /* --- SLIDER DE MARCAS (FONDO GRIS METAL) --- */
+        .slider-marcas {
+            width: 100%;
+            background: rgba(30, 30, 35, 0.9); /* Gris Metal Oscuro */
+            padding: 20px 0;
+            margin-top: 15px;
+            overflow: hidden;
+            display: flex;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        .contenedor-logos {
+            display: flex;
+            animation: scroll-marcas 25s linear infinite;
+            white-space: nowrap;
+        }
+
+        /* Estilo base para todas las letras */
+        .contenedor-logos span {
+            font-size: 2.2rem; /* Más grandes y legibles */
+            font-weight: 900;
+            padding: 0 60px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            display: inline-block;
+        }
+
+        /* COLORES DISTINTIVOS POR MARCA */
+        .ktm { color: #FF6600; text-shadow: 0 0 10px rgba(255,102,0,0.4); }
+        .honda { color: #FF0000; text-shadow: 0 0 10px rgba(255,0,0,0.3); }
+        .yamaha { color: #0000FF; text-shadow: 0 0 10px rgba(0,0,255,0.3); }
+        .kawasaki { color: #32CD32; text-shadow: 0 0 10px rgba(50,205,50,0.3); }
+        .suzuki { color: #007CC2; text-shadow: 0 0 10px rgba(0,124,194,0.3); }
+        .bajaj { color: #0054A6; text-shadow: 0 0 10px rgba(0,84,166,0.3); }
+        .akt { color: #FFFFFF; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+        .benelli { color: #006A4E; text-shadow: 0 0 10px rgba(0,106,78,0.3); }
+
+        @keyframes scroll-marcas {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+
+            <div class="slider-marcas">
+            <div class="contenedor-logos">
+                <span class="ktm">KTM</span>
+                <span class="honda">HONDA</span>
+                <span class="yamaha">YAMAHA</span>
+                <span class="kawasaki">KAWASAKI</span>
+                <span class="suzuki">SUZUKI</span>
+                <span class="bajaj">BAJAJ</span>
+                <span class="akt">AKT</span>
+                <span class="benelli">BENELLI</span>
+                
+                <span class="ktm">KTM</span>
+                <span class="honda">HONDA</span>
+                <span class="yamaha">YAMAHA</span>
+                <span class="kawasaki">KAWASAKI</span>
+                <span class="suzuki">SUZUKI</span>
+                <span class="bajaj">BAJAJ</span>
+                <span class="akt">AKT</span>
+                <span class="benelli">BENELLI</span>
+            </div>
+        </div>
+        <div class="slider-marcas">
+            <div class="contenedor-logos">
+                <span class="ktm">KTM</span>
+                <span class="honda">HONDA</span>
+                <span class="yamaha">YAMAHA</span>
+                <span class="kawasaki">KAWASAKI</span>
+                <span class="suzuki">SUZUKI</span>
+                <span class="bajaj">BAJAJ</span>
+                <span class="akt">AKT</span>
+                <span class="benelli">BENELLI</span>
+                
+                <span class="ktm">KTM</span>
+                <span class="honda">HONDA</span>
+                <span class="yamaha">YAMAHA</span>
+                <span class="kawasaki">KAWASAKI</span>
+                <span class="suzuki">SUZUKI</span>
+                <span class="bajaj">BAJAJ</span>
+                <span class="akt">AKT</span>
+                <span class="benelli">BENELLI</span>
+            </div>
+        </div>
 
         /* REDES SOCIALES (SVG INTEGRADO) */
         .social { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 2000; display: flex; flex-direction: column; }
