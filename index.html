@@ -5,168 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
     <style>
-        /* --- FONDO BASE: AZUL METALIZADO Y GRIS ASFALTO --- */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100vh;
-            /* Degradado forzado para que NO se vea negro sólido */
-            background: radial-gradient(circle at top, #1a2a44 0%, #0d121c 45%, #050508 100%) no-repeat fixed !important;
+        /* --- ESTILOS DE LA TARJETA (EFECTO FLOTANTE) --- */
+        .tarjeta-servicio {
+            /* Mantenemos tus estilos de transición y cursor */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            
+            /* Nuevos estilos para un look más moderno y oscuro */
+            background-color: #0c121c; /* Un azul muy oscuro */
             color: #e0e0e0;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #FF6600; /* Borde naranja característico */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 280px; /* Tamaño fijo para tarjetas */
             text-align: center;
         }
 
-        /* --- HEADER Y LOGO --- */
-        .header-principal {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(10, 10, 15, 0.95); 
-            transition: all 0.5s ease;
-            z-index: 1000;
-            padding: 25px 0;
-            border-bottom: 3px solid #FF6600;
-            box-shadow: 0px 5px 25px rgba(0,0,0,0.8);
+        .tarjeta-servicio:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(255, 102, 0, 0.4);
         }
 
-        .header-pequeno { padding: 10px 0 !important; }
-
-        #logo-ams {
-            width: 500px; /* GIGANTE */
-            max-width: 85%;
-            height: auto;
-            transition: 0.5s ease;
-            filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.4));
-        }
-
-        .logo-reducido { width: 220px !important; }
-
-        .relleno-header { height: 320px; }
-
-        /* --- SECCIÓN HERO --- */
-        .hero-box {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('MANTENIMIENTO 1290.jpg');
+        /* --- ESTILOS DE LA SECCIÓN HERO (LA FOTO DE LA KTM) --- */
+        .hero-section {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('MANTENIMIENTO 1290.jpg');
             background-size: cover;
             background-position: center;
             padding: 100px 20px;
-            margin-bottom: 50px;
-            border-bottom: 2px solid #FF6600;
-        }
-
-        /* --- TARJETAS --- */
-        .contenedor-servicios {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .tarjeta {
-            background: rgba(25, 35, 50, 0.8); /* Azul grisáceo transparente */
-            border: 1px solid #FF6600;
-            border-radius: 15px;
-            width: 300px;
-            padding: 40px 20px;
-            backdrop-filter: blur(5px);
-            transition: 0.3s;
-        }
-
-        .tarjeta:hover {
-            transform: translateY(-10px);
-            background: rgba(35, 45, 65, 0.9);
-            box-shadow: 0px 0px 30px rgba(255, 102, 0, 0.4);
-        }
-
-        .tit-serv { color: #FF6600; text-transform: uppercase; font-weight: bold; margin-top: 15px; }
-
-        /* --- CONTACTO --- */
-        .seccion-contacto {
-            background: #0a0e14;
-            padding: 80px 20px;
-            border-top: 2px solid #FF6600;
-        }
-
-        .verde-neon { color: #ccff00; }
-        .naranja-neon { color: #ff9900; }
-
-        .btn-wa {
-            background: #25D366;
             color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(37,211,102,0.4);
+            text-align: center;
         }
     </style>
 </head>
-<body>
+<body style="background-color: #001a4d; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; text-align: center;">
 
-    <header id="miHeader" class="header-principal">
-        <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
-    </header>
-
-    <div class="relleno-header"></div>
-
-    <div class="hero-box">
-        <h1 style="font-size: 3rem; color: white;">PASIÓN Y PRECISIÓN</h1>
-        <p style="font-size: 1.3rem; color: #FF6600; font-weight: bold;">Sincronización Electrónica Profesional</p>
+    <div style="background-color: #001a4d; padding: 20px 0; border-bottom: 2px solid #FF6600;">
+        <div style="background-color: white; display: inline-block; padding: 10px; border-radius: 12px; box-shadow: 0px 4px 10px rgba(0,0,0,0.5);">
+            <img src="ALLMOTOSYNC LOGO.jpg" alt="Logo ALLMOTOSYNC" style="max-width: 200px; height: auto;">
+        </div>
+        <p style="color: #FF6600; font-weight: bold; margin-top: 10px;">Especialistas en Inyección Electrónica y Sincronización</p>
     </div>
 
-    <div class="contenedor-servicios">
-        <div class="tarjeta">
-            <div style="font-size: 3rem;">🛠️</div>
-            <div class="tit-serv">Diagnóstico</div>
-            <p>Escaneo de ECUs y sensores con tecnología original.</p>
-        </div>
-        <div class="tarjeta">
-            <div style="font-size: 3rem;">🧪</div>
-            <div class="tit-serv">Inyectores</div>
-            <p>Limpieza técnica y calibración para máximo ahorro.</p>
-        </div>
-        <div class="tarjeta">
-            <div style="font-size: 3rem;">💻</div>
-            <div class="tit-serv">Reprogramación</div>
-            <p>Optimización de mapas para alto desempeño.</p>
-        </div>
-    </div>
-
-    <div class="seccion-contacto">
-        <h2 style="color: #FF6600;">VISÍTANOS EN BOGOTÁ</h2>
-        <div style="max-width: 800px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center;">
-            <div style="text-align: left;">
-                <p><span class="verde-neon">📍</span> San Cristóbal Norte</p>
-                <p><span class="verde-neon">🕒</span> Lun - Sáb: 8:00am - 6:00pm</p>
-                <p><span class="naranja-neon">⚡</span> ¡Agenda tu cita ahora!</p>
-                <a href="https://wa.me/573104886929" class="btn-wa">📱 WhatsApp Directo</a>
-            </div>
-            <iframe width="350" height="250" style="border-radius: 15px; border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15907.487771765274!2d-74.075!3d4.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzYnMDAuMCJOIDc0wrAwNCc4MC4wIlc!5e0!3m2!1ses!2sco!4v1650000000000!5m2!1ses!2sco"></iframe>
-        </div>
-    </div>
-
-    <footer style="padding: 30px; color: #555; font-size: 0.8rem;">
-        &copy; 2026 ALLMOTOSYNC Bogotá, Colombia.
-    </footer>
-
-    <script>
-        window.onscroll = function() {
-            var header = document.getElementById("miHeader");
-            var logo = document.getElementById("logo-ams");
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                header.classList.add("header-pequeno");
-                logo.classList.add("logo-reducido");
-            } else {
-                header.classList.remove("header-pequeno");
-                logo.classList.remove("logo-reducido");
-            }
-        };
-    </script>
-</body>
-</html>
+    <div class="hero-section">
+        <h1 style="font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">MANTENIMIENTO GENERAL</h1>
+        <p style="font-size: 1.2rem; max-width: 600px;
