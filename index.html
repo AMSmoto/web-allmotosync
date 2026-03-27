@@ -13,18 +13,26 @@
             text-align: center; scroll-behavior: smooth;
         }
 
-        /* --- HEADER Y LOGO REDONDEADO --- */
+        /* --- HEADER Y LOGO ADAPTABLE --- */
         .header-principal {
             position: fixed; top: 0; width: 100%; background-color: #000000;
             transition: 0.4s ease; z-index: 1000; padding: 25px 0;
             border-bottom: 4px solid #FF6600; box-shadow: 0px 10px 30px rgba(0,0,0,0.8);
         }
-        #logo-ams { width: 450px; max-width: 85%; border-radius: 20px; transition: 0.4s; filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.4)); }
+        
+        #logo-ams { 
+            width: 450px; max-width: 85%; border-radius: 20px; transition: 0.4s; 
+            filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.4)); 
+        }
+        
+        /* Ajustes de scroll (PC) */
         .header-pequeno { padding: 10px 0 !important; }
         .logo-reducido { width: 180px !important; border-radius: 10px !important; }
+        
+        /* Espaciador base (PC) */
         .relleno-header { height: 320px; }
 
-        /* --- BARRA LATERAL SOCIAL REFORZADA --- */
+        /* --- BARRA LATERAL SOCIAL (STICKY & ADAPTABLE) --- */
         .social-bar {
             position: fixed;
             right: 0;
@@ -36,43 +44,36 @@
         }
 
         .social-icon {
-            width: 65px; /* Más ancho */
-            height: 65px; /* Más alto */
             display: flex;
             justify-content: center;
             align-items: center;
             transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-bottom: 8px;
             border-radius: 12px 0 0 12px;
             text-decoration: none;
             box-shadow: -2px 5px 15px rgba(0,0,0,0.3);
+            /* Medidas base (PC) */
+            width: 65px; 
+            height: 65px; 
+            margin-bottom: 8px;
         }
 
-        /* Efecto de salida al pasar el mouse */
-        .social-icon:hover { 
-            width: 85px; 
-            padding-right: 10px;
-        }
+        /* Efecto hover (PC) */
+        .social-icon:hover { width: 85px; padding-right: 10px; }
 
-        /* Tamaño de los logos internos */
-        .social-icon img { 
-            width: 38px; 
-            height: 38px; 
-        }
+        /* Logos internos base (PC) */
+        .social-icon img { width: 35px; height: 35px; }
 
-        /* --- COLORES Y FONDOS ESPECIALES --- */
-        .wa { background-color: #25D366; } /* WhatsApp oficial */
-        
+        /* --- COLORES Y CORRECCIÓN TIKTOK --- */
+        .wa { background-color: #25D366; } 
         .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); } 
-        
         .fb { background-color: #1877F2; } 
-
-        /* TikTok y X con fondo blanco para que resalten */
+        
+        /* TikTok con logo oficial visible y fondo blanco */
         .tk { background-color: #ffffff; border: 2px solid #000; } 
-        .tk img { width: 32px; height: 32px; } /* Ajuste para que el logo negro se vea nítido */
-
+        
+        /* X con fondo blanco para contraste */
         .x { background-color: #ffffff; border: 2px solid #000; }
-        .x img { width: 30px; height: 30px; }
+        .x img { width: 30px; height: 30px; } /* Ajuste fino X */
 
         /* --- SLIDER DE MARCAS --- */
         .slider-marcas {
@@ -102,30 +103,70 @@
         /* --- CONTACTO --- */
         .seccion-contacto { background: rgba(0,0,0,0.5); padding: 80px 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
         .contenedor-mapa { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center; }
+
+        /* =======================================================
+           !!! AJUSTES CRÍTICOS PARA MÓVIL (RESPONSIVE) !!!
+           ======================================================= */
+        @media (max-width: 768px) {
+            /* 1. Reducir Header y mover contenido hacia arriba */
+            .header-principal { padding: 15px 0; }
+            #logo-ams { width: 180px; } /* Logo más pequeño por defecto */
+            .relleno-header { height: 180px; } /* Menos espacio arriba */
+            
+            /* Título principal más ajustado */
+            #home h1 { font-size: 2rem !important; padding: 0 15px; }
+
+            /* 2. BARRA SOCIAL MÁS PEQUEÑA (Para no tapar texto) */
+            .social-bar {
+                top: auto;
+                bottom: 20px; /* Mover abajo para liberar el centro */
+                transform: none;
+                flex-direction: row; /* Horizontal en móvil */
+                right: 10px;
+                border-radius: 20px;
+                background: rgba(0,0,0,0.8);
+                padding: 5px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            }
+
+            .social-icon {
+                width: 42px; /* MUCHO MÁS PEQUEÑO */
+                height: 42px; /* MUCHO MÁS PEQUEÑO */
+                margin-bottom: 0;
+                margin-left: 5px; /* Espacio horizontal */
+                border-radius: 10px; /* Bordes suaves */
+            }
+
+            /* Desactivar efecto hover que tapa contenido */
+            .social-icon:hover { width: 42px; padding-right: 0; }
+
+            /* Logos internos pequeños y nítidos */
+            .social-icon img { width: 22px; height: 22px; }
+            
+            /* Ajuste fino TikTok en móvil */
+            .tk img { width: 20px; height: 20px; }
+            
+            /* 3. Tarjetas en columna */
+            .tarjeta-click { width: 100%; max-width: 320px; height: 350px; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- BARRA SOCIAL LATERAL DERECHA MEJORADA -->
     <nav class="social-bar">
-        <!-- WhatsApp -->
-        <a href="https://wa.me/573104886929" class="social-icon wa" target="_blank">
+        <a href="https://wa.me/573104886929" class="social-icon wa" target="_blank" title="WhatsApp">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
         </a>
-        <!-- Instagram -->
-        <a href="#" class="social-icon ig" target="_blank">
+        <a href="#" class="social-icon ig" target="_blank" title="Instagram">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG">
         </a>
-        <!-- Facebook -->
-        <a href="#" class="social-icon fb" target="_blank">
+        <a href="#" class="social-icon fb" target="_blank" title="Facebook">
             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="FB">
         </a>
-        <!-- TikTok (Fondo Blanco) -->
-        <a href="#" class="social-icon tk" target="_blank">
-            <img src="https://static-00.iconduck.com/assets.00/tiktok-icon-2048x2048-m83m2u7n.png" alt="TK">
+        <a href="#" class="social-icon tk" target="_blank" title="TikTok">
+            <img src="https://sf-tb-sg.ibytedtos.com/obj/eden-sg/uufs_lm_ljp/tiktok-icon.png" alt="TK">
         </a>
-        <!-- X (Fondo Blanco) -->
-        <a href="#" class="social-icon x" target="_blank">
+        <a href="#" class="social-icon x" target="_blank" title="X">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="X">
         </a>
     </nav>
@@ -136,7 +177,6 @@
 
     <div class="relleno-header"></div>
 
-    <!-- MARCAS -->
     <div class="slider-marcas">
         <div class="contenedor-logos">
             <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span>
@@ -144,7 +184,6 @@
         </div>
     </div>
 
-    <!-- HOME -->
     <div id="home">
         <h1 style="font-size: 3rem; text-shadow: 0 10px 20px rgba(0,0,0,0.5);">DIAGNÓSTICO DE PRECISIÓN</h1>
         <p style="color: #FF6600; font-weight: bold; font-size: 1.2rem; margin-bottom: 50px;">TECNOLOGÍA AVANZADA PARA TU MOTO</p>
@@ -171,7 +210,6 @@
         </div>
     </div>
 
-    <!-- SECCIONES TÉCNICAS -->
     <div id="proceso-scanner" class="galeria-tecnica">
         <a href="#home" class="btn-cerrar">← VOLVER</a>
         <div style="max-width: 900px; margin: 0 auto; text-align: left;">
@@ -181,11 +219,19 @@
         </div>
     </div>
 
-    <!-- CONTACTO -->
+    <div id="proceso-inyeccion" class="galeria-tecnica">
+        <a href="#home" class="btn-cerrar">← VOLVER</a>
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h2 style="color: #FF6600; font-size: 2.5rem;">SISTEMA DE INYECCIÓN</h2>
+            <img src="LAV INYECTORES.png" style="width: 100%; max-width: 600px; border-radius: 10px; margin: 20px 0;">
+            <p>Laboratorio completo: Ultrasonido y prueba de flujo para inyectores de alto rendimiento.</p>
+        </div>
+    </div>
+
     <div class="seccion-contacto">
         <h2 style="color: #FF6600; margin-bottom: 40px;">UBICACIÓN</h2>
         <div class="contenedor-mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4443.2713515356045!2d-74.09344228898362!3d4.5591169953963036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9890451fbf9f%3A0x33ab89d54b3c86b5!2zQ2wuIDMxYyBTdXIgIyAzQS03MiwgU2FuIENyaXN0w7NiYWwsIEJvZ290w6EsIEQuQy4sIEJvZ290w6EsIEJvZ290w6EsIEQuQy4!5e1!3m2!1ses!2sco!4v1774622303752!5m2!1ses!2sco" width="100%" height="400" style="border:0; border-radius: 15px; flex: 1; min-width: 320px;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.0827110967!2d-74.0531!3d4.5831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f990000000000%3A0x0000000000000000!2zQ2wuIDMxYyBTdXIgIzNBLTcyLCBCb2dvdMOh!5e0!3m2!1ses!2sco!4v1710000000000!5m2!1ses!2sco" width="100%" height="400" style="border:0; border-radius: 15px; flex: 1; min-width: 320px;" allowfullscreen="" loading="lazy"></iframe>
             <div style="text-align: left; flex: 1; min-width: 300px; padding: 20px;">
                 <p style="font-size: 1.4rem; font-weight: bold; color: #FF6600;">VISÍTANOS</p>
                 <p>Cl. 31c Sur # 3A-72</p>
@@ -204,7 +250,8 @@
         window.onscroll = function() {
             var header = document.getElementById("miHeader");
             var logo = document.getElementById("logo-ams");
-            if (header && logo) {
+            // Solo aplicar efecto en PC (pantallas anchas)
+            if (window.innerWidth > 768 && header && logo) {
                 if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                     header.classList.add("header-pequeno");
                     logo.classList.add("logo-reducido");
