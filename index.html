@@ -5,34 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
     <style>
+        /* --- BASE Y FONDO --- */
         html, body {
             margin: 0; padding: 0; width: 100%; min-height: 100vh;
             background: radial-gradient(circle at top, #1a2a44 0%, #0d121c 45%, #050508 100%) no-repeat fixed;
             color: #e0e0e0; font-family: 'Segoe UI', Roboto, sans-serif;
             text-align: center; scroll-behavior: smooth;
         }
+
+        /* --- HEADER DINÁMICO --- */
         .header-principal {
             position: fixed; top: 0; width: 100%; background-color: rgba(0,0,0,0.95);
-            z-index: 1000; padding: 20px 0 0 0; border-bottom: 4px solid #FF6600;
-            transition: 0.4s; display: flex; flex-direction: column; align-items: center;
+            z-index: 1000; padding: 25px 0 0 0; border-bottom: 4px solid #FF6600;
+            transition: all 0.4s ease; display: flex; flex-direction: column; align-items: center;
         }
-        #logo-ams { width: 450px; max-width: 85%; border-radius: 15px; filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.5)); transition: 0.4s; }
-        .slider-marcas { width: 100%; background: rgba(255, 102, 0, 0.1); padding: 12px 0; overflow: hidden; margin-top: 15px; }
-        .contenedor-logos { display: inline-block; animation: slide 20s linear infinite; white-space: nowrap; }
-        .contenedor-logos span { font-size: 1.2rem; font-weight: 900; margin: 0 30px; color: rgba(255, 255, 255, 0.4); }
+        #logo-ams { width: 480px; max-width: 90%; border-radius: 15px; filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.5)); transition: 0.4s; }
+        .titulos-hero h1 { font-size: 2.5rem; margin: 15px 0 0 0; font-weight: 800; }
+        .titulos-hero p { color: #FF6600; font-weight: bold; font-size: 1.1rem; margin: 5px 0 15px 0; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- SLIDER DE MARCAS INFINITO --- */
+        .slider-marcas { width: 100%; background: rgba(255, 102, 0, 0.1); padding: 12px 0; overflow: hidden; white-space: nowrap; }
+        .contenedor-logos { display: inline-block; animation: slide 30s linear infinite; }
+        .contenedor-logos span { font-size: 1.3rem; font-weight: 900; margin: 0 40px; color: rgba(255, 255, 255, 0.4); }
         @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .header-reducido #logo-ams { width: 180px !important; }
+
+        /* --- ESTADO REDUCIDO --- */
+        .header-reducido { padding: 10px 0 0 0 !important; }
+        .header-reducido #logo-ams { width: 220px !important; }
         .header-reducido .titulos-hero { display: none; }
-        .relleno-header { height: 480px; }
+        .relleno-header { height: 500px; }
+
+        /* --- BARRA SOCIAL LATERAL --- */
         .social-bar { position: fixed; right: 0; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; z-index: 2000; }
-        .social-icon { width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; border-radius: 10px 0 0 10px; margin-bottom: 5px; background: #25D366; }
+        .social-icon { width: 55px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px 0 0 10px; margin-bottom: 5px; text-decoration: none; transition: 0.3s; }
+        .social-icon:hover { width: 70px; }
+        .wa { background: #25D366; } .ig { background: #E4405F; } .fb { background: #1877F2; } .tk { background: #000; border: 1px solid #444; }
+        .social-icon img { width: 30px; height: 30px; }
+
+        /* --- NUESTROS PROS --- */
+        .bloque-pros { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 60px 20px; background: rgba(0,0,0,0.2); }
+        .pro-item { max-width: 300px; padding: 20px; }
+        .pro-item i { font-size: 3rem; color: #FF6600; display: block; margin-bottom: 15px; }
+
+        /* --- SERVICIOS (3 CUADROS) --- */
         .contenedor-servicios { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px 20px; }
-        .tarjeta-click { width: 280px; height: 350px; border-radius: 12px; background-size: cover; position: relative; overflow: hidden; border: 2px solid #333; }
-        .overlay { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); width: 100%; height: 100%; display: flex; align-items: flex-end; padding: 20px; box-sizing: border-box; }
-        .contenedor-galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; padding: 20px; max-width: 1100px; margin: 0 auto; }
-        .item-trabajo { height: 380px; border-radius: 15px; overflow: hidden; border: 2px solid #FF6600; position: relative; background: #000; }
+        .tarjeta-click { width: 320px; height: 400px; border-radius: 15px; background-size: cover; background-position: center; position: relative; overflow: hidden; border: 2px solid #222; text-decoration: none; transition: 0.4s; }
+        .tarjeta-click:hover { transform: translateY(-10px); border-color: #FF6600; }
+        .overlay { background: linear-gradient(to top, rgba(0,0,0,0.9) 30%, transparent); width: 100%; height: 100%; display: flex; align-items: flex-end; padding: 30px; box-sizing: border-box; }
+        .overlay h2 { color: #FF6600; margin: 0; font-size: 1.8rem; }
+
+        /* --- GALERÍA VIDEOS --- */
+        .contenedor-galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .item-trabajo { height: 400px; border-radius: 15px; overflow: hidden; border: 2px solid #333; position: relative; background: #000; }
         .item-trabajo video { width: 100%; height: 100%; object-fit: cover; }
-        .btn-agendar { display: inline-block; background: #FF6600; color: #000; font-weight: 900; padding: 18px 35px; border-radius: 50px; text-decoration: none; margin: 30px 0; font-size: 1.2rem; }
+        .tag-video { position: absolute; bottom: 15px; left: 15px; background: rgba(255, 102, 0, 0.9); color: #000; padding: 5px 15px; font-weight: 800; border-radius: 5px; }
+
+        .btn-agendar { display: inline-block; background: #FF6600; color: #000; font-weight: 900; padding: 22px 50px; border-radius: 50px; text-decoration: none; margin: 40px 0; font-size: 1.4rem; box-shadow: 0 0 20px rgba(255,102,0,0.3); }
     </style>
 </head>
 <body>
@@ -40,8 +68,8 @@
     <header id="miHeader" class="header-principal">
         <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
         <div class="titulos-hero">
-            <h1 style="font-size: 2rem; margin: 10px 0 0 0;">DIAGNÓSTICO DE PRECISIÓN</h1>
-            <p style="color: #FF6600; font-weight: bold; margin: 5px 0;">Inyección Electrónica</p>
+            <h1>DIAGNÓSTICO DE PRECISIÓN</h1>
+            <p>Inyección Electrónica Avanzada</p>
         </div>
         <div class="slider-marcas">
             <div class="contenedor-logos">
@@ -54,48 +82,55 @@
     <div class="relleno-header"></div>
 
     <nav class="social-bar">
-        <a href="https://wa.me/573104886929" class="social-icon" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30">
-        </a>
+        <a href="https://wa.me/573104886929" class="social-icon wa" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA"></a>
+        <a href="#" class="social-icon ig" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG"></a>
+        <a href="#" class="social-icon fb" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="FB"></a>
     </nav>
 
-    <div class="contenedor-servicios">
-        <div class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');"><div class="overlay"><h2>ESCÁNER</h2></div></div>
-        <div class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');"><div class="overlay"><h2>INYECCIÓN</h2></div></div>
+    <div class="bloque-pros">
+        <div class="pro-item"><i>🛠️</i><h3>TECNOLOGÍA OEM</h3><p>Escáneres originales para cada marca.</p></div>
+        <div class="pro-item"><i>✅</i><h3>GARANTÍA TOTAL</h3><p>Respaldo técnico en cada trabajo.</p></div>
+        <div class="pro-item"><i>⚡</i><h3>PRECISIÓN</h3><p>Soluciones directas sin adivinanzas.</p></div>
     </div>
 
-    <h2 style="color: #FF6600;">TRABAJOS REALIZADOS</h2>
+    <h2 style="color: #FF6600; margin-top: 50px;">NUESTROS SERVICIOS</h2>
+    <div class="contenedor-servicios">
+        <a href="#" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');"><div class="overlay"><h2>ESCÁNER</h2></div></a>
+        <a href="#" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');"><div class="overlay"><h2>INYECCIÓN</h2></div></a>
+        <a href="#" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');"><div class="overlay"><h2>REMAP ECU</h2></div></a>
+    </div>
+
+    <h2 style="color: #FF6600; margin-top: 50px;">TRABAJOS REALIZADOS</h2>
     <div class="contenedor-galeria">
         <div class="item-trabajo">
             <video autoplay muted loop playsinline><source src="./kit arrastre.mp4.mp4" type="video/mp4"></video>
-            <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:5px;">KIT ARRASTRE</div>
+            <div class="tag-video">KIT ARRASTRE</div>
         </div>
         <div class="item-trabajo">
             <video autoplay muted loop playsinline><source src="./instalacion gps.mp4.mp4" type="video/mp4"></video>
-            <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:5px;">INSTALACIÓN GPS</div>
+            <div class="tag-video">ELECTRICIDAD / GPS</div>
         </div>
         <div class="item-trabajo">
             <video autoplay muted loop playsinline><source src="./frenos.mp4.mp4" type="video/mp4"></video>
-            <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:5px;">FRENOS</div>
+            <div class="tag-video">FRENOS</div>
         </div>
         <div class="item-trabajo">
             <video autoplay muted loop playsinline><source src="./sincro motor.mp4.mp4" type="video/mp4"></video>
-            <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:5px;">SINCRONIZACIÓN</div>
+            <div class="tag-video">SINCRONIZACIÓN</div>
         </div>
     </div>
 
-    <a href="https://wa.me/573104886929" class="btn-agendar">AGENDAR CITA</a>
+    <a href="https://wa.me/573104886929" class="btn-agendar">AGENDAR CITA POR WHATSAPP</a>
 
-    <div id="ubicacion" style="padding: 40px 20px;">
-        <h2 style="color: #FF6600;">NUESTRA UBICACIÓN</h2>
+    <div id="ubicacion" style="padding: 60px 20px;">
+        <h2 style="color: #FF6600;">UBICACIÓN SAN CRISTÓBAL SUR</h2>
         <p>Cl. 31c Sur # 3A-72, Bogotá</p>
-        <div style="max-width: 900px; margin: 0 auto; border: 2px solid #FF6600; border-radius: 15px; overflow: hidden;">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0123456789!2d-74.08888!3d4.56666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f990123456789%3A0x123456789abcdef!2sCl.%2031c%20Sur%20%233a-72%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1710000000000!5m2!1ses!2sco" 
-                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
+        <div style="max-width: 1000px; margin: 0 auto; border: 3px solid #FF6600; border-radius: 15px; overflow: hidden;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.108!2d-74.0937!3d4.5567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9890f7c78279%3A0xed4958ee8946d535!2sCl.%2031c%20Sur%20%233A-72%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1711560000000" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
+
+    <footer style="padding: 40px; background: #000; color: #444;">© 2026 ALLMOTOSYNC</footer>
 
     <script>
         window.onscroll = function() {
