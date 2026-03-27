@@ -120,4 +120,77 @@
 <body>
 
     <header id="miHeader" class="header-principal">
-        <img src="ALLMOTOSYNC LOGO.jpg" id="logo-
+        <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="Logo ALLMOTOSYNC">
+        <p style="color: #FF6600; font-weight: bold; margin-top: 15px; letter-spacing: 2px;">SINCRONIZACIÓN Y DIAGNÓSTICO</p>
+    </header>
+
+    <div class="relleno-header"></div>
+
+    <div class="hero-section">
+        <h1 style="font-size: 3.5rem; text-shadow: 2px 2px 10px #000;">PASIÓN POR LA PRECISIÓN</h1>
+        <p style="font-size: 1.4rem; color: #FF6600; font-weight: bold; text-shadow: 2px 2px 4px #000;">Especialistas en Inyección Electrónica en Bogotá</p>
+    </div>
+
+    <div class="contenedor-tarjetas">
+        
+        <!-- Tarjeta 1 con SCANNER KTM.webp -->
+        <div class="tarjeta-servicio" style="background-image: url('SCANNER KTM.webp');">
+            <div class="contenido-tarjeta">
+                <div style="font-size: 3.5rem;">🛠️</div>
+                <h3 class="titulo-serv">Diagnóstico</h3>
+                <p>Escaneo de ECUs y sensores con tecnología de punta.</p>
+            </div>
+        </div>
+
+        <!-- Tarjeta 2 con LAV INYECTORES.png -->
+        <div class="tarjeta-servicio" style="background-image: url('LAV INYECTORES.png');">
+            <div class="contenido-tarjeta">
+                <div style="font-size: 3.5rem;">🧪</div>
+                <h3 class="titulo-serv">Inyección</h3>
+                <p>Limpieza técnica y calibración para máximo ahorro de combustible.</p>
+            </div>
+        </div>
+
+        <!-- Tarjeta 3 con PROG ECU.jfif -->
+        <div class="tarjeta-servicio" style="background-image: url('PROG ECU.jfif');">
+            <div class="contenido-tarjeta">
+                <div style="font-size: 3.5rem;">💻</div>
+                <h3 class="titulo-serv">Programación</h3>
+                <p>Optimización de mapas de motor y aumento de rendimiento.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="contacto" class="seccion-contacto">
+        <h2 style="color: #FF6600; font-size: 2rem; margin-bottom: 50px;">UBICACIÓN Y CITAS</h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 50px; align-items: center;">
+            <iframe width="400" height="300" style="border:0; border-radius: 15px;" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15907.487771765274!2d-74.075!3d4.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzYnMDAuMCJOIDc0wrAwNCc4MC4wIlc!5e0!3m2!1ses!2sco!4v1650000000000!5m2!1ses!2sco"></iframe>
+            <div style="text-align: left;">
+                <p><span class="neon-v">📍</span> San Cristóbal Norte, Bogotá</p>
+                <p><span class="neon-v">🕒</span> Lunes a Sábado: 8:00 AM - 6:00 PM</p>
+                <p><span class="neon-n">⚡</span> ¡Agenda tu cita hoy mismo!</p>
+                <a href="https://wa.me/573104886929" class="btn-wa">📱 WhatsApp Business</a>
+            </div>
+        </div>
+    </div>
+
+    <footer style="padding: 40px; color: #444; font-size: 0.9rem;">
+        &copy; 2026 ALLMOTOSYNC | Bogotá, Colombia.
+    </footer>
+
+    <script>
+        window.onscroll = function() {
+            var header = document.getElementById("miHeader");
+            var logo = document.getElementById("logo-ams");
+            if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+                header.classList.add("header-pequeno");
+                logo.classList.add("logo-reducido");
+            } else {
+                header.classList.remove("header-pequeno");
+                logo.classList.remove("logo-reducido");
+            }
+        };
+    </script>
+</body>
+</html>
