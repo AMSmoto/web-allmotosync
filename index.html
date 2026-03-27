@@ -20,6 +20,8 @@ color: #e0e0e0; font-family: 'Segoe UI', Roboto, sans-serif;
 
 text-align: center; scroll-behavior: smooth;
 
+animation: fadeInPage 1.5s ease-in-out;
+
 }
 
 
@@ -221,7 +223,10 @@ box-shadow: 0 10px 20px rgba(255,102,0,0.4); text-transform: uppercase;
 }
 
 .btn-agendar:hover { transform: scale(1.05); background: #fff; }
-
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 </style></head><body>
 
 
