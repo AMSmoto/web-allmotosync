@@ -5,139 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
     <style>
-        /* --- ESTILOS BASE Y FONDO --- */
         html, body {
             margin: 0; padding: 0; width: 100%; min-height: 100vh;
             background: radial-gradient(circle at top, #1a2a44 0%, #0d121c 45%, #050508 100%) no-repeat fixed;
             color: #e0e0e0; font-family: 'Segoe UI', Roboto, sans-serif;
             text-align: center; scroll-behavior: smooth;
         }
-
-        /* --- HEADER DINÁMICO --- */
         .header-principal {
             position: fixed; top: 0; width: 100%; background-color: rgba(0,0,0,0.95);
-            z-index: 1000; padding: 30px 0 0 0; border-bottom: 4px solid #FF6600;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex; flex-direction: column; align-items: center;
+            z-index: 1000; padding: 20px 0 0 0; border-bottom: 4px solid #FF6600;
+            transition: 0.4s; display: flex; flex-direction: column; align-items: center;
         }
-        
-        #logo-ams { 
-            width: 500px; max-width: 90%; border-radius: 15px; 
-            transition: all 0.4s ease;
-            filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.5));
-        }
-
-        .titulos-hero { transition: all 0.4s ease; margin-top: 20px; }
-        .titulos-hero h1 { font-size: 2.8rem; margin: 0; font-weight: 800; text-shadow: 0 5px 15px rgba(0,0,0,0.7); }
-        .titulos-hero p { color: #FF6600; font-weight: bold; font-size: 1.2rem; margin: 8px 0 20px 0; text-transform: uppercase; letter-spacing: 2px; }
-
-        /* --- SLIDER DE MARCAS --- */
-        .slider-marcas {
-            width: 100%; background: rgba(255, 102, 0, 0.1); padding: 15px 0; 
-            overflow: hidden; white-space: nowrap; transition: all 0.4s ease;
-        }
-        .contenedor-logos { display: inline-block; animation: slide 25s linear infinite; }
-        .contenedor-logos span { font-size: 1.4rem; font-weight: 900; margin: 0 40px; color: rgba(255, 255, 255, 0.4); letter-spacing: 3px; }
-        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-100%); } } /* Ajustado para bucle perfecto */
-
-        /* --- EFECTO SCROLL (REDUCCIÓN AL 50%) --- */
-        .header-reducido { padding: 10px 0 0 0 !important; border-bottom-width: 3px; }
-        .header-reducido #logo-ams { width: 250px !important; border-radius: 10px !important; }
-        .header-reducido .titulos-hero { margin-top: 5px !important; }
-        .header-reducido .titulos-hero h1 { font-size: 1.4rem !important; }
-        .header-reducido .titulos-hero p { display: none; }
-        .header-reducido .slider-marcas { padding: 8px 0 !important; background: rgba(0,0,0,0.5); }
-        .header-reducido .contenedor-logos span { font-size: 0.8rem !important; color: rgba(255, 255, 255, 0.3); }
-
-        .relleno-header { height: 520px; transition: 0.4s; }
-
-        /* --- BARRA SOCIAL RECUPERADA --- */
-        .social-bar {
-            position: fixed; right: 0; top: 50%; transform: translateY(-50%);
-            display: flex; flex-direction: column; z-index: 2000;
-        }
-        .social-icon {
-            display: flex; justify-content: center; align-items: center;
-            width: 55px; height: 55px; transition: 0.3s; margin-bottom: 5px;
-            border-radius: 10px 0 0 10px; text-decoration: none;
-        }
-        .social-icon:hover { width: 70px; filter: brightness(1.1); }
-        .social-icon img, .social-icon svg { width: 28px; height: 28px; }
-        
-        .wa { background: #25D366; }
-        .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
-        .fb { background: #1877F2; }
-        .tk { background: #000; border: 1px solid #333; }
-        .tk svg { fill: #fff; }
-        .x { background: #fff; border: 1px solid #000; } 
-
-        /* --- DIFERENCIADORES (PROS) RECUPERADOS --- */
-        .bloque-diferenciadores { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 70px 20px; background: rgba(255,102,0,0.03); }
-        .diferenciador-item { max-width: 280px; text-align: center; }
-        .diferenciador-icon { font-size: 3.5rem; color: #FF6600; }
-        .diferenciador-text h3 { color: #fff; margin: 15px 0; }
-        .diferenciador-text p { font-size: 0.95rem; color: #aaa; }
-
-        /* --- SERVICIOS RECUPERADOS --- */
-        .contenedor-servicios { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 50px 20px; max-width: 1200px; margin: 0 auto; }
-        .tarjeta-click {
-            width: 300px; height: 400px; background-size: cover; background-position: center;
-            border-radius: 12px; position: relative; cursor: pointer; transition: 0.4s;
-            overflow: hidden; text-decoration: none; border: 2px solid rgba(255,102,0,0.1);
-        }
-        .tarjeta-click:hover { transform: translateY(-10px); border-color: #FF6600; box-shadow: 0 10px 30px rgba(255,102,0,0.3); }
-        .overlay { 
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, transparent 100%); 
-            width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; 
-            padding: 25px; box-sizing: border-box; text-align: left; 
-        }
-        .overlay h2 { margin: 0; color: #FF6600; font-size: 1.6rem; }
-        .overlay p { margin: 5px 0 0; font-size: 0.95rem; color: #ccc; }
-
-        /* --- GALERÍA DE VIDEOS --- */
-        .contenedor-galeria {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px; padding: 50px 20px; max-width: 1200px; margin: 0 auto;
-        }
-        .item-trabajo {
-            width: 100%; height: 280px; border-radius: 12px; overflow: hidden; position: relative;
-            border: 2px solid rgba(255,255,255,0.05); transition: 0.3s; background-color: #000;
-        }
-        .item-trabajo:hover { border-color: #FF6600; transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .item-trabajo video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); }
-        .info-trabajo {
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px; box-sizing: border-box;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); text-align: left;
-        }
-        .info-trabajo h4 { color: #FF6600; margin: 0; font-size: 1.1rem; font-weight: 800; text-transform: uppercase; }
-
-        /* --- BOTÓN AGENDAR --- */
-        .btn-agendar {
-            display: inline-block; background: #FF6600; color: #000; font-weight: 900;
-            padding: 22px 50px; border-radius: 50px; text-decoration: none;
-            font-size: 1.4rem; margin: 60px 0; transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(255,102,0,0.4); text-transform: uppercase;
-        }
-        .btn-agendar:hover { transform: scale(1.05); background: #fff; }
-
-        /* --- UBICACIÓN Y MAPA REPARADO --- */
-        .seccion-ubicacion { background: rgba(0,0,0,0.5); padding: 70px 20px; }
-        .mapa-contenedor { max-width: 1000px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 3px solid #FF6600; }
-        /* Controla que el mapa no sea gigante en PC, pero sí en móvil */
-        @media (min-width: 769px) { .mapa-contenedor { height: 450px; } }
-        @media (max-width: 768px) { .mapa-contenedor { height: 350px; } }
-
-        /* --- RESPONSIVE GENERAL --- */
-        @media (max-width: 768px) {
-            #logo-ams { width: 320px; }
-            .relleno-header { height: 420px; }
-            .titulos-hero h1 { font-size: 1.8rem; }
-            .bloque-diferenciadores { gap: 25px; padding: 50px 15px; }
-            .tarjeta-click { width: 280px; height: 350px; }
-            .social-bar { top: auto; bottom: 0; flex-direction: row; width: 100%; transform: none; background: rgba(0,0,0,0.9); }
-            .social-icon { width: 20%; border-radius: 0; height: 50px; }
-            .social-icon img, .social-icon svg { width: 24px; height: 24px; }
-        }
+        #logo-ams { width: 450px; max-width: 85%; border-radius: 15px; filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.5)); transition: 0.4s; }
+        .slider-marcas { width: 100%; background: rgba(255, 102, 0, 0.1); padding: 12px 0; overflow: hidden; margin-top: 15px; }
+        .contenedor-logos { display: inline-block; animation: slide 20s linear infinite; white-space: nowrap; }
+        .contenedor-logos span { font-size: 1.2rem; font-weight: 900; margin: 0 30px; color: rgba(255, 255, 255, 0.4); }
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .header-reducido #logo-ams { width: 180px !important; }
+        .header-reducido .titulos-hero { display: none; }
+        .relleno-header { height: 480px; }
+        .social-bar { position: fixed; right: 0; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; z-index: 2000; }
+        .social-icon { width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; border-radius: 10px 0 0 10px; margin-bottom: 5px; background: #25D366; }
+        .contenedor-servicios { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px 20px; }
+        .tarjeta-click { width: 280px; height: 350px; border-radius: 12px; background-size: cover; position: relative; overflow: hidden; border: 2px solid #333; }
+        .overlay { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); width: 100%; height: 100%; display: flex; align-items: flex-end; padding: 20px; box-sizing: border-box; }
+        .contenedor-galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; padding: 20px; max-width: 1100px; margin: 0 auto; }
+        .item-trabajo { height: 380px; border-radius: 15px; overflow: hidden; border: 2px solid #FF6600; position: relative; background: #000; }
+        .item-trabajo video { width: 100%; height: 100%; object-fit: cover; }
+        .btn-agendar { display: inline-block; background: #FF6600; color: #000; font-weight: 900; padding: 18px 35px; border-radius: 50px; text-decoration: none; margin: 30px 0; font-size: 1.2rem; }
     </style>
 </head>
 <body>
@@ -145,8 +40,8 @@
     <header id="miHeader" class="header-principal">
         <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
         <div class="titulos-hero">
-            <h1>DIAGNÓSTICO DE PRECISIÓN</h1>
-            <p>Inyección Electrónica Avanzada</p>
+            <h1 style="font-size: 2rem; margin: 10px 0 0 0;">DIAGNÓSTICO DE PRECISIÓN</h1>
+            <p style="color: #FF6600; font-weight: bold; margin: 5px 0;">Inyección Electrónica</p>
         </div>
         <div class="slider-marcas">
             <div class="contenedor-logos">
@@ -159,87 +54,54 @@
     <div class="relleno-header"></div>
 
     <nav class="social-bar">
-        <a href="https://wa.me/573104886929" class="social-icon wa" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA"></a>
-        <a href="#" class="social-icon ig" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG"></a>
-        <a href="#" class="social-icon fb" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="FB"></a>
-        <a href="#" class="social-icon tk" target="_blank"><svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg></a>
+        <a href="https://wa.me/573104886929" class="social-icon" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30">
+        </a>
     </nav>
 
-    <div class="bloque-diferenciadores">
-        <div class="diferenciador-item">
-            <div class="diferenciador-icon">🛠️</div>
-            <div class="diferenciador-text"><h3>TECNOLOGÍA OEM</h3><p>Escáneres y herramientas de nivel original para cada marca. Diagnósticos exactos.</p></div>
-        </div>
-        <div class="diferenciador-item">
-            <div class="diferenciador-icon">✅</div>
-            <div class="diferenciador-text"><h3>GARANTÍA TOTAL</h3><p>Cada servicio cuenta con respaldo técnico garantizado y soporte técnico post-servicio.</p></div>
-        </div>
-        <div class="diferenciador-item">
-            <div class="diferenciador-icon">⚡</div>
-            <div class="diferenciador-text"><h3>PRECISIÓN</h3><p>Soluciones directas a la falla, ahorrándote tiempo y cambios de repuestos innecesarios.</p></div>
-        </div>
-    </div>
-
-    <h2 style="color: #FF6600; margin-top: 60px; font-weight: 900;">NUESTROS SERVICIOS</h2>
     <div class="contenedor-servicios">
-        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');">
-            <div class="overlay"><h2>ESCÁNER</h2><p>Tecnología OEM ></p></div>
-        </a>
-        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');">
-            <div class="overlay"><h2>INYECCIÓN</h2><p>Limpieza ultrasónica ></p></div>
-        </a>
-        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');">
-            <div class="overlay"><h2>REMAP ECU</h2><p>Potencia controlada ></p></div>
-        </a>
+        <div class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');"><div class="overlay"><h2>ESCÁNER</h2></div></div>
+        <div class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');"><div class="overlay"><h2>INYECCIÓN</h2></div></div>
     </div>
 
-    <div style="padding: 60px 0; background: rgba(0,0,0,0.3);">
-        <h2 style="color: #FF6600; font-weight: 900;">TRABAJOS REALIZADOS</h2>
-        <div class="contenedor-galeria">
-            <div class="item-trabajo">
-                <video autoplay muted loop playsinline><source src="kit arrastre.mp4.mp4" type="video/mp4"></video>
-                <div class="info-trabajo"><h4>KIT ARRASTRE</h4></div>
-            </div>
-            <div class="item-trabajo">
-                <video autoplay muted loop playsinline><source src="instalacion gps.mp4.mp4" type="video/mp4"></video>
-                <div class="info-trabajo"><h4>INSTALACIÓN GPS / ELÉCTRICO</h4></div>
-            </div>
-            <div class="item-trabajo">
-                <video autoplay muted loop playsinline><source src="frenos.mp4.mp4" type="video/mp4"></video>
-                <div class="info-trabajo"><h4>SISTEMA DE FRENOS</h4></div>
-            </div>
-            <div class="item-trabajo">
-                <video autoplay muted loop playsinline><source src="sincro motor.mp4.mp4" type="video/mp4"></video>
-                <div class="info-trabajo"><h4>SINCRONIZACIÓN MOTOR</h4></div>
-            </div>
+    <h2 style="color: #FF6600;">TRABAJOS REALIZADOS</h2>
+    <div class="contenedor-galeria">
+        <div class="item-trabajo">
+            <video autoplay muted loop playsinline><source src="./kit arrastre.mp4.mp4" type="video/mp4"></video>
+            <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:5px;">KIT ARRASTRE</div>
+        </div>
+        <div class="item-trabajo">
+            <video autoplay muted loop playsinline><source src="./instalacion gps.mp4.mp4" type="video/mp4"></video>
+            <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:5px;">INSTALACIÓN GPS</div>
+        </div>
+        <div class="item-trabajo">
+            <video autoplay muted loop playsinline><source src="./frenos.mp4.mp4" type="video/mp4"></video>
+            <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:5px;">FRENOS</div>
+        </div>
+        <div class="item-trabajo">
+            <video autoplay muted loop playsinline><source src="./sincro motor.mp4.mp4" type="video/mp4"></video>
+            <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:5px;">SINCRONIZACIÓN</div>
         </div>
     </div>
 
-    <a href="https://wa.me/573104886929?text=Hola!%20Quisiera%20agendar%20un%20servicio%20en%20ALLMOTOSYNC" class="btn-agendar">Agendar Cita Ahora</a>
+    <a href="https://wa.me/573104886929" class="btn-agendar">AGENDAR CITA</a>
 
-    <div id="ubicacion" class="seccion-ubicacion">
-        <h2 style="color: #FF6600; font-weight: 900;">VISÍTANOS EN SAN CRISTÓBAL SUR</h2>
-        <p style="font-size: 1.2rem; color: #ccc; margin-bottom: 30px;">Cl. 31c Sur # 3A-72, Bogotá</p>
-        <div class="mapa-contenedor">
+    <div id="ubicacion" style="padding: 40px 20px;">
+        <h2 style="color: #FF6600;">NUESTRA UBICACIÓN</h2>
+        <p>Cl. 31c Sur # 3A-72, Bogotá</p>
+        <div style="max-width: 900px; margin: 0 auto; border: 2px solid #FF6600; border-radius: 15px; overflow: hidden;">
             <iframe 
-                src="http://googleusercontent.com/maps.google.com/4" 
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0123456789!2d-74.08888!3d4.56666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f990123456789%3A0x123456789abcdef!2sCl.%2031c%20Sur%20%233a-72%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1710000000000!5m2!1ses!2sco" 
+                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
     </div>
 
-    <footer style="padding: 50px 20px; background: #000; font-size: 0.95rem; color: #666; border-top: 1px solid #111;">
-        © 2026 <strong>ALLMOTOSYNC</strong> | Bogotá, Colombia.
-    </footer>
-
     <script>
         window.onscroll = function() {
             var header = document.getElementById("miHeader");
-            if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-                header.classList.add("header-reducido");
-            } else {
-                header.classList.remove("header-reducido");
-            }
+            if (window.scrollY > 80) { header.classList.add("header-reducido"); } 
+            else { header.classList.remove("header-reducido"); }
         };
     </script>
 </body>
