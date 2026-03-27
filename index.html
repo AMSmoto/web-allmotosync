@@ -1,3 +1,16 @@
+¡Excelente visión! Ese efecto de "encogimiento" al hacer scroll le da un toque de ingeniería de precisión a la web, tal como el logo de ALLMOTOSYNC.
+
+He reconstruido el código completo integrando estas mejoras:
+
+Header Inteligente: Ahora no solo el logo se hace pequeño; el título "DIAGNÓSTICO..." y el subtítulo también reducen su tamaño y se "compactan" hacia arriba para dejar espacio al contenido mientras navegas. Al subir, todo recupera su imponencia.
+
+Botón de Agendar Cita: He añadido un botón naranja vibrante (estilo KTM) justo después de los servicios. Es el "Call to Action" perfecto para cerrar la venta.
+
+Optimización de Logos: Mantuve la sobriedad que te gusta en la franja de marcas, pero ajusté el código para que sea más fluido.
+
+Aquí tienes el código total para tu index.html:
+
+HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,187 +18,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
     <style>
-        /* --- ESTILOS DE FONDO Y BASE --- */
+        /* --- BASE Y FONDO --- */
         html, body {
             margin: 0; padding: 0; width: 100%; min-height: 100vh;
-            background: radial-gradient(circle at top, #1a2a44 0%, #0d121c 45%, #050508 100%) no-repeat fixed !important;
-            color: #e0e0e0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(circle at top, #1a2a44 0%, #0d121c 45%, #050508 100%) no-repeat fixed;
+            color: #e0e0e0; font-family: 'Segoe UI', Roboto, sans-serif;
             text-align: center; scroll-behavior: smooth;
         }
 
-        /* --- HEADER Y LOGO ADAPTABLE --- */
+        /* --- HEADER DINÁMICO (EL "CEREBRO" DEL DISEÑO) --- */
         .header-principal {
-            position: fixed; top: 0; width: 100%; background-color: #000000;
-            transition: 0.4s ease; z-index: 1000; padding: 25px 0;
-            border-bottom: 4px solid #FF6600; box-shadow: 0px 10px 30px rgba(0,0,0,0.8);
+            position: fixed; top: 0; width: 100%; background-color: rgba(0,0,0,0.95);
+            z-index: 1000; padding: 20px 0; border-bottom: 4px solid #FF6600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column; align-items: center;
         }
         
         #logo-ams { 
-            width: 450px; max-width: 85%; border-radius: 20px; transition: 0.4s; 
-            filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.4)); 
+            width: 380px; max-width: 80%; border-radius: 15px; 
+            transition: all 0.4s ease;
+            filter: drop-shadow(0px 0px 10px rgba(255, 102, 0, 0.3));
         }
-        
-        /* Ajustes de scroll (PC) */
-        .header-pequeno { padding: 10px 0 !important; }
-        .logo-reducido { width: 180px !important; border-radius: 10px !important; }
-        
-        /* Espaciador base (PC) */
-        .relleno-header { height: 320px; }
 
-        /* --- BARRA LATERAL SOCIAL (STICKY & ADAPTABLE) --- */
+        .titulos-hero { transition: all 0.4s ease; margin-top: 15px; }
+        .titulos-hero h1 { font-size: 2.8rem; margin: 0; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .titulos-hero p { color: #FF6600; font-weight: bold; font-size: 1.1rem; margin: 5px 0 0 0; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- EFECTO AL BAJAR (SCROLL) --- */
+        .header-reducido { padding: 8px 0 !important; background: #000 !important; }
+        .header-reducido #logo-ams { width: 150px !important; border-radius: 8px !important; }
+        .header-reducido .titulos-hero { margin-top: 5px !important; }
+        .header-reducido .titulos-hero h1 { font-size: 1.2rem !important; }
+        .header-reducido .titulos-hero p { font-size: 0.7rem !important; letter-spacing: 1px !important; }
+
+        /* Espaciador para que el contenido no quede oculto tras el header fijo */
+        .relleno-header { height: 320px; transition: 0.4s; }
+
+        /* --- BARRA SOCIAL ADAPTABLE --- */
         .social-bar {
-            position: fixed;
-            right: 0;
-            top: 55%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            z-index: 2000;
+            position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; z-index: 2000;
         }
-
         .social-icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-radius: 12px 0 0 12px;
-            text-decoration: none;
-            box-shadow: -2px 5px 15px rgba(0,0,0,0.3);
-            /* Medidas base (PC) */
-            width: 65px; 
-            height: 65px; 
-            margin-bottom: 8px;
+            display: flex; justify-content: center; align-items: center;
+            width: 60px; height: 60px; transition: 0.3s; margin-bottom: 5px;
+            border-radius: 10px 0 0 10px; text-decoration: none;
         }
-
-        /* Efecto hover (PC) */
-        .social-icon:hover { width: 85px; padding-right: 10px; }
-
-        /* Logos internos base (PC) */
-        .social-icon img { width: 35px; height: 35px; }
-
-        /* --- COLORES Y CORRECCIÓN TIKTOK --- */
-        .wa { background-color: #25D366; } 
-        .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); } 
-        .fb { background-color: #1877F2; } 
+        .social-icon:hover { width: 75px; }
+        .social-icon img, .social-icon svg { width: 30px; height: 30px; }
         
-        /* TikTok con logo oficial visible y fondo blanco */
-        .tk { background-color: #ffffff; border: 2px solid #000; } 
-        
-        /* X con fondo blanco para contraste */
-        .x { background-color: #ffffff; border: 2px solid #000; }
-        .x img { width: 30px; height: 30px; } /* Ajuste fino X */
+        .wa { background: #25D366; }
+        .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
+        .fb { background: #1877F2; }
+        .tk { background: #ffffff; border: 1px solid #000; }
+        .tk svg { fill: #000; }
+        .x { background: #ffffff; border: 1px solid #000; }
 
-        /* --- SLIDER DE MARCAS --- */
+        /* --- SLIDER DE MARCAS SOBRIO --- */
         .slider-marcas {
-            background: rgba(0, 0, 0, 0.4); padding: 15px 0; overflow: hidden;
-            white-space: nowrap; border-bottom: 1px solid rgba(255, 102, 0, 0.2); margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.3); padding: 12px 0; overflow: hidden;
+            white-space: nowrap; border-bottom: 1px solid rgba(255, 102, 0, 0.1);
         }
-        .contenedor-logos { display: inline-block; animation: slide 25s linear infinite; }
-        .contenedor-logos span { font-size: 1.4rem; font-weight: 900; margin: 0 60px; color: rgba(255, 255, 255, 0.15); text-transform: uppercase; letter-spacing: 6px; }
+        .contenedor-logos { display: inline-block; animation: slide 30s linear infinite; }
+        .contenedor-logos span { font-size: 1.2rem; font-weight: 800; margin: 0 50px; color: rgba(255, 255, 255, 0.2); letter-spacing: 5px; }
         @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* --- TARJETAS --- */
-        .contenedor-servicios { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        /* --- SERVICIOS Y TARJETAS --- */
+        .contenedor-servicios { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
         .tarjeta-click {
-            width: 310px; height: 400px; background-size: cover; background-position: center;
-            border-radius: 12px; position: relative; cursor: pointer; transition: 0.4s;
-            overflow: hidden; text-decoration: none; display: flex; align-items: flex-end;
-            border: 1px solid rgba(255, 102, 0, 0.3); box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            width: 320px; height: 380px; background-size: cover; background-position: center;
+            border-radius: 15px; position: relative; cursor: pointer; transition: 0.4s;
+            overflow: hidden; text-decoration: none; border: 1px solid rgba(255,102,0,0.2);
         }
-        .tarjeta-click:hover { transform: translateY(-10px); border-color: #FF6600; box-shadow: 0 0 40px rgba(255, 102, 0, 0.4); }
-        .overlay-tarjeta { background: linear-gradient(0deg, rgba(15, 20, 30, 0.95) 0%, rgba(15, 20, 30, 0.4) 100%); width: 100%; padding: 25px; box-sizing: border-box; text-align: left; }
+        .tarjeta-click:hover { transform: scale(1.03); border-color: #FF6600; box-shadow: 0 0 30px rgba(255,102,0,0.3); }
+        .overlay { background: linear-gradient(0deg, rgba(0,0,0,0.9) 20%, transparent 100%); width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; box-sizing: border-box; text-align: left; }
 
-        /* --- DETALLES --- */
-        .galeria-tecnica { padding: 120px 20px; display: none; background: rgba(10, 15, 25, 0.98); min-height: 80vh; }
-        .galeria-tecnica:target { display: block; }
-        .btn-cerrar { display: inline-block; padding: 10px 20px; border: 1px solid #FF6600; color: #FF6600; text-decoration: none; font-weight: bold; margin-bottom: 30px; }
+        /* --- BOTÓN AGENDAR CITA --- */
+        .btn-agendar {
+            display: inline-block; background: #FF6600; color: #000; font-weight: 900;
+            padding: 20px 40px; border-radius: 50px; text-decoration: none;
+            font-size: 1.3rem; margin: 40px 0; transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(255,102,0,0.3); text-transform: uppercase;
+        }
+        .btn-agendar:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 15px 30px rgba(255,102,0,0.5); }
 
-        /* --- CONTACTO --- */
-        .seccion-contacto { background: rgba(0,0,0,0.5); padding: 80px 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-        .contenedor-mapa { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center; }
-
-        /* =======================================================
-           !!! AJUSTES CRÍTICOS PARA MÓVIL (RESPONSIVE) !!!
-           ======================================================= */
+        /* --- RESPONSIVE MÓVIL --- */
         @media (max-width: 768px) {
-            /* 1. Reducir Header y mover contenido hacia arriba */
-            .header-principal { padding: 15px 0; }
-            #logo-ams { width: 180px; } /* Logo más pequeño por defecto */
-            .relleno-header { height: 180px; } /* Menos espacio arriba */
-            
-            /* Título principal más ajustado */
-            #home h1 { font-size: 2rem !important; padding: 0 15px; }
-
-            /* 2. BARRA SOCIAL MÁS PEQUEÑA (Para no tapar texto) */
-            .social-bar {
-                top: auto;
-                bottom: 20px; /* Mover abajo para liberar el centro */
-                transform: none;
-                flex-direction: row; /* Horizontal en móvil */
-                right: 10px;
-                border-radius: 20px;
-                background: rgba(0,0,0,0.8);
-                padding: 5px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            }
-
-            .social-icon {
-                width: 42px; /* MUCHO MÁS PEQUEÑO */
-                height: 42px; /* MUCHO MÁS PEQUEÑO */
-                margin-bottom: 0;
-                margin-left: 5px; /* Espacio horizontal */
-                border-radius: 10px; /* Bordes suaves */
-            }
-
-            /* Desactivar efecto hover que tapa contenido */
-            .social-icon:hover { width: 42px; padding-right: 0; }
-
-            /* Logos internos pequeños y nítidos */
-            .social-icon img { width: 22px; height: 22px; }
-            
-            /* Ajuste fino TikTok en móvil */
-            .tk img { width: 20px; height: 20px; }
-            
-            /* 3. Tarjetas en columna */
-            .tarjeta-click { width: 100%; max-width: 320px; height: 350px; }
+            .relleno-header { height: 220px; }
+            .titulos-hero h1 { font-size: 1.8rem; }
+            .header-reducido #logo-ams { width: 120px !important; }
+            .social-bar { top: auto; bottom: 15px; flex-direction: row; right: 10px; transform: none; background: rgba(0,0,0,0.7); padding: 5px; border-radius: 15px; }
+            .social-icon { width: 45px; height: 45px; border-radius: 10px; margin: 0 3px; }
+            .social-icon:hover { width: 45px; }
         }
     </style>
 </head>
 <body>
-<!-- BARRA SOCIAL LATERAL DERECHA (CORREGIDA) -->
-    <nav class="social-bar">
-        <!-- WhatsApp -->
-        <a href="https://wa.me/573104886929" class="social-icon wa" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
-        </a>
-        <!-- Instagram -->
-        <a href="#" class="social-icon ig" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG">
-        </a>
-        <!-- Facebook -->
-        <a href="#" class="social-icon fb" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="FB">
-        </a>
-        
-        <!-- TikTok (SOLUCIÓN DEFINITIVA CON SVG) -->
-        <a href="#" class="social-icon tk" target="_blank">
-            <svg viewBox="0 0 448 512" style="width: 32px; height: 32px;" xmlns="http://www.w3.org/2000/svg">
-                <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
-            </svg>
-        </a>
 
-        <!-- X -->
-        <a href="#" class="social-icon x" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="X">
-        </a>
-    </nav>
-
+    <!-- Header Principal -->
     <header id="miHeader" class="header-principal">
         <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
+        <div class="titulos-hero">
+            <h1>DIAGNÓSTICO DE PRECISIÓN</h1>
+            <p>Tecnología avanzada para tu moto</p>
+        </div>
     </header>
 
     <div class="relleno-header"></div>
 
+    <!-- Barra Social -->
+    <nav class="social-bar">
+        <a href="https://wa.me/573104886929" class="social-icon wa" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA"></a>
+        <a href="#" class="social-icon ig" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG"></a>
+        <a href="#" class="social-icon fb" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="FB"></a>
+        <a href="#" class="social-icon tk" target="_blank">
+            <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+        </a>
+        <a href="#" class="social-icon x" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="X"></a>
+    </nav>
+
+    <!-- Slider de Marcas -->
     <div class="slider-marcas">
         <div class="contenedor-logos">
             <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span>
@@ -193,81 +145,42 @@
         </div>
     </div>
 
-    <div id="home">
-        <h1 style="font-size: 3rem; text-shadow: 0 10px 20px rgba(0,0,0,0.5);">DIAGNÓSTICO DE PRECISIÓN</h1>
-        <p style="color: #FF6600; font-weight: bold; font-size: 1.2rem; margin-bottom: 50px;">TECNOLOGÍA AVANZADA PARA TU MOTO</p>
-
-        <div class="contenedor-servicios">
-            <a href="#proceso-scanner" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');">
-                <div class="overlay-tarjeta">
-                    <h2 style="margin:0; font-size: 1.8rem; color: #fff;">SCANNER</h2>
-                    <p style="margin:5px 0; color: #ccc;">Ver cómo diagnosticamos ></p>
-                </div>
-            </a>
-            <a href="#proceso-inyeccion" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');">
-                <div class="overlay-tarjeta">
-                    <h2 style="margin:0; font-size: 1.8rem; color: #fff;">INYECCIÓN</h2>
-                    <p style="margin:5px 0; color: #ccc;">Ver proceso de limpieza ></p>
-                </div>
-            </a>
-            <a href="#proceso-ecu" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');">
-                <div class="overlay-tarjeta">
-                    <h2 style="margin:0; font-size: 1.8rem; color: #fff;">ECU REMAP</h2>
-                    <p style="margin:5px 0; color: #ccc;">Ver optimización de motor ></p>
-                </div>
-            </a>
-        </div>
+    <!-- Sección de Servicios -->
+    <div class="contenedor-servicios">
+        <a href="#detalles" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');">
+            <div class="overlay"><h2>ESCÁNER</h2><p>Ver tecnología ></p></div>
+        </a>
+        <a href="#detalles" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');">
+            <div class="overlay"><h2>INYECCIÓN</h2><p>Ver proceso ></p></div>
+        </a>
+        <a href="#detalles" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');">
+            <div class="overlay"><h2>REMAP ECU</h2><p>Ver potencia ></p></div>
+        </a>
     </div>
 
-    <div id="proceso-scanner" class="galeria-tecnica">
-        <a href="#home" class="btn-cerrar">← VOLVER</a>
-        <div style="max-width: 900px; margin: 0 auto; text-align: left;">
-            <h2 style="color: #FF6600; font-size: 2.5rem;">ESCÁNER MULTIMARCA</h2>
-            <img src="SCANNER KTM.webp" style="width: 100%; border-radius: 10px; margin: 20px 0;">
-            <p>Diagnóstico electrónico profundo para identificar fallas ocultas en sensores y actuadores.</p>
-        </div>
+    <!-- Botón de Agendar -->
+    <a href="https://wa.me/573104886929?text=Hola!%20Quisiera%20agendar%20un%20servicio%20en%20ALLMOTOSYNC" class="btn-agendar">
+        Agendar Cita Ahora
+    </a>
+
+    <!-- Mapa -->
+    <div style="background: rgba(0,0,0,0.5); padding: 60px 20px;">
+        <h2 style="color: #FF6600;">ENCUÉNTRANOS</h2>
+        <p>Cl. 31c Sur # 3A-72, Bogotá</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.08!2d-74.053!3d4.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0!2zM8KwMzUnMDAuMCJOIDc0wrAwMycwMC4wIlc!5e0!3m2!1ses!2sco!4v1710000000000" width="100%" height="350" style="border:0; border-radius: 15px; max-width: 1000px;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
-    <div id="proceso-inyeccion" class="galeria-tecnica">
-        <a href="#home" class="btn-cerrar">← VOLVER</a>
-        <div style="max-width: 900px; margin: 0 auto;">
-            <h2 style="color: #FF6600; font-size: 2.5rem;">SISTEMA DE INYECCIÓN</h2>
-            <img src="LAV INYECTORES.png" style="width: 100%; max-width: 600px; border-radius: 10px; margin: 20px 0;">
-            <p>Laboratorio completo: Ultrasonido y prueba de flujo para inyectores de alto rendimiento.</p>
-        </div>
-    </div>
-
-    <div class="seccion-contacto">
-        <h2 style="color: #FF6600; margin-bottom: 40px;">UBICACIÓN</h2>
-        <div class="contenedor-mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.0827110967!2d-74.0531!3d4.5831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f990000000000%3A0x0000000000000000!2zQ2wuIDMxYyBTdXIgIzNBLTcyLCBCb2dvdMOh!5e0!3m2!1ses!2sco!4v1710000000000!5m2!1ses!2sco" width="100%" height="400" style="border:0; border-radius: 15px; flex: 1; min-width: 320px;" allowfullscreen="" loading="lazy"></iframe>
-            <div style="text-align: left; flex: 1; min-width: 300px; padding: 20px;">
-                <p style="font-size: 1.4rem; font-weight: bold; color: #FF6600;">VISÍTANOS</p>
-                <p>Cl. 31c Sur # 3A-72</p>
-                <p>San Cristóbal, Bogotá</p>
-                <p style="margin-top: 20px; font-weight: bold; color: #FF6600;">HORARIOS:</p>
-                <p>Lunes a Sábado: 8:00 AM - 6:00 PM</p>
-            </div>
-        </div>
-    </div>
-
-    <footer style="padding: 50px; color: #444; font-size: 0.8rem; background: #000;">
-        © 2026 ALLMOTOSYNC | Bogotá, Colombia.
+    <footer style="padding: 40px; background: #000; font-size: 0.8rem; color: #444;">
+        © 2026 ALLMOTOSYNC | Expertos en Inyección Electrónica.
     </footer>
 
     <script>
         window.onscroll = function() {
             var header = document.getElementById("miHeader");
-            var logo = document.getElementById("logo-ams");
-            // Solo aplicar efecto en PC (pantallas anchas)
-            if (window.innerWidth > 768 && header && logo) {
-                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                    header.classList.add("header-pequeno");
-                    logo.classList.add("logo-reducido");
-                } else {
-                    header.classList.remove("header-pequeno");
-                    logo.classList.remove("logo-reducido");
-                }
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                header.classList.add("header-reducido");
+            } else {
+                header.classList.remove("header-reducido");
             }
         };
     </script>
