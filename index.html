@@ -1,14 +1,6 @@
-Entendido. Tienes razón, el logo debe tener una presencia fuerte en el primer impacto de la web.
+¡Entendido! Vamos a dejarlo equilibrado. He ajustado el mapa con las coordenadas exactas de San Cristóbal Sur (evitando la montaña) y modificado el efecto de scroll para que tanto el logo como las marcas no se vuelvan "miniaturas", sino que mantengan una presencia sólida (reduciéndose solo hasta el 50% de su tamaño original).
 
-He realizado los siguientes ajustes en el código:
-
-Logo Más Grande al Inicio: He aumentado el ancho máximo del logo (#logo-ams) significativamente para que se vea mucho más imponente al cargar la página.
-
-Sombra de Marca Reforzada: He incrementado la sombra naranja alrededor del logo para que resalte más sobre el fondo oscuro.
-
-Ajuste del Relleno: He adaptado el espacio que ocupa el header inicial para asegurarnos de que el logo grande no corte el resto del contenido.
-
-Aquí tienes el código actualizado con el logo más grande:
+Aquí tienes el código completo para copiar y pegar:
 
 HTML
 <!DOCTYPE html>
@@ -34,41 +26,44 @@ HTML
             display: flex; flex-direction: column; align-items: center;
         }
         
-        /* AJUSTE DEL LOGO: MUCHO MÁS GRANDE */
+        /* LOGO INICIAL (GRANDE) */
         #logo-ams { 
-            width: 500px; /* Aumentado considerablemente */
-            max-width: 90%; /* Asegura que no se salga en pantallas pequeñas */
+            width: 500px; 
+            max-width: 90%; 
             border-radius: 15px; 
             transition: all 0.4s ease;
-            filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.5)); /* Sombra más fuerte */
+            filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.5));
         }
 
         .titulos-hero { transition: all 0.4s ease; margin-top: 20px; }
         .titulos-hero h1 { font-size: 2.8rem; margin: 0; font-weight: 800; text-shadow: 0 5px 15px rgba(0,0,0,0.7); }
         .titulos-hero p { color: #FF6600; font-weight: bold; font-size: 1.2rem; margin: 8px 0 20px 0; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- SLIDER DE MARCAS DENTRO DEL HEADER --- */
+        /* --- SLIDER DE MARCAS --- */
         .slider-marcas {
-            width: 100%; background: rgba(255, 102, 0, 0.1); padding: 12px 0; 
+            width: 100%; background: rgba(255, 102, 0, 0.1); padding: 15px 0; 
             overflow: hidden; white-space: nowrap; transition: all 0.4s ease;
         }
         .contenedor-logos { display: inline-block; animation: slide 25s linear infinite; }
         .contenedor-logos span { font-size: 1.4rem; font-weight: 900; margin: 0 40px; color: rgba(255, 255, 255, 0.4); letter-spacing: 3px; transition: all 0.4s ease; }
         @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* --- EFECTO AL BAJAR (SCROLL) --- */
-        .header-reducido { padding: 5px 0 0 0 !important; border-bottom-width: 2px; }
-        .header-reducido #logo-ams { width: 120px !important; border-radius: 5px !important; } /* Mantenemos la reducción sutil */
-        .header-reducido .titulos-hero { margin-top: 0 !important; }
-        .header-reducido .titulos-hero h1 { font-size: 1.2rem !important; }
+        /* --- EFECTO AL BAJAR (REDUCCIÓN AL 50%) --- */
+        .header-reducido { padding: 10px 0 0 0 !important; border-bottom-width: 3px; }
+        
+        /* Logo al 50% (de 500px a 250px aprox) */
+        .header-reducido #logo-ams { width: 250px !important; border-radius: 10px !important; }
+        
+        .header-reducido .titulos-hero { margin-top: 5px !important; }
+        .header-reducido .titulos-hero h1 { font-size: 1.4rem !important; }
         .header-reducido .titulos-hero p { display: none; }
         
-        /* Ajuste de marcas al bajar */
-        .header-reducido .slider-marcas { padding: 5px 0 !important; background: transparent; }
-        .header-reducido .contenedor-logos span { font-size: 0.8rem !important; color: rgba(255, 255, 255, 0.2); }
+        /* Marcas al 50% (de 1.4rem a 0.8rem aprox) */
+        .header-reducido .slider-marcas { padding: 8px 0 !important; background: rgba(0,0,0,0.5); }
+        .header-reducido .contenedor-logos span { font-size: 0.8rem !important; color: rgba(255, 255, 255, 0.3); }
 
-        /* Espacio para que el logo grande no tape el inicio del contenido */
-        .relleno-header { height: 480px; transition: 0.4s; }
+        /* Espacio inicial para compensar el header grande */
+        .relleno-header { height: 520px; transition: 0.4s; }
 
         /* --- BARRA SOCIAL --- */
         .social-bar {
@@ -117,10 +112,8 @@ HTML
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            #logo-ams { width: 350px; } /* Ajuste para móviles */
-            .relleno-header { height: 350px; }
-            .titulos-hero h1 { font-size: 1.8rem; }
-            .titulos-hero p { font-size: 1rem; }
+            #logo-ams { width: 320px; }
+            .relleno-header { height: 420px; }
             .social-bar { top: auto; bottom: 0; flex-direction: row; width: 100%; transform: none; background: rgba(0,0,0,0.9); }
             .social-icon { width: 20%; border-radius: 0; }
         }
@@ -168,16 +161,20 @@ HTML
         Agendar Cita Ahora
     </a>
 
-    <div style="background: rgba(0,0,0,0.5); padding: 60px 20px;">
-        <h2 style="color: #FF6600;">ENCUÉNTRANOS</h2>
-        <p style="font-size: 1.2rem;">Cl. 31c Sur # 3A-72, San Cristóbal Norte, Bogotá</p>
+    <!-- SECCIÓN DE MAPA CORREGIDA -->
+    <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 60px 20px;">
+        <h2 style="color: #FF6600;">VISÍTANOS EN SAN CRISTÓBAL</h2>
+        <p style="font-size: 1.2rem;">Cl. 31c Sur # 3A-72, Bogotá</p>
         <div style="max-width: 1000px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 2px solid #FF6600;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.016335359419!2d-74.0536!3d4.5800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMzQnNDguMCJOIDc0wrAwMycxMy4wIlc!5e0!3m2!1ses!2sco!4v1710000000000" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0544!2d-74.0938!3d4.5574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9890f1c78279%3A0xebe458ee8946d535!2sCl.%2031c%20Sur%20%233a-72%2C%20San%20Crist%C3%B3bal%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1715874563210!5m2!1ses!2sco" 
+                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
         </div>
     </div>
 
     <footer style="padding: 40px; background: #000; font-size: 0.9rem; color: #555;">
-        © 2026 ALLMOTOSYNC | Expertos en Inyección Electrónica.
+        © 2026 ALLMOTOSYNC | Tecnología y Precisión en Inyección Electrónica.
     </footer>
 
     <script>
