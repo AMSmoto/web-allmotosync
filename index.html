@@ -4,132 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
-    <style>
-        /* --- ESTILOS DEL HEADER Y LOGO (EL CEREBRO) --- */
-        .header-principal {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: white; /* Fondo blanco para que el logo resalte */
-            transition: all 0.4s ease;
-            z-index: 1000;
-            padding: 15px 0;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-            text-align: center;
-        }
+   <style>
+    /* -----------------------------------------------------------
+       --- ESTILOS DEL HEADER Y LOGO (EL CEREBRO ACTUALIZADO) ---
+       ----------------------------------------------------------- */
+    .header-principal {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        /* Fondo muy oscuro y moderno con ligero desenfoque */
+        background-color: rgba(10, 10, 15, 0.98); 
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más premium */
+        z-index: 1000;
+        padding: 25px 0; /* Más aire al principio */
+        border-bottom: 2px solid #FF6600; /* Línea de "carretera" naranja */
+        text-align: center;
+        box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+    }
 
-        /* Cuando el usuario baja la pantalla */
-        .header-pequeno {
-            padding: 5px 0 !important;
-            background-color: rgba(255, 255, 255, 0.95) !important;
-        }
+    /* Cuando el usuario baja la pantalla */
+    .header-pequeno {
+        padding: 10px 0 !important;
+        background-color: rgba(10, 10, 15, 0.95) !important;
+        box-shadow: 0px 5px 20px rgba(0,0,0,0.4);
+    }
 
-        #logo-ams {
-            width: 280px; /* Tamaño grande inicial */
-            transition: width 0.4s ease;
-            height: auto;
-        }
+    #logo-ams {
+        /* ¡AHORA SÍ GRANDE! */
+        width: 450px; /* Tamaño imponente al inicio */
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        height: auto;
+        /* Un brillo sutil para que el logo flote */
+        filter: drop-shadow(0px 0px 10px rgba(255, 102, 0, 0.3));
+    }
 
-        .logo-reducido {
-            width: 140px !important; /* Tamaño pequeño al bajar */
-        }
+    .logo-reducido {
+        width: 220px !important; /* Tamaño aún visible y legible al bajar */
+        filter: drop-shadow(0px 0px 5px rgba(255, 102, 0, 0.2)) !important;
+    }
 
-        /* Espacio para que el contenido no se meta debajo del logo fijo */
-        .relleno-header {
-            height: 180px;
-        }
+    /* Ocultamos el subtítulo al bajar para ganar espacio */
+    #subtitulo-header {
+        transition: all 0.3s ease;
+        opacity: 1;
+    }
 
-        /* --- EFECTO METALIZADO PREMIUM EN TARJETAS --- */
-        .tarjeta-servicio {
-            /* Degradado Azul Metalizado de Fondo */
-            background: radial-gradient(circle at 50% 120%, 
-                        rgba(0, 77, 153, 0.9) 0%, 
-                        rgba(0, 26, 77, 1) 60%, 
-                        rgba(0, 13, 38, 1) 100%) !important;
-            
-            /* Borde Naranja Metalizado */
-            border: 2px solid transparent !important;
-            border-image: linear-gradient(to right, #FF6600, #FFCC00) 1;
-            
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            width: 280px;
-            padding: 30px;
-            text-align: center;
-        }
+    .header-pequeno #subtitulo-header {
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        margin: 0;
+    }
 
-        /* Brillo al pasar el mouse */
-        .tarjeta-servicio:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0px 0px 30px rgba(255, 102, 0, 0.6);
-            background: radial-gradient(circle at 50% 0%, 
-                        rgba(255, 255, 255, 0.2) 0%, 
-                        rgba(0, 26, 77, 1) 70%) !important;
-        }
+    /* Espacio compensador (Ajustado para el logo más grande) */
+    .relleno-header {
+        height: 250px; /* Más espacio inicial */
+    }
 
-        /* Destello de luz que cruza la tarjeta */
-        .tarjeta-servicio::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: 0.5s;
-        }
 
-        .tarjeta-servicio:hover::after {
-            left: 100%;
-        }
-    </style>
+    /* -----------------------------------------------------------
+       --- EFECTO ULTRA-MODERNO "ASPHALT DARK" EN TARJETAS ---
+       ----------------------------------------------------------- */
+    .tarjeta-servicio {
+        /* Fondo Gris Asfalto Muy Oscuro con textura (efecto sutil de fibra) */
+        background: linear-gradient(135deg, #1a1a21 0%, #111116 100%) !important;
+        
+        /* Borde Naranja Metalizado y Refinado */
+        border: 1px solid rgba(255, 102, 0, 0.3) !important;
+        
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        width: 280px;
+        padding: 40px 30px; /* Más aire */
+        text-align: center;
+        border-radius: 12px;
+        box-shadow: 0px 10px 30px rgba(0,0,0,0.4);
+    }
+
+    /* Efecto al pasar el mouse (Hover) */
+    .tarjeta-servicio:hover {
+        transform: translateY(-15px) scale(1.03);
+        /* Brillo Naranja Neón Intenso */
+        box-shadow: 0px 0px 40px rgba(255, 102, 0, 0.7);
+        border-color: #FF6600 !important;
+        
+        /* Fondo se ilumina ligeramente */
+        background: linear-gradient(135deg, #25252e 0%, #16161c 100%) !important;
+    }
+
+    /* Destello de luz agresivo (rayo de competencia) */
+    .tarjeta-servicio::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+        transition: 0.6s;
+    }
+
+    .tarjeta-servicio:hover::after {
+        left: 100%;
+    }
+
+    /* Iconos y Títulos Modernos */
+    .icono-servicio {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.2));
+    }
+
+    .titulo-servicio {
+        color: #FF6600;
+        text-transform: uppercase; /* Más agresivo */
+        letter-spacing: 1px;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .texto-servicio {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #e0e0e0; /* Blanco suave, no puro */
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+</style>
 </head>
-<body style="background-color: #001a4d; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; text-align: center;">
+<body style="background-color: #0a0a0f; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; text-align: center;">
 
-    <!-- HEADER FIJO CON LOGO -->
     <header id="miHeader" class="header-principal">
-        <div style="background-color: white; display: inline-block; padding: 5px; border-radius: 10px;">
+        <div style="display: inline-block;">
             <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="Logo ALLMOTOSYNC">
         </div>
-        <p id="subtitulo-header" style="color: #FF6600; font-weight: bold; margin-top: 5px; font-size: 0.9rem;">Especialistas en Inyección Electrónica y Sincronización</p>
+        <p id="subtitulo-header" style="color: #FF6600; font-weight: bold; margin-top: 10px; font-size: 1rem; letter-spacing: 1px;">Especialistas en Inyección Electrónica y Sincronización</p>
     </header>
 
-    <!-- Espacio compensador -->
     <div class="relleno-header"></div>
-
     <!-- SECCIÓN HERO (FOTO KTM) -->
-    <div style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('MANTENIMIENTO 1290.jpg'); background-size: cover; background-position: center; padding: 100px 20px; color: white;">
-        <h1 style="font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">MANTENIMIENTO GENERAL</h1>
-        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px auto; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Servicio integral para motocicletas de alto cilindraje. Potencia, seguridad y rendimiento garantizados.</p>
-        <a href="#contacto" style="background-color: #FF6600; color: white; text-decoration: none; padding: 15px 30px; font-weight: bold; border-radius: 5px; font-size: 1.1rem; box-shadow: 0px 4px 6px rgba(0,0,0,0.3); transition: 0.3s;">
-            Agendar Mi Cita
-        </a>
-    </div>
-
-    <!-- SECCIÓN SERVICIOS -->
-    <div style="padding: 50px 20px; max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+    <div style="padding: 60px 20px; max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
         
-        <!-- TARJETA 1 -->
         <div class="tarjeta-servicio">
-            <div style="font-size: 3rem; margin-bottom: 15px;">🛠️</div>
-            <h3 style="color: #FF6600; text-shadow: 1px 1px 3px black;">Diagnóstico Computarizado</h3>
-            <p style="font-size: 0.9rem; line-height: 1.6; text-shadow: 1px 1px 2px black;">Escaneo completo de ECUs, lectura y borrado de códigos de falla con equipos de última tecnología.</p>
+            <div class="icono-servicio">🛠️</div>
+            <h3 class="titulo-servicio">Diagnóstico Computarizado</h3>
+            <p class="texto-servicio">Escaneo completo de ECUs, lectura y borrado de códigos de falla con equipos de última tecnología.</p>
         </div>
 
-        <!-- TARJETA 2 -->
         <div class="tarjeta-servicio">
-            <div style="font-size: 3rem; margin-bottom: 15px;">🧪</div>
-            <h3 style="color: #FF6600; text-shadow: 1px 1px 3px black;">Inyección y Sincronización</h3>
-            <p style="font-size: 0.9rem; line-height: 1.6; text-shadow: 1px 1px 2px black;">Limpieza ultra-sónica de inyectores, ajuste de cuerpos de aceleración y balanceo del motor.</p>
+            <div class="icono-servicio">🧪</div>
+            <h3 class="titulo-servicio">Inyección y Sincronización</h3>
+            <p class="texto-servicio">Limpieza ultra-sónica de inyectores, ajuste de cuerpos de aceleración y balanceo del motor.</p>
         </div>
 
-        <!-- TARJETA 3 -->
         <div class="tarjeta-servicio">
-            <div style="font-size: 3rem; margin-bottom: 15px;">💻</div>
-            <h3 style="color: #FF6600; text-shadow: 1px 1px 3px black;">Reprogramación de ECUs</h3>
-            <p style="font-size: 0.9rem; line-height: 1.6; text-shadow: 1px 1px 2px black;">Optimización de mapas de combustible y encendido para mejorar el rendimiento y torque.</p>
+            <div class="icono-servicio">💻</div>
+            <h3 class="titulo-servicio">Reprogramación de ECUs</h3>
+            <p class="texto-servicio">Optimización de mapas de combustible y encendido para mejorar el rendimiento y torque.</p>
         </div>
 
+    </div>
     </div>
 
     <!-- SECCIÓN CONTACTO -->
