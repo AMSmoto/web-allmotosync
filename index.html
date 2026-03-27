@@ -3,187 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
+    <title>ALLMOTOSYNC | Ready to Race Service</title>
     <style>
-        /* --- FONDO TÉCNICO METALIZADO --- */
-        body {
-            background: linear-gradient(180deg, #0f141e 0%, #0a0a0f 50%, #050508 100%) !important;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+        /* --- FONDO AZUL METALIZADO Y GRIS ASFALTO --- */
+        html, body {
             margin: 0;
             padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            /* El azul profundo que definimos con transición a gris/negro */
+            background: radial-gradient(circle at top, #1a2a44 0%, #0d121c 45%, #050508 100%) no-repeat fixed !important;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             text-align: center;
+            scroll-behavior: smooth;
         }
 
-        /* --- HEADER Y LOGO GIGANTE --- */
+        /* --- HEADER NEGRO SÓLIDO --- */
         .header-principal {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(10, 10, 15, 0.98); 
-            transition: all 0.5s ease;
+            background-color: #000000; /* Negro como pediste */
+            transition: all 0.4s ease;
             z-index: 1000;
-            padding: 30px 0;
-            border-bottom: 3px solid #FF6600;
+            padding: 25px 0;
+            border-bottom: 4px solid #FF6600; /* Línea naranja divisoria */
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.8);
         }
 
         .header-pequeno { padding: 10px 0 !important; }
 
         #logo-ams {
-            width: 500px; /* TU LOGO GIGANTE REUPERADO */
-            max-width: 90%;
-            transition: 0.5s ease;
+            width: 450px;
+            max-width: 85%;
+            height: auto;
+            transition: 0.4s ease;
             filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.4));
         }
 
-        .logo-reducido { width: 240px !important; }
+        .logo-reducido { width: 200px !important; }
 
-        .relleno-header { height: 350px; }
+        .relleno-header { height: 320px; }
 
-        /* --- SECCIÓN HERO (LA FOTO DE LA KTM) --- */
-        .hero-section {
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('MANTENIMIENTO 1290.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 120px 20px;
-            border-bottom: 2px solid #FF6600;
+        /* --- SLIDER DE MARCAS ESTILO KTM --- */
+        .slider-marcas {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: 1px solid rgba(255, 102, 0, 0.2);
+            margin-bottom: 40px;
+        }
+        .contenedor-logos {
+            display: inline-block;
+            animation: slide 25s linear infinite;
+        }
+        .contenedor-logos span {
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin: 0 60px;
+            color: rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+        }
+        @keyframes slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
 
-        /* --- TARJETAS DE SERVICIOS --- */
-        .contenedor-tarjetas {
+        /* --- TARJETAS CLICKEABLES --- */
+        .contenedor-servicios {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 40px;
-            padding: 80px 20px;
-            max-width: 1300px;
+            padding: 40px 20px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .tarjeta-servicio {
-            width: 300px;
-            padding: 50px 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 102, 0, 0.3);
-            position: relative;
-            overflow: hidden;
+        .tarjeta-click {
+            width: 320px;
+            height: 420px;
             background-size: cover;
             background-position: center;
-            transition: 0.4s ease;
+            border-radius: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            align-items: flex-end;
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
 
-        /* Capa oscura interna para que el texto se lea bien */
-        .tarjeta-servicio::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 15, 25, 0.85);
-            z-index: 1;
+        .tarjeta-click:hover {
+            transform: scale(1.03) translateY(-10px);
+            border-color: #FF6600;
+            box-shadow: 0 0 40px rgba(255, 102, 0, 0.4);
+        }
+
+        .overlay-tarjeta {
+            background: linear-gradient(0deg, rgba(15, 20, 30, 0.95) 0%, rgba(15, 20, 30, 0.4) 100%);
+            width: 100%;
+            padding: 25px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .btn-ver-mas {
+            color: #FF6600;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* --- SECCIONES DE DETALLE (GALERÍA) --- */
+        .galeria-tecnica {
+            padding: 120px 20px;
+            display: none; /* Oculto por defecto */
+            background: rgba(10, 15, 25, 0.95);
+            min-height: 80vh;
+        }
+        .galeria-tecnica:target {
+            display: block; /* Se activa con el clic */
+        }
+
+        .btn-cerrar {
+            display: inline-block;
+            padding: 12px 25px;
+            border: 2px solid #FF6600;
+            color: #FF6600;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 40px;
             transition: 0.3s;
         }
+        .btn-cerrar:hover { background: #FF6600; color: white; }
 
-        .tarjeta-servicio:hover {
-            transform: translateY(-15px);
-            border-color: #FF6600;
-            box-shadow: 0px 0px 40px rgba(255, 102, 0, 0.4);
-        }
-
-        .tarjeta-servicio:hover::before { background: rgba(10, 15, 25, 0.7); }
-
-        .contenido-tarjeta { position: relative; z-index: 2; }
-        .titulo-serv { color: #FF6600; text-transform: uppercase; font-weight: 800; margin-bottom: 15px; }
-
-        /* --- SECCIÓN CONTACTO --- */
+        /* --- CONTACTO --- */
         .seccion-contacto {
-            background-color: #0a0a0f;
-            padding: 80px 20px;
-            border-top: 2px solid #333;
+            background: rgba(0,0,0,0.5);
+            padding: 100px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .neon-v { color: #ccff00; }
-        .neon-n { color: #ff9900; }
 
         .btn-wa {
             background: #25D366;
             color: white;
-            padding: 15px 35px;
+            padding: 18px 40px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 5px 15px rgba(37,211,102,0.3);
+            margin-top: 30px;
+            box-shadow: 0 10px 20px rgba(37,211,102,0.3);
         }
     </style>
 </head>
 <body>
 
+    <!-- ENCABEZADO NEGRO -->
     <header id="miHeader" class="header-principal">
-        <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="Logo ALLMOTOSYNC">
-        <p style="color: #FF6600; font-weight: bold; margin-top: 15px; letter-spacing: 2px;">SINCRONIZACIÓN Y DIAGNÓSTICO</p>
+        <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
     </header>
 
     <div class="relleno-header"></div>
 
-    <div class="hero-section">
-        <h1 style="font-size: 3.5rem; text-shadow: 2px 2px 10px #000;">PASIÓN POR LA PRECISIÓN</h1>
-        <p style="font-size: 1.4rem; color: #FF6600; font-weight: bold; text-shadow: 2px 2px 4px #000;">Especialistas en Inyección Electrónica en Bogotá</p>
-    </div>
-
-    <div class="contenedor-tarjetas">
-        
-        <!-- Tarjeta 1 con SCANNER KTM.webp -->
-        <div class="tarjeta-servicio" style="background-image: url('SCANNER KTM.webp');">
-            <div class="contenido-tarjeta">
-                <div style="font-size: 3.5rem;">🛠️</div>
-                <h3 class="titulo-serv">Diagnóstico</h3>
-                <p>Escaneo de ECUs y sensores con tecnología de punta.</p>
-            </div>
-        </div>
-
-        <!-- Tarjeta 2 con LAV INYECTORES.png -->
-        <div class="tarjeta-servicio" style="background-image: url('LAV INYECTORES.png');">
-            <div class="contenido-tarjeta">
-                <div style="font-size: 3.5rem;">🧪</div>
-                <h3 class="titulo-serv">Inyección</h3>
-                <p>Limpieza técnica y calibración para máximo ahorro de combustible.</p>
-            </div>
-        </div>
-
-        <!-- Tarjeta 3 con PROG ECU.jfif -->
-        <div class="tarjeta-servicio" style="background-image: url('PROG ECU.jfif');">
-            <div class="contenido-tarjeta">
-                <div style="font-size: 3.5rem;">💻</div>
-                <h3 class="titulo-serv">Programación</h3>
-                <p>Optimización de mapas de motor y aumento de rendimiento.</p>
-            </div>
-        </div>
-
-    </div>
-
-    <div id="contacto" class="seccion-contacto">
-        <h2 style="color: #FF6600; font-size: 2rem; margin-bottom: 50px;">UBICACIÓN Y CITAS</h2>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 50px; align-items: center;">
-            <iframe width="400" height="300" style="border:0; border-radius: 15px;" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15907.487771765274!2d-74.075!3d4.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzYnMDAuMCJOIDc0wrAwNCc4MC4wIlc!5e0!3m2!1ses!2sco!4v1650000000000!5m2!1ses!2sco"></iframe>
-            <div style="text-align: left;">
-                <p><span class="neon-v">📍</span> San Cristóbal Norte, Bogotá</p>
-                <p><span class="neon-v">🕒</span> Lunes a Sábado: 8:00 AM - 6:00 PM</p>
-                <p><span class="neon-n">⚡</span> ¡Agenda tu cita hoy mismo!</p>
-                <a href="https://wa.me/573104886929" class="btn-wa">📱 WhatsApp Business</a>
-            </div>
+    <!-- BANNER MARCAS FLUJO -->
+    <div class="slider-marcas">
+        <div class="contenedor-logos">
+            <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>BMW</span> <span>SUZUKI</span> <span>DUCATI</span>
+            <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>BMW</span> <span>SUZUKI</span> <span>DUCATI</span>
         </div>
     </div>
 
-    <footer style="padding: 40px; color: #444; font-size: 0.9rem;">
-        &copy; 2026 ALLMOTOSYNC | Bogotá, Colombia.
+    <!-- CONTENEDOR PRINCIPAL AZUL/GRIS -->
+    <div id="home">
+        <h1 style="font-size: 3rem; letter-spacing: -1px; text-shadow: 0 10px 20px rgba(0,0,0,0.5);">DIAGNÓSTICO DE PRECISIÓN</h1>
+        <p style="color: #FF6600; font-weight: bold; font-size: 1.2rem; margin-bottom: 50px;">READY TO SERVICE BOGOTÁ</p>
+
+        <div class="contenedor-servicios">
+            
+            <!-- TARJETA SCANNER -->
+            <a href="#detalles-scanner" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');">
+                <div class="overlay-tarjeta">
+                    <h2 style="margin:0; font-size: 1.8rem; color: #fff;">SCANNER</h2>
+                    <p style="margin:5px 0 0; color: #ccc;">Diagnóstico avanzado de sistemas electrónicos.</p>
+                    <span class="btn-ver-mas">VER PROCESO ➔</span>
+                </div>
+            </a>
+
+            <!-- TARJETA INYECCIÓN -->
+            <a href="#detalles-inyeccion" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');">
+                <div class="overlay-tarjeta">
+                    <h2 style="margin:0; font-size: 1.8rem; color: #fff;">INYECCIÓN</h2>
+                    <p style="margin:5px 0 0; color: #ccc;">Limpieza técnica y balanceo de inyectores.</p>
+                    <span class="btn-ver-mas">VER PROCESO ➔</span>
+                </div>
+            </a>
+
+            <!-- TARJETA PROGRAMACIÓN -->
+            <a href="#detalles-prog" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');">
+                <div class="overlay-tarjeta">
+                    <h2 style="margin:0; font-size: 1.8rem; color: #fff;">ECU REMAP</h2>
+                    <p style="margin:5px 0 0; color: #ccc;">Optimización de mapas y potencia.</p>
+                    <span class="btn-ver-mas">VER PROCESO ➔</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- SECCIÓN DETALLE SCANNER -->
+    <div id="detalles-scanner" class="galeria-tecnica">
+        <a href="#home" class="btn-cerrar">CERRAR DETALLES</a>
+        <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center; text-align: left;">
+            <img src="SCANNER KTM.webp" style="width: 100%; border-radius: 4px; border: 1px solid #FF6600;">
+            <div>
+                <h2 style="color:#FF6600; font-size: 2.5rem;">SISTEMAS DE DIAGNÓSTICO</h2>
+                <p>Manejamos escáneres multimarca y específicos para marcas de alta cilindrada. Nuestro proceso incluye:</p>
+                <ul style="color: #bbb; line-height: 2;">
+                    <li>Lectura y borrado de códigos de error (DTC)</li>
+                    <li>Prueba de actuadores y sensores en tiempo real</li>
+                    <li>Reset de intervalos de servicio</li>
+                    <li>Ajuste de TPS y cuerpos de aceleración</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DETALLE INYECCIÓN -->
+    <div id="detalles-inyeccion" class="galeria-tecnica">
+        <a href="#home" class="btn-cerrar">CERRAR DETALLES</a>
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+            <h2 style="color:#FF6600; font-size: 2.5rem;">LIMPIEZA TÉCNICA DE INYECTORES</h2>
+            <img src="LAV INYECTORES.png" style="max-width: 600px; width: 100%; margin: 30px 0; border: 1px solid #FF6600;">
+            <p style="font-size: 1.2rem; color: #ccc;">Utilizamos tina de ultrasonido y banco de pruebas para garantizar la estanqueidad y el patrón de rociado perfecto.</p>
+        </div>
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="seccion-contacto">
+        <h2 style="color: #FF6600;">CONTÁCTANOS</h2>
+        <p>Bogotá, Colombia | San Cristóbal Norte</p>
+        <a href="https://wa.me/573104886929" class="btn-wa">📱 WhatsApp Business</a>
+    </div>
+
+    <footer style="padding: 50px; color: #444; font-size: 0.8rem; background: #000;">
+        &copy; 2026 ALLMOTOSYNC | Mecánica de Alto Rendimiento.
     </footer>
 
     <script>
         window.onscroll = function() {
             var header = document.getElementById("miHeader");
             var logo = document.getElementById("logo-ams");
-            if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                 header.classList.add("header-pequeno");
                 logo.classList.add("logo-reducido");
             } else {
