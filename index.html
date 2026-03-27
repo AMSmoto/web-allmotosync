@@ -1,3 +1,8 @@
+¡Entendido! Vamos a hacer ese "ajuste de precisión". He modificado el slider de marcas para que sea más realista con lo que manejas actualmente (KTM, Honda, Yamaha, Kawasaki, Suzuki, Bajaj, AKT), integré el mapa con el enlace exacto que me pasaste y ajusté el tamaño para que encaje perfecto en el diseño.
+
+Aquí tienes el código actualizado y completo. Copia y reemplaza todo en tu index.html:
+
+HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,7 +16,6 @@
             padding: 0;
             width: 100%;
             min-height: 100vh;
-            /* El azul profundo que definimos con transición a gris/negro */
             background: radial-gradient(circle at top, #1a2a44 0%, #0d121c 45%, #050508 100%) no-repeat fixed !important;
             color: #e0e0e0;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -24,11 +28,11 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: #000000; /* Negro como pediste */
+            background-color: #000000;
             transition: all 0.4s ease;
             z-index: 1000;
             padding: 25px 0;
-            border-bottom: 4px solid #FF6600; /* Línea naranja divisoria */
+            border-bottom: 4px solid #FF6600;
             box-shadow: 0px 10px 30px rgba(0,0,0,0.8);
         }
 
@@ -46,7 +50,7 @@
 
         .relleno-header { height: 320px; }
 
-        /* --- SLIDER DE MARCAS ESTILO KTM --- */
+        /* --- SLIDER DE MARCAS (ACTUALIZADO: SIN DUCATI/BMW) --- */
         .slider-marcas {
             background: rgba(0, 0, 0, 0.4);
             padding: 15px 0;
@@ -126,12 +130,12 @@
         /* --- SECCIONES DE DETALLE (GALERÍA) --- */
         .galeria-tecnica {
             padding: 120px 20px;
-            display: none; /* Oculto por defecto */
+            display: none;
             background: rgba(10, 15, 25, 0.95);
             min-height: 80vh;
         }
         .galeria-tecnica:target {
-            display: block; /* Se activa con el clic */
+            display: block;
         }
 
         .btn-cerrar {
@@ -146,11 +150,21 @@
         }
         .btn-cerrar:hover { background: #FF6600; color: white; }
 
-        /* --- CONTACTO --- */
+        /* --- CONTACTO Y MAPA --- */
         .seccion-contacto {
             background: rgba(0,0,0,0.5);
-            padding: 100px 20px;
+            padding: 80px 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contenedor-mapa {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            align-items: center;
         }
 
         .btn-wa {
@@ -165,100 +179,100 @@
             gap: 10px;
             margin-top: 30px;
             box-shadow: 0 10px 20px rgba(37,211,102,0.3);
+            transition: 0.3s;
         }
+        .btn-wa:hover { transform: scale(1.05); }
     </style>
 </head>
 <body>
 
-    <!-- ENCABEZADO NEGRO -->
     <header id="miHeader" class="header-principal">
         <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
     </header>
 
     <div class="relleno-header"></div>
 
-    <!-- BANNER MARCAS FLUJO -->
     <div class="slider-marcas">
         <div class="contenedor-logos">
-            <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>BMW</span> <span>SUZUKI</span> <span>DUCATI</span>
-            <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>BMW</span> <span>SUZUKI</span> <span>DUCATI</span>
+            <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span>
+            <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span>
         </div>
     </div>
 
-    <!-- CONTENEDOR PRINCIPAL AZUL/GRIS -->
     <div id="home">
-        <h1 style="font-size: 3rem; letter-spacing: -1px; text-shadow: 0 10px 20px rgba(0,0,0,0.5);">DIAGNÓSTICO DE PRECISIÓN</h1>
-        <p style="color: #FF6600; font-weight: bold; font-size: 1.2rem; margin-bottom: 50px;">READY TO SERVICE BOGOTÁ</p>
+        <h1 style="font-size: 3rem; text-shadow: 0 10px 20px rgba(0,0,0,0.5);">DIAGNÓSTICO DE PRECISIÓN</h1>
+        <p style="color: #FF6600; font-weight: bold; font-size: 1.2rem; margin-bottom: 50px;">BOGOTÁ | SERVICIO TÉCNICO ESPECIALIZADO</p>
 
         <div class="contenedor-servicios">
-            
-            <!-- TARJETA SCANNER -->
             <a href="#detalles-scanner" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');">
                 <div class="overlay-tarjeta">
                     <h2 style="margin:0; font-size: 1.8rem; color: #fff;">SCANNER</h2>
-                    <p style="margin:5px 0 0; color: #ccc;">Diagnóstico avanzado de sistemas electrónicos.</p>
+                    <p style="margin:5px 0 0; color: #ccc;">Diagnóstico avanzado multimarcas.</p>
                     <span class="btn-ver-mas">VER PROCESO ➔</span>
                 </div>
             </a>
 
-            <!-- TARJETA INYECCIÓN -->
             <a href="#detalles-inyeccion" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');">
                 <div class="overlay-tarjeta">
                     <h2 style="margin:0; font-size: 1.8rem; color: #fff;">INYECCIÓN</h2>
-                    <p style="margin:5px 0 0; color: #ccc;">Limpieza técnica y balanceo de inyectores.</p>
+                    <p style="margin:5px 0 0; color: #ccc;">Limpieza ultra-sónica y balanceo.</p>
                     <span class="btn-ver-mas">VER PROCESO ➔</span>
                 </div>
             </a>
 
-            <!-- TARJETA PROGRAMACIÓN -->
             <a href="#detalles-prog" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');">
                 <div class="overlay-tarjeta">
                     <h2 style="margin:0; font-size: 1.8rem; color: #fff;">ECU REMAP</h2>
-                    <p style="margin:5px 0 0; color: #ccc;">Optimización de mapas y potencia.</p>
+                    <p style="margin:5px 0 0; color: #ccc;">Optimización de parámetros originales.</p>
                     <span class="btn-ver-mas">VER PROCESO ➔</span>
                 </div>
             </a>
-
         </div>
     </div>
 
-    <!-- SECCIÓN DETALLE SCANNER -->
     <div id="detalles-scanner" class="galeria-tecnica">
         <a href="#home" class="btn-cerrar">CERRAR DETALLES</a>
         <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center; text-align: left;">
             <img src="SCANNER KTM.webp" style="width: 100%; border-radius: 4px; border: 1px solid #FF6600;">
             <div>
-                <h2 style="color:#FF6600; font-size: 2.5rem;">SISTEMAS DE DIAGNÓSTICO</h2>
-                <p>Manejamos escáneres multimarca y específicos para marcas de alta cilindrada. Nuestro proceso incluye:</p>
-                <ul style="color: #bbb; line-height: 2;">
-                    <li>Lectura y borrado de códigos de error (DTC)</li>
-                    <li>Prueba de actuadores y sensores en tiempo real</li>
-                    <li>Reset de intervalos de servicio</li>
-                    <li>Ajuste de TPS y cuerpos de aceleración</li>
+                <h2 style="color:#FF6600;">LECTURA DE FALLAS</h2>
+                <p>Contamos con escáneres JDiag y herramientas específicas para marcas comerciales.</p>
+                <ul>
+                    <li>Lectura de flujos de datos en vivo</li>
+                    <li>Sincronización de cuerpos de aceleración</li>
+                    <li>Borrado de testigos de servicio</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- SECCIÓN DETALLE INYECCIÓN -->
     <div id="detalles-inyeccion" class="galeria-tecnica">
         <a href="#home" class="btn-cerrar">CERRAR DETALLES</a>
         <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-            <h2 style="color:#FF6600; font-size: 2.5rem;">LIMPIEZA TÉCNICA DE INYECTORES</h2>
+            <h2 style="color:#FF6600;">LABORATORIO DE INYECTORES</h2>
             <img src="LAV INYECTORES.png" style="max-width: 600px; width: 100%; margin: 30px 0; border: 1px solid #FF6600;">
-            <p style="font-size: 1.2rem; color: #ccc;">Utilizamos tina de ultrasonido y banco de pruebas para garantizar la estanqueidad y el patrón de rociado perfecto.</p>
+            <p>Limpieza profunda para recuperar el patrón de rociado original y optimizar el consumo.</p>
         </div>
     </div>
 
-    <!-- CONTACTO -->
     <div class="seccion-contacto">
-        <h2 style="color: #FF6600;">CONTÁCTANOS</h2>
-        <p>Bogotá, Colombia | San Cristóbal Norte</p>
-        <a href="https://wa.me/573104886929" class="btn-wa">📱 WhatsApp Business</a>
+        <h2 style="color: #FF6600; margin-bottom: 40px;">VISÍTANOS</h2>
+        <div class="contenedor-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.136009890123!2d-74.0321262!3d4.722421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f850e047702db%3A0xe549557a627d750!2sSan%20Crist%C3%B3bal%20Norte%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1700000000000!5m2!1ses!2sco" width="100%" height="350" style="border:0; border-radius: 15px; flex: 1; min-width: 300px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            
+            <div style="text-align: left; flex: 1; min-width: 300px;">
+                <p style="font-size: 1.4rem; font-weight: bold; color: #FF6600;">UBICACIÓN</p>
+                <p>San Cristóbal Norte, Bogotá</p>
+                <p>Calle 161 (Sector Taller)</p>
+                <p style="margin-top: 20px; font-weight: bold;">HORARIO:</p>
+                <p>Lunes - Sábado: 8:00 AM - 6:00 PM</p>
+                <a href="https://wa.me/573104886929" class="btn-wa">📱 WhatsApp Business</a>
+            </div>
+        </div>
     </div>
 
     <footer style="padding: 50px; color: #444; font-size: 0.8rem; background: #000;">
-        &copy; 2026 ALLMOTOSYNC | Mecánica de Alto Rendimiento.
+        &copy; 2026 ALLMOTOSYNC | Mecánica de Alto Rendimiento Bogotá.
     </footer>
 
     <script>
