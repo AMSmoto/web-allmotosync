@@ -60,10 +60,10 @@
     }
 
     /* -----------------------------------------------------------
-       --- TARJETAS ASPHALT DARK (MODERNAS) ---
+       --- TARJETAS ASPHALT DARK (MODERNAS CON IMAGEN) ---
        ----------------------------------------------------------- */
     .tarjeta-servicio {
-        background: linear-gradient(135deg, #1a1a21 0%, #111116 100%) !important;
+        /* Degradado oscuro sobre la imagen para legibilidad */
         border: 1px solid rgba(255, 102, 0, 0.2) !important;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         cursor: pointer;
@@ -74,6 +74,8 @@
         text-align: center;
         border-radius: 12px;
         box-shadow: 0px 10px 30px rgba(0,0,0,0.4);
+        background-size: cover;
+        background-position: center;
     }
 
     .tarjeta-servicio:hover {
@@ -82,15 +84,14 @@
         border-color: #FF6600 !important;
     }
 
-    .icono-servicio { font-size: 3.5rem; margin-bottom: 20px; }
-    .titulo-servicio { color: #FF6600; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 15px; }
-    .texto-servicio { font-size: 0.95rem; line-height: 1.7; color: #ccc; }
+    .icono-servicio { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 0px 0px 10px rgba(0,0,0,0.8); }
+    .titulo-servicio { color: #FF6600; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+    .texto-servicio { font-size: 0.95rem; line-height: 1.7; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
     </style>
 </head>
 
 <body style="background-color: #0a0a0f; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; text-align: center;">
 
-    <!-- HEADER -->
     <header id="miHeader" class="header-principal">
         <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="Logo ALLMOTOSYNC">
         <p id="subtitulo-header">Especialistas en Inyección Electrónica y Sincronización</p>
@@ -98,35 +99,36 @@
 
     <div class="relleno-header"></div>
 
-    <!-- SECCIÓN HERO (FOTO KTM RECUPERADA) -->
     <div style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('MANTENIMIENTO 1290.jpg'); background-size: cover; background-position: center; padding: 120px 20px; border-bottom: 2px solid #FF6600;">
-        <h1 style="font-size: 3.5rem; margin-bottom: 10px; color: white;">MANTENIMIENTO GENERAL</h1>
-        <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 30px auto;">Tecnología de punta para el rendimiento de tu motocicleta.</p>
-        <a href="#contacto" style="background-color: #FF6600; color: white; text-decoration: none; padding: 18px 40px; font-weight: bold; border-radius: 5px; font-size: 1.2rem; display: inline-block;">
+        <h1 style="font-size: 3.5rem; margin-bottom: 10px; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">MANTENIMIENTO GENERAL</h1>
+        <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 30px auto; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Tecnología de punta para el rendimiento de tu motocicleta.</p>
+        <a href="#contacto" style="background-color: #FF6600; color: white; text-decoration: none; padding: 18px 40px; font-weight: bold; border-radius: 5px; font-size: 1.2rem; display: inline-block; box-shadow: 0px 4px 6px rgba(0,0,0,0.3);">
             Agendar Cita Técnica
         </a>
     </div>
 
-    <!-- SERVICIOS -->
     <div style="padding: 80px 20px; max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
-        <div class="tarjeta-servicio">
+        
+        <div class="tarjeta-servicio" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('SCANNER KTM.webp');">
             <div class="icono-servicio">🛠️</div>
             <h3 class="titulo-servicio">Diagnóstico Computarizado</h3>
             <p class="texto-servicio">Escaneo de ECUs y borrado de códigos con equipos originales.</p>
         </div>
-        <div class="tarjeta-servicio">
+
+        <div class="tarjeta-servicio" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('LAV INYECTORES.png');">
             <div class="icono-servicio">🧪</div>
             <h3 class="titulo-servicio">Inyección y Sincronización</h3>
             <p class="texto-servicio">Limpieza por ultrasonido y ajuste de cuerpos de aceleración.</p>
         </div>
-        <div class="tarjeta-servicio">
+
+        <div class="tarjeta-servicio" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('PROG ECU.jfif');">
             <div class="icono-servicio">💻</div>
             <h3 class="titulo-servicio">Reprogramación de ECUs</h3>
             <p class="texto-servicio">Optimización de mapas de potencia y torque para alto rendimiento.</p>
         </div>
+
     </div>
 
-    <!-- CONTACTO -->
     <div id="contacto" style="background-color: #111116; padding: 80px 20px; border-top: 1px solid #333;">
         <h2 style="color: #FF6600; font-size: 2rem;">UBICACIÓN Y CITAS</h2>
         <div style="max-width: 900px; margin: 40px auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center;">
@@ -134,16 +136,15 @@
             <div style="text-align: left;">
                 <p style="font-size: 1.2rem; font-weight: bold; color: #FF6600;">San Cristóbal Norte, Bogotá</p>
                 <p>Lunes a Sábado: 8:00 AM - 6:00 PM</p>
-                <a href="https://wa.me/573104886929" style="text-decoration: none; background: #25D366; color: white; padding: 15px 30px; border-radius: 50px; display: inline-block; margin-top: 20px; font-weight: bold;">📱 WhatsApp Directo</a>
+                <a href="https://wa.me/573104886929" style="text-decoration: none; background: #25D366; color: white; padding: 15px 30px; border-radius: 50px; display: inline-block; margin-top: 20px; font-weight: bold; box-shadow: 0px 4px 6px rgba(0,0,0,0.3);">📱 WhatsApp Directo</a>
             </div>
         </div>
     </div>
 
     <footer style="padding: 40px 0; color: #666; font-size: 0.9rem;">
-        &copy; 2026 ALLMOTOSYNC. Expertos en Inyección.
+        © 2026 ALLMOTOSYNC. Expertos en Inyección. Bogotá.Colombia
     </footer>
 
-    <!-- BOTÓN WHATSAPP FLOTANTE -->
     <a href="https://wa.me/573104886929" style="position: fixed; bottom: 20px; right: 20px; z-index: 100;" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width: 60px;">
     </a>
