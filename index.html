@@ -1,8 +1,3 @@
-¡Entendido! Vamos a hacer ese "ajuste de precisión". He modificado el slider de marcas para que sea más realista con lo que manejas actualmente (KTM, Honda, Yamaha, Kawasaki, Suzuki, Bajaj, AKT), integré el mapa con el enlace exacto que me pasaste y ajusté el tamaño para que encaje perfecto en el diseño.
-
-Aquí tienes el código actualizado y completo. Copia y reemplaza todo en tu index.html:
-
-HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,179 +7,83 @@ HTML
     <style>
         /* --- FONDO AZUL METALIZADO Y GRIS ASFALTO --- */
         html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100vh;
+            margin: 0; padding: 0; width: 100%; min-height: 100vh;
             background: radial-gradient(circle at top, #1a2a44 0%, #0d121c 45%, #050508 100%) no-repeat fixed !important;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            text-align: center;
-            scroll-behavior: smooth;
+            color: #e0e0e0; font-family: 'Segoe UI', Roboto, sans-serif;
+            text-align: center; scroll-behavior: smooth;
         }
 
-        /* --- HEADER NEGRO SÓLIDO --- */
+        /* --- HEADER Y LOGO CON PUNTAS REDONDEADAS --- */
         .header-principal {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #000000;
-            transition: all 0.4s ease;
-            z-index: 1000;
-            padding: 25px 0;
-            border-bottom: 4px solid #FF6600;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.8);
+            position: fixed; top: 0; width: 100%; background-color: #000000;
+            transition: 0.4s; z-index: 1000; padding: 20px 0;
+            border-bottom: 4px solid #FF6600; box-shadow: 0px 10px 30px rgba(0,0,0,0.8);
         }
-
-        .header-pequeno { padding: 10px 0 !important; }
 
         #logo-ams {
-            width: 450px;
-            max-width: 85%;
-            height: auto;
-            transition: 0.4s ease;
-            filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.4));
+            width: 450px; max-width: 85%; height: auto; transition: 0.4s;
+            /* AQUÍ REDONDEAMOS LAS PUNTAS DEL LOGO */
+            border-radius: 25px; 
+            filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.3));
         }
 
-        .logo-reducido { width: 200px !important; }
+        .header-pequeno { padding: 8px 0 !important; }
+        .logo-reducido { width: 180px !important; border-radius: 10px !important; }
 
-        .relleno-header { height: 320px; }
+        .relleno-header { height: 300px; }
 
-        /* --- SLIDER DE MARCAS (ACTUALIZADO: SIN DUCATI/BMW) --- */
-        .slider-marcas {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 15px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            border-bottom: 1px solid rgba(255, 102, 0, 0.2);
-            margin-bottom: 40px;
-        }
-        .contenedor-logos {
-            display: inline-block;
-            animation: slide 25s linear infinite;
-        }
-        .contenedor-logos span {
-            font-size: 1.4rem;
-            font-weight: 900;
-            margin: 0 60px;
-            color: rgba(255, 255, 255, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 6px;
-        }
-        @keyframes slide {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        /* --- TARJETAS CLICKEABLES --- */
-        .contenedor-servicios {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .tarjeta-click {
-            width: 320px;
-            height: 420px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-            position: relative;
-            cursor: pointer;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            text-decoration: none;
-            display: flex;
-            align-items: flex-end;
-            border: 1px solid rgba(255, 102, 0, 0.3);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-        }
-
-        .tarjeta-click:hover {
-            transform: scale(1.03) translateY(-10px);
-            border-color: #FF6600;
-            box-shadow: 0 0 40px rgba(255, 102, 0, 0.4);
-        }
-
-        .overlay-tarjeta {
-            background: linear-gradient(0deg, rgba(15, 20, 30, 0.95) 0%, rgba(15, 20, 30, 0.4) 100%);
-            width: 100%;
-            padding: 25px;
-            box-sizing: border-box;
-            text-align: left;
-        }
-
-        .btn-ver-mas {
-            color: #FF6600;
-            font-size: 0.8rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            margin-top: 10px;
-            display: block;
-        }
-
-        /* --- SECCIONES DE DETALLE (GALERÍA) --- */
-        .galeria-tecnica {
-            padding: 120px 20px;
-            display: none;
-            background: rgba(10, 15, 25, 0.95);
-            min-height: 80vh;
-        }
-        .galeria-tecnica:target {
-            display: block;
-        }
-
-        .btn-cerrar {
-            display: inline-block;
-            padding: 12px 25px;
-            border: 2px solid #FF6600;
-            color: #FF6600;
-            text-decoration: none;
-            font-weight: bold;
-            margin-bottom: 40px;
-            transition: 0.3s;
-        }
-        .btn-cerrar:hover { background: #FF6600; color: white; }
-
-        /* --- CONTACTO Y MAPA --- */
-        .seccion-contacto {
-            background: rgba(0,0,0,0.5);
-            padding: 80px 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .contenedor-mapa {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .btn-wa {
-            background: #25D366;
+        /* --- BOTÓN FLOTANTE DE WHATSAPP --- */
+        .whatsapp-fijo {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
             color: white;
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-flex;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 10px;
-            margin-top: 30px;
-            box-shadow: 0 10px 20px rgba(37,211,102,0.3);
+            font-size: 35px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+            z-index: 2000;
+            text-decoration: none;
             transition: 0.3s;
         }
-        .btn-wa:hover { transform: scale(1.05); }
+        .whatsapp-fijo:hover { transform: scale(1.1); background-color: #128C7E; }
+
+        /* --- SLIDER DE MARCAS --- */
+        .slider-marcas {
+            background: rgba(0, 0, 0, 0.4); padding: 15px 0; overflow: hidden;
+            white-space: nowrap; border-bottom: 1px solid rgba(255, 102, 0, 0.2); margin-bottom: 40px;
+        }
+        .contenedor-logos { display: inline-block; animation: slide 25s linear infinite; }
+        .contenedor-logos span { font-size: 1.4rem; font-weight: 900; margin: 0 60px; color: rgba(255, 255, 255, 0.2); text-transform: uppercase; letter-spacing: 6px; }
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* --- TARJETAS --- */
+        .contenedor-servicios { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .tarjeta-click {
+            width: 320px; height: 420px; background-size: cover; background-position: center;
+            border-radius: 12px; position: relative; cursor: pointer; transition: 0.4s;
+            overflow: hidden; text-decoration: none; display: flex; align-items: flex-end;
+            border: 1px solid rgba(255, 102, 0, 0.3); box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+        .tarjeta-click:hover { transform: translateY(-10px); border-color: #FF6600; box-shadow: 0 0 40px rgba(255, 102, 0, 0.4); }
+        .overlay-tarjeta { background: linear-gradient(0deg, rgba(15, 20, 30, 0.95) 0%, rgba(15, 20, 30, 0.4) 100%); width: 100%; padding: 25px; box-sizing: border-box; text-align: left; }
+
+        /* --- CONTACTO --- */
+        .seccion-contacto { background: rgba(0,0,0,0.5); padding: 80px 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .contenedor-mapa { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center; }
     </style>
 </head>
 <body>
+
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/573104886929" class="whatsapp-fijo" target="_blank">
+        <span style="font-family: Arial;">WA</span> 
+    </a>
 
     <header id="miHeader" class="header-principal">
         <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
@@ -204,75 +103,46 @@ HTML
         <p style="color: #FF6600; font-weight: bold; font-size: 1.2rem; margin-bottom: 50px;">BOGOTÁ | SERVICIO TÉCNICO ESPECIALIZADO</p>
 
         <div class="contenedor-servicios">
-            <a href="#detalles-scanner" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');">
+            <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');">
                 <div class="overlay-tarjeta">
                     <h2 style="margin:0; font-size: 1.8rem; color: #fff;">SCANNER</h2>
                     <p style="margin:5px 0 0; color: #ccc;">Diagnóstico avanzado multimarcas.</p>
-                    <span class="btn-ver-mas">VER PROCESO ➔</span>
                 </div>
             </a>
-
-            <a href="#detalles-inyeccion" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');">
+            <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');">
                 <div class="overlay-tarjeta">
                     <h2 style="margin:0; font-size: 1.8rem; color: #fff;">INYECCIÓN</h2>
                     <p style="margin:5px 0 0; color: #ccc;">Limpieza ultra-sónica y balanceo.</p>
-                    <span class="btn-ver-mas">VER PROCESO ➔</span>
                 </div>
             </a>
-
-            <a href="#detalles-prog" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');">
+            <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');">
                 <div class="overlay-tarjeta">
                     <h2 style="margin:0; font-size: 1.8rem; color: #fff;">ECU REMAP</h2>
                     <p style="margin:5px 0 0; color: #ccc;">Optimización de parámetros originales.</p>
-                    <span class="btn-ver-mas">VER PROCESO ➔</span>
                 </div>
             </a>
-        </div>
-    </div>
-
-    <div id="detalles-scanner" class="galeria-tecnica">
-        <a href="#home" class="btn-cerrar">CERRAR DETALLES</a>
-        <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center; text-align: left;">
-            <img src="SCANNER KTM.webp" style="width: 100%; border-radius: 4px; border: 1px solid #FF6600;">
-            <div>
-                <h2 style="color:#FF6600;">LECTURA DE FALLAS</h2>
-                <p>Contamos con escáneres JDiag y herramientas específicas para marcas comerciales.</p>
-                <ul>
-                    <li>Lectura de flujos de datos en vivo</li>
-                    <li>Sincronización de cuerpos de aceleración</li>
-                    <li>Borrado de testigos de servicio</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="detalles-inyeccion" class="galeria-tecnica">
-        <a href="#home" class="btn-cerrar">CERRAR DETALLES</a>
-        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-            <h2 style="color:#FF6600;">LABORATORIO DE INYECTORES</h2>
-            <img src="LAV INYECTORES.png" style="max-width: 600px; width: 100%; margin: 30px 0; border: 1px solid #FF6600;">
-            <p>Limpieza profunda para recuperar el patrón de rociado original y optimizar el consumo.</p>
         </div>
     </div>
 
     <div class="seccion-contacto">
-        <h2 style="color: #FF6600; margin-bottom: 40px;">VISÍTANOS</h2>
+        <h2 style="color: #FF6600; margin-bottom: 40px;">UBICACIÓN</h2>
         <div class="contenedor-mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.136009890123!2d-74.0321262!3d4.722421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f850e047702db%3A0xe549557a627d750!2sSan%20Crist%C3%B3bal%20Norte%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1700000000000!5m2!1ses!2sco" width="100%" height="350" style="border:0; border-radius: 15px; flex: 1; min-width: 300px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- MAPA ACTUALIZADO CON TU DIRECCIÓN EXACTA (San Cristóbal Sur) -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4443.2713515356045!2d-74.09344228898362!3d4.5591169953963036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9890451fbf9f%3A0x33ab89d54b3c86b5!2zQ2wuIDMxYyBTdXIgIyAzQS03MiwgU2FuIENyaXN0w7NiYWwsIEJvZ290w6EsIEQuQy4sIEJvZ290w6EsIEJvZ290w6EsIEQuQy4!5e1!3m2!1ses!2sco!4v1774622303752!5m2!1ses!2sco" width="100%" height="400" style="border:0; border-radius: 15px; flex: 1; min-width: 320px;" allowfullscreen="" loading="lazy"></iframe>
             
-            <div style="text-align: left; flex: 1; min-width: 300px;">
-                <p style="font-size: 1.4rem; font-weight: bold; color: #FF6600;">UBICACIÓN</p>
-                <p>San Cristóbal Norte, Bogotá</p>
-                <p>Calle 161 (Sector Taller)</p>
-                <p style="margin-top: 20px; font-weight: bold;">HORARIO:</p>
+            <div style="text-align: left; flex: 1; min-width: 300px; padding: 20px;">
+                <p style="font-size: 1.4rem; font-weight: bold; color: #FF6600;">DIRECCIÓN</p>
+                <p>Cl. 31c Sur # 3A-72</p>
+                <p>San Cristóbal, Bogotá</p>
+                <p style="margin-top: 20px; font-weight: bold; color: #FF6600;">HORARIO:</p>
                 <p>Lunes - Sábado: 8:00 AM - 6:00 PM</p>
-                <a href="https://wa.me/573104886929" class="btn-wa">📱 WhatsApp Business</a>
+                <p style="margin-top: 20px;">¡Escríbenos para agendar tu diagnóstico!</p>
             </div>
         </div>
     </div>
 
     <footer style="padding: 50px; color: #444; font-size: 0.8rem; background: #000;">
-        &copy; 2026 ALLMOTOSYNC | Mecánica de Alto Rendimiento Bogotá.
+        &copy; 2026 ALLMOTOSYNC | Bogotá, Colombia.
     </footer>
 
     <script>
