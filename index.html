@@ -4,87 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
-<style>
-    /* Efecto Metalizado Premium en Tarjetas */
-    .tarjeta-servicio {
-        /* Degradado Azul Metalizado de Fondo */
-        background: radial-gradient(circle at 50% 120%, 
-                    rgba(0, 77, 153, 0.9) 0%, 
-                    rgba(0, 26, 77, 1) 60%, 
-                    rgba(0, 13, 38, 1) 100%) !important;
-        
-        /* Borde Naranja Degradado (como el logo) */
-        border: 2px solid transparent !important;
-        border-image: linear-gradient(to right, #FF6600, #FFCC00) 1;
-        
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        border-radius: 10px; /* ¡Ojo! border-image a veces anula el radius */
-    }
+    <style>
+        /* --- ESTILOS DEL HEADER Y LOGO (EL CEREBRO) --- */
+        .header-principal {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white; /* Fondo blanco para que el logo resalte */
+            transition: all 0.4s ease;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            text-align: center;
+        }
 
-    /* Brillo Metalizado al pasar el mouse (Hover) */
-    .tarjeta-servicio:hover {
-        transform: translateY(-15px) scale(1.02);
-        box-shadow: 0px 0px 30px rgba(255, 102, 0, 0.6);
-        
-        /* Brillo blanco suave al metal */
-        background: radial-gradient(circle at 50% 0%, 
-                    rgba(255, 255, 255, 0.2) 0%, 
-                    rgba(0, 26, 77, 1) 70%) !important;
-    }
+        /* Cuando el usuario baja la pantalla */
+        .header-pequeno {
+            padding: 5px 0 !important;
+            background-color: rgba(255, 255, 255, 0.95) !important;
+        }
 
-    /* Brillo Reflectivo (Un efecto de "rayo de luz" que cruza) */
-    .tarjeta-servicio::after {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-        transition: 0.5s;
-    }
+        #logo-ams {
+            width: 280px; /* Tamaño grande inicial */
+            transition: width 0.4s ease;
+            height: auto;
+        }
 
-    .tarjeta-servicio:hover::after {
-        left: 100%;
-    }
-</style>
+        .logo-reducido {
+            width: 140px !important; /* Tamaño pequeño al bajar */
+        }
+
+        /* Espacio para que el contenido no se meta debajo del logo fijo */
+        .relleno-header {
+            height: 180px;
+        }
+
+        /* --- EFECTO METALIZADO PREMIUM EN TARJETAS --- */
+        .tarjeta-servicio {
+            /* Degradado Azul Metalizado de Fondo */
+            background: radial-gradient(circle at 50% 120%, 
+                        rgba(0, 77, 153, 0.9) 0%, 
+                        rgba(0, 26, 77, 1) 60%, 
+                        rgba(0, 13, 38, 1) 100%) !important;
+            
+            /* Borde Naranja Metalizado */
+            border: 2px solid transparent !important;
+            border-image: linear-gradient(to right, #FF6600, #FFCC00) 1;
+            
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            width: 280px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        /* Brillo al pasar el mouse */
+        .tarjeta-servicio:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0px 0px 30px rgba(255, 102, 0, 0.6);
+            background: radial-gradient(circle at 50% 0%, 
+                        rgba(255, 255, 255, 0.2) 0%, 
+                        rgba(0, 26, 77, 1) 70%) !important;
+        }
+
+        /* Destello de luz que cruza la tarjeta */
+        .tarjeta-servicio::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .tarjeta-servicio:hover::after {
+            left: 100%;
+        }
+    </style>
 </head>
 <body style="background-color: #001a4d; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; text-align: center;">
 
-    <div style="background-color: #001a4d; padding: 20px 0; border-bottom: 2px solid #FF6600;">
-        <div style="background-color: white; display: inline-block; padding: 10px; border-radius: 12px; box-shadow: 0px 4px 10px rgba(0,0,0,0.5);">
-            <img src="ALLMOTOSYNC LOGO.jpg" alt="Logo ALLMOTOSYNC" style="max-width: 200px; height: auto;">
+    <!-- HEADER FIJO CON LOGO -->
+    <header id="miHeader" class="header-principal">
+        <div style="background-color: white; display: inline-block; padding: 5px; border-radius: 10px;">
+            <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="Logo ALLMOTOSYNC">
         </div>
-        <p style="color: #FF6600; font-weight: bold; margin-top: 10px;">Especialistas en Inyección Electrónica y Sincronización</p>
-    </div>
+        <p id="subtitulo-header" style="color: #FF6600; font-weight: bold; margin-top: 5px; font-size: 0.9rem;">Especialistas en Inyección Electrónica y Sincronización</p>
+    </header>
 
+    <!-- Espacio compensador -->
+    <div class="relleno-header"></div>
+
+    <!-- SECCIÓN HERO (FOTO KTM) -->
     <div style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('MANTENIMIENTO 1290.jpg'); background-size: cover; background-position: center; padding: 100px 20px; color: white;">
         <h1 style="font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">MANTENIMIENTO GENERAL</h1>
         <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px auto; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Servicio integral para motocicletas de alto cilindraje. Potencia, seguridad y rendimiento garantizados.</p>
-        <a href="#contacto" style="background-color: #FF6600; color: white; text-decoration: none; padding: 15px 30px; font-weight: bold; border-radius: 5px; font-size: 1.1rem; box-shadow: 0px 4px 6px rgba(0,0,0,0.3); transition: background-color 0.3s;">
+        <a href="#contacto" style="background-color: #FF6600; color: white; text-decoration: none; padding: 15px 30px; font-weight: bold; border-radius: 5px; font-size: 1.1rem; box-shadow: 0px 4px 6px rgba(0,0,0,0.3); transition: 0.3s;">
             Agendar Mi Cita
         </a>
     </div>
 
+    <!-- SECCIÓN SERVICIOS -->
     <div style="padding: 50px 20px; max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
         
-       <!-- TARJETA 1 -->
-        <div class="tarjeta-servicio" style="background-image: linear-gradient(rgba(0, 0, 40, 0.8), rgba(0, 0, 40, 0.8)), url('SCANNER\ KTM.webp'); background-size: cover; background-position: center; border: 1px solid #FF6600; border-radius: 10px; padding: 30px; width: 280px; box-shadow: 0px 4px 8px rgba(0,0,0,0.3);">
+        <!-- TARJETA 1 -->
+        <div class="tarjeta-servicio">
             <div style="font-size: 3rem; margin-bottom: 15px;">🛠️</div>
             <h3 style="color: #FF6600; text-shadow: 1px 1px 3px black;">Diagnóstico Computarizado</h3>
             <p style="font-size: 0.9rem; line-height: 1.6; text-shadow: 1px 1px 2px black;">Escaneo completo de ECUs, lectura y borrado de códigos de falla con equipos de última tecnología.</p>
         </div>
 
         <!-- TARJETA 2 -->
-        <div class="tarjeta-servicio" style="background-image: linear-gradient(rgba(0, 0, 40, 0.8), rgba(0, 0, 40, 0.8)), url('LAV\ INYECTORES.png'); background-size: cover; background-position: center; border: 1px solid #FF6600; border-radius: 10px; padding: 30px; width: 280px; box-shadow: 0px 4px 8px rgba(0,0,0,0.3);">
+        <div class="tarjeta-servicio">
             <div style="font-size: 3rem; margin-bottom: 15px;">🧪</div>
             <h3 style="color: #FF6600; text-shadow: 1px 1px 3px black;">Inyección y Sincronización</h3>
             <p style="font-size: 0.9rem; line-height: 1.6; text-shadow: 1px 1px 2px black;">Limpieza ultra-sónica de inyectores, ajuste de cuerpos de aceleración y balanceo del motor.</p>
         </div>
 
         <!-- TARJETA 3 -->
-        <div class="tarjeta-servicio" style="background-image: linear-gradient(rgba(0, 0, 40, 0.8), rgba(0, 0, 40, 0.8)), url('PROG\ ECU.jfif'); background-size: cover; background-position: center; border: 1px solid #FF6600; border-radius: 10px; padding: 30px; width: 280px; box-shadow: 0px 4px 8px rgba(0,0,0,0.3);">
+        <div class="tarjeta-servicio">
             <div style="font-size: 3rem; margin-bottom: 15px;">💻</div>
             <h3 style="color: #FF6600; text-shadow: 1px 1px 3px black;">Reprogramación de ECUs</h3>
             <p style="font-size: 0.9rem; line-height: 1.6; text-shadow: 1px 1px 2px black;">Optimización de mapas de combustible y encendido para mejorar el rendimiento y torque.</p>
@@ -92,60 +132,54 @@
 
     </div>
 
+    <!-- SECCIÓN CONTACTO -->
     <div id="contacto" style="background-color: #00264d; padding: 50px 20px; border-top: 2px solid #FF6600;">
         <h2 style="color: #FF6600; margin-bottom: 10px;">UBICACIÓN Y CITAS</h2>
         <p style="margin-bottom: 30px;">Visítanos en nuestro taller especializado o agenda tu cita por WhatsApp.</p>
         
         <div style="max-width: 800px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; align-items: center;">
-            
             <div style="width: 100%; max-width: 450px;">
-                <iframe 
-                    width="100%" 
-                    height="300" 
-                    style="border:0; border-radius: 8px;" 
-                    loading="lazy" 
-                    allowfullscreen 
-                    referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15907.487771765274!2d-74.075!3d4.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzYnMDAuMCJOIDc0wrAwNCc4MC4wIlc!5e0!3m2!1ses!2sco!4v1650000000000!5m2!1ses!2sco">
-                </iframe>
+                <iframe width="100%" height="300" style="border:0; border-radius: 8px;" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15907.487771765274!2d-74.075!3d4.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzYnMDAuMCJOIDc0wrAwNCc4MC4wIlc!5e0!3m2!1ses!2sco!4v1650000000000!5m2!1ses!2sco"></iframe>
                 <p style="margin-top: 15px; font-weight: bold; color: #FF6600;">Barrio San Cristóbal Norte, Bogotá</p>
-                <p style="font-size: 0.9rem;">Lun a Sáb: 8:00 AM - 6:00 PM</p>
             </div>
 
             <div style="width: 100%; max-width: 300px; text-align: center;">
                 <a href="https://wa.me/573104886929?text=Hola%20ALLMOTOSYNC,%20necesito%20agendar%20una%20cita%20técnica" style="text-decoration: none;">
                     <button style="background-color: #25D366; color: white; border: none; padding: 20px 40px; font-weight: bold; border-radius: 50px; cursor: pointer; font-size: 1.2rem; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;">
-                        <span style="font-size: 1.5rem;">📱</span> WhatsApp
+                        <span>📱</span> WhatsApp
                     </button>
                 </a>
             </div>
-
         </div>
     </div>
 
-    <div style="background-color: #001a4d; padding: 20px 0; font-size: 0.8rem; color: #b3b3b3;">
-        &copy; 2023 ALLMOTOSYNC. Todos los derechos reservados. <br>
+    <!-- FOOTER -->
+    <footer style="background-color: #001a4d; padding: 20px 0; font-size: 0.8rem; color: #b3b3b3;">
+        &copy; 2026 ALLMOTOSYNC. Todos los derechos reservados. <br>
         Bogotá, Colombia.
-    </div>
-<!-- BOTÓN FLOTANTE DE WHATSAPP -->
-<a href="https://wa.me/573104886929?text=Hola%20ALLMOTOSYNC,%20necesito%20agendar%20una%20cita%20técnica" 
-   style="position: fixed; width: 60px; height: 60px; bottom: 20px; right: 20px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none;" 
-   target="_blank">
-   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 35px; height: 35px;">
-</a>
-<script>
-    window.onscroll = function() {
-        var header = document.getElementById("miHeader");
-        var logo = document.getElementById("logo-ams");
-        
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-            header.classList.add("header-pequeno");
-            logo.classList.add("logo-reducido");
-        } else {
-            header.classList.remove("header-pequeno");
-            logo.classList.remove("logo-reducido");
-        }
-    };
-</script>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/573104886929?text=Hola%20ALLMOTOSYNC,%20necesito%20agendar%20una%20cita%20técnica" 
+       style="position: fixed; width: 60px; height: 60px; bottom: 20px; right: 20px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none;" 
+       target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 35px; height: 35px;">
+    </a>
+
+    <!-- SCRIPT PARA LOGO RETRÁCTIL -->
+    <script>
+        window.onscroll = function() {
+            var header = document.getElementById("miHeader");
+            var logo = document.getElementById("logo-ams");
+            
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                header.classList.add("header-pequeno");
+                logo.classList.add("logo-reducido");
+            } else {
+                header.classList.remove("header-pequeno");
+                logo.classList.remove("logo-reducido");
+            }
+        };
+    </script>
 </body>
 </html>
