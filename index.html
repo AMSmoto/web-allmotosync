@@ -1,239 +1,225 @@
-HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALLMOTOSYNC | Bogotá</title>
+    <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            background: radial-gradient(circle at top, #1a2a44 0%, #050508 100%) no-repeat fixed;
-            color: #fff; font-family: 'Arial Black', sans-serif; overflow-x: hidden; text-align: center;
+        /* --- BASE Y FONDO --- */
+        html, body {
+            margin: 0; padding: 0; width: 100%; min-height: 100vh;
+            background: radial-gradient(circle at top, #1a2a44 0%, #0d121c 45%, #050508 100%) no-repeat fixed;
+            color: #e0e0e0; font-family: 'Segoe UI', Roboto, sans-serif;
+            text-align: center; scroll-behavior: smooth;
         }
 
-       /* --- HEADER Y LOGO (FORZADO) --- */
-header {
-    position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95);
-    z-index: 1000; padding: 25px 0; border-bottom: 4px solid #FF6600;
-    transition: 0.4s ease; display: flex; flex-direction: column; align-items: center;
-}
-header.small { padding: 8px 0; } /* Se encoge al bajar */
-
-#logo-ams { 
-    width: 550px !important; /* ¡LO FORZAMOS A SER GRANDE! */
-    max-width: 90%; border-radius: 25px; transition: 0.4s;
-    filter: drop-shadow(0 0 15px rgba(255, 102, 0, 0.4));
-}
-header.small #logo-ams { width: 220px !important; } /* Se encoge a menos de la mitad */
-
-/* --- SLIDER GRIS METAL (FORZADO) --- */
-.slider-marcas {
-    width: 100%; background: #1a1a1a !important; /* Gris metal oscuro real */
-    padding: 20px 0; margin-top: 15px; overflow: hidden; display: flex;
-    border-top: 2px solid #333; border-bottom: 2px solid #333;
-}
-.contenedor-logos {
-    display: flex; animation: scroll-marcas 25s linear infinite; white-space: nowrap;
-}
-.contenedor-logos span {
-    font-size: 2.2rem; font-weight: 900; padding: 0 60px;
-    text-transform: uppercase; letter-spacing: 4px; display: inline-block;
-}
-@keyframes scroll-marcas {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Salto invisible */
-}
+        /* --- HEADER DINÁMICO --- */
+        .header-principal {
+            position: fixed; top: 0; width: 100%; background-color: rgba(0,0,0,0.95);
+            z-index: 1000; padding: 30px 0 0 0; border-bottom: 4px solid #FF6600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column; align-items: center;
+        }
+        
+        #logo-ams { 
+            width: 500px; max-width: 90%; border-radius: 15px; 
+            transition: all 0.4s ease;
+            filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.5));
         }
 
-        /* Estado del header cuando bajas (scrolled) */
-        header.small {
-            padding: 10px 0; /* Mucho menos espacio */
-        }
+        .titulos-hero { transition: all 0.4s ease; margin-top: 20px; }
+        .titulos-hero h1 { font-size: 2.8rem; margin: 0; font-weight: 800; text-shadow: 0 5px 15px rgba(0,0,0,0.7); }
+        .titulos-hero p { color: #FF6600; font-weight: bold; font-size: 1.2rem; margin: 8px 0 20px 0; text-transform: uppercase; letter-spacing: 2px; }
 
-        #logo-ams {
-            width: 500px; /* ¡SUPER GRANDE por defecto! */
-            max-width: 95%; /* Se ajusta a móviles */
-            border-radius: 20px; /* Bordes redondeados o curvos */
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Transición suave del logo */
-            filter: drop-shadow(0 0 15px rgba(255, 102, 0, 0.5)); /* Brillo naranja */
-            display: block;
-        }
-
-        /* Estado del logo cuando bajas (scrolled) */
-        header.small #logo-ams {
-            width: 250px; /* ¡50% más pequeño! */
-            border-radius: 10px; /* Curva más pequeña al encogerse */
-        }
-        /* --- SLIDER DE MARCAS (FONDO GRIS METAL) --- */
+        /* --- SLIDER DE MARCAS --- */
         .slider-marcas {
-            width: 100%;
-            background: rgba(30, 30, 35, 0.9); /* Gris Metal Oscuro */
-            padding: 20px 0;
-            margin-top: 15px;
-            overflow: hidden;
-            display: flex;
-            border-top: 1px solid #333;
-            border-bottom: 1px solid #333;
+            width: 100%; background: rgba(255, 102, 0, 0.1); padding: 15px 0; 
+            overflow: hidden; white-space: nowrap; transition: all 0.4s ease;
         }
+        .contenedor-logos { display: inline-block; animation: slide 25s linear infinite; }
+        .contenedor-logos span { font-size: 1.4rem; font-weight: 900; margin: 0 40px; color: rgba(255, 255, 255, 0.4); letter-spacing: 3px; transition: all 0.4s ease; }
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        .contenedor-logos {
-            display: flex;
-            animation: scroll-marcas 25s linear infinite;
-            white-space: nowrap;
+        /* --- EFECTO SCROLL (REDUCCIÓN AL 50%) --- */
+        .header-reducido { padding: 10px 0 0 0 !important; border-bottom-width: 3px; }
+        .header-reducido #logo-ams { width: 250px !important; border-radius: 10px !important; }
+        .header-reducido .titulos-hero { margin-top: 5px !important; }
+        .header-reducido .titulos-hero h1 { font-size: 1.4rem !important; }
+        .header-reducido .titulos-hero p { display: none; }
+        .header-reducido .slider-marcas { padding: 8px 0 !important; background: rgba(0,0,0,0.5); }
+        .header-reducido .contenedor-logos span { font-size: 0.8rem !important; color: rgba(255, 255, 255, 0.3); }
+
+        .relleno-header { height: 520px; transition: 0.4s; }
+
+        /* --- BARRA SOCIAL --- */
+        .social-bar {
+            position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; z-index: 2000;
         }
-
-        /* Estilo base para todas las letras */
-        .contenedor-logos span {
-            font-size: 2.2rem; /* Más grandes y legibles */
-            font-weight: 900;
-            padding: 0 60px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            display: inline-block;
+        .social-icon {
+            display: flex; justify-content: center; align-items: center;
+            width: 55px; height: 55px; transition: 0.3s; margin-bottom: 5px;
+            border-radius: 10px 0 0 10px; text-decoration: none;
         }
+        .social-icon:hover { width: 70px; filter: brightness(1.1); }
+        .social-icon img, .social-icon svg { width: 28px; height: 28px; }
+        .wa { background: #25D366; }
+        .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
+        .fb { background: #1877F2; }
+        .tk { background: #000; border: 1px solid #333; }
+        .tk svg { fill: #fff; }
+        .x { background: #fff; border: 1px solid #000; } 
 
-        /* COLORES DISTINTIVOS POR MARCA */
-        .ktm { color: #FF6600; text-shadow: 0 0 10px rgba(255,102,0,0.4); }
-        .honda { color: #FF0000; text-shadow: 0 0 10px rgba(255,0,0,0.3); }
-        .yamaha { color: #0000FF; text-shadow: 0 0 10px rgba(0,0,255,0.3); }
-        .kawasaki { color: #32CD32; text-shadow: 0 0 10px rgba(50,205,50,0.3); }
-        .suzuki { color: #007CC2; text-shadow: 0 0 10px rgba(0,124,194,0.3); }
-        .bajaj { color: #0054A6; text-shadow: 0 0 10px rgba(0,84,166,0.3); }
-        .akt { color: #FFFFFF; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
-        .benelli { color: #006A4E; text-shadow: 0 0 10px rgba(0,106,78,0.3); }
+        /* --- SERVICIOS --- */
+        .contenedor-servicios { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 50px 20px; max-width: 1200px; margin: 0 auto; }
+        .tarjeta-click {
+            width: 300px; height: 400px; background-size: cover; background-position: center;
+            border-radius: 12px; position: relative; cursor: pointer; transition: 0.4s;
+            overflow: hidden; text-decoration: none; border: 2px solid rgba(255,102,0,0.1);
+        }
+        .tarjeta-click:hover { transform: translateY(-10px); border-color: #FF6600; box-shadow: 0 10px 30px rgba(255,102,0,0.3); }
+        .overlay { 
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, transparent 100%); 
+            width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; 
+            padding: 25px; box-sizing: border-box; text-align: left; 
+        }
+        .overlay h2 { margin: 0; color: #FF6600; font-size: 1.6rem; }
 
-        @keyframes scroll-marcas {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        /* --- GALERÍA DE VIDEOS --- */
+        .contenedor-galeria {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px; padding: 50px 20px; max-width: 1200px; margin: 0 auto;
+        }
+        .item-trabajo {
+            width: 100%; height: 350px; border-radius: 12px;
+            overflow: hidden; position: relative;
+            border: 2px solid rgba(255,255,255,0.05); transition: 0.3s;
+            background-color: #000;
+        }
+        .item-trabajo:hover { border-color: #FF6600; transform: scale(1.02); }
+        .item-trabajo video { width: 100%; height: 100%; object-fit: cover; }
+        .info-trabajo {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            padding: 15px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            text-align: left;
+        }
+        .info-trabajo h4 { color: #FF6600; margin: 0; font-size: 1.1rem; text-transform: uppercase; }
 
-            <div class="slider-marcas">
-            <div class="contenedor-logos">
-                <span class="ktm">KTM</span>
-                <span class="honda">HONDA</span>
-                <span class="yamaha">YAMAHA</span>
-                <span class="kawasaki">KAWASAKI</span>
-                <span class="suzuki">SUZUKI</span>
-                <span class="bajaj">BAJAJ</span>
-                <span class="akt">AKT</span>
-                <span class="benelli">BENELLI</span>
-                
-                <span class="ktm">KTM</span>
-                <span class="honda">HONDA</span>
-                <span class="yamaha">YAMAHA</span>
-                <span class="kawasaki">KAWASAKI</span>
-                <span class="suzuki">SUZUKI</span>
-                <span class="bajaj">BAJAJ</span>
-                <span class="akt">AKT</span>
-                <span class="benelli">BENELLI</span>
-            </div>
-        </div>
-        <div class="slider-marcas">
-            <div class="contenedor-logos">
-                <span class="ktm">KTM</span>
-                <span class="honda">HONDA</span>
-                <span class="yamaha">YAMAHA</span>
-                <span class="kawasaki">KAWASAKI</span>
-                <span class="suzuki">SUZUKI</span>
-                <span class="bajaj">BAJAJ</span>
-                <span class="akt">AKT</span>
-                <span class="benelli">BENELLI</span>
-                
-                <span class="ktm">KTM</span>
-                <span class="honda">HONDA</span>
-                <span class="yamaha">YAMAHA</span>
-                <span class="kawasaki">KAWASAKI</span>
-                <span class="suzuki">SUZUKI</span>
-                <span class="bajaj">BAJAJ</span>
-                <span class="akt">AKT</span>
-                <span class="benelli">BENELLI</span>
-            </div>
-        </div>
-
-        /* REDES SOCIALES (SVG INTEGRADO) */
-        .social { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 2000; display: flex; flex-direction: column; }
-        .s-icon { width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; border-radius: 10px 0 0 10px; transition: 0.3s; }
-        .s-icon:hover { width: 70px; }
-        .s-icon svg { width: 28px; height: 28px; fill: white; }
-        .wa { background: #25D366; } .ig { background: #E4405F; } .tk { background: #000; border-left: 2px solid #ff0050; } .x { background: #000; border-left: 2px solid #fff; }
-
-        /* CONTENIDO */
-        .spacer { height: 480px; }
-        .servicios { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 50px 15px; }
-        .card { width: 320px; height: 420px; border: 2px solid #333; border-radius: 15px; overflow: hidden; position: relative; background-size: cover; background-position: center; text-decoration: none; transition: 0.3s; }
-        .card:hover { border-color: #FF6600; transform: scale(1.02); }
-        .info { background: linear-gradient(to top, #000, transparent); height: 100%; display: flex; align-items: flex-end; padding: 25px; }
-        .info h2 { color: #FF6600; font-size: 1.8rem; }
-
-        /* GALERIA VIDEOS */
-        .videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
-        .v-box { height: 450px; border: 2px solid #FF6600; border-radius: 15px; overflow: hidden; background: #000; position: relative; }
-        video { width: 100%; height: 100%; object-fit: cover; }
-        .v-label { position: absolute; bottom: 15px; left: 15px; background: #FF6600; color: #000; padding: 5px 15px; font-size: 0.9rem; border-radius: 5px; }
-
-        .btn-ws { display: inline-block; background: #FF6600; color: #000; padding: 25px 60px; border-radius: 60px; font-size: 1.5rem; text-decoration: none; margin: 50px 0; transition: 0.3s; box-shadow: 0 0 20px rgba(255,102,0,0.5); }
+        /* --- BOTÓN AGENDAR --- */
+        .btn-agendar {
+            display: inline-block; background: #FF6600; color: #000; font-weight: 900;
+            padding: 22px 50px; border-radius: 50px; text-decoration: none;
+            font-size: 1.4rem; margin: 60px 0; transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(255,102,0,0.4); text-transform: uppercase;
+        }
+        .btn-agendar:hover { transform: scale(1.05); background: #fff; }
     </style>
 </head>
 <body>
 
-    <header id="header">
+    <header id="miHeader" class="header-principal">
         <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
-        <div class="marcas-wrap">
-            <div class="marcas-mover">
-                <span>KTM</span><span>HONDA</span><span>YAMAHA</span><span>KAWASAKI</span><span>SUZUKI</span><span>BAJAJ</span><span>AKT</span><span>BENELLI</span>
-                <span>KTM</span><span>HONDA</span><span>YAMAHA</span><span>KAWASAKI</span><span>SUZUKI</span><span>BAJAJ</span><span>AKT</span><span>BENELLI</span>
+        <div class="titulos-hero">
+            <h1>DIAGNÓSTICO DE PRECISIÓN</h1>
+            <p>Inyección Electrónica Avanzada</p>
+        </div>
+        <div class="slider-marcas">
+            <div class="contenedor-logos">
+                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
+                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
             </div>
         </div>
     </header>
 
-    <div class="spacer"></div>
+    <div class="relleno-header"></div>
 
-    <nav class="social">
-        <a href="https://wa.me/573104886929" class="s-icon wa" target="_blank"><svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.6-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.2-3.2-5.6-.3-8.6 2.4-11.3 2.5-2.4 5.5-6.5 8.3-9.7 2.8-3.3 3.7-5.6 5.5-9.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 35 2.2 10.7-1.5 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
-        <a href="https://instagram.com/allmotosync" class="s-icon ig" target="_blank"><svg viewBox="0 0 448 512"><path d="M224.1 141c-43.6 0-79 35.4-79 79s35.4 79 79 79 79-35.4 79-79-35.4-79-79-79zm0 133c-29.8 0-54-24.2-54-54s24.2-54 54-54 54 24.2 54 54-24.2 54-54 54zm141-184.6c-11.4-11.5-26.9-17.8-43.7-17.8H126.7c-16.8 0-32.3 6.3-43.7 17.8-11.5 11.5-17.8 26.9-17.8 43.7v154.7c0 16.8 6.3 32.3 17.8 43.7 11.5 11.5 26.9 17.8 43.7 17.8h194.7c16.8 0 32.3-6.3 43.7-17.8 11.5-11.5 17.8-26.9 17.8-43.7V153.1c0-16.8-6.3-32.3-17.8-43.7z"/></svg></a>
-        <a href="https://tiktok.com/@allmotosync" class="s-icon tk" target="_blank"><svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14Z"/></svg></a>
-        <a href="#" class="s-icon x" target="_blank"><svg viewBox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48z"/></svg></a>
+    <nav class="social-bar">
+        <a href="https://wa.me/573104886929" class="social-icon wa" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA"></a>
+        <a href="#" class="social-icon ig" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG"></a>
+        <a href="#" class="social-icon fb" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="FB"></a>
+        <a href="#" class="social-icon tk" target="_blank"><svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg></a>
     </nav>
 
-    <div class="servicios">
-        <div class="card" style="background-image: url('SCANNER KTM.webp');"><div class="info"><h2>ESCÁNER OEM</h2></div></div>
-        <div class="card" style="background-image: url('LAV INYECTORES.png');"><div class="info"><h2>INYECCIÓN</h2></div></div>
-        <div class="card" style="background-image: url('PROG ECU.jfif');"><div class="info"><h2>REMAP ECU</h2></div></div>
+    <!-- DIFERENCIADORES -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 70px 20px; background: rgba(255,102,0,0.03);">
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">🛠️</div>
+            <h3 style="color: #fff; margin: 15px 0;">TECNOLOGÍA OEM</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Escáneres y herramientas de nivel original para cada marca.</p>
+        </div>
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">✅</div>
+            <h3 style="color: #fff; margin: 15px 0;">GARANTÍA TOTAL</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Cada servicio cuenta con respaldo técnico y garantía garantizada.</p>
+        </div>
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">⚡</div>
+            <h3 style="color: #fff; margin: 15px 0;">PRECISIÓN</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Soluciones directas a la falla, ahorrando tiempo y dinero.</p>
+        </div>
     </div>
 
-    <h2 style="color:#FF6600; font-size: 2.5rem; margin: 40px 0;">TRABAJOS RECIENTES</h2>
-    <div class="videos">
-        <div class="v-box"><video autoplay muted loop playsinline><source src="kit arrastre.mp4.mp4" type="video/mp4"></video><div class="v-label">MANTENIMIENTO</div></div>
-        <div class="v-box"><video autoplay muted loop playsinline><source src="instalacion gps.mp4.mp4" type="video/mp4"></video><div class="v-label">ELECTRÓNICA</div></div>
-        <div class="v-box"><video autoplay muted loop playsinline><source src="frenos.mp4.mp4" type="video/mp4"></video><div class="v-label">SEGURIDAD</div></div>
-        <div class="v-box"><video autoplay muted loop playsinline><source src="sincro motor.mp4.mp4" type="video/mp4"></video><div class="v-label">POTENCIA</div></div>
+    <!-- SERVICIOS -->
+    <h2 style="color: #FF6600; margin-top: 60px; font-weight: 900;">NUESTROS SERVICIOS</h2>
+    <div class="contenedor-servicios">
+        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');">
+            <div class="overlay"><h2>ESCÁNER</h2></div>
+        </a>
+        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');">
+            <div class="overlay"><h2>INYECCIÓN</h2></div>
+        </a>
+        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');">
+            <div class="overlay"><h2>REMAP ECU</h2></div>
+        </a>
     </div>
 
-    <a href="https://wa.me/573104886929" class="btn-ws">AGENDAR POR WHATSAPP</a>
-
-    <div style="padding: 60px 20px; background: rgba(0,0,0,0.5);">
-        <h2 style="color:#FF6600;">UBICACIÓN</h2>
-        <p style="margin: 15px 0;">Cl. 31c Sur # 3A-72, San Cristóbal Sur, Bogotá</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.1086!2d-74.0937!3d4.5567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9890f7c78279%3A0xed4958ee8946d535!2sCl.%2031c%20Sur%20%233A-72%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1711560000000" width="100%" height="450" style="border:3px solid #FF6600; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
+    <!-- GALERÍA DE VIDEOS REALES -->
+    <div style="padding: 60px 0; background: rgba(0,0,0,0.3);">
+        <h2 style="color: #FF6600; font-weight: 900;">TRABAJOS REALIZADOS</h2>
+        <div class="contenedor-galeria">
+            <div class="item-trabajo">
+                <video autoplay muted loop playsinline><source src="kit arrastre.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>KIT ARRASTRE</h4></div>
+            </div>
+            <div class="item-trabajo">
+                <video autoplay muted loop playsinline><source src="instalacion gps.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>INSTALACIÓN GPS / ELÉCTRICO</h4></div>
+            </div>
+            <div class="item-trabajo">
+                <video autoplay muted loop playsinline><source src="frenos.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>SISTEMA DE FRENOS</h4></div>
+            </div>
+            <div class="item-trabajo">
+                <video autoplay muted loop playsinline><source src="sincro motor.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>SINCRONIZACIÓN MOTOR</h4></div>
+            </div>
+        </div>
     </div>
+
+    <a href="https://wa.me/573104886929?text=Hola!%20Quisiera%20agendar%20un%20servicio%20en%20ALLMOTOSYNC" class="btn-agendar">Agendar Cita Ahora</a>
+
+    <!-- MAPA -->
+    <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 70px 20px;">
+        <h2 style="color: #FF6600; font-weight: 900;">VISÍTANOS EN SAN CRISTÓBAL SUR</h2>
+        <p style="font-size: 1.2rem; color: #ccc;">Cl. 31c Sur # 3A-72, Bogotá</p>
+        <div style="max-width: 1000px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 3px solid #FF6600;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.108!2d-74.0937!3d4.5567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9890f7c78279%3A0xed4958ee8946d535!2sCl.%2031c%20Sur%20%233A-72%2C%20San%20Crist%C3%B3bal%2C%20Bogot%C3%A1!5e0!3m2!1ses-419!2sco!4v1711123456789!5m2!1ses-419!2sco" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <footer style="padding: 50px 20px; background: #000; font-size: 0.95rem; color: #666; border-top: 1px solid #111;">
+        © 2026 <strong>ALLMOTOSYNC</strong> | Bogotá, Colombia.
+    </footer>
 
     <script>
         window.onscroll = function() {
-            let header = document.getElementById("header");
-            if (window.pageYOffset > 50) { header.classList.add("small"); }
-            else { header.classList.remove("small"); }
+            var header = document.getElementById("miHeader");
+            if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+                header.classList.add("header-reducido");
+            } else {
+                header.classList.remove("header-reducido");
+            }
         };
     </script>
-    <script>
-    // Esta función detecta el movimiento del scroll
-    window.onscroll = function() {
-        var header = document.querySelector("header");
-        if (window.pageYOffset > 50) {
-            header.classList.add("small");
-        } else {
-            header.classList.remove("small");
-        }
-    };
-</script>
 </body>
 </html>
