@@ -224,5 +224,16 @@ header.small #logo-ams { width: 220px !important; } /* Se encoge a menos de la m
             else { header.classList.remove("small"); }
         };
     </script>
+    <script>
+    // Esta función detecta el movimiento del scroll
+    window.onscroll = function() {
+        var header = document.querySelector("header");
+        if (window.pageYOffset > 50) {
+            header.classList.add("small");
+        } else {
+            header.classList.remove("small");
+        }
+    };
+</script>
 </body>
 </html>
