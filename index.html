@@ -1,8 +1,3 @@
-¡Entendido! Vamos a dejarlo equilibrado. He ajustado el mapa con las coordenadas exactas de San Cristóbal Sur (evitando la montaña) y modificado el efecto de scroll para que tanto el logo como las marcas no se vuelvan "miniaturas", sino que mantengan una presencia sólida (reduciéndose solo hasta el 50% de su tamaño original).
-
-Aquí tienes el código completo para copiar y pegar:
-
-HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,11 +21,8 @@ HTML
             display: flex; flex-direction: column; align-items: center;
         }
         
-        /* LOGO INICIAL (GRANDE) */
         #logo-ams { 
-            width: 500px; 
-            max-width: 90%; 
-            border-radius: 15px; 
+            width: 500px; max-width: 90%; border-radius: 15px; 
             transition: all 0.4s ease;
             filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.5));
         }
@@ -50,19 +42,13 @@ HTML
 
         /* --- EFECTO AL BAJAR (REDUCCIÓN AL 50%) --- */
         .header-reducido { padding: 10px 0 0 0 !important; border-bottom-width: 3px; }
-        
-        /* Logo al 50% (de 500px a 250px aprox) */
         .header-reducido #logo-ams { width: 250px !important; border-radius: 10px !important; }
-        
         .header-reducido .titulos-hero { margin-top: 5px !important; }
         .header-reducido .titulos-hero h1 { font-size: 1.4rem !important; }
         .header-reducido .titulos-hero p { display: none; }
-        
-        /* Marcas al 50% (de 1.4rem a 0.8rem aprox) */
         .header-reducido .slider-marcas { padding: 8px 0 !important; background: rgba(0,0,0,0.5); }
         .header-reducido .contenedor-logos span { font-size: 0.8rem !important; color: rgba(255, 255, 255, 0.3); }
 
-        /* Espacio inicial para compensar el header grande */
         .relleno-header { height: 520px; transition: 0.4s; }
 
         /* --- BARRA SOCIAL --- */
@@ -75,7 +61,7 @@ HTML
             width: 55px; height: 55px; transition: 0.3s; margin-bottom: 5px;
             border-radius: 10px 0 0 10px; text-decoration: none;
         }
-        .social-icon:hover { width: 70px; }
+        .social-icon:hover { width: 70px; filter: brightness(1.1); }
         .social-icon img, .social-icon svg { width: 28px; height: 28px; }
         
         .wa { background: #25D366; }
@@ -105,17 +91,32 @@ HTML
         .btn-agendar {
             display: inline-block; background: #FF6600; color: #000; font-weight: 900;
             padding: 22px 50px; border-radius: 50px; text-decoration: none;
-            font-size: 1.4rem; margin: 50px 0; transition: 0.3s;
+            font-size: 1.4rem; margin: 60px 0; transition: 0.3s;
             box-shadow: 0 10px 20px rgba(255,102,0,0.4); text-transform: uppercase;
         }
         .btn-agendar:hover { transform: scale(1.05); background: #fff; box-shadow: 0 15px 40px rgba(255,102,0,0.6); }
+
+        /* --- GALERÍA DE TRABAJOS (NUEVA) --- */
+        .contenedor-galeria {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px; padding: 50px 20px; max-width: 1200px; margin: 0 auto;
+        }
+        .foto-trabajo {
+            width: 100%; height: 280px; background-size: cover; background-position: center;
+            border-radius: 10px; border: 2px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+        .foto-trabajo:hover { border-color: #FF6600; transform: scale(1.02); }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             #logo-ams { width: 320px; }
             .relleno-header { height: 420px; }
+            .titulos-hero h1 { font-size: 1.8rem; }
+            .titulos-hero p { font-size: 1rem; }
             .social-bar { top: auto; bottom: 0; flex-direction: row; width: 100%; transform: none; background: rgba(0,0,0,0.9); }
             .social-icon { width: 20%; border-radius: 0; }
+            .foto-trabajo { height: 220px; }
         }
     </style>
 </head>
@@ -145,25 +146,25 @@ HTML
         <a href="#" class="social-icon x" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="X"></a>
     </nav>
 
-<!-- SECCIÓN DE DIFERENCIADORES (ESTILO TALLER PREMIUM) -->
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 60px 20px; background: rgba(255,102,0,0.05);">
-        <div style="max-width: 250px;">
-            <div style="font-size: 3rem; color: #FF6600;">🛠️</div>
-            <h3 style="color: #fff; margin: 10px 0;">TECNOLOGÍA OEM</h3>
-            <p style="font-size: 0.9rem; color: #aaa;">Utilizamos escáneres y herramientas de nivel original para cada marca.</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 70px 20px; background: rgba(255,102,0,0.03);">
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">🛠️</div>
+            <h3 style="color: #fff; margin: 15px 0;">TECNOLOGÍA OEM</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Escáneres y herramientas de nivel original para cada marca. Diagnósticos exactos.</p>
         </div>
-        <div style="max-width: 250px;">
-            <div style="font-size: 3rem; color: #FF6600;">✅</div>
-            <h3 style="color: #fff; margin: 10px 0;">GARANTÍA TOTAL</h3>
-            <p style="font-size: 0.9rem; color: #aaa;">Cada servicio de inyección cuenta con respaldo técnico garantizado.</p>
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">✅</div>
+            <h3 style="color: #fff; margin: 15px 0;">GARANTÍA TOTAL</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Cada servicio de inyección cuenta con respaldo técnico garantizado y soporte técnico.</p>
         </div>
-        <div style="max-width: 250px;">
-            <div style="font-size: 3rem; color: #FF6600;">⚡</div>
-            <h3 style="color: #fff; margin: 10px 0;">PRECISIÓN</h3>
-            <p style="font-size: 0.9rem; color: #aaa;">Diagnósticos exactos que te ahorran tiempo y cambios de repuestos innecesarios.</p>
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">⚡</div>
+            <h3 style="color: #fff; margin: 15px 0;">PRECISIÓN</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Soluciones directas a la falla, ahorrándote tiempo y cambios de repuestos innecesarios.</p>
         </div>
     </div>
 
+    <h2 style="color: #FF6600; margin-top: 60px; font-weight: 900;">NUESTROS SERVICIOS</h2>
     <div class="contenedor-servicios">
         <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');">
             <div class="overlay"><h2>ESCÁNER</h2><p>Ver tecnología ></p></div>
@@ -176,30 +177,42 @@ HTML
         </a>
     </div>
 
+    <div style="padding: 60px 0; background: rgba(0,0,0,0.3);">
+        <h2 style="color: #FF6600; font-weight: 900;">TRABAJOS REALIZADOS</h2>
+        <p style="color: #aaa; margin-bottom: 30px;">Motos reales, soluciones expertas.</p>
+        
+        <div class="contenedor-galeria">
+            <div class="foto-trabajo" style="background-image: url('TRABAJO_KTM.jpg');" alt="KTM Escáner"></div>
+            <div class="foto-trabajo" style="background-image: url('TRABAJO_YAMAHA.jpg');" alt="Yamaha Inyección"></div>
+            <div class="foto-trabajo" style="background-image: url('TRABAJO_KAWASAKI.jpg');" alt="Kawasaki Mantenimiento"></div>
+            <div class="foto-trabajo" style="background-image: url('TRABAJO_BAJAJ.jpg');" alt="Bajaj Diagnóstico"></div>
+        </div>
+    </div>
+
     <a href="https://wa.me/573104886929?text=Hola!%20Quisiera%20agendar%20un%20servicio%20en%20ALLMOTOSYNC" class="btn-agendar">
         Agendar Cita Ahora
     </a>
 
-    <!-- SECCIÓN DE MAPA CORREGIDA -->
-    <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 60px 20px;">
-        <h2 style="color: #FF6600;">VISÍTANOS EN SAN CRISTÓBAL</h2>
-        <p style="font-size: 1.2rem;">Cl. 31c Sur # 3A-72, Bogotá</p>
-        <div style="max-width: 1000px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 2px solid #FF6600;">
+    <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 70px 20px;">
+        <h2 style="color: #FF6600; font-weight: 900;">VISÍTANOS EN SAN CRISTÓBAL</h2>
+        <p style="font-size: 1.2rem; color: #ccc;">Cl. 31c Sur # 3A-72, Bogotá</p>
+        <div style="max-width: 1000px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 3px solid #FF6600;">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0544!2d-74.0938!3d4.5574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9890f1c78279%3A0xebe458ee8946d535!2sCl.%2031c%20Sur%20%233a-72%2C%20San%20Crist%C3%B3bal%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1715874563210!5m2!1ses!2sco" 
-                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+                src="http://googleusercontent.com/maps.google.com/4" 
+                width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
     </div>
 
-    <footer style="padding: 40px; background: #000; font-size: 0.9rem; color: #555;">
-        © 2026 ALLMOTOSYNC | Tecnología y Precisión en Inyección Electrónica.
+    <footer style="padding: 50px 20px; background: #000; font-size: 0.95rem; color: #666; border-top: 1px solid #111;">
+        © 2026 <strong>ALLMOTOSYNC</strong> | Tecnología y Precisión en Inyección Electrónica Avanzada.<br>
+        <span style="font-size: 0.8rem; color: #444;">Bogotá, Colombia.</span>
     </footer>
 
     <script>
         window.onscroll = function() {
             var header = document.getElementById("miHeader");
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
                 header.classList.add("header-reducido");
             } else {
                 header.classList.remove("header-reducido");
