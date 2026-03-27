@@ -1,3 +1,16 @@
+Entendido. Tienes razón, el logo debe tener una presencia fuerte en el primer impacto de la web.
+
+He realizado los siguientes ajustes en el código:
+
+Logo Más Grande al Inicio: He aumentado el ancho máximo del logo (#logo-ams) significativamente para que se vea mucho más imponente al cargar la página.
+
+Sombra de Marca Reforzada: He incrementado la sombra naranja alrededor del logo para que resalte más sobre el fondo oscuro.
+
+Ajuste del Relleno: He adaptado el espacio que ocupa el header inicial para asegurarnos de que el logo grande no corte el resto del contenido.
+
+Aquí tienes el código actualizado con el logo más grande:
+
+HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,32 +29,48 @@
         /* --- HEADER DINÁMICO --- */
         .header-principal {
             position: fixed; top: 0; width: 100%; background-color: rgba(0,0,0,0.95);
-            z-index: 1000; padding: 20px 0; border-bottom: 4px solid #FF6600;
+            z-index: 1000; padding: 30px 0 0 0; border-bottom: 4px solid #FF6600;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex; flex-direction: column; align-items: center;
         }
         
-        /* Ajuste de logo para evitar que se vea gigante al inicio */
+        /* AJUSTE DEL LOGO: MUCHO MÁS GRANDE */
         #logo-ams { 
-            width: 320px; max-width: 80%; border-radius: 15px; 
+            width: 500px; /* Aumentado considerablemente */
+            max-width: 90%; /* Asegura que no se salga en pantallas pequeñas */
+            border-radius: 15px; 
             transition: all 0.4s ease;
-            filter: drop-shadow(0px 0px 10px rgba(255, 102, 0, 0.3));
+            filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.5)); /* Sombra más fuerte */
         }
 
-        .titulos-hero { transition: all 0.4s ease; margin-top: 15px; }
-        .titulos-hero h1 { font-size: 2.5rem; margin: 0; text-shadow: 0 5px 15px rgba(0,0,0,0.5); font-weight: 800; }
-        .titulos-hero p { color: #FF6600; font-weight: bold; font-size: 1.1rem; margin: 5px 0 0 0; text-transform: uppercase; letter-spacing: 2px; }
+        .titulos-hero { transition: all 0.4s ease; margin-top: 20px; }
+        .titulos-hero h1 { font-size: 2.8rem; margin: 0; font-weight: 800; text-shadow: 0 5px 15px rgba(0,0,0,0.7); }
+        .titulos-hero p { color: #FF6600; font-weight: bold; font-size: 1.2rem; margin: 8px 0 20px 0; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* EFECTO AL HACER SCROLL */
-        .header-reducido { padding: 10px 0 !important; background: #000 !important; border-bottom-width: 2px; }
-        .header-reducido #logo-ams { width: 120px !important; border-radius: 5px !important; }
+        /* --- SLIDER DE MARCAS DENTRO DEL HEADER --- */
+        .slider-marcas {
+            width: 100%; background: rgba(255, 102, 0, 0.1); padding: 12px 0; 
+            overflow: hidden; white-space: nowrap; transition: all 0.4s ease;
+        }
+        .contenedor-logos { display: inline-block; animation: slide 25s linear infinite; }
+        .contenedor-logos span { font-size: 1.4rem; font-weight: 900; margin: 0 40px; color: rgba(255, 255, 255, 0.4); letter-spacing: 3px; transition: all 0.4s ease; }
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* --- EFECTO AL BAJAR (SCROLL) --- */
+        .header-reducido { padding: 5px 0 0 0 !important; border-bottom-width: 2px; }
+        .header-reducido #logo-ams { width: 120px !important; border-radius: 5px !important; } /* Mantenemos la reducción sutil */
         .header-reducido .titulos-hero { margin-top: 0 !important; }
-        .header-reducido .titulos-hero h1 { font-size: 1.1rem !important; }
-        .header-reducido .titulos-hero p { display: none; } /* Ocultamos el subtítulo al reducir */
+        .header-reducido .titulos-hero h1 { font-size: 1.2rem !important; }
+        .header-reducido .titulos-hero p { display: none; }
+        
+        /* Ajuste de marcas al bajar */
+        .header-reducido .slider-marcas { padding: 5px 0 !important; background: transparent; }
+        .header-reducido .contenedor-logos span { font-size: 0.8rem !important; color: rgba(255, 255, 255, 0.2); }
 
-        .relleno-header { height: 280px; transition: 0.4s; }
+        /* Espacio para que el logo grande no tape el inicio del contenido */
+        .relleno-header { height: 480px; transition: 0.4s; }
 
-        /* --- REDES SOCIALES --- */
+        /* --- BARRA SOCIAL --- */
         .social-bar {
             position: fixed; right: 0; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; z-index: 2000;
@@ -51,24 +80,15 @@
             width: 55px; height: 55px; transition: 0.3s; margin-bottom: 5px;
             border-radius: 10px 0 0 10px; text-decoration: none;
         }
-        .social-icon:hover { width: 70px; filter: brightness(1.2); }
-        .social-icon img, .social-icon svg { width: 28px; height: 28px; fill: white; }
+        .social-icon:hover { width: 70px; }
+        .social-icon img, .social-icon svg { width: 28px; height: 28px; }
         
         .wa { background: #25D366; }
         .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
         .fb { background: #1877F2; }
         .tk { background: #000; border: 1px solid #333; }
         .tk svg { fill: #fff; }
-
-        /* --- SLIDER DE MARCAS --- */
-        .slider-marcas {
-            background: rgba(0, 0, 0, 0.5); padding: 15px 0; overflow: hidden;
-            white-space: nowrap; border-top: 1px solid rgba(255, 102, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 102, 0, 0.2);
-        }
-        .contenedor-logos { display: inline-block; animation: slide 25s linear infinite; }
-        .contenedor-logos span { font-size: 1.4rem; font-weight: 900; margin: 0 40px; color: rgba(255, 255, 255, 0.15); letter-spacing: 3px; }
-        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .x { background: #fff; border: 1px solid #000; } 
 
         /* --- SERVICIOS --- */
         .contenedor-servicios { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 50px 20px; max-width: 1200px; margin: 0 auto; }
@@ -77,14 +97,14 @@
             border-radius: 12px; position: relative; cursor: pointer; transition: 0.4s;
             overflow: hidden; text-decoration: none; border: 2px solid rgba(255,102,0,0.1);
         }
-        .tarjeta-click:hover { transform: translateY(-10px); border-color: #FF6600; box-shadow: 0 10px 30px rgba(255,102,0,0.4); }
+        .tarjeta-click:hover { transform: translateY(-10px); border-color: #FF6600; box-shadow: 0 10px 30px rgba(255,102,0,0.3); }
         .overlay { 
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.4) 60%, transparent 100%); 
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, transparent 100%); 
             width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; 
             padding: 25px; box-sizing: border-box; text-align: left; 
         }
-        .overlay h2 { margin: 0; color: #FF6600; font-size: 1.5rem; }
-        .overlay p { margin: 5px 0 0; font-size: 0.9rem; color: #ccc; }
+        .overlay h2 { margin: 0; color: #FF6600; font-size: 1.6rem; }
+        .overlay p { margin: 5px 0 0; font-size: 0.95rem; color: #ccc; }
 
         /* --- BOTÓN AGENDAR --- */
         .btn-agendar {
@@ -97,78 +117,67 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .relleno-header { height: 200px; }
-            .titulos-hero h1 { font-size: 1.6rem; }
-            .header-reducido #logo-ams { width: 100px !important; }
-            .social-bar { 
-                top: auto; bottom: 0; flex-direction: row; width: 100%; 
-                justify-content: center; background: rgba(0,0,0,0.9); transform: none; 
-            }
-            .social-icon { border-radius: 0; margin: 0; width: 20%; }
+            #logo-ams { width: 350px; } /* Ajuste para móviles */
+            .relleno-header { height: 350px; }
+            .titulos-hero h1 { font-size: 1.8rem; }
+            .titulos-hero p { font-size: 1rem; }
+            .social-bar { top: auto; bottom: 0; flex-direction: row; width: 100%; transform: none; background: rgba(0,0,0,0.9); }
+            .social-icon { width: 20%; border-radius: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Principal -->
     <header id="miHeader" class="header-principal">
-        <!-- Verifica que el nombre del archivo sea exacto en GitHub -->
         <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
         <div class="titulos-hero">
             <h1>DIAGNÓSTICO DE PRECISIÓN</h1>
             <p>Inyección Electrónica Avanzada</p>
         </div>
+        <div class="slider-marcas">
+            <div class="contenedor-logos">
+                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
+                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
+            </div>
+        </div>
     </header>
 
     <div class="relleno-header"></div>
 
-    <!-- Barra Social -->
     <nav class="social-bar">
         <a href="https://wa.me/573104886929" class="social-icon wa" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA"></a>
         <a href="#" class="social-icon ig" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG"></a>
         <a href="#" class="social-icon fb" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="FB"></a>
-        <a href="#" class="social-icon tk" target="_blank">
-            <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
-        </a>
+        <a href="#" class="social-icon tk" target="_blank"><svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg></a>
+        <a href="#" class="social-icon x" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="X"></a>
     </nav>
 
-    <!-- Slider de Marcas -->
-    <div class="slider-marcas">
-        <div class="contenedor-logos">
-            <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
-            <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
-        </div>
-    </div>
-
-    <!-- Sección de Servicios -->
     <div class="contenedor-servicios">
         <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');">
-            <div class="overlay"><h2>ESCÁNER</h2><p>Diagnóstico computarizado de fallas.</p></div>
+            <div class="overlay"><h2>ESCÁNER</h2><p>Ver tecnología ></p></div>
         </a>
         <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');">
-            <div class="overlay"><h2>INYECCIÓN</h2><p>Lavado ultra sónico de inyectores.</p></div>
+            <div class="overlay"><h2>INYECCIÓN</h2><p>Ver proceso ></p></div>
         </a>
         <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');">
-            <div class="overlay"><h2>REMAP ECU</h2><p>Optimización de parámetros y potencia.</p></div>
+            <div class="overlay"><h2>REMAP ECU</h2><p>Ver potencia ></p></div>
         </a>
     </div>
 
-    <!-- Botón de Agendar -->
     <a href="https://wa.me/573104886929?text=Hola!%20Quisiera%20agendar%20un%20servicio%20en%20ALLMOTOSYNC" class="btn-agendar">
         Agendar Cita Ahora
     </a>
 
-    <!-- Mapa -->
-    <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 60px 20px;">
-        <h2 style="color: #FF6600;">VISÍTANOS EN BOGOTÁ</h2>
-        <p style="font-size: 1.2rem;">Cl. 31c Sur # 3A-72, San Cristóbal Norte</p>
+    <div style="background: rgba(0,0,0,0.5); padding: 60px 20px;">
+        <h2 style="color: #FF6600;">ENCUÉNTRANOS</h2>
+        <p style="font-size: 1.2rem;">Cl. 31c Sur # 3A-72, San Cristóbal Norte, Bogotá</p>
         <div style="max-width: 1000px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 2px solid #FF6600;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.016335359419!2d-74.0536!3d4.5800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMzQnNDguMCJOIDc0wrAwMycxMy4wIlc!5e0!3m2!1ses!2sco!4v1710000000000" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.016335359419!2d-74.0536!3d4.5800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMzQnNDguMCJOIDc0wrAwMycxMy4wIlc!5e0!3m2!1ses!2sco!4v1710000000000" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 
-    <footer style="padding: 40px; background: #000; font-size: 0.9rem; color: #666; border-top: 1px solid #222;">
-        © 2026 <strong>ALLMOTOSYNC</strong> | Pasión por la tecnología en dos ruedas.
+    <footer style="padding: 40px; background: #000; font-size: 0.9rem; color: #555;">
+        © 2026 ALLMOTOSYNC | Expertos en Inyección Electrónica.
     </footer>
 
     <script>
