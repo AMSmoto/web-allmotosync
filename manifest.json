@@ -1,15 +1,17 @@
 {
   "name": "ALLMOTOSYNC",
   "short_name": "AMS",
-  "start_url": "index.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#050508",
   "theme_color": "#FF6600",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "ALLMOTOSYNC LOGO.jpg",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any maskable"
     }
   ]
 }
