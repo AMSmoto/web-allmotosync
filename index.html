@@ -257,53 +257,57 @@ async function consultarMoto() {
     try {
         const respuesta = await fetch(SHEET_URL);
         const data = await respuesta.text();
+        // Separamos por filas y luego por comas
         const filas = data.split('\n').map(fila => fila.split(','));
 
-        // Filtramos todas las entradas que coincidan con la placa (Columna B = índice 1)
+        // FILTRADO CORREGIDO:
+        // Buscamos la Placa en la Columna B (índice 1)
         const registros = filas.filter(f => f[1] && f[1].trim().toUpperCase() === placaInput);
 
         if (registros.length > 0) {
-            // Seleccionamos la última fila registrada (la más reciente)
+            // Tomamos el registro más reciente (el último de la lista)
             const ultimaEntrada = registros[registros.length - 1];
 
-            // Validamos contraseña (Columna C = índice 2)
-            if (ultimaEntrada[2].trim() === passInput) {
+            // VALIDACIÓN DE PASSWORD CORREGIDA:
+            // Comparamos con la Columna C (índice 2)
+            if (ultimaEntrada[2] && ultimaEntrada[2].trim() === passInput) {
                 divResultado.style.display = 'block';
                 divResultado.innerHTML = `
                     <div style="border-bottom: 2px solid #FF6600; padding-bottom: 10px; margin-bottom: 20px;">
-                        <h3 style="margin: 0; color: #fff;">EXPEDIENTE TÉCNICO: ${ultimaEntrada[1]}</h3>
-                        <small style="color: #FF6600;">Último servicio: ${ultimaEntrada[0] || 'Reciente'}</small>
+                        <h3 style="margin: 0; color: #fff;">EXPEDIENTE AMS: ${ultimaEntrada[1]}</h3>
+                        <small style="color: #FF6600;">Registrado el: ${ultimaEntrada[0] || 'Reciente'}</small>
                     </div>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
                         <div>
                             <p style="margin: 5px 0;"><strong>Propietario:</strong> ${protegerNombre(ultimaEntrada[3])}</p>
-                            <p style="color: #25D366; font-size: 0.85rem; margin: 5px 0;">✅ SOAT: ${ultimaEntrada[6]}</p>
-                            <p style="color: #25D366; font-size: 0.85rem; margin: 5px 0;">✅ TECNO: ${ultimaEntrada[7]}</p>
+                            <p style="color: #25D366; font-size: 0.85rem; margin: 5px 0;">✅ SOAT: ${ultimaEntrada[6] || '---'}</p>
+                            <p style="color: #25D366; font-size: 0.85rem; margin: 5px 0;">✅ TECNO: ${ultimaEntrada[7] || '---'}</p>
                         </div>
                         <div style="background: #111; padding: 10px; border-radius: 8px; border: 1px solid #333;">
-                            <p style="margin: 2px 0; font-size: 0.8rem;"><strong>KM ENTRADA:</strong> ${ultimaEntrada[8]} km</p>
-                            <p style="margin: 2px 0; font-size: 0.8rem;"><strong>KM SALIDA:</strong> ${ultimaEntrada[9]} km</p>
+                            <p style="margin: 2px 0; font-size: 0.8rem;"><strong>KM INGRESO:</strong> ${ultimaEntrada[8] || '--'}</p>
+                            <p style="margin: 2px 0; font-size: 0.8rem;"><strong>KM SALIDA:</strong> ${ultimaEntrada[9] || '--'}</p>
                         </div>
                     </div>
                     
                     <div style="background: #000; border-radius: 10px; padding: 15px; border-left: 5px solid #FF6600;">
-                        <h4 style="margin: 0 0 10px 0; color: #FF6600; font-size: 0.9rem;">DETALLE DEL TRABAJO:</h4>
+                        <h4 style="margin: 0 0 10px 0; color: #FF6600; font-size: 0.9rem;">REPORTE TÉCNICO:</h4>
                         <div style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
-                            ${ultimaEntrada[11] ? ultimaEntrada[11].replace(/🔹/g, '<br>🔹') : 'No hay detalles registrados.'}
+                            ${ultimaEntrada[11] ? ultimaEntrada[11].replace(/🔹/g, '<br>🔹') : 'Cargando detalles...'}
                         </div>
                     </div>
                 `;
                 divResultado.scrollIntoView({ behavior: 'smooth' });
             } else {
-                alert("Contraseña incorrecta para esta placa.");
+                alert("La contraseña no coincide para esta placa.");
             }
         } else {
-            alert("No encontramos registros para esta placa.");
+            alert("No se encontró historial para la placa " + placaInput);
         }
     } catch (error) {
         alert("Error al conectar con la base de datos.");
     }
+}
 }
 }
 </script>
