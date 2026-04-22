@@ -1,15 +1,18 @@
 {
   "name": "ALLMOTOSYNC",
   "short_name": "AMS",
+  "description": "Diagnóstico Avanzado de Motocicletas",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#050508",
   "theme_color": "#FF6600",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "AMSchr.png",
+      "src": "AMSchr2.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

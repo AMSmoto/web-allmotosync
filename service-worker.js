@@ -1,8 +1,8 @@
-const CACHE_NAME = 'ams-v4';
+const CACHE_NAME = 'ams-v5';
 const urlsToCache = [
   './',
   './index.html',
-  './AMSchr.png'
+  './AMSchr2.png'
 ];
 
 self.addEventListener('install', event => {
