@@ -221,6 +221,76 @@
 
 <a href="https://wa.me/573104886929?text=Hola!%20Quisiera%20agendar%20un%20servicio%20en%20ALLMOTOSYNC" class="btn-agendar">Agendar Cita Ahora</a>
 
+<section id="consulta-cliente" style="padding: 60px 20px; background: #000; border-top: 2px solid #FF6600;">
+    <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px;">EXPEDIENTE DIGITAL AMS</h2>
+    <p style="color: #ccc;">Consulte el historial técnico y trazabilidad de su motocicleta.</p>
+    
+    <div style="max-width: 400px; margin: 30px auto; background: #111; padding: 30px; border-radius: 15px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(255,102,0,0.1);">
+        <input type="text" id="placa" placeholder="PLACA (Ej: YCT12F)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff; text-transform: uppercase;">
+        <input type="password" id="pass" placeholder="CONTRASEÑA (3 letras placa)" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff;">
+        <button onclick="consultarMoto()" style="width: 100%; padding: 15px; background: #FF6600; color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: 0.3s;">Ver Historial</button>
+    </div>
+
+    <div id="resultado-historial" style="max-width: 850px; margin: 0 auto; display: none; text-align: left; background: #111; padding: 25px; border-radius: 15px; border: 1px solid #FF6600;">
+        </div>
+</section>
+
+<script>
+function consultarMoto() {
+    const placa = document.getElementById('placa').value.toUpperCase();
+    const pass = document.getElementById('pass').value;
+    const divResultado = document.getElementById('resultado-historial');
+
+    // Datos de ejemplo con el control de kilometraje
+    if(placa === "YCT12F" && pass === "YCT") {
+        divResultado.style.display = 'block';
+        divResultado.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 20px;">
+                <h3 style="color: #FF6600; margin: 0;">HOJA DE VIDA: ${placa}</h3>
+                <span style="color: #666; font-size: 0.8rem;">ID: AMS-2026-001</span>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+                <div>
+                    <p><strong>Propietario:</strong> Andres Felipe Alfaro</p>
+                    <p style="color: #25D366; font-size: 0.9rem;">✅ SOAT: 15/08/2026</p>
+                    <p style="color: #25D366; font-size: 0.9rem;">✅ TECNO: 20/09/2026</p>
+                </div>
+                <div style="background: #1a1a1a; padding: 10px; border-radius: 8px; border-left: 4px solid #FF6600;">
+                    <p style="margin: 5px 0; font-size: 0.85rem;"><strong>KM ENTRADA:</strong> 27,450 km</p>
+                    <p style="margin: 5px 0; font-size: 0.85rem;"><strong>KM SALIDA:</strong> 27,455 km</p>
+                    <p style="margin: 0; font-size: 0.7rem; color: #666;">(5km de prueba de ruta certificada)</p>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255,102,0,0.05); border-radius: 10px; padding: 20px; border: 1px solid #333;">
+                <h4 style="margin: 0; color: #FF6600;">MANTENIMIENTO #1: DIAGNÓSTICO E INYECCIÓN</h4>
+                <p style="color: #888; font-size: 0.8rem; margin-bottom: 10px;">FECHA: 22/04/2026</p>
+                
+                <p style="font-weight: bold; margin-bottom: 5px;">Diagnóstico inicial:</p>
+                <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 15px;">Moto ingresa con ralentí inestable y testigo FI encendido. Se detecta suciedad en cuerpo de aceleración.</p>
+                
+                <p style="font-weight: bold; margin-bottom: 5px;">Tareas realizadas:</p>
+                <ul style="list-style: none; padding: 0; color: #eee; font-size: 0.9rem;">
+                    <li>🔹 Limpieza ultrasónica de inyector</li>
+                    <li>🔹 Sincronización de cuerpo de aceleración</li>
+                    <li>🔹 Reemplazo de bujía NGK Iridium</li>
+                    <li>🔹 Escaneo y borrado de códigos de falla</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 25px; padding: 15px; border: 1px dashed #333; border-radius: 10px; opacity: 0.4;">
+                <h4 style="margin: 0;">MANTENIMIENTO #2: PRÓXIMA REVISIÓN</h4>
+                <p style="font-size: 0.8rem;">Pendiente de apertura de orden de servicio...</p>
+            </div>
+        `;
+        // Desplazar automáticamente al resultado
+        divResultado.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        alert("Datos incorrectos. Por favor verifique la placa y su contraseña.");
+    }
+}
+</script>
 <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 70px 20px;">
     <h2 style="color: #FF6600; font-weight: 900;">VISÍTANOS EN SAN CRISTÓBAL SUR</h2>
     <p style="font-size: 1.2rem; color: #ccc;">Cl. 31c Sur # 3A-72, Bogotá</p>
