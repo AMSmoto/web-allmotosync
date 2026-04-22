@@ -254,63 +254,57 @@ async function consultarMoto() {
     const passInput = document.getElementById('pass').value.trim();
     const divResultado = document.getElementById('resultado-historial');
 
-    if (!placaInput || !passInput) {
-        alert("Por favor ingresa la placa y la contraseña.");
-        return;
-    }
-
     try {
         const respuesta = await fetch(SHEET_URL);
         const data = await respuesta.text();
         const filas = data.split('\n').map(fila => fila.split(','));
 
-        // Buscamos la placa en la Columna A (índice 0)
-        const motoEncontrada = filas.find(f => f[0].trim().toUpperCase() === placaInput);
+        // Filtramos todas las entradas que coincidan con la placa (Columna B = índice 1)
+        const registros = filas.filter(f => f[1] && f[1].trim().toUpperCase() === placaInput);
 
-        if (motoEncontrada && motoEncontrada[1].trim() === passInput) {
-            // Asignación de columnas según tu Excel:
-            // 0:Placa, 1:Pass, 2:Propietario, 3:Correo, 4:Celular, 5:SOAT, 6:Tecno, 7:KM_Entrada, 8:KM_Salida, 9:Historial
-            const nombreSeguro = protegerNombre(motoEncontrada[2]);
-            
-            divResultado.style.display = 'block';
-            divResultado.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 20px;">
-                    <h3 style="color: #FF6600; margin: 0;">EXPEDIENTE TÉCNICO: ${motoEncontrada[0]}</h3>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
-                    <div>
-                        <p><strong>Propietario:</strong> ${nombreSeguro}</p>
-                        <p style="color: #25D366; font-size: 0.9rem;">✅ SOAT: ${motoEncontrada[5] || 'N/A'}</p>
-                        <p style="color: #25D366; font-size: 0.9rem;">✅ TECNO: ${motoEncontrada[6] || 'N/A'}</p>
-                    </div>
-                    <div style="background: #1a1a1a; padding: 10px; border-radius: 8px; border-left: 4px solid #FF6600;">
-                        <p style="margin: 5px 0; font-size: 0.85rem;"><strong>KM ENTRADA:</strong> ${motoEncontrada[7] || '--'} km</p>
-                        <p style="margin: 5px 0; font-size: 0.85rem;"><strong>KM SALIDA:</strong> ${motoEncontrada[8] || '--'} km</p>
-                    </div>
-                </div>
-                
-                <div style="background: rgba(255,102,0,0.05); border-radius: 10px; padding: 20px; border: 1px solid #333;">
-                    <h4 style="margin: 0; color: #FF6600;">REPORTE DE SERVICIO</h4>
-                    <p style="color: #888; font-size: 0.8rem; margin-bottom: 10px;">DETALLE TÉCNICO:</p>
-                    <div style="color: #eee; font-size: 0.9rem; line-height: 1.6;">
-                        ${motoEncontrada[9] ? motoEncontrada[9].replace(/🔹/g, '<br>🔹') : 'No hay historial registrado.'}
-                    </div>
-                </div>
+        if (registros.length > 0) {
+            // Seleccionamos la última fila registrada (la más reciente)
+            const ultimaEntrada = registros[registros.length - 1];
 
-                <p style="font-size: 0.65rem; color: #444; margin-top: 20px; text-align: center;">
-                    Tratamiento de datos conforme a la Ley 1581 de 2012. <br>
-                    Información exclusiva para el propietario.
-                </p>
-            `;
-            divResultado.scrollIntoView({ behavior: 'smooth' });
+            // Validamos contraseña (Columna C = índice 2)
+            if (ultimaEntrada[2].trim() === passInput) {
+                divResultado.style.display = 'block';
+                divResultado.innerHTML = `
+                    <div style="border-bottom: 2px solid #FF6600; padding-bottom: 10px; margin-bottom: 20px;">
+                        <h3 style="margin: 0; color: #fff;">EXPEDIENTE TÉCNICO: ${ultimaEntrada[1]}</h3>
+                        <small style="color: #FF6600;">Último servicio: ${ultimaEntrada[0] || 'Reciente'}</small>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <p style="margin: 5px 0;"><strong>Propietario:</strong> ${protegerNombre(ultimaEntrada[3])}</p>
+                            <p style="color: #25D366; font-size: 0.85rem; margin: 5px 0;">✅ SOAT: ${ultimaEntrada[6]}</p>
+                            <p style="color: #25D366; font-size: 0.85rem; margin: 5px 0;">✅ TECNO: ${ultimaEntrada[7]}</p>
+                        </div>
+                        <div style="background: #111; padding: 10px; border-radius: 8px; border: 1px solid #333;">
+                            <p style="margin: 2px 0; font-size: 0.8rem;"><strong>KM ENTRADA:</strong> ${ultimaEntrada[8]} km</p>
+                            <p style="margin: 2px 0; font-size: 0.8rem;"><strong>KM SALIDA:</strong> ${ultimaEntrada[9]} km</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #000; border-radius: 10px; padding: 15px; border-left: 5px solid #FF6600;">
+                        <h4 style="margin: 0 0 10px 0; color: #FF6600; font-size: 0.9rem;">DETALLE DEL TRABAJO:</h4>
+                        <div style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
+                            ${ultimaEntrada[11] ? ultimaEntrada[11].replace(/🔹/g, '<br>🔹') : 'No hay detalles registrados.'}
+                        </div>
+                    </div>
+                `;
+                divResultado.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Contraseña incorrecta para esta placa.");
+            }
         } else {
-            alert("Los datos no coinciden. Verifique la placa y su clave proporcionada por AMS.");
+            alert("No encontramos registros para esta placa.");
         }
     } catch (error) {
-        console.error(error);
-        alert("Error al conectar con la base de datos. Revisa tu conexión.");
+        alert("Error al conectar con la base de datos.");
     }
+}
 }
 </script>
 <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 70px 20px;">
