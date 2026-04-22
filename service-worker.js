@@ -1,5 +1,9 @@
-const CACHE_NAME = 'ams-cache-v1';
-const urlsToCache = ['./', './index.html'];
+const CACHE_NAME = 'ams-v1';
+const urlsToCache = [
+  '/',
+  '/index.html',
+  '/AMS%20LOGO%20chr.png'
+];
 
 self.addEventListener('install', event => {
   event.waitUntil(
