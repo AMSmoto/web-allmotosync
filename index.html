@@ -243,12 +243,12 @@ window.onscroll = function() {
 };
 </script>
 <script>
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./service-worker.js');
-          });
-        }
-    </script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(() => console.log("AMS Registrada"))
+      .catch((err) => console.log("Fallo:", err));
+  }
+</script>
 </body>
 </html>
 </body>
