@@ -257,19 +257,15 @@ async function consultarMoto() {
     try {
         const respuesta = await fetch(SHEET_URL);
         const data = await respuesta.text();
-        // Separamos por filas y luego por comas
         const filas = data.split('\n').map(fila => fila.split(','));
 
-        // FILTRADO CORREGIDO:
-        // Buscamos la Placa en la Columna B (índice 1)
+        // f[1] es la Columna B (Placa)
         const registros = filas.filter(f => f[1] && f[1].trim().toUpperCase() === placaInput);
 
         if (registros.length > 0) {
-            // Tomamos el registro más reciente (el último de la lista)
             const ultimaEntrada = registros[registros.length - 1];
 
-            // VALIDACIÓN DE PASSWORD CORREGIDA:
-            // Comparamos con la Columna C (índice 2)
+            // Validamos contra la Columna C (índice 2)
             if (ultimaEntrada[2] && ultimaEntrada[2].trim() === passInput) {
                 divResultado.style.display = 'block';
                 divResultado.innerHTML = `
@@ -307,8 +303,6 @@ async function consultarMoto() {
     } catch (error) {
         alert("Error al conectar con la base de datos.");
     }
-}
-}
 }
 </script>
 <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 70px 20px;">
