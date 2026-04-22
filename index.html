@@ -13,6 +13,7 @@
     <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="AMSchr2.png">
+<meta name="theme-color" content="#FF6600">
     <style>
         /* --- BASE Y FONDO --- */
         html, body {
@@ -233,23 +234,28 @@
 </footer>
 
 <script>
-window.onscroll = function() {
-    var header = document.getElementById("miHeader");
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        header.classList.add("header-reducido");
-    } else {
-        header.classList.remove("header-reducido");
-    }
-};
-</script>
-<script>
+  // 1. Efecto de reducción del Header al hacer scroll
+  window.onscroll = function() {
+      var header = document.getElementById("miHeader");
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+          header.classList.add("header-reducido");
+      } else {
+          header.classList.remove("header-reducido");
+      }
+  };
+
+  // 2. Registro oficial del Service Worker para que sea una App
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js')
-      .then(() => console.log("AMS Registrada"))
-      .catch((err) => console.log("Fallo:", err));
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('./service-worker.js')
+        .then(function(registration) {
+          console.log('AMS App lista:', registration.scope);
+        })
+        .catch(function(err) {
+          console.log('Fallo registro AMS:', err);
+        });
+    });
   }
 </script>
-</body>
-</html>
 </body>
 </html>
