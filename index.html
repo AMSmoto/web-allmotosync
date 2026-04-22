@@ -236,71 +236,80 @@
 </section>
 
 <script>
+// URL de tu base de datos (Google Sheets CSV)
+const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vThzRfHI32azvtbo9O6qH1acg2SIxB8n5iiLkrSsgk49M6Tzyy3PlnarOCl5466-MDlUBOLHPMBl55w/pub?gid=0&single=true&output=csv';
+
 // Función para proteger la identidad (Habeas Data)
 function protegerNombre(nombreCompleto) {
+    if (!nombreCompleto) return "Cliente AMS";
     const partes = nombreCompleto.split(" ");
     return partes.map((palabra, index) => {
-        if (index < 2) { 
-            return palabra.length > 3 ? palabra.substring(0, 3) + "***" : palabra;
-        } else { 
-            return palabra.substring(0, 1) + "***";
-        }
+        if (index < 2) return palabra.length > 3 ? palabra.substring(0, 3) + "***" : palabra;
+        return palabra.substring(0, 1) + "***";
     }).join(" ");
 }
 
-function consultarMoto() {
-    const placaInput = document.getElementById('placa').value.toUpperCase();
-    const passInput = document.getElementById('pass').value;
+async function consultarMoto() {
+    const placaInput = document.getElementById('placa').value.trim().toUpperCase();
+    const passInput = document.getElementById('pass').value.trim();
     const divResultado = document.getElementById('resultado-historial');
 
-    // CONFIGURACIÓN DE ACCESO DEMO
-    const placaDemo = "AAA11B";
-    const passDemo = "proporcionada por AMS";
+    if (!placaInput || !passInput) {
+        alert("Por favor ingresa la placa y la contraseña.");
+        return;
+    }
 
-    if(placaInput === placaDemo && passInput === passDemo) {
-        // Datos de ejemplo para el Demo
-        const nombreSeguro = protegerNombre("Juan Camilo Perez");
-        
-        divResultado.style.display = 'block';
-        divResultado.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 20px;">
-                <h3 style="color: #FF6600; margin: 0;">EXPEDIENTE TÉCNICO: ${placaDemo}</h3>
-                <span style="color: #666; font-size: 0.8rem;">ID: DEMO-2026</span>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
-                <div>
-                    <p><strong>Propietario:</strong> ${nombreSeguro}</p>
-                    <p style="color: #25D366; font-size: 0.9rem;">✅ SOAT: 10/12/2026</p>
-                    <p style="color: #25D366; font-size: 0.9rem;">✅ TECNO: 15/01/2027</p>
-                </div>
-                <div style="background: #1a1a1a; padding: 10px; border-radius: 8px; border-left: 4px solid #FF6600;">
-                    <p style="margin: 5px 0; font-size: 0.85rem;"><strong>KM ENTRADA:</strong> 12,340 km</p>
-                    <p style="margin: 5px 0; font-size: 0.85rem;"><strong>KM SALIDA:</strong> 12,344 km</p>
-                    <p style="margin: 0; font-size: 0.7rem; color: #666;">(Prueba de ruta controlada)</p>
-                </div>
-            </div>
-            
-            <div style="background: rgba(255,102,0,0.05); border-radius: 10px; padding: 20px; border: 1px solid #333;">
-                <h4 style="margin: 0; color: #FF6600;">MANTENIMIENTO #1: SINCRONIZACIÓN</h4>
-                <p style="color: #888; font-size: 0.8rem; margin-bottom: 10px;">FECHA: 22/04/2026</p>
-                <p style="font-weight: bold; margin-bottom: 5px;">Diagnóstico:</p>
-                <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 15px;">Mantenimiento preventivo de los 12,000km. Limpieza de inyectores y filtro de aire.</p>
-                <ul style="list-style: none; padding: 0; color: #eee; font-size: 0.9rem;">
-                    <li>🔹 Limpieza de cuerpo de aceleración</li>
-                    <li>🔹 Cambio de aceite 10W40 Sintético</li>
-                    <li>🔹 Ajuste y lubricación de cadena (Kit de arrastre)</li>
-                </ul>
-            </div>
+    try {
+        const respuesta = await fetch(SHEET_URL);
+        const data = await respuesta.text();
+        const filas = data.split('\n').map(fila => fila.split(','));
 
-            <p style="font-size: 0.65rem; color: #444; margin-top: 20px; text-align: center;">
-                Ejemplo de visualización para clientes ALLMOTOSYNC. <br>
-                Tratamiento de datos conforme a la Ley 1581 de 2012.
-            </p>
-        `;
-        divResultado.scrollIntoView({ behavior: 'smooth' });
-    } else {
-        alert("Para ver el historial de su moto, ingrese su placa y la contraseña entregada en el taller. Para ver un ejemplo, use la placa AAA11B.");
+        // Buscamos la placa en la Columna A (índice 0)
+        const motoEncontrada = filas.find(f => f[0].trim().toUpperCase() === placaInput);
+
+        if (motoEncontrada && motoEncontrada[1].trim() === passInput) {
+            // Asignación de columnas según tu Excel:
+            // 0:Placa, 1:Pass, 2:Propietario, 3:Correo, 4:Celular, 5:SOAT, 6:Tecno, 7:KM_Entrada, 8:KM_Salida, 9:Historial
+            const nombreSeguro = protegerNombre(motoEncontrada[2]);
+            
+            divResultado.style.display = 'block';
+            divResultado.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 20px;">
+                    <h3 style="color: #FF6600; margin: 0;">EXPEDIENTE TÉCNICO: ${motoEncontrada[0]}</h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+                    <div>
+                        <p><strong>Propietario:</strong> ${nombreSeguro}</p>
+                        <p style="color: #25D366; font-size: 0.9rem;">✅ SOAT: ${motoEncontrada[5] || 'N/A'}</p>
+                        <p style="color: #25D366; font-size: 0.9rem;">✅ TECNO: ${motoEncontrada[6] || 'N/A'}</p>
+                    </div>
+                    <div style="background: #1a1a1a; padding: 10px; border-radius: 8px; border-left: 4px solid #FF6600;">
+                        <p style="margin: 5px 0; font-size: 0.85rem;"><strong>KM ENTRADA:</strong> ${motoEncontrada[7] || '--'} km</p>
+                        <p style="margin: 5px 0; font-size: 0.85rem;"><strong>KM SALIDA:</strong> ${motoEncontrada[8] || '--'} km</p>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,102,0,0.05); border-radius: 10px; padding: 20px; border: 1px solid #333;">
+                    <h4 style="margin: 0; color: #FF6600;">REPORTE DE SERVICIO</h4>
+                    <p style="color: #888; font-size: 0.8rem; margin-bottom: 10px;">DETALLE TÉCNICO:</p>
+                    <div style="color: #eee; font-size: 0.9rem; line-height: 1.6;">
+                        ${motoEncontrada[9] ? motoEncontrada[9].replace(/🔹/g, '<br>🔹') : 'No hay historial registrado.'}
+                    </div>
+                </div>
+
+                <p style="font-size: 0.65rem; color: #444; margin-top: 20px; text-align: center;">
+                    Tratamiento de datos conforme a la Ley 1581 de 2012. <br>
+                    Información exclusiva para el propietario.
+                </p>
+            `;
+            divResultado.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            alert("Los datos no coinciden. Verifique la placa y su clave proporcionada por AMS.");
+        }
+    } catch (error) {
+        console.error(error);
+        alert("Error al conectar con la base de datos. Revisa tu conexión.");
     }
 }
 </script>
