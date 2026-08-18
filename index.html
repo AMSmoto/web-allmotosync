@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,9 +10,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="AMSchr2.png">
-<meta name="theme-color" content="#FF6600">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="AMSchr2.png">
+    <meta name="theme-color" content="#FF6600">
     <style>
         /* --- BASE Y FONDO --- */
         html, body {
@@ -74,7 +73,7 @@
         .social-icon {
             display: flex; justify-content: center; align-items: center;
             width: 50px; height: 50px; transition: 0.3s; margin-bottom: 5px;
-            border-radius: 10px 0 0 10px; text-decoration: none;
+            border-radius: 10px 0 0 10px; text-decoration: none; cursor: pointer;
         }
         .social-icon:hover { width: 65px; }
         .social-icon img, .social-icon svg { width: 25px; height: 25px; }
@@ -127,219 +126,365 @@
             to { opacity: 1; }
         }
 
+        /* --- ESTILOS MEJORADOS DEL DUENDE TÉCNICO INTERACTIVO --- */
+        #duende-container {
+            position: fixed;
+            bottom: 25px;
+            left: 20px;
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            z-index: 9998;
+            pointer-events: none;
+        }
+
+        .duende-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #0d121c;
+            border: 3px solid #FF6600;
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.5), inset 0 0 10px rgba(0,0,0,0.8);
+            cursor: pointer;
+            pointer-events: auto;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulseDuende 3s infinite ease-in-out;
+        }
+
+        .duende-avatar:hover {
+            transform: scale(1.12) rotate(-4deg);
+            box-shadow: 0 0 30px rgba(255, 102, 0, 0.8);
+        }
+
+        .duende-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .duende-bubble {
+            background-color: #111111;
+            color: #ffffff;
+            border: 2px solid #FF6600;
+            border-radius: 16px;
+            padding: 12px 16px;
+            max-width: 260px;
+            font-size: 13px;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            line-height: 1.4;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            position: relative;
+            pointer-events: auto;
+            text-align: left;
+            animation: popupDuende 0.4s ease-out;
+        }
+
+        .duende-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: 18px;
+            left: -10px;
+            border-width: 8px 10px 8px 0;
+            border-style: solid;
+            border-color: transparent #FF6600 transparent transparent;
+        }
+
+        @keyframes popupDuende {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes pulseDuende {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
         @media (max-width: 768px) {
             .relleno-header { height: 350px; }
             .titulos-hero h1 { font-size: 1.6rem; }
             #logo-ams { width: 300px; }
+            #duende-container { bottom: 15px; left: 10px; }
+            .duende-avatar { width: 65px; height: 65px; }
+            .duende-bubble { max-width: 200px; font-size: 11px; padding: 10px 12px; }
         }
     </style>
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T94LJCGB"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <header id="miHeader" class="header-principal">
-    <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
-    <div class="titulos-hero">
-        <h1>DIAGNÓSTICO DE PRECISIÓN</h1>
-        <p>Inyección Electrónica Avanzada</p>
-    </div>
-    <div class="slider-marcas">
-        <div class="contenedor-logos">
-            <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
-            <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
-        </div>
-    </div>
-</header>
-
-<div class="relleno-header"></div>
-
-<nav class="social-bar">
-    <a href="https://wa.me/573104886929" class="social-icon wa" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA"></a>
-    <a href="#" class="social-icon ig" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG"></a>
-    <a href="#" class="social-icon fb" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="FB"></a>
-    <a href="#" class="social-icon tk" target="_blank"><svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg></a>
-    <a href="TU_LINK_DE_MERCADO_LIBRE" class="social-icon ml" target="_blank" style="background: #FFF159; color: #2D3277; border-radius: 10px 0 0 10px;">
-        <i class="fa-solid fa-handshake" style="font-size: 24px;"></i>
-    </a>
-</nav>
-
-<section id="por-que-nosotros" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 80px 20px; background: rgba(255,102,0,0.03);">
-    <div style="max-width: 280px; text-align: center;">
-        <div style="font-size: 3.5rem; color: #FF6600;">🛠️</div>
-        <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Tecnología OEM</h3>
-        <p style="font-size: 0.95rem; color: #aaa;">Escáneres y herramientas de nivel original para cada marca.</p>
-    </div>
-    <div style="max-width: 280px; text-align: center;">
-        <div style="font-size: 3.5rem; color: #FF6600;">✅</div>
-        <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Garantía Total</h3>
-        <p style="font-size: 0.95rem; color: #aaa;">Cada servicio cuenta con respaldo técnico y trazabilidad.</p>
-    </div>
-    <div style="max-width: 280px; text-align: center;">
-        <div style="font-size: 3.5rem; color: #FF6600;">⚡</div>
-        <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Precisión</h3>
-        <p style="font-size: 0.95rem; color: #aaa;">Soluciones directas a la falla, ahorrando tiempo y repuestos innecesarios.</p>
-    </div>
-</section>
-
-<h2 style="color: #FF6600; margin-top: 60px; font-weight: 900; letter-spacing: 2px;">NUESTROS SERVICIOS</h2>
-<div class="contenedor-servicios">
-    <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');">
-        <div class="overlay"><h2>ESCÁNER</h2></div>
-    </a>
-    <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');">
-        <div class="overlay"><h2>INYECCIÓN</h2></div>
-    </a>
-    <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');">
-        <div class="overlay"><h2>REMAP ECU</h2></div>
-    </a>
-    <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://m.media-amazon.com/images/I/71u+O9n-yVL._AC_SL1500_.jpg');">
-        <div class="overlay"><h2>ACCESORIOS</h2></div>
-    </a>
-</div>
-
-<div style="padding: 60px 0; background: rgba(0,0,0,0.3);">
-    <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px;">TRABAJOS REALIZADOS</h2>
-    <div class="contenedor-galeria">
-        <div class="item-trabajo">
-            <video autoplay muted loop playsinline><source src="kit arrastre.mp4.mp4" type="video/mp4"></video>
-            <div class="info-trabajo"><h4>KIT ARRASTRE</h4></div>
-        </div>
-        <div class="item-trabajo">
-            <video autoplay muted loop playsinline><source src="instalacion gps.mp4.mp4" type="video/mp4"></video>
-            <div class="info-trabajo"><h4>SISTEMA ELÉCTRICO / GPS</h4></div>
-        </div>
-        <div class="item-trabajo">
-            <video autoplay muted loop playsinline><source src="frenos.mp4.mp4" type="video/mp4"></video>
-            <div class="info-trabajo"><h4>SISTEMA DE FRENOS</h4></div>
-        </div>
-        <div class="item-trabajo">
-            <video autoplay muted loop playsinline><source src="sincro motor.mp4.mp4" type="video/mp4"></video>
-            <div class="info-trabajo"><h4>SINCRONIZACIÓN MOTOR</h4></div>
-        </div>
-    </div>
-</div>
-
-<a href="https://wa.me/573104886929?text=Hola!%20Quisiera%20agendar%20un%20servicio%20en%20ALLMOTOSYNC" class="btn-agendar">Agendar Cita Ahora</a>
-
-<section id="consulta-cliente" style="padding: 60px 20px; background: #000; border-top: 2px solid #FF6600;">
-    <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px;">EXPEDIENTE DIGITAL AMS</h2>
-    <p style="color: #ccc;">Consulte el historial técnico y trazabilidad de su motocicleta.</p>
     
-    <div style="max-width: 400px; margin: 30px auto; background: #111; padding: 30px; border-radius: 15px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(255,102,0,0.1);">
-        <input type="text" id="placa" placeholder="PLACA (Ej: AAA99A)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff; text-transform: uppercase;">
-        <input type="password" id="pass" placeholder="CONTRASEÑA (Otorgada por AMS)" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff;">
-        <button onclick="consultarMoto()" style="width: 100%; padding: 15px; background: #FF6600; color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: 0.3s;">Ver Historial</button>
-    </div>
-
-    <div id="resultado-historial" style="max-width: 850px; margin: 0 auto; display: none; text-align: left; background: #111; padding: 25px; border-radius: 15px; border: 1px solid #FF6600;">
+    <header id="miHeader" class="header-principal">
+        <img src="ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
+        <div class="titulos-hero">
+            <h1>DIAGNÓSTICO DE PRECISIÓN</h1>
+            <p>Inyección Electrónica Avanzada</p>
         </div>
-</section>
+        <div class="slider-marcas">
+            <div class="contenedor-logos">
+                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
+                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
+            </div>
+        </div>
+    </header>
 
-<script>
-// URL de tu base de datos (Google Sheets CSV)
-const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vThzRfHI32azvtbo9O6qH1acg2SIxB8n5iiLkrSsgk49M6Tzyy3PlnarOCl5466-MDlUBOLHPMBl55w/pub?gid=0&single=true&output=csv';
+    <div class="relleno-header"></div>
 
-// Función para proteger la identidad (Habeas Data)
-function protegerNombre(nombreCompleto) {
-    if (!nombreCompleto) return "Cliente AMS";
-    const partes = nombreCompleto.split(" ");
-    return partes.map((palabra, index) => {
-        if (index < 2) return palabra.length > 3 ? palabra.substring(0, 3) + "***" : palabra;
-        return palabra.substring(0, 1) + "***";
-    }).join(" ");
-}
+    <nav class="social-bar">
+        <a href="javascript:void(0)" onclick="irARedSocial('whatsapp', 'https://wa.me/573104886929')" class="social-icon wa"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA"></a>
+        <a href="javascript:void(0)" onclick="irARedSocial('instagram', '#')" class="social-icon ig"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG"></a>
+        <a href="javascript:void(0)" onclick="irARedSocial('facebook', '#')" class="social-icon fb"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="FB"></a>
+        <a href="javascript:void(0)" onclick="irARedSocial('tiktok', '#')" class="social-icon tk"><svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg></a>
+        <a href="javascript:void(0)" onclick="irARedSocial('mercadolibre', 'TU_LINK_DE_MERCADO_LIBRE')" class="social-icon ml" style="background: #FFF159; color: #2D3277; border-radius: 10px 0 0 10px;">
+            <i class="fa-solid fa-handshake" style="font-size: 24px;"></i>
+        </a>
+    </nav>
 
-async function consultarMoto() {
-    const placaInput = document.getElementById('placa').value.trim().toUpperCase();
-    const passInput = document.getElementById('pass').value.trim();
-    const divResultado = document.getElementById('resultado-historial');
+    <section id="por-que-nosotros" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 80px 20px; background: rgba(255,102,0,0.03);">
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">🛠️</div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Tecnología OEM</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Escáneres y herramientas de nivel original para cada marca.</p>
+        </div>
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">✅</div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Garantía Total</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Cada servicio cuenta con respaldo técnico y trazabilidad.</p>
+        </div>
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">⚡</div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Precisión</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Soluciones directas a la falla, ahorrando tiempo y repuestos innecesarios.</p>
+        </div>
+    </section>
 
-    try {
-        const respuesta = await fetch(SHEET_URL);
-        const data = await respuesta.text();
-        const filas = data.split('\n').map(fila => fila.split(','));
-
-        // f[1] es la Columna B (Placa)
-        const registros = filas.filter(f => f[1] && f[1].trim().toUpperCase() === placaInput);
-
-        if (registros.length > 0) {
-            const ultimaEntrada = registros[registros.length - 1];
-
-            // Validamos contra la Columna C (índice 2)
-            if (ultimaEntrada[2] && ultimaEntrada[2].trim() === passInput) {
-                divResultado.style.display = 'block';
-                divResultado.innerHTML = `
-                    <div style="border-bottom: 2px solid #FF6600; padding-bottom: 10px; margin-bottom: 20px;">
-                        <h3 style="margin: 0; color: #fff;">EXPEDIENTE AMS: ${ultimaEntrada[1]}</h3>
-                        <small style="color: #FF6600;">Registrado el: ${ultimaEntrada[0] || 'Reciente'}</small>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-                        <div>
-                            <p style="margin: 5px 0;"><strong>Propietario:</strong> ${protegerNombre(ultimaEntrada[3])}</p>
-                            <p style="color: #25D366; font-size: 0.85rem; margin: 5px 0;">✅ SOAT: ${ultimaEntrada[6] || '---'}</p>
-                            <p style="color: #25D366; font-size: 0.85rem; margin: 5px 0;">✅ TECNO: ${ultimaEntrada[7] || '---'}</p>
-                        </div>
-                        <div style="background: #111; padding: 10px; border-radius: 8px; border: 1px solid #333;">
-                            <p style="margin: 2px 0; font-size: 0.8rem;"><strong>KM INGRESO:</strong> ${ultimaEntrada[8] || '--'}</p>
-                            <p style="margin: 2px 0; font-size: 0.8rem;"><strong>KM SALIDA:</strong> ${ultimaEntrada[9] || '--'}</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: #000; border-radius: 10px; padding: 15px; border-left: 5px solid #FF6600;">
-                        <h4 style="margin: 0 0 10px 0; color: #FF6600; font-size: 0.9rem;">REPORTE TÉCNICO:</h4>
-                        <div style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
-                            ${ultimaEntrada[11] ? ultimaEntrada[11].replace(/🔹/g, '<br>🔹') : 'Cargando detalles...'}
-                        </div>
-                    </div>
-                `;
-                divResultado.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                alert("La contraseña no coincide para esta placa.");
-            }
-        } else {
-            alert("No se encontró historial para la placa " + placaInput);
-        }
-    } catch (error) {
-        alert("Error al conectar con la base de datos.");
-    }
-}
-</script>
-<div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 70px 20px;">
-    <h2 style="color: #FF6600; font-weight: 900;">VISÍTANOS EN SAN CRISTÓBAL SUR</h2>
-    <p style="font-size: 1.2rem; color: #ccc;">Cl. 31c Sur # 3A-72, Bogotá</p>
-    <div style="max-width: 1000px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 3px solid #FF6600;">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.108!2d-74.0937!3d4.5567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9890f7c78279%3A0xed4958ee8946d535!2sCl.%2031c%20Sur%20%233A-72%2C%20San%20Crist%C3%B3bal%2C%20Bogot%C3%A1!5e0!3m2!1ses-419!2sco!4v1711123456789!5m2!1ses-419!2sco" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <h2 style="color: #FF6600; margin-top: 60px; font-weight: 900; letter-spacing: 2px;">NUESTROS SERVICIOS</h2>
+    <div class="contenedor-servicios">
+        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');" onmouseenter="hablarDuende(tipsServicios.escaner)">
+            <div class="overlay"><h2>ESCÁNER</h2></div>
+        </a>
+        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');" onmouseenter="hablarDuende(tipsServicios.inyeccion)">
+            <div class="overlay"><h2>INYECCIÓN</h2></div>
+        </a>
+        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');" onmouseenter="hablarDuende(tipsServicios.remap)">
+            <div class="overlay"><h2>REMAP ECU</h2></div>
+        </a>
+        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://m.media-amazon.com/images/I/71u+O9n-yVL._AC_SL1500_.jpg');" onmouseenter="hablarDuende(tipsServicios.accesorios)">
+            <div class="overlay"><h2>ACCESORIOS</h2></div>
+        </a>
     </div>
-</div>
 
-<footer style="padding: 50px 20px; background: #000; font-size: 0.95rem; color: #666; border-top: 1px solid #111;">
-    © 2026 <strong>ALLMOTOSYNC</strong> | Pasión por la Ingeniería en Dos Ruedas.
-</footer>
+    <div style="padding: 60px 0; background: rgba(0,0,0,0.3);">
+        <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px;">TRABAJOS REALIZADOS</h2>
+        <div class="contenedor-galeria">
+            <div class="item-trabajo" onmouseenter="hablarDuende(tipsTrabajos.arrastre)">
+                <video autoplay muted loop playsinline><source src="kit arrastre.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>KIT ARRASTRE</h4></div>
+            </div>
+            <div class="item-trabajo" onmouseenter="hablarDuende(tipsTrabajos.electrico)">
+                <video autoplay muted loop playsinline><source src="instalacion gps.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>SISTEMA ELÉCTRICO / GPS</h4></div>
+            </div>
+            <div class="item-trabajo" onmouseenter="hablarDuende(tipsTrabajos.frenos)">
+                <video autoplay muted loop playsinline><source src="frenos.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>SISTEMA DE FRENOS</h4></div>
+            </div>
+            <div class="item-trabajo" onmouseenter="hablarDuende(tipsTrabajos.sincro)">
+                <video autoplay muted loop playsinline><source src="sincro motor.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>SINCRONIZACIÓN MOTOR</h4></div>
+            </div>
+        </div>
+    </div>
 
-<script>
-  // 1. Efecto de reducción del Header al hacer scroll
-  window.onscroll = function() {
-      var header = document.getElementById("miHeader");
-      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-          header.classList.add("header-reducido");
-      } else {
-          header.classList.remove("header-reducido");
-      }
-  };
+    <a href="https://wa.me/573104886929?text=Hola!%20Quisiera%20agendar%20un%20servicio%20en%20ALLMOTOSYNC" class="btn-agendar" onmouseenter="hablarDuende('¡Listo para agendar! Haz clic aquí para apartar tu turno sin filas.')">Agendar Cita Ahora</a>
 
-  // 2. Registro oficial del Service Worker para que sea una App
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('./service-worker.js')
-        .then(function(registration) {
-          console.log('AMS App lista:', registration.scope);
-        })
-        .catch(function(err) {
-          console.log('Fallo registro AMS:', err);
+    <section id="consulta-cliente" style="padding: 60px 20px; background: #000; border-top: 2px solid #FF6600;">
+        <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px;">EXPEDIENTE DIGITAL AMS</h2>
+        <p style="color: #ccc;">Consulte el historial técnico y trazabilidad de su motocicleta.</p>
+        
+        <div style="max-width: 400px; margin: 30px auto; background: #111; padding: 30px; border-radius: 15px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(255,102,0,0.1);">
+            <input type="text" id="placa" placeholder="PLACA (Ej: AAA99A)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff; text-transform: uppercase;" onfocus="hablarDuende('Digita tu placa y clave para acceder al historial clínico de tu moto.')">
+            <input type="password" id="pass" placeholder="CONTRASEÑA (Otorgada por AMS)" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff;">
+            <button onclick="consultarMoto()" style="width: 100%; padding: 15px; background: #FF6600; color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: 0.3s;">Ver Historial</button>
+        </div>
+
+        <div id="resultado-historial" style="max-width: 850px; margin: 0 auto; display: none; text-align: left; background: #111; padding: 25px; border-radius: 15px; border: 1px solid #FF6600;">
+        </div>
+    </section>
+
+    <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 70px 20px;">
+        <h2 style="color: #FF6600; font-weight: 900;">VISÍTANOS EN SAN CRISTÓBAL SUR</h2>
+        <p style="font-size: 1.2rem; color: #ccc;">Cl. 31c Sur # 3A-72, Bogotá</p>
+        <div style="max-width: 1000px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 3px solid #FF6600;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.108!2d-74.0937!3d4.5567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9890f7c78279%3A0xed4958ee8946d535!2sCl.%2031c%20Sur%20%233A-72%2C%20San%20Crist%C3%B3bal%2C%20Bogot%C3%A1!5e0!3m2!1ses-419!2sco!4v1711123456789!5m2!1ses-419!2sco" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- ESTRUCTURA DEL DUENDE TÉCNICO INTERACTIVO -->
+    <div id="duende-container">
+        <div class="duende-avatar" onclick="cambiarTipAleatorio()">
+            <img src="A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin (1).jpg" alt="Duende Técnico AMS" id="img-duende">
+        </div>
+        <div class="duende-bubble" id="duende-text">
+            ¡Hola! Soy el Duende Técnico de <b>AMS</b> 🛠️. Tócame o pasa el cursor por los servicios para ver mis tips.
+        </div>
+    </div>
+
+    <footer style="padding: 50px 20px; background: #000; font-size: 0.95rem; color: #666; border-top: 1px solid #111;">
+        © 2026 <strong>ALLMOTOSYNC S.A.S.</strong> | Pasión por la Ingeniería en Dos Ruedas.
+    </footer>
+
+    <script>
+    // --- LÓGICA DEL EXPEDIENTE DIGITAL ---
+    const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vThzRfHI32azvtbo9O6qH1acg2SIxB8n5iiLkrSsgk49M6Tzyy3PlnarOCl5466-MDlUBOLHPMBl55w/pub?gid=0&single=true&output=csv';
+
+    function protegerNombre(nombreCompleto) {
+        if (!nombreCompleto) return "Cliente AMS";
+        const partes = nombreCompleto.split(" ");
+        return partes.map((palabra, index) => {
+            if (index < 2) return palabra.length > 3 ? palabra.substring(0, 3) + "***" : palabra;
+            return palabra.substring(0, 1) + "***";
+        }).join(" ");
+    }
+
+    async function consultarMoto() {
+        const placaInput = document.getElementById('placa').value.trim().toUpperCase();
+        const passInput = document.getElementById('pass').value.trim();
+        const divResultado = document.getElementById('resultado-historial');
+
+        try {
+            const respuesta = await fetch(SHEET_URL);
+            const data = await respuesta.text();
+            const filas = data.split('\n').map(fila => fila.split(','));
+
+            const registros = filas.filter(f => f[1] && f[1].trim().toUpperCase() === placaInput);
+
+            if (registros.length > 0) {
+                const ultimaEntrada = registros[registros.length - 1];
+
+                if (ultimaEntrada[2] && ultimaEntrada[2].trim() === passInput) {
+                    divResultado.style.display = 'block';
+                    divResultado.innerHTML = `
+                        <div style="border-bottom: 2px solid #FF6600; padding-bottom: 10px; margin-bottom: 20px;">
+                            <h3 style="margin: 0; color: #fff;">EXPEDIENTE AMS: ${ultimaEntrada[1]}</h3>
+                            <small style="color: #FF6600;">Registrado el: ${ultimaEntrada[0] || 'Reciente'}</small>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                            <div>
+                                <p style="margin: 5px 0;"><strong>Propietario:</strong> ${protegerNombre(ultimaEntrada[3])}</p>
+                                <p style="color: #25D366; font-size: 0.85rem; margin: 5px 0;">✅ SOAT: ${ultimaEntrada[6] || '---'}</p>
+                                <p style="color: #25D366; font-size: 0.85rem; margin: 5px 0;">✅ TECNO: ${ultimaEntrada[7] || '---'}</p>
+                            </div>
+                            <div style="background: #111; padding: 10px; border-radius: 8px; border: 1px solid #333;">
+                                <p style="margin: 2px 0; font-size: 0.8rem;"><strong>KM INGRESO:</strong> ${ultimaEntrada[8] || '--'}</p>
+                                <p style="margin: 2px 0; font-size: 0.8rem;"><strong>KM SALIDA:</strong> ${ultimaEntrada[9] || '--'}</p>
+                            </div>
+                        </div>
+                        
+                        <div style="background: #000; border-radius: 10px; padding: 15px; border-left: 5px solid #FF6600;">
+                            <h4 style="margin: 0 0 10px 0; color: #FF6600; font-size: 0.9rem;">REPORTE TÉCNICO:</h4>
+                            <div style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
+                                ${ultimaEntrada[11] ? ultimaEntrada[11].replace(/🔹/g, '<br>🔹') : 'Cargando detalles...'}
+                            </div>
+                        </div>
+                    `;
+                    divResultado.scrollIntoView({ behavior: 'smooth' });
+                    hablarDuende('¡Expediente encontrado! Revisa el reporte completo de tu motocicleta.');
+                } else {
+                    alert("La contraseña no coincide para esta placa.");
+                    hablarDuende('Ups, la contraseña parece incorrecta. Inténtalo de nuevo.');
+                }
+            } else {
+                alert("No se encontró historial para la placa " + placaInput);
+                hablarDuende('No encontré esa placa en la base de datos de AMS.');
+            }
+        } catch (error) {
+            alert("Error al conectar con la base de datos.");
+        }
+    }
+
+    // --- LÓGICA DEL DUENDE Y INTERACCIONES ---
+    const duendeText = document.getElementById('duende-text');
+
+    const tipsServicios = {
+        escaner: "El escáner OEM lee códigos DTC y datos en vivo para detectar fallas que a simple vista no se ven.",
+        inyeccion: "Sincronizar no es solo lavar piezas; es calibrar el cuerpo de aceleración con escáner para evitar exceso de consumo de gasolina.",
+        remap: "Reprogramamos la ECU para optimizar la curva de potencia y la respuesta del acelerador según la altitud.",
+        accesorios: "Instalamos accesorios protegiendo la red CAN-Bus de la moto para evitar cortocircuitos."
+    };
+
+    const tipsTrabajos = {
+        arrastre: "Mantener la cadena tensionada y lubricada duplica la vida útil de las coronas y del piñón de salida.",
+        electrico: "Utilizamos termoencogible y aislamiento automotriz para instalaciones de GPS totalmente limpias.",
+        frenos: "Si la manigueta se siente esponjosa, tienes aire o humedad en el líquido. Salva tu sistema ABS a tiempo.",
+        sincro: "Un mantenimiento preventivo periódico de inyección evita el desgaste prematuro de las válvulas."
+    };
+
+    const tipsGeneral = [
+        "Sincronizar no es solo lavar piezas; es calibrar el cuerpo de aceleración con escáner para evitar consumo excesivo.",
+        "Un fallo de sensor TPS hace que la moto jalonee en bajas. ¡Lo diagnosticamos con precisión!",
+        "La salud de la batería es clave para evitar fallas fantasma en motos de inyección electrónica.",
+        "¿Sabías que un filtro de aire sucio altera los mapas de inyección y sobrecalienta el motor?"
+    ];
+
+    const mensajesRedes = {
+        whatsapp: "¡De una! Te abro el WhatsApp para cotizar o agendar cita directo en el taller...",
+        instagram: "¡Vamos a Instagram a ver las fotos de los mejores diagnósticos y trabajos!",
+        facebook: "¡Te dirijo al Facebook oficial de AllMotoSync!",
+        tiktok: "¡De una, vamos a TikTok a ver los casos clínicos y videos técnicos! 🎬",
+        mercadolibre: "¡Te redirijo a la tienda para ver repuestos y accesorios disponibles!"
+    };
+
+    function hablarDuende(mensaje) {
+        duendeText.style.animation = 'none';
+        duendeText.offsetHeight;
+        duendeText.style.animation = 'popupDuende 0.4s ease-out';
+        duendeText.innerHTML = mensaje;
+    }
+
+    function cambiarTipAleatorio() {
+        const randomTip = tipsGeneral[Math.floor(Math.random() * tipsGeneral.length)];
+        hablarDuende(randomTip);
+    }
+
+    function irARedSocial(red, url) {
+        if (mensajesRedes[red]) {
+            hablarDuende(mensajesRedes[red]);
+            setTimeout(() => {
+                window.open(url, '_blank');
+            }, 1200);
+        } else {
+            window.open(url, '_blank');
+        }
+    }
+
+    // --- SCROLL Y SERVICE WORKER ---
+    window.onscroll = function() {
+        var header = document.getElementById("miHeader");
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            header.classList.add("header-reducido");
+        } else {
+            header.classList.remove("header-reducido");
+        }
+    };
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(function(registration) {
+                    console.log('AMS App lista:', registration.scope);
+                })
+                .catch(function(err) {
+                    console.log('Fallo registro AMS:', err);
+                });
         });
-    });
-  }
-</script>
+    }
+    </script>
 </body>
 </html>
