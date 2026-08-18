@@ -126,25 +126,26 @@
             to { opacity: 1; }
         }
 
-        /* --- ESTILOS MEJORADOS DEL DUENDE TÉCNICO INTERACTIVO --- */
-        #duende-container {
+        /* --- TÉCNICO CALIFICADO AMS (MÁS GRANDE Y TIPS ARRIBA) --- */
+        #tecnico-container {
             position: fixed;
             bottom: 25px;
-            left: 20px;
+            left: 25px;
             display: flex;
-            align-items: flex-end;
+            flex-direction: column-reverse;
+            align-items: flex-start;
             gap: 12px;
             z-index: 9998;
             pointer-events: none;
         }
 
-        .duende-avatar {
-            width: 80px;
-            height: 80px;
+        .tecnico-avatar {
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             background-color: #0d121c;
-            border: 3px solid #FF6600;
-            box-shadow: 0 0 20px rgba(255, 102, 0, 0.5), inset 0 0 10px rgba(0,0,0,0.8);
+            border: 4px solid #FF6600;
+            box-shadow: 0 0 25px rgba(255, 102, 0, 0.6), inset 0 0 10px rgba(0,0,0,0.8);
             cursor: pointer;
             pointer-events: auto;
             overflow: hidden;
@@ -152,66 +153,68 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: pulseDuende 3s infinite ease-in-out;
+            animation: pulseTecnico 3s infinite ease-in-out;
         }
 
-        .duende-avatar:hover {
-            transform: scale(1.12) rotate(-4deg);
-            box-shadow: 0 0 30px rgba(255, 102, 0, 0.8);
+        .tecnico-avatar:hover {
+            transform: scale(1.1) rotate(-3deg);
+            box-shadow: 0 0 35px rgba(255, 102, 0, 0.9);
         }
 
-        .duende-avatar img {
+        .tecnico-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: opacity 0.3s ease;
         }
 
-        .duende-bubble {
+        .tecnico-bubble {
             background-color: #111111;
             color: #ffffff;
             border: 2px solid #FF6600;
             border-radius: 16px;
-            padding: 12px 16px;
-            max-width: 260px;
-            font-size: 13px;
+            padding: 14px 18px;
+            max-width: 320px;
+            font-size: 13.5px;
             font-family: 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
-            line-height: 1.4;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            line-height: 1.45;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             position: relative;
             pointer-events: auto;
             text-align: left;
-            animation: popupDuende 0.4s ease-out;
+            animation: popupTecnico 0.4s ease-out;
         }
 
-        .duende-bubble::after {
+        /* Flecha apuntando hacia el avatar abajo */
+        .tecnico-bubble::after {
             content: '';
             position: absolute;
-            bottom: 18px;
-            left: -10px;
-            border-width: 8px 10px 8px 0;
+            bottom: -10px;
+            left: 35px;
+            border-width: 10px 8px 0 8px;
             border-style: solid;
-            border-color: transparent #FF6600 transparent transparent;
+            border-color: #FF6600 transparent transparent transparent;
         }
 
-        @keyframes popupDuende {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        @keyframes popupTecnico {
+            0% { transform: translateY(10px) scale(0.95); opacity: 0; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
         }
 
-        @keyframes pulseDuende {
+        @keyframes pulseTecnico {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.04); }
+            50% { transform: scale(1.03); }
         }
 
         @media (max-width: 768px) {
             .relleno-header { height: 350px; }
             .titulos-hero h1 { font-size: 1.6rem; }
             #logo-ams { width: 300px; }
-            #duende-container { bottom: 15px; left: 10px; }
-            .duende-avatar { width: 65px; height: 65px; }
-            .duende-bubble { max-width: 200px; font-size: 11px; padding: 10px 12px; }
+            #tecnico-container { bottom: 15px; left: 15px; }
+            .tecnico-avatar { width: 85px; height: 85px; }
+            .tecnico-bubble { max-width: 240px; font-size: 12px; padding: 10px 14px; }
         }
     </style>
 </head>
@@ -265,16 +268,16 @@
 
     <h2 style="color: #FF6600; margin-top: 60px; font-weight: 900; letter-spacing: 2px;">NUESTROS SERVICIOS</h2>
     <div class="contenedor-servicios">
-        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');" onmouseenter="hablarDuende(tipsServicios.escaner)">
+        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('SCANNER KTM.webp');" onmouseenter="hablarTecnico(tipsEspecificos.escaner)">
             <div class="overlay"><h2>ESCÁNER</h2></div>
         </a>
-        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');" onmouseenter="hablarDuende(tipsServicios.inyeccion)">
+        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('LAV INYECTORES.png');" onmouseenter="hablarTecnico(tipsEspecificos.inyeccion)">
             <div class="overlay"><h2>INYECCIÓN</h2></div>
         </a>
-        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');" onmouseenter="hablarDuende(tipsServicios.remap)">
+        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: url('PROG ECU.jfif');" onmouseenter="hablarTecnico(tipsEspecificos.remap)">
             <div class="overlay"><h2>REMAP ECU</h2></div>
         </a>
-        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://m.media-amazon.com/images/I/71u+O9n-yVL._AC_SL1500_.jpg');" onmouseenter="hablarDuende(tipsServicios.accesorios)">
+        <a href="https://wa.me/573104886929" class="tarjeta-click" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://m.media-amazon.com/images/I/71u+O9n-yVL._AC_SL1500_.jpg');" onmouseenter="hablarTecnico(tipsEspecificos.accesorios)">
             <div class="overlay"><h2>ACCESORIOS</h2></div>
         </a>
     </div>
@@ -282,33 +285,33 @@
     <div style="padding: 60px 0; background: rgba(0,0,0,0.3);">
         <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px;">TRABAJOS REALIZADOS</h2>
         <div class="contenedor-galeria">
-            <div class="item-trabajo" onmouseenter="hablarDuende(tipsTrabajos.arrastre)">
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.arrastre)">
                 <video autoplay muted loop playsinline><source src="kit arrastre.mp4.mp4" type="video/mp4"></video>
                 <div class="info-trabajo"><h4>KIT ARRASTRE</h4></div>
             </div>
-            <div class="item-trabajo" onmouseenter="hablarDuende(tipsTrabajos.electrico)">
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.electrico)">
                 <video autoplay muted loop playsinline><source src="instalacion gps.mp4.mp4" type="video/mp4"></video>
                 <div class="info-trabajo"><h4>SISTEMA ELÉCTRICO / GPS</h4></div>
             </div>
-            <div class="item-trabajo" onmouseenter="hablarDuende(tipsTrabajos.frenos)">
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.frenos)">
                 <video autoplay muted loop playsinline><source src="frenos.mp4.mp4" type="video/mp4"></video>
                 <div class="info-trabajo"><h4>SISTEMA DE FRENOS</h4></div>
             </div>
-            <div class="item-trabajo" onmouseenter="hablarDuende(tipsTrabajos.sincro)">
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.sincro)">
                 <video autoplay muted loop playsinline><source src="sincro motor.mp4.mp4" type="video/mp4"></video>
                 <div class="info-trabajo"><h4>SINCRONIZACIÓN MOTOR</h4></div>
             </div>
         </div>
     </div>
 
-    <a href="https://wa.me/573104886929?text=Hola!%20Quisiera%20agendar%20un%20servicio%20en%20ALLMOTOSYNC" class="btn-agendar" onmouseenter="hablarDuende('¡Listo para agendar! Haz clic aquí para apartar tu turno sin filas.')">Agendar Cita Ahora</a>
+    <a href="https://wa.me/573104886929?text=Hola!%20Quisiera%20agendar%20un%20servicio%20en%20ALLMOTOSYNC" class="btn-agendar" onmouseenter="hablarTecnico('¡Listo para agendar! Haz clic aquí para apartar tu turno sin filas.')">Agendar Cita Ahora</a>
 
     <section id="consulta-cliente" style="padding: 60px 20px; background: #000; border-top: 2px solid #FF6600;">
         <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px;">EXPEDIENTE DIGITAL AMS</h2>
         <p style="color: #ccc;">Consulte el historial técnico y trazabilidad de su motocicleta.</p>
         
         <div style="max-width: 400px; margin: 30px auto; background: #111; padding: 30px; border-radius: 15px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(255,102,0,0.1);">
-            <input type="text" id="placa" placeholder="PLACA (Ej: AAA99A)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff; text-transform: uppercase;" onfocus="hablarDuende('Digita tu placa y clave para acceder al historial clínico de tu moto.')">
+            <input type="text" id="placa" placeholder="PLACA (Ej: AAA99A)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff; text-transform: uppercase;" onfocus="hablarTecnico('Digita tu placa y clave para acceder al historial clínico de tu moto.')">
             <input type="password" id="pass" placeholder="CONTRASEÑA (Otorgada por AMS)" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff;">
             <button onclick="consultarMoto()" style="width: 100%; padding: 15px; background: #FF6600; color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: 0.3s;">Ver Historial</button>
         </div>
@@ -325,22 +328,33 @@
         </div>
     </div>
 
-    <!-- ESTRUCTURA DEL DUENDE TÉCNICO INTERACTIVO -->
-    <div id="duende-container">
-        <div class="duende-avatar" onclick="cambiarTipAleatorio()">
-            <img src="A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin (1).jpg" alt="Duende Técnico AMS" id="img-duende">
+    <!-- TÉCNICO CALIFICADO AMS INTERACTIVO -->
+    <div id="tecnico-container">
+        <div class="tecnico-avatar" onclick="cambiarTipYFotoManual()">
+            <img src="A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin (1).jpg" alt="Técnico Calificado AMS" id="img-tecnico">
         </div>
-        <div class="duende-bubble" id="duende-text">
-            ¡Hola! Soy el Duende Técnico de <b>AMS</b> 🛠️. Tócame o pasa el cursor por los servicios para ver mis tips.
+        <div class="tecnico-bubble" id="tecnico-text">
+            ¡Hola! Soy tu <b>Técnico Calificado AMS</b> 🛠️. Tócame para cambiar de tip técnico o explora los servicios.
         </div>
     </div>
 
-    <footer style="padding: 50px 20px; background: #000; font-size: 0.95rem; color: #666; border-top: 1px solid #111;">
-        © 2026 <strong>ALLMOTOSYNC S.A.S.</strong> | Pasión por la Ingeniería en Dos Ruedas.
+    <footer style="padding: 50px 20px 30px; background: #000; font-size: 0.85rem; color: #888; border-top: 1px solid #222; text-align: center;">
+        <div style="max-width: 1000px; margin: 0 auto; line-height: 1.6;">
+            <p style="color: #aaa; margin-bottom: 15px;">
+                <strong style="color: #FF6600;">AVISO LEGAL Y PROPIEDAD INTELECTUAL:</strong> 
+                Todo el contenido presente en este sitio web, incluyendo logotipos, marcas comerciales ("ALLMOTOSYNC", "AMS"), gráficos, fotografías, videos de procedimientos, código fuente y la interfaz técnica interactiva, son propiedad exclusiva de <strong>ALLMOTOSYNC S.A.S.</strong> y están protegidos por las leyes de propiedad intelectual e industrial vigentes en Colombia e internacionales. Queda estrictamente prohibida la reproducción, distribución, modificación o uso no autorizado total o parcial de este material sin el consentimiento previo y por escrito de la compañía.
+            </p>
+            <p style="color: #666; font-size: 0.78rem; margin-bottom: 20px;">
+                <em>Marcas de Terceros:</em> Nombres de fabricantes, marcas y modelos de motocicletas (tales como KTM, Honda, Yamaha, Kawasaki, Suzuki, Bajaj, AKT, Benelli, entre otros) se mencionan únicamente con fines descriptivos para indicar la compatibilidad de nuestros servicios de diagnóstico e inyección electrónica, y son marcas registradas de sus respectivos titulares.
+            </p>
+            <div style="border-top: 1px solid #111; padding-top: 15px; color: #555;">
+                © 2026 <strong>ALLMOTOSYNC S.A.S.</strong> | Todos los derechos reservados.
+            </div>
+        </div>
     </footer>
 
     <script>
-    // --- LÓGICA DEL EXPEDIENTE DIGITAL ---
+    // --- EXPEDIENTE DIGITAL ---
     const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vThzRfHI32azvtbo9O6qH1acg2SIxB8n5iiLkrSsgk49M6Tzyy3PlnarOCl5466-MDlUBOLHPMBl55w/pub?gid=0&single=true&output=csv';
 
     function protegerNombre(nombreCompleto) {
@@ -395,43 +409,144 @@
                         </div>
                     `;
                     divResultado.scrollIntoView({ behavior: 'smooth' });
-                    hablarDuende('¡Expediente encontrado! Revisa el reporte completo de tu motocicleta.');
+                    hablarTecnico('¡Expediente encontrado! Revisa el reporte técnico de tu motocicleta.');
                 } else {
                     alert("La contraseña no coincide para esta placa.");
-                    hablarDuende('Ups, la contraseña parece incorrecta. Inténtalo de nuevo.');
+                    hablarTecnico('Ups, la contraseña parece incorrecta. Inténtalo de nuevo.');
                 }
             } else {
                 alert("No se encontró historial para la placa " + placaInput);
-                hablarDuende('No encontré esa placa en la base de datos de AMS.');
+                hablarTecnico('No encontré esa placa en la base de datos de AMS.');
             }
         } catch (error) {
             alert("Error al conectar con la base de datos.");
         }
     }
 
-    // --- LÓGICA DEL DUENDE Y INTERACCIONES ---
-    const duendeText = document.getElementById('duende-text');
+    // --- IMÁGENES ROTATIVAS DEL TÉCNICO CALIFICADO ---
+    const imagenesTecnico = [
+        "A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin (1).jpg",
+        "A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin (2).jpg",
+        "A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin (3).jpg",
+        "A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin.jpg"
+    ];
 
-    const tipsServicios = {
+    let indiceImagenActual = 0;
+
+    // --- 100 TIPS TÉCNICOS AMS ---
+    const tipsTecnicos100 = [
+        "El escáner OEM detecta fallas intermitentes que no siempre encienden el testigo Check Engine.",
+        "Sincronizar no es solo lavar partes; es calibrar el cuerpo de aceleración mediante escáner.",
+        "Un sensor TPS descalibrado genera tirones bruscos al acelerar en bajas revoluciones.",
+        "La humedad en el líquido de frenos reduce el punto de ebullición y provoca pérdida de presión.",
+        "El mapa de inyección ajusta el tiempo de apertura del inyector según temperatura y presión.",
+        "Lavar inyectores en tina de ultrasonido remueve depósitos que alteran el patrón de pulverización.",
+        "Un filtro de aire saturado enriquece la mezcla en exceso y aumenta el consumo de combustible.",
+        "Las bujías de iridio garantizan una chispa constante y soportan mayores exigencias térmicas.",
+        "Revisar el voltaje de la batería en marcha evita fallas fantasma en los módulos electrónicos.",
+        "El ajuste de holgura de válvulas es vital para mantener la compresión correcta del motor.",
+        "Reprogramar la ECU optimiza la entrega de torque sin comprometer la confiabilidad del motor.",
+        "Un sensor de oxígeno O2 desgastado ralentiza la corrección de combustible en tiempo real.",
+        "El líquido de frenos DOT 4 absorbe humedad con el tiempo; cámbialo al menos una vez al año.",
+        "Una cadena muy tensionada destruye los rodamientos de la caja de cambios y del piñón de salida.",
+        "El sensor IAT mide la temperatura del aire para adaptar la densidad del combustible inyectado.",
+        "Los conectores eléctricos sulfatados alteran el voltaje de retorno de los sensores analógicos.",
+        "Sincronizar los cuerpos de aceleración dobles evita vibraciones molestas a ralentí.",
+        "Un regulador de voltaje dañado puede quemar la bomba de gasolina o la propia computadora.",
+        "Instalar accesorios con relé dedicado protege el arnés principal y la red CAN-Bus de la moto.",
+        "El escáner permite realizar prueba de actuadores para probar solenoides sin desmontarlos.",
+        "El líquido refrigerante orgánico evita la cavitación y corrosión en el radiador de aluminio.",
+        "Sensores CKP sucios de limalla magnética causan apagones repentinos en caliente.",
+        "El sensor MAP mide la presión absoluta del colector para calcular la carga del motor.",
+        "Un inyector goteando puede lavar la película de aceite del cilindro y rayar el pistón.",
+        "El balanceo de ruedas elimina vibraciones en el manubrio a más de 80 km/h.",
+        "El sistema ABS modula la presión hidráulica hasta 15 veces por segundo para evitar el bloqueo.",
+        "Ajustar el sensor de posición de mariposa requiere precisión milimétrica de microvoltios.",
+        "Las fugas de vacío en la admisión provocan ralentí inestable y aceleración tardía.",
+        "Usar limpiadores agresivos en el cuerpo de inyección puede corroer el recubrimiento especial.",
+        "Un relé principal sulfatado genera cortes intermitentes de corriente en toda la moto.",
+        "El diagnóstico osciloscópico analiza la forma de onda de los inyectores en microsegundos.",
+        "Una chispa débil no siempre es la bujía; puede ser la bobina de encendido desvalorizada.",
+        "El sensor de inclinación apaga la bomba de combustible inmediatamente en caso de caída.",
+        "Controlar la presión de gasolina en la rampa confirma si la bomba tiene la fuerza requerida.",
+        "El mantenimiento preventivo sale siempre más económico que reparar fallas catastróficas.",
+        "Verificar la tensión de la cadenilla de distribución previene choques entre válvulas y pistón.",
+        "El líquido de frenos sintético resiste temperaturas extremas en curvas y bajadas prolongadas.",
+        "Sensores Hall desalineados impiden que la ECU detecte el punto muerto superior (PMS).",
+        "El escáner borra los códigos de falla históricos para evaluar cambios reales en tiempo real.",
+        "Un tapón de radiador desgastado pierde la capacidad de mantener presión y causa sobrecalentamiento.",
+        "El remapeo ajusta las curvas de combustible para compensar modificaciones como escape de alto flujo.",
+        "La lubricación adecuada del cable de acelerador garantiza una respuesta suave y precisa.",
+        "Cables de batería flojos son la causa #1 de fallas de arranque en sistemas de inyección.",
+        "El filtro de gasolina sumergido en el tanque debe cambiarse periódicamente para no forzar la bomba.",
+        "La prueba de compresión de cilindros revela el estado interno de anillos y asentamiento de válvulas.",
+        "El acelerador electrónico (Ride-by-Wire) requiere calibración de tope mínimo y máximo por escáner.",
+        "Los rodamientos de la cuna de dirección desgastados generan inestabilidad en recta.",
+        "Sensores de rueda ABS sucios con barro o limalla arrojan códigos de falla falsos.",
+        "El uso de combustible de bajo octanaje en motores de alta compresión produce cascabeleo (cascabeleo).",
+        "Limpiar los bornes de la batería con agua tibia elimina la sulfatación rápidamente.",
+        "El aceite sintético mantiene sus propiedades viscosas a temperaturas más altas que el mineral.",
+        "Un termostato pegado en posición cerrada destruirá el empaque de culata por sobrecalentamiento.",
+        "Las fugas en el empaque de escape alteran la lectura del sensor O2 y enriquecen la mezcla.",
+        "Revisar el estado del diafragma de aire previene entradas de aire no contabilizadas.",
+        "El solenoide de marcha mínima (IACV) regula el paso de aire cuando no estás acelerando.",
+        "Pruebas de fuga de cilindro (Leak Down) identifican exactamente por dónde se pierde compresión.",
+        "La banda de hule protectora en el basculante evita que la cadena corte el aluminio.",
+        "Un sensor ECT defectuoso le hace creer a la computadora que el motor siempre está frío.",
+        "La holgura correcta en la manigueta de embrague evita que los discos patinen prematuramente.",
+        "Fusibles sulfatados generan caídas de tensión indetectables con un simple multímetro.",
+        "El escáner OEM muestra el historial de temperaturas máximas alcanzadas por el motor.",
+        "Un disco de freno alabeado (pando) provoca pulsaciones molestas en la manigueta al frenar.",
+        "El protector de bobina evita que saltos de alta tensión dañen la unidad de control (ECU).",
+        "Los inyectores piezoeléctricos trabajan con voltajes elevados para lograr aperturas ultra rápidas.",
+        "El torque adecuado en los tornillos de culata es vital para evitar deformaciones térmicas.",
+        "Un interruptor de pata lateral defectuoso apagará el motor de forma imprevista al meter cambio.",
+        "Cambiar el filtro de aceite en cada cambio de lubricante prolonga la vida útil del cigüeñal.",
+        "El escáner analiza la señal del sensor TPS durante todo su recorrido sin desmontar el cuerpo.",
+        "Las pastillas de freno sinterizadas ofrecen mayor agarre pero requieren discos de calidad alta.",
+        "El kit de arrastre debe cambiarse completo: piñón, corona y cadena de o-rings.",
+        "El exceso de aceite en el cárter crea espuma y aumenta la presión en los retenes.",
+        "Un sensor de velocidad dañado no solo anula el velocímetro, también afecta el calculador del ABS.",
+        "El mantenimiento del sistema de refrigeración incluye drenaje, limpieza de circuito y refrigerante nuevo.",
+        "El sensor de detonación (Knock Sensor) retrasa el tiempo de encendido si detecta autoencendido.",
+        "Verificar la alineación de la rueda trasera asegura un desgaste parejo de las llantas.",
+        "El sistema EVAP capta vapores de gasolina para quemarlos en el motor y reducir emisiones.",
+        "La prueba de carga a la batería determina su capacidad real de arranque, no solo su voltaje.",
+        "Usar agua de grifo en el radiador crea sarro y bloquea los conductos del bloque del motor.",
+        "El remapeo de fábrica suele venir restringido por normativas de emisiones; un remap libera su potencial.",
+        "Un amortiguador traseros vencido provoca que la llanta rebote perdiendo tracción en curvas.",
+        "Los cables de alta tensión envejecidos pierden aislamiento y derivan chispa al chasis.",
+        "El filtro de aire de alto flujo requiere lavado y aceitado especial para no dejar pasar mugre.",
+        "Un alternador con diodo dañado genera corriente alterna que enloquece la computadora.",
+        "Las mangueras de freno de goma se expanden con el tiempo; las blindadas mantienen la presión constante.",
+        "El escáner registra el número de arranques y las horas totales de funcionamiento del motor.",
+        "Un buje de tijera desgastado produce desalineación trasera y sensación de coletazo.",
+        "La calibración del sensor de marcha enganchada (Gear Sensor) es clave para el funcionamiento del Quickshifter.",
+        "Un regulador de presión de combustible pegado genera exceso de humo negro en el escape.",
+        "La limpieza de los sensores de oxígeno se realiza con aire y productos sin silicón.",
+        "La holgura de la manigueta de freno asegura que las pastillas no queden rozando el disco.",
+        "Un electroventilador que gira lento no disipará suficiente calor en trancones densos.",
+        "Revisar el estado del piñón de arranque previene ruidos metálicos al encender.",
+        "Los conectores sellados con empaque de silicona evitan la entrada de agua en lavados a presión.",
+        "El mantenimiento preventivo de la horquilla delantera cambia el aceite hidráulico retenido.",
+        "Un tapón de aceite magnético atrapa partículas ferrosas evitando que circulen en el motor.",
+        "El sensor CPS detecta la posición del árbol de levas para sincronizar la secuencia de inyección.",
+        "El remapeo personalizado ajusta el mapa de combustible según la altitud de la ciudad.",
+        "Una prueba de vacío constante determina la salud mecánica de los sellos de válvula.",
+        "El escáner especializado de AMS permite resetear los parámetros adaptativos de la ECU.",
+        "Confía el corazón electrónico de tu motocicleta únicamente en especialistas con equipo OEM."
+    ];
+
+    const tipsEspecificos = {
         escaner: "El escáner OEM lee códigos DTC y datos en vivo para detectar fallas que a simple vista no se ven.",
-        inyeccion: "Sincronizar no es solo lavar piezas; es calibrar el cuerpo de aceleración con escáner para evitar exceso de consumo de gasolina.",
+        inyeccion: "Sincronizar no es solo lavar piezas; es calibrar el cuerpo de aceleración con escáner para evitar exceso de consumo.",
         remap: "Reprogramamos la ECU para optimizar la curva de potencia y la respuesta del acelerador según la altitud.",
-        accesorios: "Instalamos accesorios protegiendo la red CAN-Bus de la moto para evitar cortocircuitos."
-    };
-
-    const tipsTrabajos = {
+        accesorios: "Instalamos accesorios protegiendo la red CAN-Bus de la moto para evitar cortocircuitos.",
         arrastre: "Mantener la cadena tensionada y lubricada duplica la vida útil de las coronas y del piñón de salida.",
         electrico: "Utilizamos termoencogible y aislamiento automotriz para instalaciones de GPS totalmente limpias.",
         frenos: "Si la manigueta se siente esponjosa, tienes aire o humedad en el líquido. Salva tu sistema ABS a tiempo.",
         sincro: "Un mantenimiento preventivo periódico de inyección evita el desgaste prematuro de las válvulas."
     };
-
-    const tipsGeneral = [
-        "Sincronizar no es solo lavar piezas; es calibrar el cuerpo de aceleración con escáner para evitar consumo excesivo.",
-        "Un fallo de sensor TPS hace que la moto jalonee en bajas. ¡Lo diagnosticamos con precisión!",
-        "La salud de la batería es clave para evitar fallas fantasma en motos de inyección electrónica.",
-        "¿Sabías que un filtro de aire sucio altera los mapas de inyección y sobrecalienta el motor?"
-    ];
 
     const mensajesRedes = {
         whatsapp: "¡De una! Te abro el WhatsApp para cotizar o agendar cita directo en el taller...",
@@ -441,21 +556,39 @@
         mercadolibre: "¡Te redirijo a la tienda para ver repuestos y accesorios disponibles!"
     };
 
-    function hablarDuende(mensaje) {
-        duendeText.style.animation = 'none';
-        duendeText.offsetHeight;
-        duendeText.style.animation = 'popupDuende 0.4s ease-out';
-        duendeText.innerHTML = mensaje;
+    const tecnicoText = document.getElementById('tecnico-text');
+    const imgTecnico = document.getElementById('img-tecnico');
+
+    function hablarTecnico(mensaje) {
+        tecnicoText.style.animation = 'none';
+        tecnicoText.offsetHeight;
+        tecnicoText.style.animation = 'popupTecnico 0.4s ease-out';
+        tecnicoText.innerHTML = mensaje;
     }
 
-    function cambiarTipAleatorio() {
-        const randomTip = tipsGeneral[Math.floor(Math.random() * tipsGeneral.length)];
-        hablarDuende(randomTip);
+    function cambiarImagenTecnico() {
+        indiceImagenActual = (indiceImagenActual + 1) % imagenesTecnico.length;
+        imgTecnico.style.opacity = '0.2';
+        setTimeout(() => {
+            imgTecnico.src = imagenesTecnico[indiceImagenActual];
+            imgTecnico.style.opacity = '1';
+        }, 150);
     }
+
+    function cambiarTipYFotoManual() {
+        const randomTip = tipsTecnicos100[Math.floor(Math.random() * tipsTecnicos100.length)];
+        cambiarImagenTecnico();
+        hablarTecnico(randomTip);
+    }
+
+    // Rotación automática cada 12 segundos
+    setInterval(() => {
+        cambiarTipYFotoManual();
+    }, 12000);
 
     function irARedSocial(red, url) {
         if (mensajesRedes[red]) {
-            hablarDuende(mensajesRedes[red]);
+            hablarTecnico(mensajesRedes[red]);
             setTimeout(() => {
                 window.open(url, '_blank');
             }, 1200);
