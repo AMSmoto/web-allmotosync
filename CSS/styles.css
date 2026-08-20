@@ -206,3 +206,22 @@
             .tecnico-bubble { width: 260px; font-size: 12px; padding: 10px 14px; }
             .tecnico-bubble::after { left: 30px; }
         }
+        .tarjeta-click {
+    position: relative;
+    overflow: hidden;
+}
+
+.img-servicio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.tarjeta-click .overlay {
+    position: relative;
+    z-index: 2;
+}
