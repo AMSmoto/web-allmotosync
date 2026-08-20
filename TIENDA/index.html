@@ -8,33 +8,28 @@
 </head>
 <body>
 
-    <!-- HEADER IDÉNTICO Y LIMPIO (CIRCUITOS FINOS TIPO PCB) -->
+    <!-- HEADER IDÉNTICO Y LIMPIO -->
     <header class="header-principal">
         <div class="header-circuitos-container">
-            <!-- Circuito Izquierdo -->
             <div class="circuito-lado">
                <svg viewBox="0 0 400 70" preserveAspectRatio="none">
                    <path d="M 0,20 L 50,20 L 50,50 L 100,50 L 120,20 L 180,20 L 200,60 L 260,60 L 300,30 L 400,30" class="pista-base" stroke="#00b4d8" />
                    <path d="M 0,50 L 40,50 L 80,15 L 140,15 L 160,45 L 230,45 L 270,15 L 400,15" class="pista-base" stroke="#ff9f1c" opacity="0.4" />
                    <path d="M 0,35 L 70,35 L 90,60 L 150,60 L 190,15 L 250,15 L 320,50 L 400,50" class="pista-base" stroke="#2ec4b6" opacity="0.3" />
-                   
                    <path d="M 0,20 L 50,20 L 50,50 L 100,50 L 120,20 L 180,20 L 200,60 L 260,60 L 300,30 L 400,30" class="impulso-electrico" stroke="#ff9f1c" />
                    <path d="M 0,50 L 40,50 L 80,15 L 140,15 L 160,45 L 230,45 L 270,15 L 400,15" class="impulso-electrico" stroke="#00b4d8" style="animation-duration: 5s;" />
                </svg>
             </div>
 
-            <!-- LOGO CENTRAL -->
             <a href="../index.html">
                 <img src="../MEDIA/ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
             </a>
 
-            <!-- Circuito Derecho -->
             <div class="circuito-lado circuito-der">
                <svg viewBox="0 0 400 70" preserveAspectRatio="none">
                    <path d="M 400,20 L 350,20 L 350,50 L 300,50 L 280,20 L 220,20 L 200,60 L 140,60 L 100,30 L 0,30" class="pista-base" stroke="#ff9f1c" />
                    <path d="M 400,50 L 360,50 L 320,15 L 260,15 L 240,45 L 170,45 L 130,15 L 0,15" class="pista-base" stroke="#00b4d8" opacity="0.4" />
                    <path d="M 400,35 L 330,35 L 310,60 L 250,60 L 210,15 L 150,15 L 80,50 L 0,50" class="pista-base" stroke="#2ec4b6" opacity="0.3" />
-                   
                    <path d="M 400,20 L 350,20 L 350,50 L 300,50 L 280,20 L 220,20 L 200,60 L 140,60 L 100,30 L 0,30" class="impulso-electrico" stroke="#00b4d8" />
                    <path d="M 400,50 L 360,50 L 320,15 L 260,15 L 240,45 L 170,45 L 130,15 L 0,15" class="impulso-electrico" stroke="#ff9f1c" style="animation-duration: 5.5s;" />
                </svg>
@@ -54,7 +49,7 @@
         </div>
     </header>
 
-    <!-- MENÚ FLOTANTE LATERAL IDÉNTICO -->
+    <!-- MENÚ FLOTANTE LATERAL -->
     <div class="menu-flotante-lateral">
         <a href="../index.html#contacto" class="btn-flotante-item">
             <i class="fa-solid fa-book-open"></i>
@@ -79,47 +74,52 @@
         </div>
     </div>
 
-    <!-- CATÁLOGO DE PRODUCTOS -->
+    <!-- CATÁLOGO DINÁMICO (VACÍO AQUÍ, LO LLENA JAVASCRIPT) -->
     <main style="padding: 50px 20px; max-width: 1200px; margin: 0 auto;">
         <h2 style="color: #FF6600; text-align: center; font-weight: 900; letter-spacing: 2px; margin-bottom: 40px;">PRODUCTOS DESTACADOS</h2>
         
-        <div class="grid-productos">
-            <div class="tarjeta-producto">
-                <div class="img-producto-box">🛠️</div>
-                <h3>Escáner OBD Profesional</h3>
-                <p class="precio">$450.000 COP</p>
-                <a href="https://wa.me/573104886929?text=Hola,%20estoy%20interesado%20en%20el%20Escáner%20OBD%20Profesional" class="btn-comprar" target="_blank">Comprar por WhatsApp</a>
-            </div>
-            <div class="tarjeta-producto">
-                <div class="img-producto-box">⚡</div>
-                <h3>Kit de Inyectores de Alto Flujo</h3>
-                <p class="precio">$180.000 COP</p>
-                <a href="https://wa.me/573104886929?text=Hola,%20estoy%20interesado%20en%20el%20Kit%20de%20Inyectores" class="btn-comprar" target="_blank">Comprar por WhatsApp</a>
-            </div>
-            <div class="tarjeta-producto">
-                <div class="img-producto-box">⚙️</div>
-                <h3>Kit de Arrastre Racing</h3>
-                <p class="precio">$320.000 COP</p>
-                <a href="https://wa.me/573104886929?text=Hola,%20estoy%20interesado%20en%20el%20Kit%20de%20Arrastre" class="btn-comprar" target="_blank">Comprar por WhatsApp</a>
-            </div>
-            <div class="tarjeta-producto">
-                <div class="img-producto-box">🔋</div>
-                <h3>Regulador de Voltaje reforzado</h3>
-                <p class="precio">$120.000 COP</p>
-                <a href="https://wa.me/573104886929?text=Hola,%20estoy%20interesado%20en%20el%20Regulador%20de%20Voltaje" class="btn-comprar" target="_blank">Comprar por WhatsApp</a>
-            </div>
+        <div id="grid-productos" class="grid-productos">
+            <!-- Los productos se cargarán solos aquí -->
         </div>
     </main>
 
-    <!-- ESTILOS CSS UNIFICADOS Y FINOS -->
+    <!-- SCRIPT PARA CARGAR EL JSON AUTOMÁTICAMENTE -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('../productos.json')
+                .then(response => response.json())
+                .then(productos => {
+                    const contenedor = document.getElementById("grid-productos");
+                    contenedor.innerHTML = "";
+
+                    productos.forEach(prod => {
+                        const tarjeta = document.createElement("div");
+                        tarjeta.classList.add("tarjeta-producto");
+
+                        tarjeta.innerHTML = `
+                            <div class="img-producto-box">
+                                <img src="${prod.imagen}" alt="${prod.nombre}" style="width: 100%; height: 150px; object-fit: contain; border-radius: 8px; background: #000;">
+                            </div>
+                            <h3>${prod.nombre}</h3>
+                            <p class="precio">${prod.precioTexto}</p>
+                            <a href="https://wa.me/573104886929?text=${encodeURIComponent(prod.whatsappText)}" class="btn-comprar" target="_blank">Comprar por WhatsApp</a>
+                        `;
+                        contenedor.appendChild(tarjeta);
+                    });
+                })
+                .catch(error => {
+                    console.log("Error al cargar los productos:", error);
+                    document.getElementById("grid-productos").innerHTML = "<p style='text-align:center; color:#888;'>Cargando inventario o sin conexión local...</p>";
+                });
+        });
+    </script>
+
+    <!-- ESTILOS CSS -->
     <style>
         body { background-color: #000; color: #fff; margin: 0; font-family: sans-serif; }
         .header-principal { background: #000; border-bottom: 2px solid #FF6600; text-align: center; }
-        
         .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 10px 0; width: 100%; overflow: hidden; }
         .circuito-lado { width: 38vw; max-width: 450px; height: 60px; }
-        
-        /* Trazos finos y técnicos idénticos al inicio */
         .pista-base { fill: none; stroke-width: 1px; opacity: 0.25; stroke-linecap: square; stroke-linejoin: miter; }
         .impulso-electrico { fill: none; stroke-width: 1.5px; stroke-dasharray: 30 350; animation: correrPulso 4.5s linear infinite; filter: drop-shadow(0 0 5px currentColor); stroke-linecap: square; stroke-linejoin: miter; }
         @keyframes correrPulso { 0% { stroke-dashoffset: 380; } 100% { stroke-dashoffset: 0; } }
@@ -149,8 +149,9 @@
 
         .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
         .tarjeta-producto { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .tarjeta-producto:hover { transform: translateY(-50px); /* wait, let's keep it safe */ }
         .tarjeta-producto:hover { transform: translateY(-5px); border-color: #FF6600; box-shadow: 0 8px 25px rgba(255,102,0,0.2); }
-        .img-producto-box { font-size: 4rem; margin-bottom: 15px; }
+        .img-producto-box { margin-bottom: 15px; display: flex; justify-content: center; }
         .tarjeta-producto h3 { color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
         .precio { color: #FF6600; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; }
         .btn-comprar { display: inline-block; background: #25D366; color: #fff; padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: 0.2s; }
