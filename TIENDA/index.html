@@ -1,25 +1,73 @@
-<style>
-    /* Estilo inicial del header de la tienda */
-    .tienda-header { 
-        position: fixed; top: 0; width: 100%; z-index: 1000; 
-        background: #000; /* o el color que uses */
-        padding: 20px 0; transition: all 0.3s ease; 
-        text-align: center;
-    }
-    #header-logo { transition: all 0.3s ease; max-height: 80px; }
-    
-    /* Clase que se agregará al hacer scroll */
-    .header-chico { padding: 5px 0 !important; }
-    .header-chico #header-logo { max-height: 40px !important; }
-</style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIENDA ONLINE | ALLMOTOSYNC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="tienda.css">
+</head>
+<body>
 
-<script>
-    window.addEventListener("scroll", function() {
-        const header = document.getElementById("main-header");
-        if (window.scrollY > 50) {
-            header.classList.add("header-chico");
-        } else {
-            header.classList.remove("header-chico");
+    <!-- HEADER DE LA TIENDA CON EFECTO DE SCROLL -->
+    <header id="main-header" class="tienda-header">
+        <a href="../index.html">
+            <img src="Media/ALLMOTOSYNC LOGO.jpg" alt="ALLMOTOSYNC Logo" id="header-logo">
+        </a>
+        <h2 style="color: #FF6600; font-size: 1.2rem; margin: 5px 0 0 0; letter-spacing: 2px;">TIENDA ONLINE</h2>
+    </header>
+
+    <!-- ESPACIADOR PARA QUE EL CONTENIDO NO QUEDE OCULTO TRAS EL HEADER FIJO -->
+    <div style="height: 130px;"></div>
+
+    <!-- SECCIÓN PRINCIPAL DE PRODUCTOS -->
+    <main style="padding: 30px 20px; max-width: 1200px; margin: 0 auto; min-height: 60vh;">
+        <h1 style="color: #fff; text-align: center; margin-bottom: 40px; font-weight: 900; letter-spacing: 2px;">REPUESTOS Y ACCESORIOS</h1>
+        
+        <!-- Aquí es donde tus scripts (productos.js) cargarán los productos -->
+        <div id="contenedor-productos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+            <!-- Ejemplo de tarjeta estática o contenedor dinámico -->
+            <p style="color: #888; text-align: center; grid-column: 1 / -1;">Cargando catálogo de productos...</p>
+        </div>
+    </main>
+
+    <!-- FOOTER DE LA TIENDA -->
+    <footer style="padding: 30px 20px; background: #000; text-align: center; color: #666; border-top: 1px solid #222; font-size: 0.85rem;">
+        <p>© 2026 <strong>ALLMOTOSYNC S.A.S.</strong> | Todos los derechos reservados.</p>
+        <p style="margin-top: 5px;"><a href="../index.html" style="color: #FF6600; text-decoration: none;">← Volver al sitio principal</a></p>
+    </footer>
+
+    <!-- ESTILOS Y SCRIPT DE COMPORTAMIENTO DEL HEADER -->
+    <style>
+        body { background-color: #0b0f19; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
+        
+        /* Estilo inicial del header de la tienda */
+        .tienda-header { 
+            position: fixed; top: 0; width: 100%; z-index: 1000; 
+            background: #000; 
+            padding: 15px 0; transition: all 0.3s ease; 
+            text-align: center;
+            border-bottom: 2px solid #FF6600;
         }
-    });
-</script>
+        #header-logo { transition: all 0.3s ease; max-height: 70px; }
+        
+        /* Clase que se agregará al hacer scroll */
+        .header-chico { padding: 5px 0 !important; }
+        .header-chico #header-logo { max-height: 35px !important; }
+    </style>
+
+    <script>
+        window.addEventListener("scroll", function() {
+            const header = document.getElementById("main-header");
+            if (window.scrollY > 50) {
+                header.classList.add("header-chico");
+            } else {
+                header.classList.remove("header-chico");
+            }
+        });
+    </script>
+
+    <!-- ARCHIVO JS DE PRODUCTOS -->
+    <script src="productos.js"></script>
+</body>
+</html>
