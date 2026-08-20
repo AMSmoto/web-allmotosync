@@ -1,0 +1,34 @@
+[
+    {
+        "id": "escaner-obd",
+        "nombre": "Escáner OBD Profesional",
+        "precio": 450000,
+        "precioTexto": "$450.000 COP",
+        "imagen": "../MEDIA/SCANNER KTM.webp",
+        "whatsappText": "Hola, estoy interesado en el Escáner OBD Profesional"
+    },
+    {
+        "id": "kit-inyectores",
+        "nombre": "Kit de Inyectores de Alto Flujo",
+        "precio": 180000,
+        "precioTexto": "$180.000 COP",
+        "imagen": "../MEDIA/LAV INYECTORES.png",
+        "whatsappText": "Hola, estoy interesado en el Kit de Inyectores de Alto Flujo"
+    },
+    {
+        "id": "kit-arrastre",
+        "nombre": "Kit de Arrastre Racing",
+        "precio": 320000,
+        "precioTexto": "$320.000 COP",
+        "imagen": "../MEDIA/ALLMOTOSYNC LOGO.jpg",
+        "whatsappText": "Hola, estoy interesado en el Kit de Arrastre Racing"
+    },
+    {
+        "id": "regulador-voltaje",
+        "nombre": "Regulador de Voltaje reforzado",
+        "precio": 120000,
+        "precioTexto": "$120.000 COP",
+        "imagen": "../MEDIA/ALLMOTOSYNC LOGO.jpg",
+        "whatsappText": "Hola, estoy interesado en el Regulador de Voltaje reforzado"
+    }
+]
