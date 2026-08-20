@@ -43,6 +43,30 @@
         <a href="javascript:void(0)" onclick="irARedSocial('mercadolibre', 'TU_LINK_DE_MERCADO_LIBRE')" class="social-icon ml" style="background: #FFF159; color: #2D3277; border-radius: 10px 0 0 10px;">
             <i class="fa-solid fa-handshake" style="font-size: 24px;"></i>
         </a>
+        <!-- Botones de Acción Principales -->
+<div style="display: flex; justify-content: center; gap: 15px; margin: 30px 0; flex-wrap: wrap;">
+    <a href="index.html#contacto" style="background:#FF6600; color:#fff; padding:12px 24px; border-radius:8px; font-weight:bold; text-decoration:none;">
+        AGENDAR CITA AHORA
+    </a>
+    
+    <!-- NUEVO BOTÓN TIENDA ONLINE CON TEXTO EN MOVIMIENTO -->
+    <a href="TIENDA/index.html" class="btn-tienda-flotante" style="background: #121820; border: 2px solid #FF6600; color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 0 15px rgba(255,102,0,0.4);">
+        <i class="fa-solid fa-cart-shopping" style="color: #FF6600;"></i> TIENDA <span class="animar-online" style="color: #FF6600;">ONLINE</span>
+    </a>
+</div>
+
+<!-- Agrega este pequeño bloque de estilo dentro del <head> de tu index.html principal si no lo tienes -->
+<style>
+@keyframes moverTexto {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-3px) scale(1.05); }
+    100% { transform: translateY(0px); }
+}
+.animar-online {
+    display: inline-block;
+    animation: moverTexto 1.5s infinite ease-in-out;
+}
+</style>
     </nav>
 
     <section id="por-que-nosotros" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 80px 20px; background: rgba(255,102,0,0.03);">

@@ -1,43 +1,103 @@
 const productos = [
     {
         id: "PROD-001",
-        nombre: "Inyector Original KTM Duke / RC",
+        nombre: "Inyector Original KTM Duke / RC 200-390",
         categoria: "inyeccion",
-        descripcion: "Inyector calibrado y comprobado en banco de flujo para KTM 200, 250 y 390.",
+        descripcion: "Inyector de combustible original calibrado para óptima atomización y consumo.",
         precio: 280000,
-        imagen: "../MEDIA/TIENDA/inyector-ktm.jpg", // Recuerda colocar la imagen en MEDIA/TIENDA/
-        mercadolibre: "" // Puedes pegar el link de ML si lo tienes
+        imagen: "../MEDIA/TIENDA/inyector-ktm.jpg"
     },
     {
         id: "PROD-002",
-        nombre: "Escáner Diagnóstico JDiag M300",
-        categoria: "diagnostico",
-        descripcion: "Escáner multimarca profesional con juego de conectores y lectura de flujo de datos en vivo.",
-        precio: 1600000,
-        imagen: "../MEDIA/TIENDA/escaner-m300.jpg",
-        mercadolibre: ""
+        nombre: "Sensor TPS de Posición de Acelerador",
+        categoria: "electronica",
+        descripcion: "Sensor TPS de alta precisión para respuesta lineal en apertura de aceleración.",
+        precio: 125000,
+        imagen: "../MEDIA/TIENDA/sensor-tps.jpg"
     },
     {
         id: "PROD-003",
-        nombre: "Sensor TPS de Alta Precisión",
-        categoria: "electronica",
-        descripcion: "Sensor de posición de acelerador con lectura lineal de voltaje certificada.",
-        precio: 125000,
-        imagen: "../MEDIA/TIENDA/sensor-tps.jpg",
-        mercadolibre: ""
+        nombre: "Kit de Arrastre Reforzado con Reten",
+        categoria: "transmision",
+        descripcion: "Kit de transmisión de alta durabilidad para motos de media cilindrada.",
+        precio: 195000,
+        imagen: "../MEDIA/TIENDA/kit-arrastre.jpg"
     },
     {
         id: "PROD-004",
-        nombre: "Protector de Radiador & Sliders",
+        nombre: "Bomba de Gasolina Alta Presión FI",
+        categoria: "inyeccion",
+        descripcion: "Bomba eléctrica interna para sistemas de inyección electrónica multimarca.",
+        precio: 145000,
+        imagen: "../MEDIA/TIENDA/bomba-gasolina.jpg"
+    },
+    {
+        id: "PROD-005",
+        nombre: "Sensor de Oxígeno (Lambda)",
+        categoria: "electronica",
+        descripcion: "Sensor de gases de escape para regulación exacta de mezcla aire/gasolina.",
+        precio: 160000,
+        imagen: "../MEDIA/TIENDA/sensor-oxigeno.jpg"
+    },
+    {
+        id: "PROD-006",
+        nombre: "Cuerpo de Aceleración Completo",
+        categoria: "inyeccion",
+        descripcion: "Cuerpo de aceleración con IAC y mariposa calibrada de fábrica.",
+        precio: 350000,
+        imagen: "../MEDIA/TIENDA/cuerpo-aceleracion.jpg"
+    },
+    {
+        id: "PROD-007",
+        nombre: "Protector de Radiador Aluminio CNC",
         categoria: "accesorios",
-        descripcion: "Protección en corte láser y materiales de alta resistencia para impacto.",
-        precio: 165000,
-        imagen: "../MEDIA/TIENDA/protector-radiador.jpg",
-        mercadolibre: ""
+        descripcion: "Protección frontal contra piedras e impactos en aleación ligera.",
+        precio: 110000,
+        imagen: "../MEDIA/TIENDA/protector-radiador.jpg"
+    },
+    {
+        id: "PROD-008",
+        nombre: "Bobina de Alta de Rendimiento",
+        categoria: "electronica",
+        descripcion: "Bobina con mayor chispa para mejorar la combustión y respuesta en altos.",
+        precio: 95000,
+        imagen: "../MEDIA/TIENDA/bobina-alta.jpg"
+    },
+    {
+        id: "PROD-009",
+        nombre: "Filtro de Aire Alto Flujo Lavable",
+        categoria: "transmision",
+        descripcion: "Filtro reutilizable diseñado para maximizar la entrada de aire sin sacrificar filtrado.",
+        precio: 85000,
+        imagen: "../MEDIA/TIENDA/filtro-aire.jpg"
+    },
+    {
+        id: "PROD-010",
+        nombre: "Kit de Discos de Clouch / Embrague",
+        categoria: "transmision",
+        descripcion: "Discos de embrague en material de alta fricción para óptima transmisión de potencia.",
+        precio: 75000,
+        imagen: "../MEDIA/TIENDA/discos-clutch.jpg"
+    },
+    {
+        id: "PROD-011",
+        nombre: "Sliders Laterales de Impacto AMS",
+        categoria: "accesorios",
+        descripcion: "Topes anticaída de alta resistencia con anclaje directo al chasis.",
+        precio: 130000,
+        imagen: "../MEDIA/TIENDA/sliders.jpg"
+    },
+    {
+        id: "PROD-012",
+        nombre: "Sensor de Temperatura de Refrigerante",
+        categoria: "electronica",
+        descripcion: "Mide con exactitud la temperatura del motor para activar electroventiladores.",
+        precio: 65000,
+        imagen: "../MEDIA/TIENDA/sensor-temp.jpg"
     }
 ];
 
-const NUMERO_WHATSAPP = "573104886929"; // Tu WhatsApp de ALLMOTOSYNC
+const NUMERO_WHATSAPP = "573104886929";
 
 function renderizarProductos(filtro = "todos", busqueda = "") {
     const contenedor = document.getElementById("catalogo-productos");
@@ -75,7 +135,6 @@ function renderizarProductos(filtro = "todos", busqueda = "") {
                     <a href="https://wa.me/${NUMERO_WHATSAPP}?text=${mensajeWA}" target="_blank" class="btn-whatsapp">
                         <i class="fa-brands fa-whatsapp"></i> Comprar vía WhatsApp
                     </a>
-                    ${prod.mercadolibre ? `<a href="${prod.mercadolibre}" target="_blank" class="btn-ml"><i class="fa-solid fa-bag-shopping"></i> Mercado Libre</a>` : ''}
                 </div>
             </div>
         `;
@@ -86,7 +145,6 @@ function renderizarProductos(filtro = "todos", busqueda = "") {
 document.addEventListener("DOMContentLoaded", () => {
     renderizarProductos();
 
-    // Filtro por botones
     const tabs = document.querySelectorAll(".filtro-btn");
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
@@ -98,7 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Filtro por buscador
     document.getElementById("buscador").addEventListener("input", (e) => {
         const catActiva = document.querySelector(".filtro-btn.activo").getAttribute("data-cat");
         renderizarProductos(catActiva, e.target.value);
