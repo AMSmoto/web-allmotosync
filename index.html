@@ -44,15 +44,97 @@
             <i class="fa-solid fa-handshake" style="font-size: 24px;"></i>
         </a>
         <!-- Botones de Acción Principales -->
-<div style="display: flex; justify-content: center; gap: 15px; margin: 30px 0; flex-wrap: wrap;">
-    <a href="index.html#contacto" style="background:#FF6600; color:#fff; padding:12px 24px; border-radius:8px; font-weight:bold; text-decoration:none;">
-        AGENDAR CITA AHORA
+<!-- MENÚ FLOTANTE LATERAL DERECHO (REDES + ACCESOS RÁPIDOS CON MOVIMIENTO) -->
+<div class="menu-flotante-lateral">
+    <!-- Botones de Conversión con Movimiento Continuo -->
+    <a href="#contacto" class="btn-flotante-item">
+        <span class="marquesina-texto">AGENDAR CITA AHORA &nbsp;&bull;&nbsp; AGENDAR CITA AHORA &nbsp;&bull;&nbsp;</span>
     </a>
     
-    <!-- NUEVO BOTÓN TIENDA ONLINE CON TEXTO EN MOVIMIENTO -->
-    <a href="TIENDA/index.html" class="btn-tienda-flotante" style="background: #121820; border: 2px solid #FF6600; color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 0 15px rgba(255,102,0,0.4);">
-        <i class="fa-solid fa-cart-shopping" style="color: #FF6600;"></i> TIENDA <span class="animar-online" style="color: #FF6600;">ONLINE</span>
+    <a href="TIENDA/index.html" class="btn-flotante-item">
+        <i class="fa-solid fa-cart-shopping"></i> 
+        <span class="marquesina-texto">TIENDA ONLINE &nbsp;&bull;&nbsp; TIENDA ONLINE &nbsp;&bull;&nbsp;</span>
     </a>
+
+    <!-- Redes Sociales Reales Recostadas a la Derecha -->
+    <div class="redes-flotantes">
+        <a href="https://wa.me/573104886929" target="_blank" class="red-icon" style="background: #25D366;"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://instagram.com" target="_blank" class="red-icon" style="background: #E1306C;"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://facebook.com" target="_blank" class="red-icon" style="background: #1877F2;"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://tiktok.com" target="_blank" class="red-icon" style="background: #000000;"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://mercadolibre.com.co" target="_blank" class="red-icon" style="background: #FFE600; color: #000;"><i class="fa-solid fa-handshake"></i></a>
+    </div>
+</div>
+
+<!-- ESTILOS CSS PARA EL MENÚ FLOTANTE LATERAL -->
+<style>
+.menu-flotante-lateral {
+    position: fixed;
+    right: 0;
+    top: 35%;
+    transform: translateY(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.btn-flotante-item {
+    background: #FF6600;
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 8px 0 0 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: -3px 3px 10px rgba(0,0,0,0.5);
+    border-left: 3px solid #fff;
+    transition: width 0.3s ease;
+}
+
+.btn-flotante-item:hover {
+    width: 220px;
+}
+
+/* Efecto de marquesina continua */
+@keyframes correrTexto {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquesina-texto {
+    display: inline-block;
+    white-space: nowrap;
+    animation: correrTexto 7s linear infinite;
+}
+
+.redes-flotantes {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.red-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 8px 0 0 8px;
+    text-decoration: none;
+    font-size: 18px;
+    box-shadow: -2px 2px 5px rgba(0,0,0,0.4);
+}
+</style>
 </div>
 
 <!-- Agrega este pequeño bloque de estilo dentro del <head> de tu index.html principal si no lo tienes -->

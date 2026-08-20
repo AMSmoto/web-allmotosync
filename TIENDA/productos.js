@@ -73,7 +73,7 @@ const productos = [
     },
     {
         id: "PROD-010",
-        nombre: "Kit de Discos de Clouch / Embrague",
+        nombre: "Kit de Discos de Clutch / Embrague",
         categoria: "transmision",
         descripcion: "Discos de embrague en material de alta fricción para óptima transmisión de potencia.",
         precio: 75000,
@@ -111,13 +111,13 @@ function renderizarProductos(filtro = "todos", busqueda = "") {
     });
 
     if (filtrados.length === 0) {
-        contenedor.innerHTML = `<div class="sin-productos">No se encontraron productos en esta categoría o búsqueda.</div>`;
+        contenedor.innerHTML = `<div class="sin-productos" style="color:#fff; text-align:center; padding:40px; grid-column:1/-1;">No se encontraron repuestos con ese criterio de búsqueda.</div>`;
         return;
     }
 
     filtrados.forEach(prod => {
         const precioFormateado = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(prod.precio);
-        const mensajeWA = encodeURIComponent(`Hola ALLMOTOSYNC, me interesa comprar el producto: *${prod.nombre}* (Ref: ${prod.id}) por valor de ${precioFormateado}. ¿Tienen disponibilidad?`);
+        const mensajeWA = encodeURIComponent(`Hola ALLMOTOSYNC, me interesa comprar el repuesto: *${prod.nombre}* (Ref: ${prod.id}) por valor de ${precioFormateado}. ¿Tienen disponibilidad?`);
         
         const card = document.createElement("div");
         card.className = "tarjeta-producto";
@@ -130,7 +130,6 @@ function renderizarProductos(filtro = "todos", busqueda = "") {
                 <h3>${prod.nombre}</h3>
                 <p>${prod.descripcion}</p>
                 <div class="precio">${precioFormateado}</div>
-                
                 <div class="botones-accion">
                     <a href="https://wa.me/${NUMERO_WHATSAPP}?text=${mensajeWA}" target="_blank" class="btn-whatsapp">
                         <i class="fa-brands fa-whatsapp"></i> Comprar vía WhatsApp
@@ -156,8 +155,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    document.getElementById("buscador").addEventListener("input", (e) => {
-        const catActiva = document.querySelector(".filtro-btn.activo").getAttribute("data-cat");
-        renderizarProductos(catActiva, e.target.value);
-    });
+    const inputBuscador = document.getElementById("buscador");
+    if(inputBuscador) {
+        inputBuscador.addEventListener("input", (e) => {
+            const catActiva = document.querySelector(".filtro-btn.activo").getAttribute("data-cat");
+            renderizarProductos(catActiva, e.target.value);
+        });
+    }
 });
