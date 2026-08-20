@@ -28,10 +28,12 @@
             <p>Inyección Electrónica Avanzada</p>
         </div>
         <div class="slider-marcas">
-            <div class="contenedor-logos">
-                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
-            </div>
-        </div>
+    <div class="contenedor-logos">
+        <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
+        <!-- Duplicado para efecto infinito -->
+        <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
+    </div>
+</div>
     </header>
 
     <!-- MENÚ FLOTANTE LATERAL (AGRUPA TODO: BOTONES Y REDES) -->
@@ -52,23 +54,30 @@
         </div>
     </div>
 
-    <style>
-        /* Estilos Integrados para Circuitos y Menú */
-        .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 20px 0; }
-        .circuito-lado { width: 250px; height: 50px; }
-        .pista-base { fill: none; stroke-width: 2; opacity: 0.3; }
-        .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 40 260; animation: correrPulso 3s linear infinite; filter: drop-shadow(0 0 8px currentColor); }
-        @keyframes correrPulso { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
-        
-        .menu-flotante-lateral { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-        .btn-flotante-item { background: #FF6600; color: #fff; padding: 12px 15px; border-radius: 8px 0 0 8px; text-decoration: none; font-weight: bold; width: 180px; overflow: hidden; white-space: nowrap; display: flex; align-items: center; gap: 8px; box-shadow: -3px 3px 10px rgba(0,0,0,0.5); transition: 0.3s; }
-        .btn-flotante-item:hover { width: 220px; }
-        .marquesina-texto { display: inline-block; animation: correrTexto 7s linear infinite; }
-        @keyframes correrTexto { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .redes-flotantes { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
-        .red-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; color: #fff; border-radius: 8px 0 0 8px; text-decoration: none; box-shadow: -2px 2px 5px rgba(0,0,0,0.4); transition: 0.3s; }
-        .red-icon:hover { transform: scale(1.1); }
-    </style>
+   <style>
+    /* 1. Circuitos */
+    .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 20px 0; }
+    .circuito-lado { width: 250px; height: 50px; }
+    .pista-base { fill: none; stroke-width: 2; opacity: 0.3; }
+    .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 40 260; animation: correrPulso 3s linear infinite; filter: drop-shadow(0 0 8px currentColor); }
+    @keyframes correrPulso { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
+    
+    /* 2. Menú Flotante y Botones de Redes (Tamaño aumentado) */
+    .menu-flotante-lateral { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+    .btn-flotante-item { background: #FF6600; color: #fff; padding: 15px 20px; border-radius: 10px 0 0 10px; text-decoration: none; font-weight: bold; width: 200px; display: flex; align-items: center; gap: 10px; box-shadow: -4px 4px 12px rgba(0,0,0,0.5); transition: 0.3s; }
+    .redes-flotantes { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+    .red-icon { width: 55px; height: 55px; font-size: 22px; display: flex; align-items: center; justify-content: center; color: #fff; border-radius: 10px 0 0 10px; text-decoration: none; box-shadow: -3px 3px 8px rgba(0,0,0,0.4); transition: 0.3s; }
+    .red-icon:hover { transform: scale(1.15); width: 65px; }
+
+    /* 3. Slider de Marcas (Infinito y Continuo) */
+    .slider-marcas { overflow: hidden; width: 100%; background: #000; padding: 15px 0; white-space: nowrap; }
+    .contenedor-logos { display: inline-block; animation: scrollMarcas 20s linear infinite; }
+    .contenedor-logos span { color: #fff; font-weight: bold; margin: 0 40px; font-size: 1.2rem; letter-spacing: 2px; }
+    @keyframes scrollMarcas {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+</style>
 
     <!-- Resto de tu contenido (Servicios, Trabajos, Expediente, etc.) va aquí sin cambios -->
     <!-- ... tu código original ... -->
