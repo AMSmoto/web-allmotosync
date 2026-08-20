@@ -7,71 +7,77 @@
     <style>
         body { background-color: #0b0f19; color: #fff; font-family: sans-serif; margin: 0; }
         
-        /* HEADER IGUAL AL PRINCIPAL */
-        .header-principal { background: #000; padding: 10px 0; text-align: center; border-bottom: 2px solid #FF6600; position: sticky; top: 0; z-index: 1000; transition: all 0.3s; }
-        .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .circuito-lado { width: 250px; height: 50px; }
+        /* HEADER PRINCIPAL (Copiado de index.html) */
+        .header-principal { background: #000; padding: 15px 0; text-align: center; border-bottom: 2px solid #FF6600; position: sticky; top: 0; z-index: 1000; }
+        .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 20px; }
+        .circuito-lado { width: 280px; height: 50px; }
         .pista-base { fill: none; stroke-width: 2; opacity: 0.3; }
-        .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 40 260; animation: correrPulso 3s linear infinite; }
+        .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 40 260; animation: correrPulso 3s linear infinite; filter: drop-shadow(0 0 8px currentColor); }
         @keyframes correrPulso { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
-        
-        /* Ajuste del logo para que encoja */
-        #logo-ams { max-height: 80px; transition: all 0.3s; }
-        .header-chico { padding: 5px 0; }
-        .header-chico #logo-ams { max-height: 40px; }
+        #logo-ams { max-height: 80px; transition: 0.3s; }
 
-        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
-        .card-producto { background: #1a1a1a; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #333; }
+        /* Catálogo */
+        .grid-productos { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 25px; padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
+        .card-producto { background: #111; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #333; transition: 0.3s; }
+        .card-producto:hover { border-color: #FF6600; transform: translateY(-5px); }
+        .precio { color: #FF6600; font-weight: bold; font-size: 1.2rem; margin: 10px 0; }
+        button { background: #FF6600; color: #000; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <!-- HEADER IDÉNTICO AL PRINCIPAL -->
-    <header id="main-header" class="header-principal">
+    <!-- EL HEADER COMPLETO CON CIRCUITOS -->
+    <header id="miHeader" class="header-principal">
         <div class="header-circuitos-container">
             <div class="circuito-lado">
                 <svg viewBox="0 0 350 70" preserveAspectRatio="none">
-                    <path d="M 0,35 L 350,35" class="pista-base" stroke="#00b4d8" />
-                    <path d="M 0,35 L 350,35" class="impulso-electrico" stroke="#ff9f1c" />
+                    <path d="M 0,35 L 40,35 L 70,15 L 130,15 L 160,35 L 220,35 L 250,55 L 350,55" class="pista-base" stroke="#00b4d8" />
+                    <path d="M 0,55 L 60,55 L 90,35 L 180,35 L 210,15 L 350,15" class="pista-base" stroke="#ff9f1c" opacity="0.4" />
+                    <circle cx="70" cy="15" r="3" fill="#00b4d8" />
+                    <circle cx="160" cy="35" r="3" fill="#ff9f1c" />
+                    <path d="M 0,35 L 40,35 L 70,15 L 130,15 L 160,35 L 220,35 L 250,55 L 350,55" class="impulso-electrico" stroke="#ff9f1c" />
                 </svg>
             </div>
-            
             <a href="../index.html"><img src="../MEDIA/ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC"></a>
-
             <div class="circuito-lado">
                 <svg viewBox="0 0 350 70" preserveAspectRatio="none">
-                    <path d="M 0,35 L 350,35" class="pista-base" stroke="#ff9f1c" />
-                    <path d="M 0,35 L 350,35" class="impulso-electrico" stroke="#00b4d8" />
+                    <path d="M 350,35 L 310,35 L 280,15 L 220,15 L 190,35 L 130,35 L 100,55 L 0,55" class="pista-base" stroke="#ff9f1c" />
+                    <path d="M 350,55 L 290,55 L 260,35 L 170,35 L 140,15 L 0,15" class="pista-base" stroke="#00b4d8" opacity="0.4" />
+                    <circle cx="280" cy="15" r="3" fill="#ff9f1c" />
+                    <circle cx="190" cy="35" r="3" fill="#00b4d8" />
+                    <path d="M 350,35 L 310,35 L 280,15 L 220,15 L 190,35 L 130,35 L 100,55 L 0,55" class="impulso-electrico" stroke="#00b4d8" />
                 </svg>
             </div>
         </div>
     </header>
 
-    <main>
-        <h1 style="text-align: center; color: #FF6600; margin-top: 40px;">CATÁLOGO DE REPUESTOS</h1>
-        <div id="contenedor-productos" class="grid-productos"></div>
-    </main>
+    <h1 style="text-align: center; color: #fff; margin-top: 40px; text-transform: uppercase; letter-spacing: 2px;">Catálogo Seleccionado</h1>
+    
+    <div id="contenedor-productos" class="grid-productos"></div>
 
     <script>
-        // Efecto scroll para encoger header y logo
-        window.addEventListener("scroll", () => {
-            const h = document.getElementById("main-header");
-            h.classList.toggle("header-chico", window.scrollY > 50);
-        });
-
-        // Carga de productos
         const productos = [
-            { nombre: "Escáner OBD", precio: "$250.000" },
-            { nombre: "Kit Arrastre KTM", precio: "$180.000" },
-            { nombre: "Inyector Alto Flujo", precio: "$95.000" }
+            { nombre: "Escáner OBD Multimarca", precio: "$280.000" },
+            { nombre: "Kit Arrastre Racing", precio: "$195.000" },
+            { nombre: "Inyector Alto Flujo", precio: "$85.000" },
+            { nombre: "Bujía Iridium NGK", precio: "$45.000" },
+            { nombre: "Sensor TPS Precisión", precio: "$120.000" },
+            { nombre: "Filtro de Aire Alto Flujo", precio: "$65.000" },
+            { nombre: "Aceite Sintético 10W40", precio: "$55.000" },
+            { nombre: "Pastillas de Freno Cerámicas", precio: "$75.000" },
+            { nombre: "Regulador de Voltaje", precio: "$140.000" },
+            { nombre: "Bobina de Alta Performance", precio: "$110.000" },
+            { nombre: "Kit Reparación Inyectores", precio: "$35.000" },
+            { nombre: "Batería Gel Sellada", precio: "$210.000" }
         ];
+
         const contenedor = document.getElementById('contenedor-productos');
         productos.forEach(p => {
             contenedor.innerHTML += `
                 <div class="card-producto">
                     <h3>${p.nombre}</h3>
-                    <p style="color: #FF6600; font-weight: bold;">${p.precio}</p>
-                    <button style="background:#FF6600; border:none; padding:10px; border-radius:5px; cursor:pointer;">Comprar</button>
+                    <p class="precio">${p.precio}</p>
+                    <button onclick="alert('Redirigiendo a WhatsApp para compra: ${p.nombre}')">Comprar vía WhatsApp</button>
                 </div>
             `;
         });
