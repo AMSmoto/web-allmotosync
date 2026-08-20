@@ -3,71 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIENDA ONLINE | ALLMOTOSYNC</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="tienda.css">
+    <title>TIENDA | ALLMOTOSYNC</title>
+    <style>
+        body { background-color: #0b0f19; color: #fff; font-family: sans-serif; margin: 0; }
+        
+        /* HEADER IGUAL AL PRINCIPAL */
+        .header-principal { background: #000; padding: 10px 0; text-align: center; border-bottom: 2px solid #FF6600; position: sticky; top: 0; z-index: 1000; transition: all 0.3s; }
+        .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .circuito-lado { width: 250px; height: 50px; }
+        .pista-base { fill: none; stroke-width: 2; opacity: 0.3; }
+        .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 40 260; animation: correrPulso 3s linear infinite; }
+        @keyframes correrPulso { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
+        
+        /* Ajuste del logo para que encoja */
+        #logo-ams { max-height: 80px; transition: all 0.3s; }
+        .header-chico { padding: 5px 0; }
+        .header-chico #logo-ams { max-height: 40px; }
+
+        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
+        .card-producto { background: #1a1a1a; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #333; }
+    </style>
 </head>
 <body>
 
-    <!-- HEADER DE LA TIENDA CON EFECTO DE SCROLL -->
-    <header id="main-header" class="tienda-header">
-        <a href="../index.html">
-            <img src="Media/ALLMOTOSYNC LOGO.jpg" alt="ALLMOTOSYNC Logo" id="header-logo">
-        </a>
-        <h2 style="color: #FF6600; font-size: 1.2rem; margin: 5px 0 0 0; letter-spacing: 2px;">TIENDA ONLINE</h2>
+    <!-- HEADER IDÉNTICO AL PRINCIPAL -->
+    <header id="main-header" class="header-principal">
+        <div class="header-circuitos-container">
+            <div class="circuito-lado">
+                <svg viewBox="0 0 350 70" preserveAspectRatio="none">
+                    <path d="M 0,35 L 350,35" class="pista-base" stroke="#00b4d8" />
+                    <path d="M 0,35 L 350,35" class="impulso-electrico" stroke="#ff9f1c" />
+                </svg>
+            </div>
+            
+            <a href="../index.html"><img src="../MEDIA/ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC"></a>
+
+            <div class="circuito-lado">
+                <svg viewBox="0 0 350 70" preserveAspectRatio="none">
+                    <path d="M 0,35 L 350,35" class="pista-base" stroke="#ff9f1c" />
+                    <path d="M 0,35 L 350,35" class="impulso-electrico" stroke="#00b4d8" />
+                </svg>
+            </div>
+        </div>
     </header>
 
-    <!-- ESPACIADOR PARA QUE EL CONTENIDO NO QUEDE OCULTO TRAS EL HEADER FIJO -->
-    <div style="height: 130px;"></div>
-
-    <!-- SECCIÓN PRINCIPAL DE PRODUCTOS -->
-    <main style="padding: 30px 20px; max-width: 1200px; margin: 0 auto; min-height: 60vh;">
-        <h1 style="color: #fff; text-align: center; margin-bottom: 40px; font-weight: 900; letter-spacing: 2px;">REPUESTOS Y ACCESORIOS</h1>
-        
-        <!-- Aquí es donde tus scripts (productos.js) cargarán los productos -->
-        <div id="contenedor-productos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
-            <!-- Ejemplo de tarjeta estática o contenedor dinámico -->
-            <p style="color: #888; text-align: center; grid-column: 1 / -1;">Cargando catálogo de productos...</p>
-        </div>
+    <main>
+        <h1 style="text-align: center; color: #FF6600; margin-top: 40px;">CATÁLOGO DE REPUESTOS</h1>
+        <div id="contenedor-productos" class="grid-productos"></div>
     </main>
 
-    <!-- FOOTER DE LA TIENDA -->
-    <footer style="padding: 30px 20px; background: #000; text-align: center; color: #666; border-top: 1px solid #222; font-size: 0.85rem;">
-        <p>© 2026 <strong>ALLMOTOSYNC S.A.S.</strong> | Todos los derechos reservados.</p>
-        <p style="margin-top: 5px;"><a href="../index.html" style="color: #FF6600; text-decoration: none;">← Volver al sitio principal</a></p>
-    </footer>
-
-    <!-- ESTILOS Y SCRIPT DE COMPORTAMIENTO DEL HEADER -->
-    <style>
-        body { background-color: #0b0f19; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
-        
-        /* Estilo inicial del header de la tienda */
-        .tienda-header { 
-            position: fixed; top: 0; width: 100%; z-index: 1000; 
-            background: #000; 
-            padding: 15px 0; transition: all 0.3s ease; 
-            text-align: center;
-            border-bottom: 2px solid #FF6600;
-        }
-        #header-logo { transition: all 0.3s ease; max-height: 70px; }
-        
-        /* Clase que se agregará al hacer scroll */
-        .header-chico { padding: 5px 0 !important; }
-        .header-chico #header-logo { max-height: 35px !important; }
-    </style>
-
     <script>
-        window.addEventListener("scroll", function() {
-            const header = document.getElementById("main-header");
-            if (window.scrollY > 50) {
-                header.classList.add("header-chico");
-            } else {
-                header.classList.remove("header-chico");
-            }
+        // Efecto scroll para encoger header y logo
+        window.addEventListener("scroll", () => {
+            const h = document.getElementById("main-header");
+            h.classList.toggle("header-chico", window.scrollY > 50);
+        });
+
+        // Carga de productos
+        const productos = [
+            { nombre: "Escáner OBD", precio: "$250.000" },
+            { nombre: "Kit Arrastre KTM", precio: "$180.000" },
+            { nombre: "Inyector Alto Flujo", precio: "$95.000" }
+        ];
+        const contenedor = document.getElementById('contenedor-productos');
+        productos.forEach(p => {
+            contenedor.innerHTML += `
+                <div class="card-producto">
+                    <h3>${p.nombre}</h3>
+                    <p style="color: #FF6600; font-weight: bold;">${p.precio}</p>
+                    <button style="background:#FF6600; border:none; padding:10px; border-radius:5px; cursor:pointer;">Comprar</button>
+                </div>
+            `;
         });
     </script>
-
-    <!-- ARCHIVO JS DE PRODUCTOS -->
-    <script src="productos.js"></script>
 </body>
 </html>
