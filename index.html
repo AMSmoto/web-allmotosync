@@ -10,9 +10,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="MEDIA/AMSchr2.png">
-    <meta name="theme-color" content="#FF6600">
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
@@ -37,7 +34,7 @@
         </div>
     </header>
 
-    <!-- MENÚ FLOTANTE LATERAL DEFINITIVO -->
+    <!-- MENÚ FLOTANTE LATERAL (AGRUPA TODO: BOTONES Y REDES) -->
     <div class="menu-flotante-lateral">
         <a href="#contacto" class="btn-flotante-item">
             <span class="marquesina-texto">AGENDAR CITA AHORA &nbsp;&bull;&nbsp; AGENDAR CITA AHORA &nbsp;&bull;&nbsp;</span>
@@ -48,32 +45,33 @@
         </a>
         <div class="redes-flotantes">
             <a href="https://wa.me/573104886929" target="_blank" class="red-icon" style="background: #25D366;"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://instagram.com" target="_blank" class="red-icon" style="background: #E1306C;"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://facebook.com" target="_blank" class="red-icon" style="background: #1877F2;"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://tiktok.com" target="_blank" class="red-icon" style="background: #000000;"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://mercadolibre.com.co" target="_blank" class="red-icon" style="background: #FFE600; color: #000;"><i class="fa-solid fa-handshake"></i></a>
+            <a href="#" target="_blank" class="red-icon" style="background: #E1306C;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" target="_blank" class="red-icon" style="background: #1877F2;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" target="_blank" class="red-icon" style="background: #000000;"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" target="_blank" class="red-icon" style="background: #FFE600; color: #000;"><i class="fa-solid fa-handshake"></i></a>
         </div>
     </div>
 
     <style>
-        /* ESTILOS CIRCUITOS */
+        /* Estilos Integrados para Circuitos y Menú */
         .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 20px 0; }
-        .circuito-lado { width: 200px; height: 50px; }
+        .circuito-lado { width: 250px; height: 50px; }
         .pista-base { fill: none; stroke-width: 2; opacity: 0.3; }
         .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 40 260; animation: correrPulso 3s linear infinite; filter: drop-shadow(0 0 8px currentColor); }
         @keyframes correrPulso { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
         
-        /* ESTILOS MENÚ FLOTANTE */
         .menu-flotante-lateral { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-        .btn-flotante-item { background: #FF6600; color: #fff; padding: 12px 15px; border-radius: 8px 0 0 8px; text-decoration: none; font-weight: bold; width: 180px; overflow: hidden; white-space: nowrap; display: flex; align-items: center; gap: 8px; box-shadow: -3px 3px 10px rgba(0,0,0,0.5); }
+        .btn-flotante-item { background: #FF6600; color: #fff; padding: 12px 15px; border-radius: 8px 0 0 8px; text-decoration: none; font-weight: bold; width: 180px; overflow: hidden; white-space: nowrap; display: flex; align-items: center; gap: 8px; box-shadow: -3px 3px 10px rgba(0,0,0,0.5); transition: 0.3s; }
+        .btn-flotante-item:hover { width: 220px; }
         .marquesina-texto { display: inline-block; animation: correrTexto 7s linear infinite; }
         @keyframes correrTexto { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .redes-flotantes { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
-        .red-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #fff; border-radius: 8px 0 0 8px; }
+        .red-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; color: #fff; border-radius: 8px 0 0 8px; text-decoration: none; box-shadow: -2px 2px 5px rgba(0,0,0,0.4); transition: 0.3s; }
+        .red-icon:hover { transform: scale(1.1); }
     </style>
 
-    <!-- Sección Servicios y Trabajos (se ha eliminado la duplicidad de botones) -->
-    <!-- ... resto de tu contenido ... -->
+    <!-- Resto de tu contenido (Servicios, Trabajos, Expediente, etc.) va aquí sin cambios -->
+    <!-- ... tu código original ... -->
 
     <script src="JS/main.js"></script>
 </body>
