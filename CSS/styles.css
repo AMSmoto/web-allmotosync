@@ -263,3 +263,27 @@
     text-align: center;
     z-index: 2;
 }
+/* 1. Circuitos con destello verde/naranja/azul */
+.impulso-electrico { 
+    fill: none; 
+    stroke-width: 3; 
+    stroke-dasharray: 40 260; 
+    animation: correrPulso 3s linear infinite; 
+    /* Efecto destello (glow) */
+    filter: drop-shadow(0 0 8px currentColor); 
+}
+
+/* 2. Slider de marcas infinito */
+.contenedor-logos { 
+    display: inline-block; 
+    animation: scrollMarcas 80s linear infinite; /* Más lento */
+    white-space: nowrap;
+}
+
+/* Aseguramos que el slider nunca se acabe */
+.slider-marcas { overflow: hidden; width: 100%; background: #000; padding: 20px 0; }
+
+@keyframes scrollMarcas { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
+}
