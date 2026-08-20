@@ -5,41 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIENDA ONLINE | ALLMOTOSYNC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="tienda.css">
 </head>
 <body>
 
-    <!-- HEADER IDÉNTICO CON CIRCUITOS Y DESTELLOS -->
+    <!-- HEADER IDÉNTICO DE BORDE A BORDE CON CIRCUITOS LENTOS Y DESTELLOS -->
     <header class="header-principal">
         <div class="header-circuitos-container">
-            <!-- Circuito Izquierdo -->
+            <!-- Circuito Izquierdo (Borde a Borde) -->
             <div class="circuito-lado">
-                <svg viewBox="0 0 350 70" preserveAspectRatio="none">
-                    <path d="M 0,35 L 40,35 L 70,15 L 130,15 L 160,35 L 220,35 L 250,55 L 350,55" class="pista-base" stroke="#00b4d8" />
-                    <path d="M 0,55 L 60,55 L 90,35 L 180,35 L 210,15 L 350,15" class="pista-base" stroke="#ff9f1c" opacity="0.4" />
-                    <circle cx="70" cy="15" r="3.5" fill="#00b4d8" class="nodo-destello" />
-                    <circle cx="160" cy="35" r="3.5" fill="#ff9f1c" class="nodo-destello" />
-                    <circle cx="210" cy="15" r="3.5" fill="#2ec4b6" class="nodo-destello" />
-                    <path d="M 0,35 L 40,35 L 70,15 L 130,15 L 160,35 L 220,35 L 250,55 L 350,55" class="impulso-electrico" stroke="#ff9f1c" />
-                    <path d="M 0,55 L 60,55 L 90,35 L 180,35 L 210,15 L 350,15" class="impulso-electrico" stroke="#2ec4b6" style="animation-duration: 2.2s;" />
+                <svg viewBox="0 0 600 70" preserveAspectRatio="none">
+                    <path d="M 0,35 L 120,35 L 180,15 L 300,15 L 360,35 L 480,35 L 540,55 L 600,55" class="pista-base" stroke="#00b4d8" />
+                    <path d="M 0,55 L 150,55 L 210,35 L 390,35 L 450,15 L 600,15" class="pista-base" stroke="#ff9f1c" opacity="0.4" />
+                    <circle cx="180" cy="15" r="4" fill="#00b4d8" class="nodo-destello" />
+                    <circle cx="360" cy="35" r="4" fill="#ff9f1c" class="nodo-destello" />
+                    <circle cx="450" cy="15" r="4" fill="#2ec4b6" class="nodo-destello" />
+                    <path d="M 0,35 L 120,35 L 180,15 L 300,15 L 360,35 L 480,35 L 540,55 L 600,55" class="impulso-electrico" stroke="#ff9f1c" />
+                    <path d="M 0,55 L 150,55 L 210,35 L 390,35 L 450,15 L 600,15" class="impulso-electrico" stroke="#2ec4b6" style="animation-duration: 7s;" />
                 </svg>
             </div>
 
-            <!-- LOGO CON EFECTO ZOOM -->
+            <!-- LOGO CENTRAL CON ZOOM -->
             <a href="../index.html">
                 <img src="../MEDIA/ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
             </a>
 
-            <!-- Circuito Derecho -->
-            <div class="circuito-lado circuito-der">
-                <svg viewBox="0 0 350 70" preserveAspectRatio="none">
-                    <path d="M 350,35 L 310,35 L 280,15 L 220,15 L 190,35 L 130,35 L 100,55 L 0,55" class="pista-base" stroke="#ff9f1c" />
-                    <path d="M 350,55 L 290,55 L 260,35 L 170,35 L 140,15 L 0,15" class="pista-base" stroke="#00b4d8" opacity="0.4" />
-                    <circle cx="280" cy="15" r="3.5" fill="#ff9f1c" class="nodo-destello" />
-                    <circle cx="190" cy="35" r="3.5" fill="#00b4d8" class="nodo-destello" />
-                    <circle cx="140" cy="15" r="3.5" fill="#2ec4b6" class="nodo-destello" />
-                    <path d="M 350,35 L 310,35 L 280,15 L 220,15 L 190,35 L 130,35 L 100,55 L 0,55" class="impulso-electrico" stroke="#00b4d8" />
-                    <path d="M 350,55 L 290,55 L 260,35 L 170,35 L 140,15 L 0,15" class="impulso-electrico" stroke="#2ec4b6" style="animation-duration: 2.5s;" />
+            <!-- Circuito Derecho (Borde a Borde) -->
+            <div class="circuito-lado">
+                <svg viewBox="0 0 600 70" preserveAspectRatio="none">
+                    <path d="M 600,35 L 480,35 L 420,15 L 300,15 L 240,35 L 120,35 L 60,55 L 0,55" class="pista-base" stroke="#ff9f1c" />
+                    <path d="M 600,55 L 450,55 L 390,35 L 210,35 L 150,15 L 0,15" class="pista-base" stroke="#00b4d8" opacity="0.4" />
+                    <circle cx="420" cy="15" r="4" fill="#ff9f1c" class="nodo-destello" />
+                    <circle cx="240" cy="35" r="4" fill="#2ec4b6" class="nodo-destello" />
+                    <circle cx="150" cy="15" r="4" fill="#00b4d8" class="nodo-destello" />
+                    <path d="M 600,35 L 480,35 L 420,15 L 300,15 L 240,35 L 120,35 L 60,55 L 0,55" class="impulso-electrico" stroke="#00b4d8" />
+                    <path d="M 600,55 L 450,55 L 390,35 L 210,35 L 150,15 L 0,15" class="impulso-electrico" stroke="#2ec4b6" style="animation-duration: 7s;" />
                 </svg>
             </div>
         </div>
@@ -49,7 +48,6 @@
             <p>Accesorios y Repuestos de Alto Rendimiento</p>
         </div>
 
-        <!-- Slider de marcas en tienda -->
         <div class="slider-marcas">
             <div class="contenedor-logos">
                 <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
@@ -58,7 +56,7 @@
         </div>
     </header>
 
-    <!-- MENÚ FLOTANTE LATERAL IDÉNTICO (CON CUADERNO Y REDES) -->
+    <!-- MENÚ FLOTANTE LATERAL IDÉNTICO -->
     <div class="menu-flotante-lateral">
         <a href="../index.html#contacto" class="btn-flotante-item">
             <i class="fa-solid fa-book-open"></i>
@@ -83,31 +81,60 @@
         </div>
     </div>
 
-    <!-- ESTILOS INTERNOS COMPARTIDOS PARA LA TIENDA -->
+    <!-- CATÁLOGO DE PRODUCTOS (ESTRUCTURA LLENA Y PROFESIONAL) -->
+    <main style="padding: 50px 20px; max-width: 1200px; margin: 0 auto;">
+        <h2 style="color: #FF6600; text-align: center; font-weight: 900; letter-spacing: 2px; margin-bottom: 40px;">PRODUCTOS DESTACADOS</h2>
+        
+        <div class="grid-productos">
+            <!-- Producto 1 -->
+            <div class="tarjeta-producto">
+                <div class="img-producto-box">🛠️</div>
+                <h3>Escáner OBD Profesional</h3>
+                <p class="precio">$450.000 COP</p>
+                <a href="https://wa.me/573104886929?text=Hola,%20estoy%20interesado%20en%20el%20Escáner%20OBD%20Profesional" class="btn-comprar" target="_blank">Comprar por WhatsApp</a>
+            </div>
+            <!-- Producto 2 -->
+            <div class="tarjeta-producto">
+                <div class="img-producto-box">⚡</div>
+                <h3>Kit de Inyectores de Alto Flujo</h3>
+                <p class="precio">$180.000 COP</p>
+                <a href="https://wa.me/573104886929?text=Hola,%20estoy%20interesado%20en%20el%20Kit%20de%20Inyectores" class="btn-comprar" target="_blank">Comprar por WhatsApp</a>
+            </div>
+            <!-- Producto 3 -->
+            <div class="tarjeta-producto">
+                <div class="img-producto-box">⚙️</div>
+                <h3>Kit de Arrastre Racing</h3>
+                <p class="precio">$320.000 COP</p>
+                <a href="https://wa.me/573104886929?text=Hola,%20estoy%20interesado%20en%20el%20Kit%20de%20Arrastre" class="btn-comprar" target="_blank">Comprar por WhatsApp</a>
+            </div>
+            <!-- Producto 4 -->
+            <div class="tarjeta-producto">
+                <div class="img-producto-box">🔋</div>
+                <h3>Regulador de Voltaje reforzado</h3>
+                <p class="precio">$120.000 COP</p>
+                <a href="https://wa.me/573104886929?text=Hola,%20estoy%20interesado%20en%20el%20Regulador%20de%20Voltaje" class="btn-comprar" target="_blank">Comprar por WhatsApp</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- ESTILOS CSS UNIFICADOS DE LA TIENDA -->
     <style>
         body { background-color: #000; color: #fff; margin: 0; font-family: sans-serif; }
         .header-principal { background: #000; border-bottom: 2px solid #FF6600; text-align: center; }
-        .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 15px 0; }
-        .circuito-lado { width: 280px; height: 50px; }
-        .pista-base { fill: none; stroke-width: 2; opacity: 0.3; }
-        .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 40 260; animation: correrPulso 3s linear infinite; filter: drop-shadow(0 0 8px currentColor); }
-        @keyframes correrPulso { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
+        .header-circuitos-container { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; overflow: hidden; }
+        .circuito-lado { flex: 1; height: 60px; }
+        .pista-base { fill: none; stroke-width: 2; opacity: 0.35; }
+        .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 60 400; animation: correrPulso 6s linear infinite; filter: drop-shadow(0 0 10px currentColor); }
+        @keyframes correrPulso { 0% { stroke-dashoffset: 460; } 100% { stroke-dashoffset: 0; } }
 
         @keyframes destelloNodo {
-            0%, 100% { opacity: 0.3; transform: scale(1); filter: drop-shadow(0 0 2px currentColor); }
-            50% { opacity: 1; transform: scale(1.4); filter: drop-shadow(0 0 10px #fff); }
+            0%, 100% { opacity: 0.2; transform: scale(0.8); filter: drop-shadow(0 0 2px currentColor); }
+            50% { opacity: 1; transform: scale(1.6); filter: drop-shadow(0 0 12px #fff); }
         }
-        .nodo-destello { animation: destelloNodo 1.5s ease-in-out infinite; }
+        .nodo-destello { animation: destelloNodo 2s ease-in-out infinite; transform-origin: center; }
 
-        #logo-ams {
-            max-height: 85px;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-        #logo-ams:hover {
-            transform: scale(1.12);
-        }
+        #logo-ams { max-height: 85px; border-radius: 12px; transition: transform 0.3s ease; cursor: pointer; margin: 0 15px; z-index: 5; }
+        #logo-ams:hover { transform: scale(1.15); }
 
         .menu-flotante-lateral { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
         .btn-flotante-item { 
@@ -128,17 +155,20 @@
         .contenedor-logos { display: inline-block; animation: scrollMarcas 60s linear infinite; }
         .contenedor-logos span { color: #fff; font-weight: bold; margin: 0 40px; font-size: 1.3rem; letter-spacing: 2px; }
         @keyframes scrollMarcas { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Estilos de la Cuadrícula de la Tienda */
+        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .tarjeta-producto { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .tarjeta-producto:hover { transform: translateY(-5px); border-color: #FF6600; box-shadow: 0 8px 25px rgba(255,102,0,0.2); }
+        .img-producto-box { font-size: 4rem; margin-bottom: 15px; }
+        .tarjeta-producto h3 { color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
+        .precio { color: #FF6600; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; }
+        .btn-comprar { display: inline-block; background: #25D366; color: #fff; padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: 0.2s; }
+        .btn-comprar:hover { background: #20ba5a; transform: scale(1.05); }
     </style>
 
-    <main style="padding: 50px 20px; text-align: center;">
-        <h2 style="color: #FF6600;">CATÁLOGO DE PRODUCTOS</h2>
-        <p>Explora nuestra selección de accesorios disponibles.</p>
-    </main>
-
-    <footer style="padding: 30px; background: #000; border-top: 1px solid #222; text-align: center; color: #775555; font-size: 0.85rem;">
-        <p>© 2026 <strong>ALLMOTOSYNC S.A.S.</strong> - Tienda Online</p>
+    <footer style="padding: 40px 20px; background: #000; border-top: 1px solid #222; text-align: center; color: #888; font-size: 0.85rem; margin-top: 50px;">
+        <p>© 2026 <strong>ALLMOTOSYNC S.A.S.</strong> - Tienda Online Oficial</p>
     </footer>
-
-    <script src="productos.js"></script>
 </body>
 </html>
