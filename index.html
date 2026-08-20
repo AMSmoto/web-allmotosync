@@ -1,80 +1,233 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T94LJCGB');</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIENDA | ALLMOTOSYNC</title>
-    <style>
-        body { background-color: #0b0f19; color: #fff; font-family: sans-serif; margin: 0; }
-        
-        /* HEADER IGUAL AL PRINCIPAL */
-        .header-principal { background: #000; padding: 10px 0; text-align: center; border-bottom: 2px solid #FF6600; position: sticky; top: 0; z-index: 1000; transition: all 0.3s; }
-        .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .circuito-lado { width: 250px; height: 50px; }
-        .pista-base { fill: none; stroke-width: 2; opacity: 0.3; }
-        .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 40 260; animation: correrPulso 3s linear infinite; }
-        @keyframes correrPulso { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
-        
-        /* Ajuste del logo para que encoja */
-        #logo-ams { max-height: 80px; transition: all 0.3s; }
-        .header-chico { padding: 5px 0; }
-        .header-chico #logo-ams { max-height: 40px; }
-
-        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
-        .card-producto { background: #1a1a1a; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #333; }
-    </style>
+    <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="MEDIA/AMSchr2.png">
+    <meta name="theme-color" content="#FF6600">
+    <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
-
-    <!-- HEADER IDÉNTICO AL PRINCIPAL -->
-    <header id="main-header" class="header-principal">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T94LJCGB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+    <header id="miHeader" class="header-principal">
+        <!-- Circuitos Electrónicos Avanzados (Estilo PCB / Inyección Electrónica) -->
         <div class="header-circuitos-container">
+            <!-- Circuito Izquierdo -->
             <div class="circuito-lado">
                 <svg viewBox="0 0 350 70" preserveAspectRatio="none">
-                    <path d="M 0,35 L 350,35" class="pista-base" stroke="#00b4d8" />
-                    <path d="M 0,35 L 350,35" class="impulso-electrico" stroke="#ff9f1c" />
+                    <path d="M 0,35 L 40,35 L 70,15 L 130,15 L 160,35 L 220,35 L 250,55 L 350,55" class="pista-base" stroke="#00b4d8" />
+                    <path d="M 0,55 L 60,55 L 90,35 L 180,35 L 210,15 L 350,15" class="pista-base" stroke="#ff9f1c" opacity="0.4" />
+                    <circle cx="70" cy="15" r="3" fill="#00b4d8" />
+                    <circle cx="160" cy="35" r="3" fill="#ff9f1c" />
+                    <circle cx="210" cy="15" r="3" fill="#2ec4b6" />
+                    <path d="M 0,35 L 40,35 L 70,15 L 130,15 L 160,35 L 220,35 L 250,55 L 350,55" class="impulso-electrico" stroke="#ff9f1c" />
+                    <path d="M 0,55 L 60,55 L 90,35 L 180,35 L 210,15 L 350,15" class="impulso-electrico" stroke="#00b4d8" style="animation-duration: 2.2s;" />
                 </svg>
             </div>
-            
-            <a href="../index.html"><img src="../MEDIA/ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC"></a>
 
-            <div class="circuito-lado">
+            <img src="MEDIA/ALLMOTOSYNC LOGO.jpg" id="logo-ams" alt="ALLMOTOSYNC">
+
+            <!-- Circuito Derecho -->
+            <div class="circuito-lado circuito-der">
                 <svg viewBox="0 0 350 70" preserveAspectRatio="none">
-                    <path d="M 0,35 L 350,35" class="pista-base" stroke="#ff9f1c" />
-                    <path d="M 0,35 L 350,35" class="impulso-electrico" stroke="#00b4d8" />
+                    <path d="M 350,35 L 310,35 L 280,15 L 220,15 L 190,35 L 130,35 L 100,55 L 0,55" class="pista-base" stroke="#ff9f1c" />
+                    <path d="M 350,55 L 290,55 L 260,35 L 170,35 L 140,15 L 0,15" class="pista-base" stroke="#00b4d8" opacity="0.4" />
+                    <circle cx="280" cy="15" r="3" fill="#ff9f1c" />
+                    <circle cx="190" cy="35" r="3" fill="#00b4d8" />
+                    <circle cx="140" cy="15" r="3" fill="#2ec4b6" />
+                    <path d="M 350,35 L 310,35 L 280,15 L 220,15 L 190,35 L 130,35 L 100,55 L 0,55" class="impulso-electrico" stroke="#00b4d8" />
+                    <path d="M 350,55 L 290,55 L 260,35 L 170,35 L 140,15 L 0,15" class="impulso-electrico" stroke="#ff9f1c" style="animation-duration: 2.5s;" />
                 </svg>
+            </div>
+        </div>
+        
+        <div class="titulos-hero">
+            <h1>DIAGNÓSTICO DE PRECISIÓN</h1>
+            <p>Inyección Electrónica Avanzada</p>
+        </div>
+
+        <!-- Slider de marcas más lento y más grande -->
+        <div class="slider-marcas">
+            <div class="contenedor-logos">
+                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
+                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
             </div>
         </div>
     </header>
 
-    <main>
-        <h1 style="text-align: center; color: #FF6600; margin-top: 40px;">CATÁLOGO DE REPUESTOS</h1>
-        <div id="contenedor-productos" class="grid-productos"></div>
-    </main>
+    <div class="relleno-header"></div>
 
-    <script>
-        // Efecto scroll para encoger header y logo
-        window.addEventListener("scroll", () => {
-            const h = document.getElementById("main-header");
-            h.classList.toggle("header-chico", window.scrollY > 50);
-        });
+    <!-- MENÚ FLOTANTE LATERAL -->
+    <div class="menu-flotante-lateral">
+        <a href="#contacto" class="btn-flotante-item">
+            <div class="marquesina-contenedor">
+                <span class="marquesina-texto">AGENDAR CITA AHORA &nbsp;&bull;&nbsp; AGENDAR CITA AHORA &nbsp;&bull;&nbsp;</span>
+            </div>
+        </a>
+        
+        <a href="TIENDA/index.html" class="btn-flotante-item">
+            <i class="fa-solid fa-cart-shopping"></i> 
+            <div class="marquesina-contenedor">
+                <span class="marquesina-texto">TIENDA ONLINE &nbsp;&bull;&nbsp; TIENDA ONLINE &nbsp;&bull;&nbsp;</span>
+            </div>
+        </a>
 
-        // Carga de productos
-        const productos = [
-            { nombre: "Escáner OBD", precio: "$250.000" },
-            { nombre: "Kit Arrastre KTM", precio: "$180.000" },
-            { nombre: "Inyector Alto Flujo", precio: "$95.000" }
-        ];
-        const contenedor = document.getElementById('contenedor-productos');
-        productos.forEach(p => {
-            contenedor.innerHTML += `
-                <div class="card-producto">
-                    <h3>${p.nombre}</h3>
-                    <p style="color: #FF6600; font-weight: bold;">${p.precio}</p>
-                    <button style="background:#FF6600; border:none; padding:10px; border-radius:5px; cursor:pointer;">Comprar</button>
-                </div>
-            `;
-        });
-    </script>
+        <div class="redes-flotantes">
+            <a href="https://wa.me/573104886929" target="_blank" class="red-icon" style="background: #25D366;"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://instagram.com" target="_blank" class="red-icon" style="background: #E1306C;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" class="red-icon" style="background: #1877F2;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://tiktok.com" target="_blank" class="red-icon" style="background: #000000;"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://mercadolibre.com.co" target="_blank" class="red-icon" style="background: #FFE600; color: #000;"><i class="fa-solid fa-handshake"></i></a>
+        </div>
+    </div>
+
+    <!-- ESTILOS CSS GENERALES -->
+    <style>
+        .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 15px 0; }
+        .circuito-lado { width: 280px; height: 50px; }
+        .pista-base { fill: none; stroke-width: 2; opacity: 0.3; }
+        .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 40 260; animation: correrPulso 3s linear infinite; filter: drop-shadow(0 0 8px currentColor); }
+        @keyframes correrPulso { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
+
+        .menu-flotante-lateral { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+        .btn-flotante-item { 
+            background: #FF6600; color: #fff; padding: 12px 15px; border-radius: 10px 0 0 10px; 
+            text-decoration: none; font-weight: bold; font-size: 13px; width: 180px; 
+            display: flex; align-items: center; gap: 8px; box-shadow: -3px 3px 10px rgba(0,0,0,0.5); 
+            border-left: 3px solid #fff; overflow: hidden; white-space: nowrap; box-sizing: border-box;
+        }
+        .marquesina-contenedor { width: 100%; overflow: hidden; white-space: nowrap; display: inline-block; }
+        @keyframes correrTexto { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquesina-texto { display: inline-block; white-space: nowrap; animation: correrTexto 7s linear infinite; }
+
+        .redes-flotantes { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
+        .red-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; color: #fff; border-radius: 8px 0 0 8px; text-decoration: none; font-size: 20px; box-shadow: -2px 2px 5px rgba(0,0,0,0.4); transition: 0.2s; }
+        .red-icon:hover { transform: scale(1.1); }
+        
+        /* Slider de marcas más lento (45s) y más grande (1.3rem) */
+        .slider-marcas { overflow: hidden; width: 100%; background: #000; padding: 15px 0; white-space: nowrap; }
+        .contenedor-logos { display: inline-block; animation: scrollMarcas 45s linear infinite; }
+        .contenedor-logos span { color: #fff; font-weight: bold; margin: 0 40px; font-size: 1.3rem; letter-spacing: 2px; }
+        @keyframes scrollMarcas { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    </style>
+
+    <section id="por-que-nosotros" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 80px 20px; background: rgba(255,102,0,0.03);">
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">🛠️</div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Tecnología OEM</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Escáneres y herramientas de nivel original para cada marca.</p>
+        </div>
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">✅</div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Garantía Total</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Cada servicio cuenta con respaldo técnico y trazabilidad.</p>
+        </div>
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">⚡</div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Precisión</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Soluciones directas a la falla, ahorrando tiempo y repuestos innecesarios.</p>
+        </div>
+    </section>
+
+    <h2 style="color: #FF6600; margin-top: 60px; font-weight: 900; letter-spacing: 2px; text-align: center;">NUESTROS SERVICIOS</h2>
+    <div class="contenedor-servicios">
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.escaner)">
+            <img src="MEDIA/SCANNER%20KTM.webp" alt="Escáner" class="img-servicio">
+            <div class="overlay"><h2>ESCÁNER</h2></div>
+        </a>
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.inyeccion)">
+            <img src="MEDIA/LAV%20INYECTORES.png" alt="Inyección" class="img-servicio">
+            <div class="overlay"><h2>INYECCIÓN</h2></div>
+        </a>
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.remap)">
+            <img src="MEDIA/PROG%20ECU.jfif" alt="Remap ECU" class="img-servicio">
+            <div class="overlay"><h2>REMAP ECU</h2></div>
+        </a>
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.accesorios)">
+            <img src="MEDIA/MANTENIMIENTO%201290.jpg" alt="Accesorios" class="img-servicio">
+            <div class="overlay"><h2>ACCESORIOS</h2></div>
+        </a>
+    </div>
+
+    <div style="padding: 60px 0; background: rgba(0,0,0,0.3);">
+        <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px; text-align: center;">TRABAJOS REALIZADOS</h2>
+        <div class="contenedor-galeria">
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.arrastre)">
+                <video autoplay muted loop playsinline><source src="MEDIA/kit%20arrastre.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>KIT ARRASTRE</h4></div>
+            </div>
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.electrico)">
+                <video autoplay muted loop playsinline><source src="MEDIA/instalacion%20gps.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>SISTEMA ELÉCTRICO / GPS</h4></div>
+            </div>
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.frenos)">
+                <video autoplay muted loop playsinline><source src="MEDIA/frenos.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>SISTEMA DE FRENOS</h4></div>
+            </div>
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.sincro)">
+                <video autoplay muted loop playsinline><source src="MEDIA/sincromotor.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>SINCRONIZACIÓN MOTOR</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <section id="consulta-cliente" style="padding: 60px 20px; background: #000; border-top: 2px solid #FF6600; text-align: center;">
+        <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px;">EXPEDIENTE DIGITAL AMS</h2>
+        <p style="color: #ccc;">Consulte el historial técnico y trazabilidad de su motocicleta.</p>
+        
+        <div style="max-width: 400px; margin: 30px auto; background: #111; padding: 30px; border-radius: 15px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(255,102,0,0.1);">
+            <input type="text" id="placa" placeholder="PLACA (Ej: AAA99A)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff; text-transform: uppercase;" onfocus="hablarTecnico('Digita tu placa y clave para acceder al historial clínico de tu moto.')">
+            <input type="password" id="pass" placeholder="CONTRASEÑA (Otorgada por AMS)" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff;">
+            <button onclick="consultarMoto()" style="width: 100%; padding: 15px; background: #FF6600; color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: 0.3s;">Ver Historial</button>
+        </div>
+
+        <div id="resultado-historial" style="max-width: 850px; margin: 0 auto; display: none; text-align: left; background: #111; padding: 25px; border-radius: 15px; border: 1px solid #FF6600;">
+        </div>
+    </section>
+
+    <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 70px 20px; text-align: center;">
+        <h2 style="color: #FF6600; font-weight: 900;">VISÍTANOS EN SAN CRISTÓBAL SUR</h2>
+        <p style="font-size: 1.2rem; color: #ccc; margin-bottom: 20px;">Cl. 31c Sur # 3A-72, Bogotá</p>
+        <div style="max-width: 1000px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 3px solid #FF6600;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.108!2d-74.0937!3d4.5567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9890f7c78279%3A0xed4958ee8946d535!2sCl.%2031c%20Sur%20%233A-72%2C%20San%20Crist%C3%B3bal%2C%20Bogot%C3%á!5e0!3m2!1ses-419!2sco!4v1711123456789!5m2!1ses-419!2sco" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- TÉCNICO CALIFICADO AMS INTERACTIVO -->
+    <div id="tecnico-container">
+        <div class="tecnico-avatar" onclick="cambiarTipYFotoManual()">
+            <img src="MEDIA/A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin%20(1).jpg" alt="Técnico Calificado AMS" id="img-tecnico">
+        </div>
+        <div class="tecnico-bubble" id="tecnico-text">
+            ¡Hola! Soy tu <b>Técnico Calificado AMS</b> 🛠️. Tócame para cambiar de tip técnico o explora los servicios.
+        </div>
+    </div>
+
+    <footer style="padding: 50px 20px 30px; background: #000; font-size: 0.85rem; color: #888; border-top: 1px solid #222; text-align: center;">
+        <div style="max-width: 1000px; margin: 0 auto; line-height: 1.6;">
+            <p style="color: #aaa; margin-bottom: 15px;">
+                <strong style="color: #FF6600;">AVISO LEGAL Y PROPIEDAD INTELECTUAL:</strong> 
+                Todo el contenido presente en este sitio web, incluyendo logotipos, marcas comerciales ("ALLMOTOSYNC", "AMS"), gráficos, fotografías, videos de procedimientos, código fuente y la interfaz técnica interactiva, son propiedad exclusiva de <strong>ALLMOTOSYNC S.A.S.</strong> y están protegidos por las leyes de propiedad intelectual e industrial vigentes en Colombia e internacionales. Queda estrictamente prohibida la reproducción, distribución, modificación o uso no autorizado total o parcial de este material sin el consentimiento previo y por escrito de la compañía.
+            </p>
+            <p style="color: #666; font-size: 0.78rem; margin-bottom: 20px;">
+                <em>Marcas de Terceros:</em> Nombres de fabricantes, marcas y modelos de motocicletas (tales como KTM, Honda, Yamaha, Kawasaki, Suzuki, Bajaj, AKT, Benelli, entre otros) se mencionan únicamente con fines descriptivos para indicar la compatibilidad de nuestros servicios de diagnóstico e inyección electrónica, y son marcas registradas de sus respectivos titulares.
+            </p>
+            <div style="border-top: 1px solid #111; padding-top: 15px; color: #555;">
+                © 2026 <strong>ALLMOTOSYNC S.A.S.</strong> | Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS PRINCIPAL -->
+    <script src="JS/main.js"></script>
 </body>
 </html>
