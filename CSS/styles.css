@@ -225,3 +225,41 @@
     position: relative;
     z-index: 2;
 }
+.contenedor-servicios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.tarjeta-click {
+    position: relative;
+    width: 250px;
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: block;
+    border: 1px solid #333;
+}
+
+.img-servicio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block;
+}
+
+.tarjeta-click .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 20px 10px;
+    text-align: center;
+    z-index: 2;
+}
