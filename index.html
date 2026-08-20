@@ -10,6 +10,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALLMOTOSYNC | Diagnóstico Avanzado</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="MEDIA/AMSchr2.png">
+    <meta name="theme-color" content="#FF6600">
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
@@ -28,60 +31,193 @@
             <p>Inyección Electrónica Avanzada</p>
         </div>
         <div class="slider-marcas">
-    <div class="contenedor-logos">
-        <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
-        <!-- Duplicado para efecto infinito -->
-        <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
-    </div>
-</div>
+            <div class="contenedor-logos">
+                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
+                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
+            </div>
+        </div>
     </header>
 
-    <!-- MENÚ FLOTANTE LATERAL (AGRUPA TODO: BOTONES Y REDES) -->
+    <div class="relleno-header"></div>
+
+    <!-- MENÚ FLOTANTE LATERAL (MARQUESINAS CORREGIDAS Y REDES) -->
     <div class="menu-flotante-lateral">
         <a href="#contacto" class="btn-flotante-item">
-            <span class="marquesina-texto">AGENDAR CITA AHORA &nbsp;&bull;&nbsp; AGENDAR CITA AHORA &nbsp;&bull;&nbsp;</span>
+            <div class="marquesina-contenedor">
+                <span class="marquesina-texto">AGENDAR CITA AHORA &nbsp;&bull;&nbsp; AGENDAR CITA AHORA &nbsp;&bull;&nbsp;</span>
+            </div>
         </a>
+        
         <a href="TIENDA/index.html" class="btn-flotante-item">
             <i class="fa-solid fa-cart-shopping"></i> 
-            <span class="marquesina-texto">TIENDA ONLINE &nbsp;&bull;&nbsp; TIENDA ONLINE &nbsp;&bull;&nbsp;</span>
+            <div class="marquesina-contenedor">
+                <span class="marquesina-texto">TIENDA ONLINE &nbsp;&bull;&nbsp; TIENDA ONLINE &nbsp;&bull;&nbsp;</span>
+            </div>
         </a>
+
         <div class="redes-flotantes">
             <a href="https://wa.me/573104886929" target="_blank" class="red-icon" style="background: #25D366;"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="#" target="_blank" class="red-icon" style="background: #E1306C;"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" target="_blank" class="red-icon" style="background: #1877F2;"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" target="_blank" class="red-icon" style="background: #000000;"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="#" target="_blank" class="red-icon" style="background: #FFE600; color: #000;"><i class="fa-solid fa-handshake"></i></a>
+            <a href="https://instagram.com" target="_blank" class="red-icon" style="background: #E1306C;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" class="red-icon" style="background: #1877F2;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://tiktok.com" target="_blank" class="red-icon" style="background: #000000;"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://mercadolibre.com.co" target="_blank" class="red-icon" style="background: #FFE600; color: #000;"><i class="fa-solid fa-handshake"></i></a>
         </div>
     </div>
 
-   <style>
-    /* 1. Circuitos */
-    .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 20px 0; }
-    .circuito-lado { width: 250px; height: 50px; }
-    .pista-base { fill: none; stroke-width: 2; opacity: 0.3; }
-    .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 40 260; animation: correrPulso 3s linear infinite; filter: drop-shadow(0 0 8px currentColor); }
-    @keyframes correrPulso { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
-    
-    /* 2. Menú Flotante y Botones de Redes (Tamaño aumentado) */
-    .menu-flotante-lateral { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-    .btn-flotante-item { background: #FF6600; color: #fff; padding: 15px 20px; border-radius: 10px 0 0 10px; text-decoration: none; font-weight: bold; width: 200px; display: flex; align-items: center; gap: 10px; box-shadow: -4px 4px 12px rgba(0,0,0,0.5); transition: 0.3s; }
-    .redes-flotantes { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-    .red-icon { width: 55px; height: 55px; font-size: 22px; display: flex; align-items: center; justify-content: center; color: #fff; border-radius: 10px 0 0 10px; text-decoration: none; box-shadow: -3px 3px 8px rgba(0,0,0,0.4); transition: 0.3s; }
-    .red-icon:hover { transform: scale(1.15); width: 65px; }
+    <!-- ESTILOS CSS GENERALES Y CORREGIDOS -->
+    <style>
+        .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 10px 0; }
+        .circuito-lado { width: 250px; height: 40px; }
+        .pista-base { fill: none; stroke-width: 2; opacity: 0.3; }
+        .impulso-electrico { fill: none; stroke-width: 3; stroke-dasharray: 40 260; animation: correrPulso 3s linear infinite; filter: drop-shadow(0 0 8px currentColor); }
+        @keyframes correrPulso { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
 
-    /* 3. Slider de Marcas (Infinito y Continuo) */
-    .slider-marcas { overflow: hidden; width: 100%; background: #000; padding: 15px 0; white-space: nowrap; }
-    .contenedor-logos { display: inline-block; animation: scrollMarcas 20s linear infinite; }
-    .contenedor-logos span { color: #fff; font-weight: bold; margin: 0 40px; font-size: 1.2rem; letter-spacing: 2px; }
-    @keyframes scrollMarcas {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-    }
-</style>
+        .menu-flotante-lateral { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+        
+        .btn-flotante-item { 
+            background: #FF6600; color: #fff; padding: 12px 15px; border-radius: 10px 0 0 10px; 
+            text-decoration: none; font-weight: bold; font-size: 13px; width: 180px; 
+            display: flex; align-items: center; gap: 8px; box-shadow: -3px 3px 10px rgba(0,0,0,0.5); 
+            border-left: 3px solid #fff; overflow: hidden; white-space: nowrap; box-sizing: border-box;
+        }
+        
+        /* Contenedor estricto para que la marquesina corra en una sola línea limpia */
+        .marquesina-contenedor {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+        }
 
-    <!-- Resto de tu contenido (Servicios, Trabajos, Expediente, etc.) va aquí sin cambios -->
-    <!-- ... tu código original ... -->
+        @keyframes correrTexto { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(-50%); } 
+        }
 
+        .marquesina-texto { 
+            display: inline-block; 
+            white-space: nowrap; 
+            animation: correrTexto 7s linear infinite; 
+        }
+
+        .redes-flotantes { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
+        .red-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; color: #fff; border-radius: 8px 0 0 8px; text-decoration: none; font-size: 20px; box-shadow: -2px 2px 5px rgba(0,0,0,0.4); transition: 0.2s; }
+        .red-icon:hover { transform: scale(1.1); }
+        
+        .slider-marcas { overflow: hidden; width: 100%; background: #000; padding: 12px 0; white-space: nowrap; }
+        .contenedor-logos { display: inline-block; animation: scrollMarcas 25s linear infinite; }
+        .contenedor-logos span { color: #fff; font-weight: bold; margin: 0 30px; font-size: 1.1rem; letter-spacing: 2px; }
+        @keyframes scrollMarcas { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    </style>
+
+    <section id="por-que-nosotros" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 80px 20px; background: rgba(255,102,0,0.03);">
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">🛠️</div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Tecnología OEM</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Escáneres y herramientas de nivel original para cada marca.</p>
+        </div>
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">✅</div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Garantía Total</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Cada servicio cuenta con respaldo técnico y trazabilidad.</p>
+        </div>
+        <div style="max-width: 280px; text-align: center;">
+            <div style="font-size: 3.5rem; color: #FF6600;">⚡</div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Precisión</h3>
+            <p style="font-size: 0.95rem; color: #aaa;">Soluciones directas a la falla, ahorrando tiempo y repuestos innecesarios.</p>
+        </div>
+    </section>
+
+    <h2 style="color: #FF6600; margin-top: 60px; font-weight: 900; letter-spacing: 2px; text-align: center;">NUESTROS SERVICIOS</h2>
+    <div class="contenedor-servicios">
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.escaner)">
+            <img src="MEDIA/SCANNER%20KTM.webp" alt="Escáner" class="img-servicio">
+            <div class="overlay"><h2>ESCÁNER</h2></div>
+        </a>
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.inyeccion)">
+            <img src="MEDIA/LAV%20INYECTORES.png" alt="Inyección" class="img-servicio">
+            <div class="overlay"><h2>INYECCIÓN</h2></div>
+        </a>
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.remap)">
+            <img src="MEDIA/PROG%20ECU.jfif" alt="Remap ECU" class="img-servicio">
+            <div class="overlay"><h2>REMAP ECU</h2></div>
+        </a>
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.accesorios)">
+            <img src="MEDIA/MANTENIMIENTO%201290.jpg" alt="Accesorios" class="img-servicio">
+            <div class="overlay"><h2>ACCESORIOS</h2></div>
+        </a>
+    </div>
+
+    <div style="padding: 60px 0; background: rgba(0,0,0,0.3);">
+        <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px; text-align: center;">TRABAJOS REALIZADOS</h2>
+        <div class="contenedor-galeria">
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.arrastre)">
+                <video autoplay muted loop playsinline><source src="MEDIA/kit%20arrastre.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>KIT ARRASTRE</h4></div>
+            </div>
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.electrico)">
+                <video autoplay muted loop playsinline><source src="MEDIA/instalacion%20gps.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>SISTEMA ELÉCTRICO / GPS</h4></div>
+            </div>
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.frenos)">
+                <video autoplay muted loop playsinline><source src="MEDIA/frenos.mp4.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>SISTEMA DE FRENOS</h4></div>
+            </div>
+            <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.sincro)">
+                <video autoplay muted loop playsinline><source src="MEDIA/sincromotor.mp4" type="video/mp4"></video>
+                <div class="info-trabajo"><h4>SINCRONIZACIÓN MOTOR</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <section id="consulta-cliente" style="padding: 60px 20px; background: #000; border-top: 2px solid #FF6600; text-align: center;">
+        <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px;">EXPEDIENTE DIGITAL AMS</h2>
+        <p style="color: #ccc;">Consulte el historial técnico y trazabilidad de su motocicleta.</p>
+        
+        <div style="max-width: 400px; margin: 30px auto; background: #111; padding: 30px; border-radius: 15px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(255,102,0,0.1);">
+            <input type="text" id="placa" placeholder="PLACA (Ej: AAA99A)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff; text-transform: uppercase;" onfocus="hablarTecnico('Digita tu placa y clave para acceder al historial clínico de tu moto.')">
+            <input type="password" id="pass" placeholder="CONTRASEÑA (Otorgada por AMS)" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff;">
+            <button onclick="consultarMoto()" style="width: 100%; padding: 15px; background: #FF6600; color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: 0.3s;">Ver Historial</button>
+        </div>
+
+        <div id="resultado-historial" style="max-width: 850px; margin: 0 auto; display: none; text-align: left; background: #111; padding: 25px; border-radius: 15px; border: 1px solid #FF6600;">
+        </div>
+    </section>
+
+    <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 70px 20px; text-align: center;">
+        <h2 style="color: #FF6600; font-weight: 900;">VISÍTANOS EN SAN CRISTÓBAL SUR</h2>
+        <p style="font-size: 1.2rem; color: #ccc; margin-bottom: 20px;">Cl. 31c Sur # 3A-72, Bogotá</p>
+        <div style="max-width: 1000px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 3px solid #FF6600;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.108!2d-74.0937!3d4.5567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9890f7c78279%3A0xed4958ee8946d535!2sCl.%2031c%20Sur%20%233A-72%2C%20San%20Crist%C3%B3bal%2C%20Bogot%C3%A1!5e0!3m2!1ses-419!2sco!4v1711123456789!5m2!1ses-419!2sco" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- TÉCNICO CALIFICADO AMS INTERACTIVO -->
+    <div id="tecnico-container">
+        <div class="tecnico-avatar" onclick="cambiarTipYFotoManual()">
+            <img src="MEDIA/A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin%20(1).jpg" alt="Técnico Calificado AMS" id="img-tecnico">
+        </div>
+        <div class="tecnico-bubble" id="tecnico-text">
+            ¡Hola! Soy tu <b>Técnico Calificado AMS</b> 🛠️. Tócame para cambiar de tip técnico o explora los servicios.
+        </div>
+    </div>
+
+    <footer style="padding: 50px 20px 30px; background: #000; font-size: 0.85rem; color: #888; border-top: 1px solid #222; text-align: center;">
+        <div style="max-width: 1000px; margin: 0 auto; line-height: 1.6;">
+            <p style="color: #aaa; margin-bottom: 15px;">
+                <strong style="color: #FF6600;">AVISO LEGAL Y PROPIEDAD INTELECTUAL:</strong> 
+                Todo el contenido presente en este sitio web, incluyendo logotipos, marcas comerciales ("ALLMOTOSYNC", "AMS"), gráficos, fotografías, videos de procedimientos, código fuente y la interfaz técnica interactiva, son propiedad exclusiva de <strong>ALLMOTOSYNC S.A.S.</strong> y están protegidos por las leyes de propiedad intelectual e industrial vigentes en Colombia e internacionales. Queda estrictamente prohibida la reproducción, distribución, modificación o uso no autorizado total o parcial de este material sin el consentimiento previo y por escrito de la compañía.
+            </p>
+            <p style="color: #666; font-size: 0.78rem; margin-bottom: 20px;">
+                <em>Marcas de Terceros:</em> Nombres de fabricantes, marcas y modelos de motocicletas (tales como KTM, Honda, Yamaha, Kawasaki, Suzuki, Bajaj, AKT, Benelli, entre otros) se mencionan únicamente con fines descriptivos para indicar la compatibilidad de nuestros servicios de diagnóstico e inyección electrónica, y son marcas registradas de sus respectivos titulares.
+            </p>
+            <div style="border-top: 1px solid #111; padding-top: 15px; color: #555;">
+                © 2026 <strong>ALLMOTOSYNC S.A.S.</strong> | Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS PRINCIPAL -->
     <script src="JS/main.js"></script>
 </body>
 </html>
