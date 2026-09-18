@@ -26,7 +26,7 @@
         .titulos-hero h1 { font-size: 2.2rem; margin: 0; font-weight: 800; text-shadow: 0 5px 15px rgba(0,0,0,0.7); letter-spacing: 3px; text-transform: uppercase;}
         .titulos-hero p { color: #FF6600; font-weight: bold; font-size: 1.1rem; margin: 5px 0 15px 0; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- SLIDER DE MARCAS --- */
+        /* --- SLIDER DE MARCAS (VELOCIDAD PAUSADA Y LECTURA CÓMODA) --- */
         .slider-marcas {
             width: 100%; 
             background: #080d17 !important; 
@@ -35,7 +35,11 @@
             border-top: 1px solid rgba(0, 180, 216, 0.2);
             border-bottom: 1px solid rgba(0, 180, 216, 0.2);
         }
-        .contenedor-logos { display: inline-block; animation: scrollMarcas 80s linear infinite; white-space: nowrap; }
+        .contenedor-logos { 
+            display: inline-block; 
+            animation: scrollMarcas 110s linear infinite !important; /* Disminución de velocidad */
+            white-space: nowrap; 
+        }
         .contenedor-logos span { font-size: 1.2rem; font-weight: 900; margin: 0 40px; color: rgba(255, 255, 255, 0.6); letter-spacing: 3px; }
         
         @keyframes scrollMarcas { 
@@ -58,7 +62,7 @@
             border-bottom: 3px solid #FF6600;
         }
 
-        /* --- BARRA SOCIAL --- */
+        /* --- BARRA SOCIAL Y BOTONES LATERALES DE ESCRITORIO --- */
         .social-bar {
             position: fixed; right: 0; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; z-index: 2000;
@@ -196,12 +200,56 @@
             filter: drop-shadow(0 0 8px currentColor); 
         }
 
+        /* --- AJUSTES DE RESPONSIVIDAD PARA CELULARES --- */
         @media (max-width: 768px) {
+            /* 1. Recortar invasión horizontal de los botones flotantes */
+            .btn-flotante-item {
+                width: 100px !important;
+                padding: 6px 8px !important;
+                font-size: 10px !important;
+            }
+
+            /* Reducir íconos de redes sociales para despejar la vista */
+            .red-icon {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 15px !important;
+            }
+
+            /* 2. Ralentizar velocidad del carrusel en dispositivos móviles */
+            .contenedor-logos {
+                animation-duration: 120s !important;
+            }
+
+            /* 3. Reajustar el duende técnico para que no obstaculice los textos */
+            #tecnico-container {
+                bottom: 10px !important;
+                left: 10px !important;
+            }
+
+            .tecnico-avatar {
+                width: 80px !important;
+                height: 80px !important;
+                border-width: 3px !important;
+            }
+
+            .tecnico-bubble {
+                width: 210px !important;
+                font-size: 11px !important;
+                padding: 8px 10px !important;
+                line-height: 1.3 !important;
+            }
+
+            .tecnico-bubble::after {
+                left: 20px !important;
+            }
+
+            /* Ajustar rellenos del encabezado e imágenes en pantalla pequeña */
             .relleno-header { height: 350px; }
-            .titulos-hero h1 { font-size: 1.6rem; }
-            #logo-ams { width: 300px; }
-            #tecnico-container { bottom: 15px; left: 15px; }
-            .tecnico-avatar { width: 110px; height: 110px; }
-            .tecnico-bubble { width: 260px; font-size: 12px; padding: 10px 14px; }
-            .tecnico-bubble::after { left: 30px; }
+            .titulos-hero h1 { font-size: 1.5rem; }
+            #logo-ams { width: 280px; }
+            
+            .card-showcase div[style*="padding: 40px"] {
+                padding: 20px !important;
+            }
         }
