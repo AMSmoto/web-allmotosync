@@ -19,7 +19,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T94LJCGB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     <header id="miHeader" class="header-principal">
-        <!-- Circuitos Estilo PCB Avanzado (Finos, Lentos y con trazos verticales/horizontales) -->
+        <!-- Circuitos Estilo PCB Avanzado -->
         <div class="header-circuitos-container">
             <!-- Circuito Izquierdo -->
             <div class="circuito-lado">
@@ -52,18 +52,15 @@
             </div>
         </div>
           
-        <!-- NUEVO HERO SECTION: MÁS COMERCIAL Y TECNOLÓGICO -->
+        <!-- HERO SECTION COMERCIAL Y TECNOLÓGICO -->
         <div class="titulos-hero">
-            <h1>TECNOLOGÍA, CONECTIVIDAD Y CONFORT PARA TU MOTO</h1>
+            <h1>ALLMOTOSYNC | TECNOLOGÍA, CONECTIVIDAD Y CONFORT PARA TU MOTO</h1>
             <p>Sistemas Apple CarPlay / Android Auto &bull; Iluminación LED de Alta Gama &bull; Seguridad Inteligente</p>
         </div>
  
         <!-- Slider de marcas -->
         <div class="slider-marcas">
             <div class="contenedor-logos">
-                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
-                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
-                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
                 <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
                 <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
                 <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
@@ -98,7 +95,7 @@
         </div>
     </div>
  
-    <!-- ESTILOS CSS GENERALES -->
+    <!-- ESTILOS CSS GENERALES Y AJUSTES HOVER -->
     <style>
         .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 10px 0; width: 100%; overflow: hidden; }
         .circuito-lado { width: 38vw; max-width: 450px; height: 60px; }
@@ -121,59 +118,115 @@
         .red-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; color: #fff; border-radius: 8px 0 0 8px; text-decoration: none; font-size: 20px; box-shadow: -2px 2px 5px rgba(0,0,0,0.4); transition: 0.2s; }
         .red-icon:hover { transform: scale(1.1); }
         
-        .slider-marcas { overflow: hidden; width: 100%; background: #000; padding: 15px 0; white-space: nowrap; }
-        .contenedor-logos { display: inline-block; animation: scrollMarcas 45s linear infinite; }
-        .contenedor-logos span { color: #fff; font-weight: bold; margin: 0 40px; font-size: 1.3rem; letter-spacing: 2px; }
+        .slider-marcas { overflow: hidden; width: 100%; background: #080d17; padding: 15px 0; white-space: nowrap; }
+        .contenedor-logos { display: inline-block; animation: scrollMarcas 110s linear infinite; }
+        .contenedor-logos span { color: rgba(255, 255, 255, 0.6); font-weight: bold; margin: 0 40px; font-size: 1.3rem; letter-spacing: 2px; }
         @keyframes scrollMarcas { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* Efecto Hover para las tarjetas de la galería */
         .card-galeria:hover {
             transform: translateY(-5px);
             border-color: #FF6600 !important;
             box-shadow: 0 8px 25px rgba(255, 102, 0, 0.25) !important;
         }
     </style>
- 
-    <section id="por-que-nosotros" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 80px 20px; background: rgba(255,102,0,0.03);">
-        <div style="max-width: 280px; text-align: center;">
-            <div style="font-size: 3.5rem; color: #FF6600;">🛠️</div>
-            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Tecnología OEM</h3>
-            <p style="font-size: 0.95rem; color: #aaa;">Escáneres y herramientas de nivel original para cada marca.</p>
+
+    <!-- 1. PILARES DE EXPERIENCIA TECH-STUDIO -->
+    <section id="por-que-nosotros" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 80px 20px; background: rgba(0, 180, 216, 0.03);">
+        <div style="max-width: 300px; text-align: center;">
+            <div style="font-size: 3.2rem; color: #00b4d8;"><i class="fa-solid fa-microchip"></i></div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase; font-weight: 800; font-size: 1.1rem;">Tecnología Certificada</h3>
+            <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.5;">Equipos de última generación compatibles con Apple CarPlay y Android Auto para cualquier marca de moto.</p>
         </div>
-        <div style="max-width: 280px; text-align: center;">
-            <div style="font-size: 3.5rem; color: #FF6600;">✅</div>
-            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Garantía Total</h3>
-            <p style="font-size: 0.95rem; color: #aaa;">Cada servicio cuenta con respaldo técnico y trazabilidad.</p>
+        <div style="max-width: 300px; text-align: center;">
+            <div style="font-size: 3.2rem; color: #FF6600;"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase; font-weight: 800; font-size: 1.1rem;">Garantía & Respaldo</h3>
+            <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.5;">Instalaciones profesionales sin alterar ni cortar el arnés eléctrico original de tu motocicleta.</p>
         </div>
-        <div style="max-width: 280px; text-align: center;">
-            <div style="font-size: 3.5rem; color: #FF6600;">⚡</div>
-            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase;">Precisión</h3>
-            <p style="font-size: 0.95rem; color: #aaa;">Soluciones directas a la falla, ahorrando tiempo y repuestos innecesarios.</p>
+        <div style="max-width: 300px; text-align: center;">
+            <div style="font-size: 3.2rem; color: #00b4d8;"><i class="fa-solid fa-bolt-lightning"></i></div>
+            <h3 style="color: #fff; margin: 15px 0; text-transform: uppercase; font-weight: 800; font-size: 1.1rem;">Integración Limpia</h3>
+            <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.5;">Acabados estéticos de alta gama, ocultación de cableado y máxima seguridad para tu inversión.</p>
         </div>
     </section>
  
-    <h2 style="color: #FF6600; margin-top: 60px; font-weight: 900; letter-spacing: 2px; text-align: center;">NUESTROS SERVICIOS</h2>
+    <!-- 2. NUESTROS PRODUCTOS -->
+    <h2 style="color: #FF6600; margin-top: 60px; font-weight: 900; letter-spacing: 2px; text-align: center; text-transform: uppercase;">
+        NUESTROS PRODUCTOS
+    </h2>
+    <p style="color: #00b4d8; font-size: 1.1rem; margin-bottom: 30px; font-weight: 600; text-align: center;">
+        Equipamiento, Protección & Tecnología de Alta Gama
+    </p>
+
     <div class="contenedor-servicios">
-        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.escaner)">
-            <img src="MEDIA/SCANNER%20KTM.webp" alt="Escáner" class="img-servicio">
-            <div class="overlay"><h2>ESCÁNER</h2></div>
+        
+        <!-- Producto 1: Smart Display -->
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico('Instalamos pantallas inteligentes Smart Display con CarPlay y Android Auto sin modificar tu sistema original.')">
+            <img src="MEDIA/smart-display.jpg" alt="Smart Display CarPlay Android Auto" class="img-servicio">
+            <div class="overlay">
+                <h2>SMART DISPLAY</h2>
+                <p style="color: #ddd; font-size: 0.8rem; margin-top: 5px;">CarPlay / Android Auto, mapas, cámaras de ruta y monitoreo de llantas.</p>
+            </div>
         </a>
-        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.inyeccion)">
-            <img src="MEDIA/LAV%20INYECTORES.png" alt="Inyección" class="img-servicio">
-            <div class="overlay"><h2>INYECCIÓN</h2></div>
+
+        <!-- Producto 2: Iluminación Pro -->
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico('Sistemas de iluminación LED de alta potencia con relés independientes y switches dedicados.')">
+            <img src="MEDIA/iluminacion-pro.jpg" alt="Iluminación LED Pro" class="img-servicio">
+            <div class="overlay">
+                <h2>ILUMINACIÓN PRO</h2>
+                <p style="color: #ddd; font-size: 0.8rem; margin-top: 5px;">Faros y exploradoras de alta potencia con instalación eléctrica protegida.</p>
+            </div>
         </a>
-        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.remap)">
-            <img src="MEDIA/PROG%20ECU.jfif" alt="Remap ECU" class="img-servicio">
-            <div class="overlay"><h2>REMAP ECU</h2></div>
+
+        <!-- Producto 3: Seguridad & Rastreo -->
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico('Protege tu inversión con alarmas de proximidad, sensores de impacto y corte de encendido remoto.')">
+            <img src="MEDIA/seguridad-gps.jpg" alt="Seguridad y Rastreo Inteligente" class="img-servicio">
+            <div class="overlay">
+                <h2>SEGURIDAD INTELIGENTE</h2>
+                <p style="color: #ddd; font-size: 0.8rem; margin-top: 5px;">Alarmas de proximidad, sensores de impacto y apagado remoto.</p>
+            </div>
         </a>
-        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico(tipsEspecificos.accesorios)">
-            <img src="MEDIA/MANTENIMIENTO%201290.jpg" alt="Accesorios" class="img-servicio">
-            <div class="overlay"><h2>ACCESORIOS</h2></div>
+
+        <!-- Producto 4: Electrónica & Confort -->
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico('Accesorios de confort: soportes antivibración, cargadores USB de carga rápida y conectividad diaria.')">
+            <img src="MEDIA/electronica-accesorios.jpg" alt="Electrónica y Accesorios" class="img-servicio">
+            <div class="overlay">
+                <h2>ELECTRÓNICA & CONFORT</h2>
+                <p style="color: #ddd; font-size: 0.8rem; margin-top: 5px;">Soportes antivibración, carga rápida dual USB y accesorios de ruta.</p>
+            </div>
         </a>
+
+        <!-- Producto 5: Lujos & Detallado -->
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico('Lujos y acabados estéticos de alta fidelidad para personalizar la apariencia de tu motocicleta.')">
+            <img src="MEDIA/lujos.jpg" alt="Lujos y Accesorios Estéticos" class="img-servicio">
+            <div class="overlay">
+                <h2>LUJOS & ESTILO</h2>
+                <p style="color: #ddd; font-size: 0.8rem; margin-top: 5px;">Detalles estéticos, manubrios, manijas y accesorios de personalización.</p>
+            </div>
+        </a>
+
+        <!-- Producto 6: Protectores de Radiador -->
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico('Protege el panel de tu radiador de impactos de piedras y suciedad de carretera sin obstruir el flujo de aire.')">
+            <img src="MEDIA/protectorradiador.jpg" alt="Protectores de Radiador" class="img-servicio">
+            <div class="overlay">
+                <h2>PROTECTOR DE RADIADOR</h2>
+                <p style="color: #ddd; font-size: 0.8rem; margin-top: 5px;">Rejillas metálicas corte láser diseñadas a la medida de tu radiador.</p>
+            </div>
+        </a>
+
+        <!-- Producto 7: Sliders de Protección -->
+        <a href="https://wa.me/573104886929" class="tarjeta-click" onmouseenter="hablarTecnico('Sliders anticaída de alto impacto para proteger chasis, carenajenes y motor ante eventuales caídas.')">
+            <img src="MEDIA/sliders.jpg" alt="Sliders Anticaída" class="img-servicio">
+            <div class="overlay">
+                <h2>SLIDERS ANTICAÍDA</h2>
+                <p style="color: #ddd; font-size: 0.8rem; margin-top: 5px;">Protección estructural anticaída para motor, chasis y ejes.</p>
+            </div>
+        </a>
+
     </div>
  
-    <div style="padding: 60px 0; background: rgba(0,0,0,0.3);">
-        <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px; text-align: center;">TRABAJOS REALIZADOS</h2>
+    <!-- TRABAJOS REALIZADOS -->
+    <div style="padding: 60px 0; background: rgba(10, 17, 30, 0.5);">
+        <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px; text-align: center;">TRABAJOS Y MONTAJES EN VIVO</h2>
         <div class="contenedor-galeria">
             <div class="item-trabajo" onmouseenter="hablarTecnico(tipsEspecificos.arrastre)">
                 <video autoplay muted loop playsinline><source src="MEDIA/kit%20arrastre.mp4.mp4" type="video/mp4"></video>
@@ -194,8 +247,8 @@
         </div>
     </div>
 
-   <!-- SECCIÓN GALERÍA DE INSTALACIONES TIPO SHOWCASE AMS -->
-    <section id="instalaciones" style="padding: 80px 20px; background: #000; border-top: 2px solid #FF6600;">
+    <!-- SECCIÓN GALERÍA DE INSTALACIONES TIPO SHOWCASE AMS -->
+    <section id="instalaciones" style="padding: 80px 20px; background: #070c17; border-top: 2px solid #FF6600;">
       <div style="max-width: 1100px; margin: 0 auto;">
         <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px; text-align: center; font-size: 2.2rem; margin-bottom: 10px;">
           NUESTROS ESPACIOS TÉCNICOS
@@ -208,26 +261,26 @@
         <div style="display: flex; flex-direction: column; gap: 50px;">
           
           <!-- Bloque 1: Fachada -->
-          <div class="card-showcase" style="display: flex; flex-wrap: wrap; background: #111; border: 1px solid #222; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+          <div class="card-showcase" style="display: flex; flex-wrap: wrap; background: #0b1329; border: 1px solid #1a2744; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
             <div style="flex: 1 1 500px; min-width: 300px;">
               <img src="MEDIA/fachada.jpg.jfif" alt="Fachada ALLMOTOSYNC San Cristóbal" style="width: 100%; height: 100%; min-height: 350px; max-height: 480px; object-fit: cover; display: block;">
             </div>
-            <div style="flex: 1 1 350px; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #111 0%, #181818 100%);">
+            <div style="flex: 1 1 350px; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #0b1329 0%, #111a33 100%);">
               <span style="color: #FF6600; font-weight: bold; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">SEDE PRINCIPAL</span>
               <h3 style="color: #fff; font-size: 1.8rem; margin: 10px 0 15px; font-weight: 800;">Instalaciones de Alta Tecnología</h3>
-              <p style="color: #ccc; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
+              <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
                 Ubicados en San Cristóbal Sur, nuestras instalaciones combinan arquitectura moderna, acceso directo para motocicletas de mediano y alto cilindraje y zona de recepción personalizada.
               </p>
-              <a href="https://wa.me/573104886929" style="display: inline-block; padding: 12px 25px; background: #FF6600; color: #000; font-weight: bold; border-radius: 8px; text-decoration: none; text-transform: uppercase; width: fit-content;">Conocer la Sede</a>
+              <a href="https://wa.me/573104886929" style="display: inline-block; padding: 12px 25px; background: #FF6600; color: #fff; font-weight: bold; border-radius: 8px; text-decoration: none; text-transform: uppercase; width: fit-content;">Conocer la Sede</a>
             </div>
           </div>
 
           <!-- Bloque 2: Taller (Intercalado) -->
-          <div class="card-showcase" style="display: flex; flex-wrap: wrap-reverse; background: #111; border: 1px solid #222; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
-            <div style="flex: 1 1 350px; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #181818 0%, #111 100%);">
+          <div class="card-showcase" style="display: flex; flex-wrap: wrap-reverse; background: #0b1329; border: 1px solid #1a2744; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+            <div style="flex: 1 1 350px; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #111a33 0%, #0b1329 100%);">
               <span style="color: #00b4d8; font-weight: bold; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">LABORATORIO ELECTRÓNICO</span>
               <h3 style="color: #fff; font-size: 1.8rem; margin: 10px 0 15px; font-weight: 800;">Área de Mecánica Blanca & Diagnóstico</h3>
-              <p style="color: #ccc; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
+              <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
                 Espacio de trabajo impecable equipado con elevadores hidráulicos, osciloscopio, escáner multimarca OEM y herramientas de precisión para diagnósticos en inyección electrónica.
               </p>
               <a href="https://wa.me/573104886929" style="display: inline-block; padding: 12px 25px; background: #00b4d8; color: #000; font-weight: bold; border-radius: 8px; text-decoration: none; text-transform: uppercase; width: fit-content;">Agendar Diagnóstico</a>
@@ -238,26 +291,26 @@
           </div>
 
           <!-- Bloque 3: Tienda -->
-          <div class="card-showcase" style="display: flex; flex-wrap: wrap; background: #111; border: 1px solid #222; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+          <div class="card-showcase" style="display: flex; flex-wrap: wrap; background: #0b1329; border: 1px solid #1a2744; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
             <div style="flex: 1 1 500px; min-width: 300px;">
               <img src="MEDIA/tienda.jpg.jfif" alt="Showroom y Tienda de Accesorios" style="width: 100%; height: 100%; min-height: 350px; max-height: 480px; object-fit: cover; display: block;">
             </div>
-            <div style="flex: 1 1 350px; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #111 0%, #181818 100%);">
+            <div style="flex: 1 1 350px; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #0b1329 0%, #111a33 100%);">
               <span style="color: #FF6600; font-weight: bold; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">SHOWROOM DEDICADO</span>
               <h3 style="color: #fff; font-size: 1.8rem; margin: 10px 0 15px; font-weight: 800;">Tienda de Repuestos & Accesorios</h3>
-              <p style="color: #ccc; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
+              <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
                 Exhibición de repuestos certificados, insumos de alto rendimiento, cascos, protecciones y partes de rendimiento seleccionadas para garantizar el máximo desempeño de tu moto.
               </p>
-              <a href="TIENDA/index.html" style="display: inline-block; padding: 12px 25px; background: #FF6600; color: #000; font-weight: bold; border-radius: 8px; text-decoration: none; text-transform: uppercase; width: fit-content;">Ir a la Tienda</a>
+              <a href="TIENDA/index.html" style="display: inline-block; padding: 12px 25px; background: #FF6600; color: #fff; font-weight: bold; border-radius: 8px; text-decoration: none; text-transform: uppercase; width: fit-content;">Ir a la Tienda</a>
             </div>
           </div>
 
-          <!-- Bloque 4: Iluminación (Intercalado) -->
-          <div class="card-showcase" style="display: flex; flex-wrap: wrap-reverse; background: #111; border: 1px solid #222; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8); border-left: 4px solid #00b4d8;">
-            <div style="flex: 1 1 350px; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #181818 0%, #111 100%);">
+          <!-- Bloque 4: Iluminación -->
+          <div class="card-showcase" style="display: flex; flex-wrap: wrap-reverse; background: #0b1329; border: 1px solid #1a2744; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8); border-left: 4px solid #00b4d8;">
+            <div style="flex: 1 1 350px; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #111a33 0%, #0b1329 100%);">
               <span style="color: #00b4d8; font-weight: bold; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">ILUMINACIÓN PROFESIONAL</span>
               <h3 style="color: #fff; font-size: 1.8rem; margin: 10px 0 15px; font-weight: 800;">Lighting Solutions LED</h3>
-              <p style="color: #ccc; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
+              <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
                 Módulo de prueba técnica en vivo para exploradoras y faros de alta potencia. Realizamos instalaciones eléctricas protegidas sin alterar el arnés original de la moto.
               </p>
               <a href="https://wa.me/573104886929" style="display: inline-block; padding: 12px 25px; background: #00b4d8; color: #000; font-weight: bold; border-radius: 8px; text-decoration: none; text-transform: uppercase; width: fit-content;">Cotizar Luces LED</a>
@@ -271,21 +324,22 @@
       </div>
     </section>
  
-    <section id="consulta-cliente" style="padding: 60px 20px; background: #000; border-top: 2px solid #FF6600; text-align: center;">
+    <!-- EXPEDIENTE DIGITAL -->
+    <section id="consulta-cliente" style="padding: 60px 20px; background: #070c17; border-top: 2px solid #FF6600; text-align: center;">
         <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px;">EXPEDIENTE DIGITAL AMS</h2>
         <p style="color: #ccc;">Consulte el historial técnico y trazabilidad de su motocicleta.</p>
         
-        <div style="max-width: 400px; margin: 30px auto; background: #111; padding: 30px; border-radius: 15px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(255,102,0,0.1);">
-            <input type="text" id="placa" placeholder="PLACA (Ej: AAA99A)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff; text-transform: uppercase;" onfocus="hablarTecnico('Digita tu placa y clave para acceder al historial clínico de tu moto.')">
-            <input type="password" id="pass" placeholder="CONTRASEÑA (Otorgada por AMS)" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #444; background: #000; color: #fff;">
-            <button onclick="consultarMoto()" style="width: 100%; padding: 15px; background: #FF6600; color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: 0.3s;">Ver Historial</button>
+        <div style="max-width: 400px; margin: 30px auto; background: #101b2d; padding: 30px; border-radius: 15px; border: 1px solid #1a2744; box-shadow: 0 10px 30px rgba(255,102,0,0.1);">
+            <input type="text" id="placa" placeholder="PLACA (Ej: AAA99A)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #1a2744; background: #070c17; color: #fff; text-transform: uppercase;" onfocus="hablarTecnico('Digita tu placa y clave para acceder al historial clínico de tu moto.')">
+            <input type="password" id="pass" placeholder="CONTRASEÑA (Otorgada por AMS)" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #1a2744; background: #070c17; color: #fff;">
+            <button onclick="consultarMoto()" style="width: 100%; padding: 15px; background: #FF6600; color: #fff; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: 0.3s;">Ver Historial</button>
         </div>
  
-        <div id="resultado-historial" style="max-width: 850px; margin: 0 auto; display: none; text-align: left; background: #111; padding: 25px; border-radius: 15px; border: 1px solid #FF6600;">
+        <div id="resultado-historial" style="max-width: 850px; margin: 0 auto; display: none; text-align: left; background: #101b2d; padding: 25px; border-radius: 15px; border: 1px solid #FF6600;">
         </div>
     </section>
  
-    <div id="ubicacion" style="background: rgba(0,0,0,0.5); padding: 70px 20px; text-align: center;">
+    <div id="ubicacion" style="background: rgba(10, 17, 30, 0.8); padding: 70px 20px; text-align: center;">
         <h2 style="color: #FF6600; font-weight: 900;">VISÍTANOS EN SAN CRISTÓBAL SUR</h2>
         <p style="font-size: 1.2rem; color: #ccc; margin-bottom: 20px;">Cl. 31c Sur # 3A-72, Bogotá</p>
         <div style="max-width: 1000px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 3px solid #FF6600;">
@@ -303,16 +357,16 @@
         </div>
     </div>
  
-    <footer style="padding: 50px 20px 30px; background: #000; font-size: 0.85rem; color: #888; border-top: 1px solid #222; text-align: center;">
+    <footer style="padding: 50px 20px 30px; background: #050811; font-size: 0.85rem; color: #888; border-top: 1px solid #1a2744; text-align: center;">
         <div style="max-width: 1000px; margin: 0 auto; line-height: 1.6;">
             <p style="color: #aaa; margin-bottom: 15px;">
                 <strong style="color: #FF6600;">AVISO LEGAL Y PROPIEDAD INTELECTUAL:</strong> 
-                Todo el contenido presente en este sitio web, incluyendo logotipos, marcas comerciales ("ALLMOTOSYNC", "AMS"), gráficos, fotografías, videos de procedimientos, código fuente y la interfaz técnica interactiva, son propiedad exclusiva de <strong>ALLMOTOSYNC S.A.S.</strong> y están protegidos por las leyes de propiedad intelectual e industrial vigentes en Colombia e internacionales. Queda strictly prohibida la reproducción, distribución, modificación o uso no autorizado total o parcial de este material sin el consentimiento previo y por escrito de la compañía.
+                Todo el contenido presente en este sitio web, incluyendo logotipos, marcas comerciales ("ALLMOTOSYNC", "AMS"), gráficos, fotografías, videos de procedimientos, código fuente y la interfaz técnica interactiva, son propiedad exclusiva de <strong>ALLMOTOSYNC S.A.S.</strong> y están protegidos por las leyes de propiedad intelectual e industrial vigentes en Colombia e internacionales. Queda estrictamente prohibida la reproducción, distribución, modificación o uso no autorizado total o parcial de este material sin el consentimiento previo y por escrito de la compañía.
             </p>
             <p style="color: #666; font-size: 0.78rem; margin-bottom: 20px;">
                 <em>Marcas de Terceros:</em> Nombres de fabricantes, marcas y modelos de motocicletas (tales como KTM, Honda, Yamaha, Kawasaki, Suzuki, Bajaj, AKT, Benelli, entre otros) se mencionan únicamente con fines descriptivos para indicar la compatibilidad de nuestros servicios de diagnóstico e inyección electrónica, y son marcas registradas de sus respectivos titulares.
             </p>
-            <div style="border-top: 1px solid #111; padding-top: 15px; color: #555;">
+            <div style="border-top: 1px solid #1a2744; padding-top: 15px; color: #555;">
                 © 2026 <strong>ALLMOTOSYNC S.A.S.</strong> | Todos los derechos reservados.
             </div>
         </div>
