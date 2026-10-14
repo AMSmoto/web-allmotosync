@@ -90,165 +90,6 @@
             <a href="https://mercadolibre.com.co" target="_blank" class="red-icon" style="background: #FFE600; color: #000;"><i class="fa-solid fa-handshake"></i></a>
         </div>
     </div>
- 
-    <!-- ESTILOS CSS REESTRUCTURADOS PARA PERFECTA ALINEACIÓN -->
-    <style>
-        .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 10px 0; width: 100%; overflow: hidden; }
-        .circuito-lado { width: 38vw; max-width: 450px; height: 60px; }
-        .pista-base { fill: none; stroke-width: 1px; opacity: 0.25; stroke-linecap: square; stroke-linejoin: miter; }
-        .impulso-electrico { fill: none; stroke-width: 1.5px; stroke-dasharray: 30 350; animation: correrPulso 4.5s linear infinite; filter: drop-shadow(0 0 5px currentColor); stroke-linecap: square; stroke-linejoin: miter; }
-        @keyframes correrPulso { 0% { stroke-dashoffset: 380; } 100% { stroke-dashoffset: 0; } }
- 
-        .menu-flotante-lateral { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-        .btn-flotante-item { 
-            background: #FF6600; color: #fff; padding: 12px 15px; border-radius: 10px 0 0 10px; 
-            text-decoration: none; font-weight: bold; font-size: 13px; width: 180px; 
-            display: flex; align-items: center; gap: 8px; box-shadow: -3px 3px 10px rgba(0,0,0,0.5); 
-            border-left: 3px solid #fff; overflow: hidden; white-space: nowrap; box-sizing: border-box;
-        }
-        .marquesina-contenedor { width: 100%; overflow: hidden; white-space: nowrap; display: inline-block; }
-        @keyframes correrTexto { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .marquesina-texto { display: inline-block; white-space: nowrap; animation: correrTexto 7s linear infinite; }
- 
-        .redes-flotantes { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
-        .red-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; color: #fff; border-radius: 8px 0 0 8px; text-decoration: none; font-size: 20px; box-shadow: -2px 2px 5px rgba(0,0,0,0.4); transition: 0.2s; }
-        .red-icon:hover { transform: scale(1.1); }
-        
-        .slider-marcas { overflow: hidden; width: 100%; background: #080d17; padding: 15px 0; white-space: nowrap; }
-        .contenedor-logos { display: inline-block; animation: scrollMarcas 110s linear infinite; }
-        .contenedor-logos span { color: rgba(255, 255, 255, 0.6); font-weight: bold; margin: 0 40px; font-size: 1.3rem; letter-spacing: 2px; }
-        @keyframes scrollMarcas { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* NUEVAS TARJETAS DE PRODUCTO (Imagen arriba limpia + texto abajo en bloque) */
-        .tarjeta-producto-clean {
-            background: #0b1329;
-            border: 1px solid #1a2744;
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-        }
-        .tarjeta-producto-clean:hover {
-            transform: translateY(-6px);
-            border-color: #FF6600;
-            box-shadow: 0 12px 30px rgba(255, 102, 0, 0.3);
-        }
-        .img-producto-container {
-            width: 100%;
-            height: 220px;
-            background: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        .img-producto-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        .info-producto-block {
-            padding: 18px 15px;
-            background: linear-gradient(180deg, #0b1329 0%, #111a33 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            flex-grow: 1;
-            border-top: 2px solid #1a2744;
-        }
-        .info-producto-block h2 {
-            margin: 0 0 8px 0;
-            color: #FF6600;
-            font-size: 1.15rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-align: center;
-        }
-        .info-producto-block p {
-            margin: 0;
-            color: #cbd5e1;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            text-align: center;
-        }
-
-        /* NUEVAS TARJETAS DE MONTAJES (Imagen arriba proporcional + texto uniforme abajo) */
-        .card-montaje-uniforme {
-            background: #0b1329;
-            border: 1px solid #1a2744;
-            border-radius: 14px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-            transition: all 0.3s ease;
-        }
-        .card-montaje-uniforme:hover {
-            transform: translateY(-6px);
-            border-color: #FF6600;
-            box-shadow: 0 15px 35px rgba(255,102,0,0.3);
-        }
-        .header-foto-montaje {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            background: #070c17;
-            position: relative;
-        }
-        .header-foto-montaje img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .cuerpo-texto-montaje {
-            padding: 22px;
-            background: linear-gradient(180deg, #0b1329 0%, #111a33 100%);
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            text-align: left;
-        }
-        .tag-subtitulo {
-            color: #00b4d8;
-            font-weight: 800;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-            display: block;
-        }
-        .titulo-montaje {
-            color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 800;
-            margin: 0 0 10px 0;
-            line-height: 1.3;
-            text-transform: uppercase;
-        }
-        .desc-montaje {
-            color: #cbd5e1;
-            font-size: 0.88rem;
-            line-height: 1.5;
-            margin: 0 0 14px 0;
-            flex-grow: 1;
-        }
-        .gancho-montaje {
-            color: #FF6600;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin: 0;
-            line-height: 1.4;
-            border-top: 1px solid #1a2744;
-            padding-top: 12px;
-        }
-    </style>
 
     <!-- 1. PILARES DE EXPERIENCIA TECH-STUDIO -->
     <section id="por-que-nosotros" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 80px 20px; background: rgba(0, 180, 216, 0.03);">
@@ -269,7 +110,7 @@
         </div>
     </section>
  
-    <!-- 2. NUESTROS PRODUCTOS (IMÁGENES LIMPIAS Y TEXTOS ABAJO) -->
+    <!-- 2. NUESTROS PRODUCTOS (CATÁLOGO DE 8 ÍTEMS) -->
     <h2 style="color: #FF6600; margin-top: 60px; font-weight: 900; letter-spacing: 2px; text-align: center; text-transform: uppercase;">
         NUESTROS PRODUCTOS
     </h2>
@@ -280,7 +121,7 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
         
         <!-- Producto 1: Smart Display -->
-        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Instalamos pantallas inteligentes Smart Display con CarPlay y Android Auto sin modificar tu sistema original.')">
+        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Instalamos pantallas inteligentes Smart Display con CarPlay y Android Auto.')">
             <div class="img-producto-container">
                 <img src="MEDIA/smart-display.jpg" alt="Smart Display CarPlay Android Auto">
             </div>
@@ -291,7 +132,7 @@
         </a>
 
         <!-- Producto 2: Iluminación Pro -->
-        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Sistemas de iluminación LED de alta potencia con relés independientes y switches dedicados.')">
+        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Sistemas de iluminación LED de alta potencia con relés independientes.')">
             <div class="img-producto-container">
                 <img src="MEDIA/iluminacion-pro.jpg" alt="Iluminación LED Pro">
             </div>
@@ -302,7 +143,7 @@
         </a>
 
         <!-- Producto 3: Seguridad & Rastreo -->
-        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Protege tu inversión con alarmas de proximidad, sensores de impacto y corte de encendido remoto.')">
+        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Protege tu inversión con alarmas de proximidad y apagado remoto.')">
             <div class="img-producto-container">
                 <img src="MEDIA/seguridad-gps.jpg" alt="Seguridad y Rastreo Inteligente">
             </div>
@@ -313,7 +154,7 @@
         </a>
 
         <!-- Producto 4: Electrónica & Confort -->
-        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Accesorios de confort: soportes antivibración, cargadores USB de carga rápida y conectividad diaria.')">
+        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Accesorios de confort: soportes antivibración y carga rápida USB.')">
             <div class="img-producto-container">
                 <img src="MEDIA/electronica-accesorios.jpg" alt="Electrónica y Accesorios">
             </div>
@@ -324,7 +165,7 @@
         </a>
 
         <!-- Producto 5: Lujos & Estilo -->
-        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Lujos y acabados estéticos de alta fidelidad para personalizar la apariencia de tu motocicleta.')">
+        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Lujos y acabados estéticos de alta fidelidad para personalizar tu moto.')">
             <div class="img-producto-container">
                 <img src="MEDIA/lujos.jpg" alt="Lujos y Accesorios Estéticos">
             </div>
@@ -335,7 +176,7 @@
         </a>
 
         <!-- Producto 6: Protectores de Radiador -->
-        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Protege el panel de tu radiador de impactos de piedras y suciedad de carretera sin obstruir el flujo de aire.')">
+        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Protege tu radiador de piedras y suciedad sin restar flujo de aire.')">
             <div class="img-producto-container">
                 <img src="MEDIA/protectorradiador.jpg" alt="Protectores de Radiador">
             </div>
@@ -346,7 +187,7 @@
         </a>
 
         <!-- Producto 7: Sliders de Protección -->
-        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Sliders anticaída de alto impacto para proteger chasis, carenajenes y motor ante eventuales caídas.')">
+        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Sliders anticaída de alto impacto para chasis, motor y ejes.')">
             <div class="img-producto-container">
                 <img src="MEDIA/sliders.jpg" alt="Sliders Anticaída">
             </div>
@@ -356,9 +197,20 @@
             </div>
         </a>
 
+        <!-- Producto 8: Protección y Accesorios para Moteros -->
+        <a href="https://wa.me/573104886929" class="tarjeta-producto-clean" onmouseenter="hablarTecnico('Chaquetas, guantes, cascos y equipamiento personal para moteros.')">
+            <div class="img-producto-container">
+                <img src="MEDIA/proteccionesmotero.jpg" alt="Protección y Accesorios para Moteros">
+            </div>
+            <div class="info-producto-block">
+                <h2>PROTECCIÓN & ACCESORIOS PARA MOTEROS</h2>
+                <p>Equipamiento personal, chaquetas, guantes, cascos y accesorios de ruta.</p>
+            </div>
+        </a>
+
     </div>
  
-    <!-- 3. SECCIÓN: INSTALACIONES Y EQUIPAMIENTO (DISEÑO TOTALMENTE UNIFORME) -->
+    <!-- 3. SECCIÓN: INSTALACIONES Y EQUIPAMIENTO -->
     <div style="padding: 70px 20px; background: rgba(10, 17, 30, 0.6); border-top: 1px solid #1a2744; border-bottom: 1px solid #1a2744; margin-top: 60px;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 style="color: #FF6600; font-weight: 900; letter-spacing: 2px; text-align: center; text-transform: uppercase; font-size: 2rem; margin-bottom: 10px;">
@@ -368,7 +220,6 @@
                 Conoce el resultado de nuestro trabajo técnico especializado en el estudio
             </p>
 
-            <!-- Cuadrícula de 4 tarjetas con alineación perfecta -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px;">
                 
                 <!-- Tarjeta 1: CarPlay & Android Auto -->
@@ -380,10 +231,10 @@
                         <span class="tag-subtitulo">CONECTIVIDAD TOTAL</span>
                         <h3 class="titulo-montaje">SMART DISPLAYS (CarPlay & Android Auto)</h3>
                         <p class="desc-montaje">
-                            Pantallas inteligentes de 5", 6" y 7" con conectividad inalámbrica, mapas en tiempo real, control de música, cámaras de ruta integradas y monitoreo de presión de llantas sin sacar el celular.
+                            Pantallas inteligentes de 5", 6" y 7" con conectividad inalámbrica, mapas en tiempo real, control de música y cámaras de ruta.
                         </p>
                         <p class="gancho-montaje">
-                            ¡Haz que tu moto sea tan inteligente como tu carro! Ven a verlas funcionando en vivo en nuestro estudio.
+                            ¡Haz que tu moto sea tan inteligente como tu carro! Ven a verlas funcionando en vivo.
                         </p>
                     </div>
                 </div>
@@ -397,7 +248,7 @@
                         <span class="tag-subtitulo">VISIBILIDAD NOCTURNA</span>
                         <h3 class="titulo-montaje">ILUMINACIÓN PRO (Faros y Exploradoras)</h3>
                         <p class="desc-montaje">
-                            Sistemas LED de alta potencia para ruta y ciudad. Montajes estéticos profesionales utilizando relés dedicados y cableado protegido sin alterar el arnés ni la garantía original de fábrica de tu moto.
+                            Sistemas LED de alta potencia para ruta y ciudad con relés dedicados y cableado protegido sin alterar la garantía original.
                         </p>
                         <p class="gancho-montaje">
                             Ilumina la vía con seguridad total. Pruébalas en nuestro módulo de demostración.
@@ -405,16 +256,16 @@
                     </div>
                 </div>
 
-                <!-- Tarjeta 3: Seguridad y Rasteo -->
-                <div class="card-montaje-uniforme" onmouseenter="hablarTecnico('Alarmas inteligentes de última generación con sensor de proximidad y corte remoto.')">
+                <!-- Tarjeta 3: Seguridad y Rastreo (Ruta Corregida) -->
+                <div class="card-montaje-uniforme" onmouseenter="hablarTecnico('Alarmas inteligentes con sensor de proximidad y corte remoto.')">
                     <div class="header-foto-montaje">
-                        <img src="MEDIA/3alarmamamoinstalada.jpg" alt="Seguridad y Rastreo Inteligente">
+                        <img src="MEDIA/3alarmamotoinstalada.jpg" alt="Seguridad y Rastreo Inteligente">
                     </div>
                     <div class="cuerpo-texto-montaje">
                         <span class="tag-subtitulo">BLINDAJE ANTIRROBO</span>
-                        <h3 class="titulo-montaje">SEGURIDAD Y RASTEO</h3>
+                        <h3 class="titulo-montaje">SEGURIDAD Y RASTREO</h3>
                         <p class="desc-montaje">
-                            Alarmas inteligentes de última generación con sensor de proximidad, corte remoto de encendido y sistemas antirrobo avanzados para proteger tu inversión en cualquier lugar.
+                            Alarmas inteligentes con sensor de proximidad, corte remoto de encendido y rastreo satelital para proteger tu inversión.
                         </p>
                         <p class="gancho-montaje">
                             Duerme tranquilo sabiendo que tu moto está blindada tecnológicamente.
@@ -431,7 +282,7 @@
                         <span class="tag-subtitulo">ESTÉTICA & RESISTENCIA</span>
                         <h3 class="titulo-montaje">PROTECCIÓN Y LUJOS PREMIUM</h3>
                         <p class="desc-montaje">
-                            Blindaje especializado para tu moto: protectores de radiador a la medida, sliders de alto impacto para chasis y accesorios estéticos de gama alta (como protectores de bomba tipo Aquatrax).
+                            Blindaje especializado: protectores de radiador a la medida, sliders de alto impacto para chasis y accesorios estéticos prémium.
                         </p>
                         <p class="gancho-montaje">
                             Estética impecable y protección robusta. Personaliza la tuya hoy mismo.
@@ -453,7 +304,6 @@
           Infraestructura de Nivel Concesionario & Laboratorio Electrónico
         </p>
 
-        <!-- Contenedor Vertical (Una por Renglón) -->
         <div style="display: flex; flex-direction: column; gap: 50px;">
           
           <!-- Bloque 1: Fachada -->
@@ -465,19 +315,19 @@
               <span style="color: #FF6600; font-weight: bold; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">SEDE PRINCIPAL</span>
               <h3 style="color: #fff; font-size: 1.8rem; margin: 10px 0 15px; font-weight: 800;">Instalaciones de Alta Tecnología</h3>
               <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
-                Ubicados en San Cristóbal Sur, nuestras instalaciones combinan arquitectura moderna, acceso directo para motocicletas de mediano y alto cilindraje y zona de recepción personalizada.
+                Ubicados en San Cristóbal Sur, nuestras instalaciones combinan arquitectura moderna, acceso directo para motocicletas y zona de recepción personalizada.
               </p>
               <a href="https://wa.me/573104886929" style="display: inline-block; padding: 12px 25px; background: #FF6600; color: #fff; font-weight: bold; border-radius: 8px; text-decoration: none; text-transform: uppercase; width: fit-content;">Conocer la Sede</a>
             </div>
           </div>
 
-          <!-- Bloque 2: Taller (Intercalado) -->
+          <!-- Bloque 2: Taller -->
           <div class="card-showcase" style="display: flex; flex-wrap: wrap-reverse; background: #0b1329; border: 1px solid #1a2744; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
             <div style="flex: 1 1 350px; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #111a33 0%, #0b1329 100%);">
               <span style="color: #00b4d8; font-weight: bold; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">LABORATORIO ELECTRÓNICO</span>
               <h3 style="color: #fff; font-size: 1.8rem; margin: 10px 0 15px; font-weight: 800;">Área de Mecánica Blanca & Diagnóstico</h3>
               <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
-                Espacio de trabajo impecable equipado con elevadores hidráulicos, osciloscopio, escáner multimarca OEM y herramientas de precisión para diagnósticos en inyección electrónica.
+                Espacio equipado con elevadores hidráulicos, osciloscopio y herramientas de precisión para diagnósticos electrónicos.
               </p>
               <a href="https://wa.me/573104886929" style="display: inline-block; padding: 12px 25px; background: #00b4d8; color: #000; font-weight: bold; border-radius: 8px; text-decoration: none; text-transform: uppercase; width: fit-content;">Agendar Diagnóstico</a>
             </div>
@@ -495,7 +345,7 @@
               <span style="color: #FF6600; font-weight: bold; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">SHOWROOM DEDICADO</span>
               <h3 style="color: #fff; font-size: 1.8rem; margin: 10px 0 15px; font-weight: 800;">Tienda de Repuestos & Accesorios</h3>
               <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
-                Exhibición de repuestos certificados, insumos de alto rendimiento, cascos, protecciones y partes de rendimiento seleccionadas para garantizar el máximo desempeño de tu moto.
+                Exhibición de repuestos certificados, insumos de alto rendimiento, cascos y protecciones seleccionadas.
               </p>
               <a href="TIENDA/index.html" style="display: inline-block; padding: 12px 25px; background: #FF6600; color: #fff; font-weight: bold; border-radius: 8px; text-decoration: none; text-transform: uppercase; width: fit-content;">Ir a la Tienda</a>
             </div>
@@ -507,7 +357,7 @@
               <span style="color: #00b4d8; font-weight: bold; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">ILUMINACIÓN PROFESIONAL</span>
               <h3 style="color: #fff; font-size: 1.8rem; margin: 10px 0 15px; font-weight: 800;">Lighting Solutions LED</h3>
               <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
-                Módulo de prueba técnica en vivo para exploradoras y faros de alta potencia. Realizamos instalaciones eléctricas protegidas sin alterar el arnés original de la moto.
+                Módulo de prueba técnica en vivo para exploradoras y faros LED. Instalaciones sin alterar el arnés original.
               </p>
               <a href="https://wa.me/573104886929" style="display: inline-block; padding: 12px 25px; background: #00b4d8; color: #000; font-weight: bold; border-radius: 8px; text-decoration: none; text-transform: uppercase; width: fit-content;">Cotizar Luces LED</a>
             </div>
@@ -549,7 +399,7 @@
             <img src="MEDIA/A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin%20(1).jpg" alt="Técnico Calificado AMS" id="img-tecnico">
         </div>
         <div class="tecnico-bubble" id="tecnico-text">
-            ¡Hola! Soy tu <b>Técnico Calificado AMS</b> 🛠️. Tócame para cambiar de tip técnico o explora los servicios.
+            ¡Hola! Soy tu <b>Técnico Calificado AMS</b> 🛠️. Tócame para ver un tip tecnológico sobre tu moto.
         </div>
     </div>
  
