@@ -3,11 +3,49 @@ const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vThzRfHI32azv
 
 function protegerNombre(nombreCompleto) {
     if (!nombreCompleto) return "Cliente AMS";
-    const partes = nombreCompleto.split(" ");
+    const partes = nombreCompleto.trim().replace(/"/g, "").split(" ");
     return partes.map((palabra, index) => {
         if (index < 2) return palabra.length > 3 ? palabra.substring(0, 3) + "***" : palabra;
         return palabra.substring(0, 1) + "***";
     }).join(" ");
+}
+
+// Parser CSV robusto que respeta comas y comillas
+function parsearCSVLine(text) {
+    const result = [];
+    let row = [];
+    let insideQuotes = false;
+    let entry = '';
+    
+    for (let i = 0; i < text.length; i++) {
+        let c = text[i];
+        if (c === '"') {
+            if (insideQuotes && text[i + 1] === '"') {
+                entry += '"';
+                i++;
+            } else {
+                insideQuotes = !insideQuotes;
+            }
+        } else if (c === ',' && !insideQuotes) {
+            row.push(entry.trim());
+            entry = '';
+        } else if ((c === '\r' || c === '\n') && !insideQuotes) {
+            row.push(entry.trim());
+            result.push(row);
+            row = [];
+            if (c === '\r' && text[i + 1] === '\n') {
+                i++;
+            }
+            entry = '';
+        } else {
+            entry += c;
+        }
+    }
+    if (entry !== '' || row.length > 0) {
+        row.push(entry.trim());
+        result.push(row);
+    }
+    return result;
 }
 
 async function consultarMoto() {
@@ -15,15 +53,21 @@ async function consultarMoto() {
     const passInput = document.getElementById('pass').value.trim();
     const divResultado = document.getElementById('resultado-historial');
 
+    if (!placaInput || !passInput) {
+        alert("Por favor ingresa la placa y la contraseña.");
+        return;
+    }
+
     try {
         const respuesta = await fetch(SHEET_URL);
         const data = await respuesta.text();
-        const filas = data.split('\n').map(fila => fila.split(','));
+        const filas = parsearCSVLine(data);
 
-        const registros = filas.filter(f => f[1] && f[1].trim().toUpperCase() === placaInput);
+        // Buscar filas que coincidan con la placa (columna índice 1)
+        const registros = filas.filter(f => f[1] && f[1].replace(/"/g, "").trim().toUpperCase() === placaInput);
 
         if (registros.length > 0) {
-            const ultimaEntrada = registros[registros.length - 1];
+            const ultimaEntrada = registros[registros.length - 1].map(val => val ? val.replace(/^"|"$/g, '') : '');
 
             if (ultimaEntrada[2] && ultimaEntrada[2].trim() === passInput) {
                 divResultado.style.display = 'block';
@@ -63,11 +107,12 @@ async function consultarMoto() {
             hablarTecnico('No encontré esa placa en la base de datos de AMS.');
         }
     } catch (error) {
+        console.error("Error al consultar:", error);
         alert("Error al conectar con la base de datos.");
     }
 }
 
-// --- IMÁGENES ROTATIVAS DEL TÉCNICO CALIFICADO (RUTAS CORREGIDAS A MEDIA/) ---
+// --- IMÁGENES ROTATIVAS DEL TÉCNICO CALIFICADO ---
 const imagenesTecnico = [
     "MEDIA/A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin (1).jpg",
     "MEDIA/A_stylized_3D_avatar_of_a_whimsical_fantasy_Leprechaun_engin (2).jpg",
@@ -127,7 +172,7 @@ const tipsTecnicos100 = [
     "El acelerador electrónico (Ride-by-Wire) requiere calibración de tope mínimo y máximo por escáner.",
     "Los rodamientos de la cuna de dirección desgastados generan inestabilidad en recta.",
     "Sensores de rueda ABS sucios con barro o limalla arrojan códigos de falla falsos.",
-    "El uso de combustible de bajo octanaje en motores de alta compresión produce cascabeleo (cascabeleo).",
+    "El uso de combustible de bajo octanaje en motores de alta compresión produce cascabeleo.",
     "Limpiar los bornes de la batería con agua tibia elimina la sulfatación rápidamente.",
     "El aceite sintético mantiene sus propiedades viscosas a temperaturas más altas que el mineral.",
     "Un termostato pegado en posición cerrada destruirá el empaque de culata por sobrecalentamiento.",
@@ -140,7 +185,7 @@ const tipsTecnicos100 = [
     "La holgura correcta en la manigueta de embrague evita que los discos patinen prematuramente.",
     "Fusibles sulfatados generan caídas de tensión indetectables con un simple multímetro.",
     "El escáner OEM muestra el historial de temperaturas máximas alcanzadas por el motor.",
-    "Un disco de freno alabeado (pando) provoca pulsaciones molestas en la manigueta al frenar.",
+    "Un disco de freno alabeado provoca pulsaciones molestas en la manigueta al frenar.",
     "El protector de bobina evita que saltos de alta tensión dañen la unidad de control (ECU).",
     "Los inyectores piezoeléctricos trabajan con voltajes elevados para lograr aperturas ultra rápidas.",
     "El torque adecuado en los tornillos de culata es vital para evitar deformaciones térmicas.",
@@ -158,14 +203,14 @@ const tipsTecnicos100 = [
     "La prueba de carga a la batería determina su capacidad real de arranque, no solo su voltaje.",
     "Usar agua de grifo en el radiador crea sarro y bloquea los conductos del bloque del motor.",
     "El remapeo de fábrica suele venir restringido por normativas de emisiones; un remap libera su potencial.",
-    "Un amortiguador traseros vencido provoca que la llanta rebote perdiendo tracción en curvas.",
+    "Un amortiguador trasero vencido provoca que la llanta rebote perdiendo tracción en curvas.",
     "Los cables de alta tensión envejecidos pierden aislamiento y derivan chispa al chasis.",
     "El filtro de aire de alto flujo requiere lavado y aceitado especial para no dejar pasar mugre.",
     "Un alternador con diodo dañado genera corriente alterna que enloquece la computadora.",
     "Las mangueras de freno de goma se expanden con el tiempo; las blindadas mantienen la presión constante.",
     "El escáner registra el número de arranques y las horas totales de funcionamiento del motor.",
     "Un buje de tijera desgastado produce desalineación trasera y sensación de coletazo.",
-    "La calibración del sensor de marcha enganchada (Gear Sensor) es clave para el funcionamiento del Quickshifter.",
+    "La calibración del sensor de marcha enganchada es clave para el funcionamiento del Quickshifter.",
     "Un regulador de presión de combustible pegado genera exceso de humo negro en el escape.",
     "La limpieza de los sensores de oxígeno se realiza con aire y productos sin silicón.",
     "La holgura de la manigueta de freno asegura que las pastillas no queden rozando el disco.",
@@ -180,17 +225,6 @@ const tipsTecnicos100 = [
     "El escáner especializado de AMS permite resetear los parámetros adaptativos de la ECU.",
     "Confía el corazón electrónico de tu motocicleta únicamente en especialistas con equipo OEM."
 ];
-
-const tipsEspecificos = {
-    escaner: "El escáner OEM lee códigos DTC y datos en vivo para detectar fallas que a simple vista no se ven.",
-    inyeccion: "Sincronizar no es solo lavar piezas; es calibrar el cuerpo de aceleración con escáner para evitar exceso de consumo.",
-    remap: "Reprogramamos la ECU para optimizar la curva de potencia y la respuesta del acelerador según la altitud.",
-    accesorios: "Instalamos accesorios protegiendo la red CAN-Bus de la moto para evitar cortocircuitos.",
-    arrastre: "Mantener la cadena tensionada y lubricada duplica la vida útil de las coronas y del piñón de salida.",
-    electrico: "Utilizamos termoencogible y aislamiento automotriz para instalaciones de GPS totalmente limpias.",
-    frenos: "Si la manigueta se siente esponjosa, tienes aire o humedad en el líquido. Salva tu sistema ABS a tiempo.",
-    sincro: "Un mantenimiento preventivo periódico de inyección evita el desgaste prematuro de las válvulas."
-};
 
 const mensajesRedes = {
     whatsapp: "¡De una! Te abro el WhatsApp para cotizar o agendar cita directo en el taller...",
