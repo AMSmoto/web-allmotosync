@@ -19,7 +19,7 @@ html, body {
     width: 100%; 
     background-color: rgba(10, 17, 30, 0.95) !important;
     z-index: 1000; 
-    padding: 20px 0 0 0; 
+    padding: 15px 0 0 0; 
     border-bottom: 4px solid #FF6600;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex; 
@@ -27,12 +27,54 @@ html, body {
     align-items: center;
 }
 
+/* --- CIRCUITOS ESTILO PCB DE LADO A LADO --- */
+.header-circuitos-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    padding: 0 10px; 
+    box-sizing: border-box;
+    overflow: hidden; 
+}
+
+.circuito-lado { 
+    flex-grow: 1;
+    height: 55px; 
+    max-width: calc(50% - 220px); 
+}
+
+.circuito-lado svg {
+    width: 100%;
+    height: 100%;
+}
+
+.pista-base { 
+    fill: none; 
+    stroke-width: 1.2px; 
+    opacity: 0.3; 
+}
+
+.impulso-electrico { 
+    fill: none; 
+    stroke-width: 2px; 
+    stroke-dasharray: 40 300; 
+    animation: correrPulso 4s linear infinite; 
+    filter: drop-shadow(0 0 6px currentColor); 
+}
+
+@keyframes correrPulso { 
+    0% { stroke-dashoffset: 340; } 
+    100% { stroke-dashoffset: 0; } 
+}
+
 #logo-ams {
-    width: 450px; 
-    max-width: 80%; 
-    border-radius: 15px;
+    width: 420px; 
+    max-width: 45%; 
+    border-radius: 12px;
     transition: all 0.4s ease;
     filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.3));
+    flex-shrink: 0;
 }
 
 .titulos-hero { 
@@ -87,6 +129,7 @@ html, body {
 
 /* --- EFECTO SCROLL HEADER --- */
 .header-reducido { padding: 8px 0 0 0 !important; }
+.header-reducido .header-circuitos-container { display: none; } /* Oculta circuitos al hacer scroll para mayor limpieza */
 .header-reducido #logo-ams { width: 180px !important; }
 .header-reducido .titulos-hero { margin-top: 5px !important; }
 .header-reducido .titulos-hero h1 { font-size: 1.2rem !important; letter-spacing: 1px; }
@@ -351,7 +394,7 @@ html, body {
     border: 2px solid #FF6600; 
     border-radius: 16px;
     padding: 12px 16px; 
-    width: 260px; /* Ancho optimizado para no invadir tarjetas */
+    width: 260px;
     max-width: 70vw;
     font-size: 12px; 
     font-family: 'Segoe UI', Roboto, sans-serif;
@@ -383,15 +426,6 @@ html, body {
 @keyframes pulseTecnico {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.03); }
-}
-
-/* --- CIRCUITO Y ANIMACIONES --- */
-.impulso-electrico { 
-    fill: none; 
-    stroke-width: 3; 
-    stroke-dasharray: 40 260; 
-    animation: correrPulso 3s linear infinite; 
-    filter: drop-shadow(0 0 8px currentColor); 
 }
 
 @keyframes fadeInPage {
@@ -442,6 +476,7 @@ html, body {
     .relleno-header { height: 350px; }
     .titulos-hero h1 { font-size: 1.5rem; }
     #logo-ams { width: 280px; }
+    .circuito-lado { display: none; } /* Ocultar circuitos en móviles para evitar saturación */
     
     .card-showcase div[style*="padding: 40px"] {
         padding: 20px !important;
