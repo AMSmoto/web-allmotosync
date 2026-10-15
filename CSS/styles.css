@@ -43,7 +43,7 @@ html, body {
 
 .circuito-lado { 
     flex-grow: 1;
-    height: 90px; /* Mayor espacio vertical para que respiren las 6 líneas */
+    height: 90px; 
     max-width: calc(50% - 220px); 
     transition: all 0.35s ease;
 }
@@ -135,12 +135,12 @@ html, body {
     100% { transform: translateX(-50%); } 
 }
 
-/* --- EFECTO SCROLL HEADER REDUCIDO (LOS CIRCUITOS SE REDUCEN PROPORCIONALMENTE SIN OCULTARSE) --- */
+/* --- EFECTO SCROLL HEADER REDUCIDO --- */
 .header-reducido { 
     padding: 4px 0 0 0 !important; 
 }
 .header-reducido .circuito-lado { 
-    height: 40px !important; /* Se vuelven pequeños de forma proporcional al logo */
+    height: 40px !important; 
 }
 .header-reducido #logo-ams { 
     width: 150px !important; 
@@ -160,13 +160,13 @@ html, body {
     padding: 4px 0 !important; 
 }
 
+/* --- RELLENO DEL HEADER REDucIDO A LA MEDIDA CORRECTA --- */
 .relleno-header { 
-    height: 480px;
-    background: linear-gradient(rgba(10, 17, 30, 0.7), rgba(10, 17, 30, 0.8)), url('https://images.unsplash.com/photo-1558981403-c5f91cbba527?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+    height: 220px; /* Reducido drásticamente para eliminar el espacio en blanco */
+    background: transparent;
     display: flex; 
     align-items: center; 
     justify-content: center;
-    border-bottom: 3px solid #FF6600;
 }
 
 /* --- BOTONES Y REDES FLOTANTES LATERALES --- */
@@ -463,7 +463,7 @@ html, body {
         max-width: 65% !important; 
     }
     
-    .relleno-header { height: 360px; }
+    .relleno-header { height: 160px !important; }
 
     .btn-flotante-item {
         width: 95px !important;
