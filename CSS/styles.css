@@ -16,21 +16,23 @@ html, body {
 .header-principal {
     position: fixed; 
     top: 0; 
+    left: 0;
     width: 100%; 
-    background-color: rgba(10, 17, 30, 0.95) !important;
+    background-color: rgba(10, 17, 30, 0.98) !important;
     z-index: 1000; 
-    padding: 15px 0 0 0; 
+    padding: 10px 0 0 0; 
     border-bottom: 4px solid #FF6600;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex; 
     flex-direction: column; 
     align-items: center;
+    box-sizing: border-box;
 }
 
-/* --- CIRCUITOS ESTILO PCB DE LADO A LADO --- */
+/* --- CIRCUITOS ESTILO PCB --- */
 .header-circuitos-container { 
     display: flex; 
-    justify-content: space-between; 
+    justify-content: center; 
     align-items: center; 
     width: 100%; 
     padding: 0 10px; 
@@ -40,8 +42,9 @@ html, body {
 
 .circuito-lado { 
     flex-grow: 1;
-    height: 55px; 
-    max-width: calc(50% - 220px); 
+    height: 45px; 
+    max-width: calc(50% - 210px); 
+    transition: all 0.3s ease;
 }
 
 .circuito-lado svg {
@@ -69,40 +72,45 @@ html, body {
 }
 
 #logo-ams {
-    width: 420px; 
-    max-width: 45%; 
+    width: 400px; 
+    max-width: 75%; 
     border-radius: 12px;
-    transition: all 0.4s ease;
-    filter: drop-shadow(0px 0px 15px rgba(255, 102, 0, 0.3));
+    transition: all 0.35s ease;
+    filter: drop-shadow(0px 0px 12px rgba(255, 102, 0, 0.35));
+    display: block;
+    margin: 0 auto;
     flex-shrink: 0;
 }
 
 .titulos-hero { 
-    transition: all 0.4s ease; 
-    margin-top: 15px; 
+    transition: all 0.35s ease; 
+    margin-top: 10px; 
+    width: 100%;
 }
 .titulos-hero h1 { 
-    font-size: 2.2rem; 
+    font-size: 1.8rem; 
     margin: 0; 
     font-weight: 800; 
     text-shadow: 0 5px 15px rgba(0,0,0,0.7); 
-    letter-spacing: 3px; 
+    letter-spacing: 2px; 
     text-transform: uppercase;
+    padding: 0 10px;
 }
 .titulos-hero p { 
     color: #FF6600; 
     font-weight: bold; 
-    font-size: 1.1rem; 
-    margin: 5px 0 15px 0; 
+    font-size: 0.95rem; 
+    margin: 4px 0 10px 0; 
     text-transform: uppercase; 
-    letter-spacing: 2px; 
+    letter-spacing: 1px; 
+    padding: 0 10px;
 }
 
 /* --- SLIDER DE MARCAS --- */
 .slider-marcas {
     width: 100%; 
     background: #080d17 !important; 
-    padding: 12px 0;
+    padding: 10px 0;
     overflow: hidden; 
     white-space: nowrap; 
     transition: all 0.4s ease;
@@ -115,11 +123,11 @@ html, body {
     white-space: nowrap; 
 }
 .contenedor-logos span { 
-    font-size: 1.2rem; 
+    font-size: 1.1rem; 
     font-weight: 900; 
-    margin: 0 40px; 
+    margin: 0 30px; 
     color: rgba(255, 255, 255, 0.6); 
-    letter-spacing: 3px; 
+    letter-spacing: 2px; 
 }
 
 @keyframes scrollMarcas { 
@@ -127,17 +135,37 @@ html, body {
     100% { transform: translateX(-50%); } 
 }
 
-/* --- EFECTO SCROLL HEADER --- */
-.header-reducido { padding: 8px 0 0 0 !important; }
-.header-reducido .header-circuitos-container { display: none; } /* Oculta circuitos al hacer scroll para mayor limpieza */
-.header-reducido #logo-ams { width: 180px !important; }
-.header-reducido .titulos-hero { margin-top: 5px !important; }
-.header-reducido .titulos-hero h1 { font-size: 1.2rem !important; letter-spacing: 1px; }
-.header-reducido .titulos-hero p { display: none; }
-.header-reducido .slider-marcas { padding: 5px 0 !important; background: rgba(10, 17, 30, 0.95) !important; }
+/* --- EFECTO SCROLL HEADER REDUCIDO (CENTRADO Y FIJO) --- */
+.header-reducido { 
+    padding: 5px 0 0 0 !important; 
+}
+.header-reducido .circuito-lado { 
+    display: none !important; /* Oculta circuitos laterales al bajar para ganar espacio */
+}
+.header-reducido .header-circuitos-container { 
+    justify-content: center !important; 
+}
+.header-reducido #logo-ams { 
+    width: 150px !important; /* Logo compacto pero completamente visible y centrado */
+    max-width: 40% !important;
+    margin: 0 auto !important;
+}
+.header-reducido .titulos-hero { 
+    margin-top: 2px !important; 
+}
+.header-reducido .titulos-hero h1 { 
+    font-size: 1rem !important; 
+    letter-spacing: 1px; 
+}
+.header-reducido .titulos-hero p { 
+    display: none !important; 
+}
+.header-reducido .slider-marcas { 
+    padding: 4px 0 !important; 
+}
 
 .relleno-header { 
-    height: 480px;
+    height: 440px;
     background: linear-gradient(rgba(10, 17, 30, 0.7), rgba(10, 17, 30, 0.8)), url('https://images.unsplash.com/photo-1558981403-c5f91cbba527?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
     display: flex; 
     align-items: center; 
@@ -154,21 +182,21 @@ html, body {
     z-index: 9999; 
     display: flex; 
     flex-direction: column; 
-    gap: 10px; 
+    gap: 8px; 
     align-items: flex-end; 
 }
 .btn-flotante-item { 
     background: #FF6600; 
     color: #fff; 
-    padding: 12px 15px; 
-    border-radius: 10px 0 0 10px; 
+    padding: 10px 12px; 
+    border-radius: 8px 0 0 8px; 
     text-decoration: none; 
     font-weight: bold; 
-    font-size: 13px; 
-    width: 180px; 
+    font-size: 11px; 
+    width: 140px; 
     display: flex; 
     align-items: center; 
-    gap: 8px; 
+    gap: 6px; 
     box-shadow: -3px 3px 10px rgba(0,0,0,0.5); 
     border-left: 3px solid #fff; 
     overflow: hidden; 
@@ -194,19 +222,19 @@ html, body {
 .redes-flotantes { 
     display: flex; 
     flex-direction: column; 
-    gap: 5px; 
-    margin-top: 10px; 
+    gap: 4px; 
+    margin-top: 8px; 
 }
 .red-icon { 
-    width: 45px; 
-    height: 45px; 
+    width: 40px; 
+    height: 40px; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     color: #fff; 
-    border-radius: 8px 0 0 8px; 
+    border-radius: 6px 0 0 6px; 
     text-decoration: none; 
-    font-size: 20px; 
+    font-size: 18px; 
     box-shadow: -2px 2px 5px rgba(0,0,0,0.4); 
     transition: 0.2s; 
 }
@@ -231,7 +259,7 @@ html, body {
 }
 .img-producto-container {
     width: 100%;
-    height: 220px;
+    height: 200px;
     background: #ffffff;
     display: flex;
     align-items: center;
@@ -246,7 +274,7 @@ html, body {
     object-fit: contain;
 }
 .info-producto-block {
-    padding: 18px 15px;
+    padding: 16px 12px;
     background: linear-gradient(180deg, #0b1329 0%, #111a33 100%);
     display: flex;
     flex-direction: column;
@@ -255,9 +283,9 @@ html, body {
     border-top: 2px solid #1a2744;
 }
 .info-producto-block h2 {
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0;
     color: #FF6600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -266,7 +294,7 @@ html, body {
 .info-producto-block p {
     margin: 0;
     color: #cbd5e1;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     line-height: 1.4;
     text-align: center;
 }
@@ -289,7 +317,7 @@ html, body {
 }
 .header-foto-montaje {
     width: 100%;
-    height: 220px;
+    height: 200px;
     overflow: hidden;
     background: #070c17;
     position: relative;
@@ -301,7 +329,7 @@ html, body {
     display: block;
 }
 .cuerpo-texto-montaje {
-    padding: 22px;
+    padding: 18px;
     background: linear-gradient(180deg, #0b1329 0%, #111a33 100%);
     display: flex;
     flex-direction: column;
@@ -311,59 +339,59 @@ html, body {
 .tag-subtitulo {
     color: #00b4d8;
     font-weight: 800;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     display: block;
 }
 .titulo-montaje {
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 800;
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
     line-height: 1.3;
     text-transform: uppercase;
 }
 .desc-montaje {
     color: #cbd5e1;
-    font-size: 0.88rem;
-    line-height: 1.5;
-    margin: 0 0 14px 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0 0 12px 0;
     flex-grow: 1;
 }
 .gancho-montaje {
     color: #FF6600;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.3;
     border-top: 1px solid #1a2744;
-    padding-top: 12px;
+    padding-top: 10px;
 }
 
 /* --- TÉCNICO CALIFICADO AMS --- */
 #tecnico-container {
     position: fixed; 
-    bottom: 25px; 
-    left: 25px;
+    bottom: 20px; 
+    left: 20px;
     display: flex; 
     flex-direction: column-reverse; 
     align-items: flex-start;
-    gap: 12px; 
+    gap: 10px; 
     z-index: 9998; 
     pointer-events: none;
 }
 
 .tecnico-avatar {
-    width: 180px; 
-    height: 180px; 
-    max-width: 25vw; 
-    max-height: 25vh;
+    width: 130px; 
+    height: 130px; 
+    max-width: 22vw; 
+    max-height: 22vh;
     border-radius: 50%; 
     background-color: #101b2d;
-    border: 4px solid #FF6600;
-    box-shadow: 0 0 25px rgba(255, 102, 0, 0.6), inset 0 0 10px rgba(0,0,0,0.8);
+    border: 3px solid #FF6600;
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.6), inset 0 0 10px rgba(0,0,0,0.8);
     cursor: pointer; 
     pointer-events: auto; 
     overflow: hidden;
@@ -375,32 +403,26 @@ html, body {
     aspect-ratio: 1 / 1;
 }
 
-.tecnico-avatar:hover {
-    transform: scale(1.05) rotate(-2deg);
-    box-shadow: 0 0 35px rgba(255, 102, 0, 0.9);
-}
-
 .tecnico-avatar img {
     width: 100%; 
     height: 100%; 
     object-fit: cover; 
     display: block;
-    transition: opacity 0.3s ease;
 }
 
 .tecnico-bubble {
     background-color: #0b1329; 
     color: #ffffff;
     border: 2px solid #FF6600; 
-    border-radius: 16px;
-    padding: 12px 16px; 
-    width: 260px;
-    max-width: 70vw;
-    font-size: 12px; 
+    border-radius: 14px;
+    padding: 10px 14px; 
+    width: 240px;
+    max-width: 65vw;
+    font-size: 11px; 
     font-family: 'Segoe UI', Roboto, sans-serif;
     font-weight: 600; 
-    line-height: 1.4;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
+    line-height: 1.35;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8); 
     position: relative;
     pointer-events: auto; 
     text-align: left;
@@ -411,9 +433,9 @@ html, body {
 .tecnico-bubble::after {
     content: ''; 
     position: absolute; 
-    bottom: -10px; 
-    left: 45px;
-    border-width: 10px 8px 0 8px; 
+    bottom: -8px; 
+    left: 35px;
+    border-width: 8px 6px 0 6px; 
     border-style: solid;
     border-color: #FF6600 transparent transparent transparent;
 }
@@ -435,20 +457,25 @@ html, body {
 
 /* --- RESPONSIVIDAD PARA CELULARES --- */
 @media (max-width: 768px) {
+    .circuito-lado { display: none !important; }
+    
+    .titulos-hero h1 { font-size: 1.25rem; letter-spacing: 1px; }
+    .titulos-hero p { font-size: 0.8rem; }
+    
+    #logo-ams { width: 280px; max-width: 70%; }
+    
+    .relleno-header { height: 360px; }
+
     .btn-flotante-item {
-        width: 100px !important;
-        padding: 6px 8px !important;
-        font-size: 10px !important;
+        width: 95px !important;
+        padding: 5px 6px !important;
+        font-size: 9px !important;
     }
 
     .red-icon {
-        width: 36px !important;
-        height: 36px !important;
-        font-size: 15px !important;
-    }
-
-    .contenedor-logos {
-        animation-duration: 120s !important;
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 14px !important;
     }
 
     #tecnico-container {
@@ -457,28 +484,18 @@ html, body {
     }
 
     .tecnico-avatar {
-        width: 80px !important;
-        height: 80px !important;
-        border-width: 3px !important;
+        width: 75px !important;
+        height: 75px !important;
+        border-width: 2px !important;
     }
 
     .tecnico-bubble {
-        width: 210px !important;
-        font-size: 11px !important;
-        padding: 8px 10px !important;
-        line-height: 1.3 !important;
+        width: 195px !important;
+        font-size: 10px !important;
+        padding: 6px 8px !important;
     }
 
-    .tecnico-bubble::after {
-        left: 20px !important;
-    }
-
-    .relleno-header { height: 350px; }
-    .titulos-hero h1 { font-size: 1.5rem; }
-    #logo-ams { width: 280px; }
-    .circuito-lado { display: none; } /* Ocultar circuitos en móviles para evitar saturación */
-    
     .card-showcase div[style*="padding: 40px"] {
-        padding: 20px !important;
+        padding: 15px !important;
     }
 }
