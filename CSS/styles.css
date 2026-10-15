@@ -29,10 +29,10 @@ html, body {
     box-sizing: border-box;
 }
 
-/* --- CIRCUITOS ESTILO PCB --- */
+/* --- CIRCUITOS ESTILO PCB (6 LÍNEAS ENTRECRUZADAS) --- */
 .header-circuitos-container { 
     display: flex; 
-    justify-content: center; 
+    justify-content: space-between; 
     align-items: center; 
     width: 100%; 
     padding: 0 10px; 
@@ -42,8 +42,8 @@ html, body {
 
 .circuito-lado { 
     flex-grow: 1;
-    height: 45px; 
-    max-width: calc(50% - 210px); 
+    height: 65px; 
+    max-width: calc(50% - 220px); 
     transition: all 0.3s ease;
 }
 
@@ -61,26 +61,27 @@ html, body {
 .impulso-electrico { 
     fill: none; 
     stroke-width: 2px; 
-    stroke-dasharray: 40 300; 
-    animation: correrPulso 4s linear infinite; 
-    filter: drop-shadow(0 0 6px currentColor); 
+    stroke-dasharray: 50 350; 
+    animation: correrPulso linear infinite; 
+    filter: drop-shadow(0 0 8px currentColor); 
 }
 
 @keyframes correrPulso { 
-    0% { stroke-dashoffset: 340; } 
+    0% { stroke-dashoffset: 400; } 
     100% { stroke-dashoffset: 0; } 
 }
 
 #logo-ams {
     width: 400px; 
-    max-width: 75%; 
+    max-width: 45%; 
     border-radius: 12px;
     transition: all 0.35s ease;
     filter: drop-shadow(0px 0px 12px rgba(255, 102, 0, 0.35));
-    display: block;
+    display: block !important;
     margin: 0 auto !important;
-    float: none !important;
     flex-shrink: 0;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .titulos-hero { 
@@ -90,22 +91,20 @@ html, body {
     text-align: center;
 }
 .titulos-hero h1 { 
-    font-size: 1.8rem; 
+    font-size: 2rem; 
     margin: 0; 
     font-weight: 800; 
     text-shadow: 0 5px 15px rgba(0,0,0,0.7); 
     letter-spacing: 2px; 
     text-transform: uppercase;
-    padding: 0 10px;
 }
 .titulos-hero p { 
     color: #FF6600; 
     font-weight: bold; 
-    font-size: 0.95rem; 
-    margin: 4px 0 10px 0; 
+    font-size: 1.05rem; 
+    margin: 4px 0 12px 0; 
     text-transform: uppercase; 
-    letter-spacing: 1px; 
-    padding: 0 10px;
+    letter-spacing: 2px; 
 }
 
 /* --- SLIDER DE MARCAS --- */
@@ -137,7 +136,7 @@ html, body {
     100% { transform: translateX(-50%); } 
 }
 
-/* --- EFECTO SCROLL HEADER REDUCIDO (CENTRADO Y FIJO) --- */
+/* --- EFECTO SCROLL HEADER REDUCIDO (LOGO SIEMPRE VISIBLE Y CENTRADO) --- */
 .header-reducido { 
     padding: 5px 0 0 0 !important; 
 }
@@ -145,22 +144,22 @@ html, body {
     display: none !important; 
 }
 .header-reducido .header-circuitos-container { 
-    justify-content: center !important;
+    justify-content: center !important; 
     display: flex !important;
-    width: 100% !important;
 }
 .header-reducido #logo-ams { 
-    width: 150px !important; 
+    width: 160px !important; 
     max-width: 40% !important;
     margin: 0 auto !important;
     display: block !important;
-    float: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 .header-reducido .titulos-hero { 
     margin-top: 2px !important; 
 }
 .header-reducido .titulos-hero h1 { 
-    font-size: 1rem !important; 
+    font-size: 1.1rem !important; 
     letter-spacing: 1px; 
 }
 .header-reducido .titulos-hero p { 
@@ -171,7 +170,7 @@ html, body {
 }
 
 .relleno-header { 
-    height: 440px;
+    height: 480px;
     background: linear-gradient(rgba(10, 17, 30, 0.7), rgba(10, 17, 30, 0.8)), url('https://images.unsplash.com/photo-1558981403-c5f91cbba527?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
     display: flex; 
     align-items: center; 
@@ -474,7 +473,8 @@ html, body {
         max-width: 70% !important; 
         margin: 0 auto !important;
         display: block !important;
-        float: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     
     .relleno-header { height: 360px; }
