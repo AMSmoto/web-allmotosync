@@ -122,12 +122,11 @@ const productos = [
 ];
 
 const NUMERO_WHATSAPP = "573104886929";
-let categoriaActual = null; // Inicia sin mostrar nada o mostrando un mensaje de bienvenida
+let categoriaActual = null;
 
 function filtrarPasillo(categoria) {
     categoriaActual = categoria;
     
-    // Actualizar título del pasillo activo
     const titulosMap = {
         'conectividad': '📱 Pasillo: Smart Displays & Conectividad',
         'iluminacion': '💡 Pasillo: Iluminación Pro & Óptica',
@@ -137,10 +136,15 @@ function filtrarPasillo(categoria) {
     };
 
     const titulo = document.getElementById("titulo-categoria-activa");
-    titulo.innerText = titulosMap[categoria] || "PRODUCTOS";
+    if (titulo) {
+        titulo.innerText = titulosMap[categoria] || "PRODUCTOS";
+    }
 
     renderizarProductos();
-    document.getElementById("seccion-catalogo").scrollIntoView({ behavior: 'smooth' });
+    const seccion = document.getElementById("seccion-catalogo");
+    if (seccion) {
+        seccion.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 function cambiarOrden() {
@@ -152,18 +156,19 @@ function renderizarProductos() {
     if (!contenedor) return;
     contenedor.innerHTML = "";
 
-    // Si no ha seleccionado ninguna categoría, mostrar un aviso inicial elegante
     if (!categoriaActual) {
         contenedor.innerHTML = `<div class="sin-productos" style="color:#00b4d8; text-align:center; padding:50px; grid-column:1/-1; font-weight:600; font-size:1.1rem;">👆 Haz clic en cualquiera de los 5 pasillos de arriba para explorar los productos de esa categoría.</div>`;
         return;
     }
 
-    // Filtrar estrictamente por la categoría seleccionada
+    // 1. Filtrar estrictamente por la categoría actual
     let filtrados = productos.filter(p => p.categoria === categoriaActual);
 
-    // Obtener criterio de ordenamiento seleccionado
-    const criterioOrden = document.getElementById("ordenar") ? document.getElementById("ordenar").value : "destacados";
+    // 2. Obtener el valor del selector de ordenamiento de forma segura
+    const selectOrden = document.getElementById("ordenar");
+    const criterioOrden = selectOrden ? selectOrden.value : "destacados";
 
+    // 3. Aplicar ordenamiento
     if (criterioOrden === "precio-bajo") {
         filtrados.sort((a, b) => a.precio - b.precio);
     } else if (criterioOrden === "precio-alto") {
@@ -179,6 +184,7 @@ function renderizarProductos() {
         return;
     }
 
+    // 4. Renderizar las tarjetas en pantalla
     filtrados.forEach(prod => {
         const precioFormateado = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(prod.precio);
         const mensajeWA = encodeURIComponent(`Hola ALLMOTOSYNC, me interesa comprar el producto: *${prod.nombre}* (Ref: ${prod.id}) por valor de ${precioFormateado}. ¿Tienen disponibilidad?`);
@@ -206,6 +212,5 @@ function renderizarProductos() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Al cargar, inicia limpio indicando que elijan un pasillo
     renderizarProductos();
 });
