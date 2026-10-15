@@ -78,7 +78,8 @@ html, body {
     transition: all 0.35s ease;
     filter: drop-shadow(0px 0px 12px rgba(255, 102, 0, 0.35));
     display: block;
-    margin: 0 auto;
+    margin: 0 auto !important;
+    float: none !important;
     flex-shrink: 0;
 }
 
@@ -86,6 +87,7 @@ html, body {
     transition: all 0.35s ease; 
     margin-top: 10px; 
     width: 100%;
+    text-align: center;
 }
 .titulos-hero h1 { 
     font-size: 1.8rem; 
@@ -140,15 +142,19 @@ html, body {
     padding: 5px 0 0 0 !important; 
 }
 .header-reducido .circuito-lado { 
-    display: none !important; /* Oculta circuitos laterales al bajar para ganar espacio */
+    display: none !important; 
 }
 .header-reducido .header-circuitos-container { 
-    justify-content: center !important; 
+    justify-content: center !important;
+    display: flex !important;
+    width: 100% !important;
 }
 .header-reducido #logo-ams { 
-    width: 150px !important; /* Logo compacto pero completamente visible y centrado */
+    width: 150px !important; 
     max-width: 40% !important;
     margin: 0 auto !important;
+    display: block !important;
+    float: none !important;
 }
 .header-reducido .titulos-hero { 
     margin-top: 2px !important; 
@@ -458,11 +464,18 @@ html, body {
 /* --- RESPONSIVIDAD PARA CELULARES --- */
 @media (max-width: 768px) {
     .circuito-lado { display: none !important; }
+    .header-circuitos-container { justify-content: center !important; }
     
     .titulos-hero h1 { font-size: 1.25rem; letter-spacing: 1px; }
     .titulos-hero p { font-size: 0.8rem; }
     
-    #logo-ams { width: 280px; max-width: 70%; }
+    #logo-ams { 
+        width: 260px !important; 
+        max-width: 70% !important; 
+        margin: 0 auto !important;
+        display: block !important;
+        float: none !important;
+    }
     
     .relleno-header { height: 360px; }
 
