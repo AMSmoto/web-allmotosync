@@ -161,14 +161,13 @@ function renderizarProductos() {
         return;
     }
 
-    // 1. Filtrar estrictamente por la categoría actual
-    let filtrados = productos.filter(p => p.categoria === categoriaActual);
+    // Filtrar estrictamente por la categoría seleccionada
+    let filtrados = productos.filter(p => p.categoria.toLowerCase().trim() === categoriaActual.toLowerCase().trim());
 
-    // 2. Obtener el valor del selector de ordenamiento de forma segura
+    // Obtener criterio de ordenamiento
     const selectOrden = document.getElementById("ordenar");
     const criterioOrden = selectOrden ? selectOrden.value : "destacados";
 
-    // 3. Aplicar ordenamiento
     if (criterioOrden === "precio-bajo") {
         filtrados.sort((a, b) => a.precio - b.precio);
     } else if (criterioOrden === "precio-alto") {
@@ -184,7 +183,6 @@ function renderizarProductos() {
         return;
     }
 
-    // 4. Renderizar las tarjetas en pantalla
     filtrados.forEach(prod => {
         const precioFormateado = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(prod.precio);
         const mensajeWA = encodeURIComponent(`Hola ALLMOTOSYNC, me interesa comprar el producto: *${prod.nombre}* (Ref: ${prod.id}) por valor de ${precioFormateado}. ¿Tienen disponibilidad?`);
