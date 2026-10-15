@@ -29,7 +29,7 @@ html, body {
     box-sizing: border-box;
 }
 
-/* --- CIRCUITOS ESTILO PCB (6 LÍNEAS ENTRECRUZADAS) --- */
+/* --- CIRCUITOS ESTILO PCB (6 LÍNEAS CON MÁS ESPACIO Y VELOCIDAD SUAVE) --- */
 .header-circuitos-container { 
     display: flex; 
     justify-content: space-between; 
@@ -38,13 +38,14 @@ html, body {
     padding: 0 10px; 
     box-sizing: border-box;
     overflow: hidden; 
+    transition: all 0.35s ease;
 }
 
 .circuito-lado { 
     flex-grow: 1;
-    height: 65px; 
+    height: 90px; /* Mayor espacio vertical para que respiren las 6 líneas */
     max-width: calc(50% - 220px); 
-    transition: all 0.3s ease;
+    transition: all 0.35s ease;
 }
 
 .circuito-lado svg {
@@ -55,19 +56,19 @@ html, body {
 .pista-base { 
     fill: none; 
     stroke-width: 1.2px; 
-    opacity: 0.3; 
+    opacity: 0.35; 
 }
 
 .impulso-electrico { 
     fill: none; 
-    stroke-width: 2px; 
-    stroke-dasharray: 50 350; 
+    stroke-width: 2.2px; 
+    stroke-dasharray: 60 400; 
     animation: correrPulso linear infinite; 
     filter: drop-shadow(0 0 8px currentColor); 
 }
 
 @keyframes correrPulso { 
-    0% { stroke-dashoffset: 400; } 
+    0% { stroke-dashoffset: 460; } 
     100% { stroke-dashoffset: 0; } 
 }
 
@@ -80,8 +81,6 @@ html, body {
     display: block !important;
     margin: 0 auto !important;
     flex-shrink: 0;
-    opacity: 1 !important;
-    visibility: visible !important;
 }
 
 .titulos-hero { 
@@ -136,24 +135,16 @@ html, body {
     100% { transform: translateX(-50%); } 
 }
 
-/* --- EFECTO SCROLL HEADER REDUCIDO (LOGO SIEMPRE VISIBLE Y CENTRADO) --- */
+/* --- EFECTO SCROLL HEADER REDUCIDO (LOS CIRCUITOS SE REDUCEN PROPORCIONALMENTE SIN OCULTARSE) --- */
 .header-reducido { 
-    padding: 5px 0 0 0 !important; 
+    padding: 4px 0 0 0 !important; 
 }
 .header-reducido .circuito-lado { 
-    display: none !important; 
-}
-.header-reducido .header-circuitos-container { 
-    justify-content: center !important; 
-    display: flex !important;
+    height: 40px !important; /* Se vuelven pequeños de forma proporcional al logo */
 }
 .header-reducido #logo-ams { 
-    width: 160px !important; 
-    max-width: 40% !important;
-    margin: 0 auto !important;
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+    width: 150px !important; 
+    max-width: 35% !important;
 }
 .header-reducido .titulos-hero { 
     margin-top: 2px !important; 
@@ -462,19 +453,14 @@ html, body {
 
 /* --- RESPONSIVIDAD PARA CELULARES --- */
 @media (max-width: 768px) {
-    .circuito-lado { display: none !important; }
-    .header-circuitos-container { justify-content: center !important; }
+    .circuito-lado { height: 50px !important; }
     
     .titulos-hero h1 { font-size: 1.25rem; letter-spacing: 1px; }
     .titulos-hero p { font-size: 0.8rem; }
     
     #logo-ams { 
-        width: 260px !important; 
-        max-width: 70% !important; 
-        margin: 0 auto !important;
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
+        width: 240px !important; 
+        max-width: 65% !important; 
     }
     
     .relleno-header { height: 360px; }
