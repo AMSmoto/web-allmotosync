@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIENDA ONLINE | ALLMOTOSYNC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
 
-    <!-- HEADER IDÉNTICO Y LIMPIO -->
-    <header class="header-principal">
+    <!-- HEADER IDÉNTICO AL DE LA LANDING -->
+    <header id="miHeader" class="header-principal">
         <div class="header-circuitos-container">
             <div class="circuito-lado">
-               <svg viewBox="0 0 400 70" preserveAspectRatio="none">
-                   <path d="M 0,20 L 50,20 L 50,50 L 100,50 L 120,20 L 180,20 L 200,60 L 260,60 L 300,30 L 400,30" class="pista-base" stroke="#00b4d8" />
-                   <path d="M 0,50 L 40,50 L 80,15 L 140,15 L 160,45 L 230,45 L 270,15 L 400,15" class="pista-base" stroke="#ff9f1c" opacity="0.4" />
-                   <path d="M 0,35 L 70,35 L 90,60 L 150,60 L 190,15 L 250,15 L 320,50 L 400,50" class="pista-base" stroke="#2ec4b6" opacity="0.3" />
-                   <path d="M 0,20 L 50,20 L 50,50 L 100,50 L 120,20 L 180,20 L 200,60 L 260,60 L 300,30 L 400,30" class="impulso-electrico" stroke="#ff9f1c" />
-                   <path d="M 0,50 L 40,50 L 80,15 L 140,15 L 160,45 L 230,45 L 270,15 L 400,15" class="impulso-electrico" stroke="#00b4d8" style="animation-duration: 5s;" />
-               </svg>
+                <svg viewBox="0 0 500 120" preserveAspectRatio="none">
+                    <path d="M 0,20 L 60,20 L 80,70 L 150,70 L 180,20 L 260,20 L 300,70 L 400,70 L 430,30 L 500,30" class="pista-base" stroke="#00b4d8" />
+                    <path d="M 0,50 L 40,50 L 90,20 L 160,20 L 200,90 L 270,90 L 330,40 L 420,40 L 500,70" class="pista-base" stroke="#FF6600" opacity="0.4" />
+                    <path d="M 0,90 L 50,90 L 100,50 L 180,50 L 220,100 L 310,100 L 360,60 L 450,60 L 500,100" class="pista-base" stroke="#00ff66" opacity="0.4" />
+                    <path d="M 0,20 L 60,20 L 80,70 L 150,70 L 180,20 L 260,20 L 300,70 L 400,70 L 430,30 L 500,30" class="impulso-electrico" stroke="#00b4d8" style="animation-duration: 14s;" />
+                    <path d="M 0,50 L 40,50 L 90,20 L 160,20 L 200,90 L 270,90 L 330,40 L 420,40 L 500,70" class="impulso-electrico" stroke="#FF6600" style="animation-duration: 15s;" />
+                </svg>
             </div>
 
             <a href="../index.html">
@@ -26,38 +27,33 @@
             </a>
 
             <div class="circuito-lado circuito-der">
-               <svg viewBox="0 0 400 70" preserveAspectRatio="none">
-                   <path d="M 400,20 L 350,20 L 350,50 L 300,50 L 280,20 L 220,20 L 200,60 L 140,60 L 100,30 L 0,30" class="pista-base" stroke="#ff9f1c" />
-                   <path d="M 400,50 L 360,50 L 320,15 L 260,15 L 240,45 L 170,45 L 130,15 L 0,15" class="pista-base" stroke="#00b4d8" opacity="0.4" />
-                   <path d="M 400,35 L 330,35 L 310,60 L 250,60 L 210,15 L 150,15 L 80,50 L 0,50" class="pista-base" stroke="#2ec4b6" opacity="0.3" />
-                   <path d="M 400,20 L 350,20 L 350,50 L 300,50 L 280,20 L 220,20 L 200,60 L 140,60 L 100,30 L 0,30" class="impulso-electrico" stroke="#00b4d8" />
-                   <path d="M 400,50 L 360,50 L 320,15 L 260,15 L 240,45 L 170,45 L 130,15 L 0,15" class="impulso-electrico" stroke="#ff9f1c" style="animation-duration: 5.5s;" />
-               </svg>
+                <svg viewBox="0 0 500 120" preserveAspectRatio="none">
+                    <path d="M 500,20 L 440,20 L 420,70 L 350,70 L 320,20 L 240,20 L 200,70 L 100,70 L 70,30 L 0,30" class="pista-base" stroke="#FF6600" />
+                    <path d="M 500,50 L 460,50 L 410,20 L 340,20 L 300,90 L 230,90 L 170,40 L 80,40 L 0,70" class="pista-base" stroke="#00b4d8" opacity="0.4" />
+                    <path d="M 500,90 L 450,90 L 400,50 L 320,50 L 280,100 L 190,100 L 140,60 L 50,60 L 0,100" class="pista-base" stroke="#00ff66" opacity="0.4" />
+                    <path d="M 500,20 L 440,20 L 420,70 L 350,70 L 320,20 L 240,20 L 200,70 L 100,70 L 70,30 L 0,30" class="impulso-electrico" stroke="#FF6600" style="animation-duration: 14s;" />
+                    <path d="M 500,50 L 460,50 L 410,20 L 340,20 L 300,90 L 230,90 L 170,40 L 80,40 L 0,70" class="impulso-electrico" stroke="#00b4d8" style="animation-duration: 15s;" />
+                </svg>
             </div>
         </div>
         
         <div class="titulos-hero">
-            <h1>TIENDA ONLINE OFICIAL</h1>
-            <p>Accesorios y Repuestos de Alto Rendimiento</p>
+            <h1>TIENDA ONLINE OFICIAL | ALLMOTOSYNC</h1>
+            <p>Accesorios, Conectividad y Tecnología de Alto Rendimiento</p>
         </div>
 
         <div class="slider-marcas">
             <div class="contenedor-logos">
                 <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
                 <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
+                <span>KTM</span> <span>HONDA</span> <span>YAMAHA</span> <span>KAWASAKI</span> <span>SUZUKI</span> <span>BAJAJ</span> <span>AKT</span> <span>BENELLI</span>
             </div>
         </div>
     </header>
+    <div class="relleno-header" style="height: 180px;"></div>
 
-    <!-- MENÚ FLOTANTE LATERAL -->
+    <!-- MENÚ FLOTANTE LATERAL IDÉNTICO A LA LANDING -->
     <div class="menu-flotante-lateral">
-        <a href="../index.html#contacto" class="btn-flotante-item">
-            <i class="fa-solid fa-book-open"></i>
-            <div class="marquesina-contenedor">
-                <span class="marquesina-texto">AGENDAR CITA AHORA &nbsp;&bull;&nbsp; AGENDAR CITA AHORA &nbsp;&bull;&nbsp;</span>
-            </div>
-        </a>
-        
         <a href="../index.html" class="btn-flotante-item">
             <i class="fa-solid fa-house"></i> 
             <div class="marquesina-contenedor">
@@ -74,92 +70,122 @@
         </div>
     </div>
 
-    <!-- CATÁLOGO DINÁMICO (VACÍO AQUÍ, LO LLENA JAVASCRIPT) -->
-    <main style="padding: 50px 20px; max-width: 1200px; margin: 0 auto;">
-        <h2 style="color: #FF6600; text-align: center; font-weight: 900; letter-spacing: 2px; margin-bottom: 40px;">PRODUCTOS DESTACADOS</h2>
-        
-        <div id="grid-productos" class="grid-productos">
-            <!-- Los productos se cargarán solos aquí -->
+    <!-- SECCIÓN DE LOS 5 PASILLOS DE COMPRAS -->
+    <main style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+        <h2 style="color: #FF6600; text-align: center; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; font-size: 2rem; margin-bottom: 10px;">
+            PASILLOS DE COMPRAS ESPECIALIZADOS
+        </h2>
+        <p style="color: #00b4d8; font-size: 1.1rem; margin-bottom: 40px; font-weight: 600; text-align: center;">
+            Selecciona una categoría para explorar el inventario técnico de alta gama
+        </p>
+
+        <!-- Contenedor de las 5 Categorías / Pasillos -->
+        <div id="grid-pasillos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 50px;">
+            
+            <!-- Pasillo 1 -->
+            <div class="card-pasillo" onclick="filtrarPasillo('conectividad')" style="background: #0b1329; border: 1px solid #1a2744; border-radius: 14px; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.6);">
+                <div style="height: 220px; overflow: hidden; background: #070c17;">
+                    <img src="Media/LeprechaunGPS.jfif" alt="Smart Displays & Conectividad" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.3s;">
+                </div>
+                <div style="padding: 20px; text-align: left;">
+                    <span style="color: #00b4d8; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">EL PASILLO DIGITAL</span>
+                    <h3 style="color: #fff; font-size: 1.2rem; margin: 8px 0; text-transform: uppercase;">📱 Smart Displays & Conectividad</h3>
+                    <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.4; margin-bottom: 15px;">Convierte el manubrio de tu moto en una cabina inteligente. Mapas en tiempo real, llamadas y música sin sacar el celular.</p>
+                    <span style="color: #FF6600; font-weight: bold; font-size: 0.85rem;">Explorar pasillo &rarr;</span>
+                </div>
+            </div>
+
+            <!-- Pasillo 2 -->
+            <div class="card-pasillo" onclick="filtrarPasillo('iluminacion')" style="background: #0b1329; border: 1px solid #1a2744; border-radius: 14px; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.6);">
+                <div style="height: 220px; overflow: hidden; background: #070c17;">
+                    <img src="Media/LeprechaunLED.jfif" alt="Iluminación Pro & Óptica" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.3s;">
+                </div>
+                <div style="padding: 20px; text-align: left;">
+                    <span style="color: #00b4d8; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">EL PASILLO DE VISIBILIDAD</span>
+                    <h3 style="color: #fff; font-size: 1.2rem; margin: 8px 0; text-transform: uppercase;">💡 Iluminación Pro & Óptica</h3>
+                    <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.4; margin-bottom: 15px;">Ilumina cada curva con potencia milimétrica. Instalación 100% segura que cuida la garantía eléctrica de tu moto.</p>
+                    <span style="color: #FF6600; font-weight: bold; font-size: 0.85rem;">Explorar pasillo &rarr;</span>
+                </div>
+            </div>
+
+            <!-- Pasillo 3 -->
+            <div class="card-pasillo" onclick="filtrarPasillo('blindaje')" style="background: #0b1329; border: 1px solid #1a2744; border-radius: 14px; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.6);">
+                <div style="height: 220px; overflow: hidden; background: #070c17;">
+                    <img src="Media/LeprechaunSLIDER.jfif" alt="Blindaje, Sliders y Protección" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.3s;">
+                </div>
+                <div style="padding: 20px; text-align: left;">
+                    <span style="color: #00b4d8; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">EL PASILLO ESTRUCTURAL</span>
+                    <h3 style="color: #fff; font-size: 1.2rem; margin: 8px 0; text-transform: uppercase;">🛡️ Blindaje, Sliders y Protección</h3>
+                    <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.4; margin-bottom: 15px;">Protección robusta sin perder la elegancia. Blindaje estructural diseñado para mantener intacta la estética y valor de tu moto.</p>
+                    <span style="color: #FF6600; font-weight: bold; font-size: 0.85rem;">Explorar pasillo &rarr;</span>
+                </div>
+            </div>
+
+            <!-- Pasillo 4 -->
+            <div class="card-pasillo" onclick="filtrarPasillo('seguridad')" style="background: #0b1329; border: 1px solid #1a2744; border-radius: 14px; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.6);">
+                <div style="height: 220px; overflow: hidden; background: #070c17;">
+                    <img src="Media/LeprechaunMAPS.jfif" alt="Seguridad y Rastreo Satelital" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.3s;">
+                </div>
+                <div style="padding: 20px; text-align: left;">
+                    <span style="color: #00b4d8; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">EL PASILLO ANTIRROBO</span>
+                    <h3 style="color: #fff; font-size: 1.2rem; margin: 8px 0; text-transform: uppercase;">🔒 Seguridad y Rastreo Satelital</h3>
+                    <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.4; margin-bottom: 15px;">Duerme tranquilo. Blindaje tecnológico de última generación para que tu inversión esté siempre bajo tu control.</p>
+                    <span style="color: #FF6600; font-weight: bold; font-size: 0.85rem;">Explorar pasillo &rarr;</span>
+                </div>
+            </div>
+
+            <!-- Pasillo 5 -->
+            <div class="card-pasillo" onclick="filtrarPasillo('equipamiento')" style="background: #0b1329; border: 1px solid #1a2744; border-radius: 14px; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.6);">
+                <div style="height: 220px; overflow: hidden; background: #070c17;">
+                    <img src="Media/LeprechaunDRIVER.jfif" alt="Protección & Equipamiento para el Motero" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.3s;">
+                </div>
+                <div style="padding: 20px; text-align: left;">
+                    <span style="color: #00b4d8; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">EL PASILLO DEL PILOTO</span>
+                    <h3 style="color: #fff; font-size: 1.2rem; margin: 8px 0; text-transform: uppercase;">🧥 Protección & Equipamiento</h3>
+                    <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.4; margin-bottom: 15px;">Tu moto está protegida, tú también debes estarlo. Equipamiento técnico de alto rendimiento para rodar seguro bajo cualquier clima.</p>
+                    <span style="color: #FF6600; font-weight: bold; font-size: 0.85rem;">Explorar pasillo &rarr;</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECCIÓN DE PRODUCTOS FILTRADOS -->
+        <div id="seccion-catalogo" style="border-top: 2px solid #1a2744; padding-top: 40px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+                <h3 id="titulo-categoria-activa" style="color: #FF6600; font-size: 1.5rem; font-weight: 800; margin: 0; text-transform: uppercase;">TODOS LOS PRODUCTOS</h3>
+                <button onclick="filtrarPasillo('todos')" style="background: #1a2744; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.2s;">Ver Todo el Inventario</button>
+            </div>
+
+            <div id="grid-productos" class="catalogo-grid">
+                <!-- Se llena dinámicamente con JavaScript -->
+            </div>
         </div>
     </main>
 
-    <!-- SCRIPT PARA CARGAR EL JSON AUTOMÁTICAMENTE -->
+    <!-- SCRIPT DE CARGA Y FILTRADO -->
+    <script src="productos.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            fetch('../productos.json')
-                .then(response => response.json())
-                .then(productos => {
-                    const contenedor = document.getElementById("grid-productos");
-                    contenedor.innerHTML = "";
-
-                    productos.forEach(prod => {
-                        const tarjeta = document.createElement("div");
-                        tarjeta.classList.add("tarjeta-producto");
-
-                        tarjeta.innerHTML = `
-                            <div class="img-producto-box">
-                                <img src="${prod.imagen}" alt="${prod.nombre}" style="width: 100%; height: 150px; object-fit: contain; border-radius: 8px; background: #000;">
-                            </div>
-                            <h3>${prod.nombre}</h3>
-                            <p class="precio">${prod.precioTexto}</p>
-                            <a href="https://wa.me/573104886929?text=${encodeURIComponent(prod.whatsappText)}" class="btn-comprar" target="_blank">Comprar por WhatsApp</a>
-                        `;
-                        contenedor.appendChild(tarjeta);
-                    });
-                })
-                .catch(error => {
-                    console.log("Error al cargar los productos:", error);
-                    document.getElementById("grid-productos").innerHTML = "<p style='text-align:center; color:#888;'>Cargando inventario o sin conexión local...</p>";
-                });
-        });
+        function filtrarPasillo(categoria) {
+            const titulo = document.getElementById("titulo-categoria-activa");
+            if(categoria === 'todos') {
+                titulo.innerText = "TODOS LOS PRODUCTOS";
+            } else {
+                titulo.innerText = "PASILLO: " + categoria.toUpperCase();
+            }
+            renderizarProductos(categoria);
+            
+            // Scroll suave hacia los productos
+            document.getElementById("seccion-catalogo").scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 
-    <!-- ESTILOS CSS -->
-    <style>
-        body { background-color: #000; color: #fff; margin: 0; font-family: sans-serif; }
-        .header-principal { background: #000; border-bottom: 2px solid #FF6600; text-align: center; }
-        .header-circuitos-container { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 10px 0; width: 100%; overflow: hidden; }
-        .circuito-lado { width: 38vw; max-width: 450px; height: 60px; }
-        .pista-base { fill: none; stroke-width: 1px; opacity: 0.25; stroke-linecap: square; stroke-linejoin: miter; }
-        .impulso-electrico { fill: none; stroke-width: 1.5px; stroke-dasharray: 30 350; animation: correrPulso 4.5s linear infinite; filter: drop-shadow(0 0 5px currentColor); stroke-linecap: square; stroke-linejoin: miter; }
-        @keyframes correrPulso { 0% { stroke-dashoffset: 380; } 100% { stroke-dashoffset: 0; } }
-
-        #logo-ams { max-height: 75px; border-radius: 10px; transition: transform 0.3s ease; cursor: pointer; margin: 0 10px; z-index: 5; }
-        #logo-ams:hover { transform: scale(1.1); }
-
-        .menu-flotante-lateral { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-        .btn-flotante-item { 
-            background: #FF6600; color: #fff; padding: 12px 15px; border-radius: 10px 0 0 10px; 
-            text-decoration: none; font-weight: bold; font-size: 13px; width: 180px; 
-            display: flex; align-items: center; gap: 8px; box-shadow: -3px 3px 10px rgba(0,0,0,0.5); 
-            border-left: 3px solid #fff; overflow: hidden; white-space: nowrap; box-sizing: border-box;
-        }
-        .marquesina-contenedor { width: 100%; overflow: hidden; white-space: nowrap; display: inline-block; }
-        @keyframes correrTexto { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .marquesina-texto { display: inline-block; white-space: nowrap; animation: correrTexto 7s linear infinite; }
-
-        .redes-flotantes { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
-        .red-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; color: #fff; border-radius: 8px 0 0 8px; text-decoration: none; font-size: 20px; box-shadow: -2px 2px 5px rgba(0,0,0,0.4); transition: 0.2s; }
-        .red-icon:hover { transform: scale(1.1); }
-
-        .slider-marcas { overflow: hidden; width: 100%; background: #000; padding: 15px 0; white-space: nowrap; border-top: 1px solid #222; border-bottom: 1px solid #222; }
-        .contenedor-logos { display: inline-block; animation: scrollMarcas 45s linear infinite; }
-        .contenedor-logos span { color: #fff; font-weight: bold; margin: 0 40px; font-size: 1.3rem; letter-spacing: 2px; }
-        @keyframes scrollMarcas { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-        .tarjeta-producto { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .tarjeta-producto:hover { transform: translateY(-50px); /* wait, let's keep it safe */ }
-        .tarjeta-producto:hover { transform: translateY(-5px); border-color: #FF6600; box-shadow: 0 8px 25px rgba(255,102,0,0.2); }
-        .img-producto-box { margin-bottom: 15px; display: flex; justify-content: center; }
-        .tarjeta-producto h3 { color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
-        .precio { color: #FF6600; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; }
-        .btn-comprar { display: inline-block; background: #25D366; color: #fff; padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: 0.2s; }
-        .btn-comprar:hover { background: #20ba5a; transform: scale(1.05); }
-    </style>
-
-    <footer style="padding: 40px 20px; background: #000; border-top: 1px solid #222; text-align: center; color: #888; font-size: 0.85rem; margin-top: 50px;">
-        <p>© 2026 <strong>ALLMOTOSYNC S.A.S.</strong> - Tienda Online Oficial</p>
+    <footer style="padding: 40px 20px; background: #050811; border-top: 1px solid #1a2744; text-align: center; color: #888; font-size: 0.85rem; margin-top: 50px;">
+        <div style="max-width: 1000px; margin: 0 auto; line-height: 1.5;">
+            <p style="color: #aaa; margin-bottom: 10px;">
+                <strong style="color: #FF6600;">ALLMOTOSYNC S.A.S.</strong> | Tienda Online Oficial de Tecnología y Conectividad para Motocicletas.
+            </p>
+            © 2026 Todos los derechos reservados.
+        </div>
     </footer>
 </body>
 </html>
