@@ -141,10 +141,6 @@ function filtrarPasillo(categoria) {
     }
 
     renderizarProductos();
-    const seccion = document.getElementById("seccion-catalogo");
-    if (seccion) {
-        seccion.scrollIntoView({ behavior: 'smooth' });
-    }
 }
 
 function cambiarOrden() {
@@ -161,10 +157,8 @@ function renderizarProductos() {
         return;
     }
 
-    // Filtrar estrictamente por la categoría seleccionada
     let filtrados = productos.filter(p => p.categoria.toLowerCase().trim() === categoriaActual.toLowerCase().trim());
 
-    // Obtener criterio de ordenamiento
     const selectOrden = document.getElementById("ordenar");
     const criterioOrden = selectOrden ? selectOrden.value : "destacados";
 
