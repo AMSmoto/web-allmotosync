@@ -5,6 +5,8 @@ const productos = [
         categoria: "conectividad",
         descripcion: "Pantalla táctil impermeable con mapas en tiempo real, Bluetooth dual y cámara trasera incluida.",
         precio: 480000,
+        reciente: true,
+        ventas: 50,
         imagen: "../MEDIA/TIENDA/smart-display.jpg"
     },
     {
@@ -13,6 +15,8 @@ const productos = [
         categoria: "conectividad",
         descripcion: "Sistema de grabación continua en alta definición con lentes blindados para motocicletas.",
         precio: 290000,
+        reciente: false,
+        ventas: 25,
         imagen: "../MEDIA/TIENDA/electronica-accesorios.jpg"
     },
     {
@@ -21,6 +25,8 @@ const productos = [
         categoria: "conectividad",
         descripcion: "Monitoreo en tiempo real de temperatura y presión con pantalla solar recargable.",
         precio: 180000,
+        reciente: true,
+        ventas: 30,
         imagen: "../MEDIA/TIENDA/electronica-accesorios.jpg"
     },
     {
@@ -29,6 +35,8 @@ const productos = [
         categoria: "iluminacion",
         descripcion: "Alta potencia lumínica con lupa proyectora y selector de luz para niebla o ruta.",
         precio: 250000,
+        reciente: true,
+        ventas: 65,
         imagen: "../MEDIA/TIENDA/iluminacion-pro.jpg"
     },
     {
@@ -37,6 +45,8 @@ const productos = [
         categoria: "iluminacion",
         descripcion: "Óptica frontal de alto rendimiento con diseño moderno y bajo consumo eléctrico.",
         precio: 320000,
+        reciente: false,
+        ventas: 20,
         imagen: "../MEDIA/TIENDA/iluminacion-pro.jpg"
     },
     {
@@ -45,6 +55,8 @@ const productos = [
         categoria: "blindaje",
         descripcion: "Topes anticaída reforzados con núcleo de aluminio y cabezales en polímero de alta resistencia.",
         precio: 140000,
+        reciente: false,
+        ventas: 40,
         imagen: "../MEDIA/TIENDA/sliders.jpg"
     },
     {
@@ -53,6 +65,8 @@ const productos = [
         categoria: "blindaje",
         descripcion: "Rejilla de protección frontal diseñada a la medida para evitar daños por piedras en ruta.",
         precio: 115000,
+        reciente: true,
+        ventas: 35,
         imagen: "../MEDIA/TIENDA/protector-radiador.jpg"
     },
     {
@@ -61,6 +75,8 @@ const productos = [
         categoria: "seguridad",
         descripcion: "Sistema antirrobo con presencia, sensor de impacto por grúa y apagado remoto de motor.",
         precio: 210000,
+        reciente: false,
+        ventas: 45,
         imagen: "../MEDIA/TIENDA/seguridad-gps.jpg"
     },
     {
@@ -69,6 +85,8 @@ const productos = [
         categoria: "seguridad",
         descripcion: "Rastreo en tiempo real 24/7, historial de rutas y control de encendido desde tu celular.",
         precio: 299000,
+        reciente: true,
+        ventas: 60,
         imagen: "../MEDIA/TIENDA/seguridad-gps.jpg"
     },
     {
@@ -77,6 +95,8 @@ const productos = [
         categoria: "equipamiento",
         descripcion: "Diseño ergonómico con protecciones certificadas en hombros, codos y espalda, material reflectivo.",
         precio: 380000,
+        reciente: true,
+        ventas: 30,
         imagen: "../MEDIA/TIENDA/proteccionesmotero.jpg"
     },
     {
@@ -85,6 +105,8 @@ const productos = [
         categoria: "equipamiento",
         descripcion: "Manos libres estéreo con cancelación de ruido, radio FM y conexión para llamadas o GPS.",
         precio: 260000,
+        reciente: false,
+        ventas: 28,
         imagen: "../MEDIA/TIENDA/electronica-accesorios.jpg"
     },
     {
@@ -93,46 +115,87 @@ const productos = [
         categoria: "conectividad",
         descripcion: "Sujeción firme de aluminio con puerto de carga rápida USB integrado y protección antivibración para el celular.",
         precio: 95000,
+        reciente: false,
+        ventas: 55,
         imagen: "../MEDIA/TIENDA/electronica-accesorios.jpg"
     }
 ];
 
 const NUMERO_WHATSAPP = "573104886929";
+let categoriaActual = null; // Inicia sin mostrar nada o mostrando un mensaje de bienvenida
 
-function renderizarProductos(filtro = "todos", busqueda = "") {
+function filtrarPasillo(categoria) {
+    categoriaActual = categoria;
+    
+    // Actualizar título del pasillo activo
+    const titulosMap = {
+        'conectividad': '📱 Pasillo: Smart Displays & Conectividad',
+        'iluminacion': '💡 Pasillo: Iluminación Pro & Óptica',
+        'blindaje': '🛡️ Pasillo: Blindaje, Sliders y Protección',
+        'seguridad': '🔒 Pasillo: Seguridad y Rastreo Satelital',
+        'equipamiento': '🧥 Pasillo: Protección & Equipamiento para el Motero'
+    };
+
+    const titulo = document.getElementById("titulo-categoria-activa");
+    titulo.innerText = titulosMap[categoria] || "PRODUCTOS";
+
+    renderizarProductos();
+    document.getElementById("seccion-catalogo").scrollIntoView({ behavior: 'smooth' });
+}
+
+function cambiarOrden() {
+    renderizarProductos();
+}
+
+function renderizarProductos() {
     const contenedor = document.getElementById("grid-productos");
     if (!contenedor) return;
     contenedor.innerHTML = "";
 
-    const filtrados = productos.filter(p => {
-        const coincideCat = filtro === "todos" || p.categoria === filtro;
-        const coincideNom = p.nombre.toLowerCase().includes(busqueda.toLowerCase()) || 
-                            p.descripcion.toLowerCase().includes(busqueda.toLowerCase());
-        return coincideCat && coincideNom;
-    });
+    // Si no ha seleccionado ninguna categoría, mostrar un aviso inicial elegante
+    if (!categoriaActual) {
+        contenedor.innerHTML = `<div class="sin-productos" style="color:#00b4d8; text-align:center; padding:50px; grid-column:1/-1; font-weight:600; font-size:1.1rem;">👆 Haz clic en cualquiera de los 5 pasillos de arriba para explorar los productos de esa categoría.</div>`;
+        return;
+    }
+
+    // Filtrar estrictamente por la categoría seleccionada
+    let filtrados = productos.filter(p => p.categoria === categoriaActual);
+
+    // Obtener criterio de ordenamiento seleccionado
+    const criterioOrden = document.getElementById("ordenar") ? document.getElementById("ordenar").value : "destacados";
+
+    if (criterioOrden === "precio-bajo") {
+        filtrados.sort((a, b) => a.precio - b.precio);
+    } else if (criterioOrden === "precio-alto") {
+        filtrados.sort((a, b) => b.precio - a.precio);
+    } else if (criterioOrden === "recientes") {
+        filtrados.sort((a, b) => (b.reciente === true) - (a.reciente === true));
+    } else if (criterioOrden === "destacados") {
+        filtrados.sort((a, b) => b.ventas - a.ventas);
+    }
 
     if (filtrados.length === 0) {
-        contenedor.innerHTML = `<div class="sin-productos" style="color:#fff; text-align:center; padding:40px; grid-column:1/-1;">No se encontraron productos en este pasillo con ese criterio.</div>`;
+        contenedor.innerHTML = `<div class="sin-productos" style="color:#fff; text-align:center; padding:40px; grid-column:1/-1;">No hay productos disponibles en este pasillo actualmente.</div>`;
         return;
     }
 
     filtrados.forEach(prod => {
         const precioFormateado = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(prod.precio);
-        const mensajeWA = encodeURIComponent(`Hola ALLMOTOSYNC, me interesa comprar el producto: *${prod.nombre}* (Ref: ${prod.id}) por valor de ${precioFormateado}. ¿Tienen disponibilidad en la tienda?`);
+        const mensajeWA = encodeURIComponent(`Hola ALLMOTOSYNC, me interesa comprar el producto: *${prod.nombre}* (Ref: ${prod.id}) por valor de ${precioFormateado}. ¿Tienen disponibilidad?`);
         
         const card = document.createElement("div");
         card.className = "tarjeta-producto";
         card.innerHTML = `
-            <div class="img-wrapper" style="height: 200px; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                <img src="${prod.imagen}" alt="${prod.nombre}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://placehold.co/400x300/111/FF6600?text=ALLMOTOSYNC'">
+            <div class="img-wrapper">
+                <img src="${prod.imagen}" alt="${prod.nombre}" onerror="this.src='https://placehold.co/400x300/111/FF6600?text=ALLMOTOSYNC'">
             </div>
-            <div class="info-producto" style="padding: 18px; text-align: left;">
-                <span class="tag-categoria" style="color: #00b4d8; font-size: 0.7rem; font-weight: 800; letter-spacing: 1px;">${prod.categoria.toUpperCase()}</span>
-                <h3 style="color: #fff; font-size: 1.1rem; margin: 8px 0;">${prod.nombre}</h3>
-                <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.4; margin-bottom: 15px;">${prod.descripcion}</p>
-                <div class="precio" style="color: #FF6600; font-weight: 800; font-size: 1.25rem; margin-bottom: 15px;">${precioFormateado}</div>
+            <div class="info-producto">
+                <span class="tag-categoria">${prod.categoria.toUpperCase()}</span>
+                <h3>${prod.nombre}</h3>
+                <p>${prod.descripcion}</p>
+                <div class="precio">${precioFormateado}</div>
                 <div class="botones-accion">
-                    <a href="https://wa.me/${NUMERO_WHATSAPP}?text=${mensajeWA}" target="_blank" class="btn-whatsapp" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #fff; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem;">
+                    <a href="https://wa.me/${NUMERO_WHATSAPP}?text=${mensajeWA}" target="_blank" class="btn-whatsapp">
                         <i class="fa-brands fa-whatsapp"></i> Comprar por WhatsApp
                     </a>
                 </div>
@@ -143,5 +206,6 @@ function renderizarProductos(filtro = "todos", busqueda = "") {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    renderizarProductos("todos");
+    // Al cargar, inicia limpio indicando que elijan un pasillo
+    renderizarProductos();
 });
