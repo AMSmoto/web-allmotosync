@@ -6,6 +6,7 @@
     <title>TIENDA ONLINE | ALLMOTOSYNC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="tienda.css">
 </head>
 <body>
 
@@ -70,7 +71,7 @@
         </div>
     </div>
 
-   <!-- SECCIÓN DE LOS 5 PASILLOS DE COMPRAS -->
+    <!-- SECCIÓN DE LOS 5 PASILLOS DE COMPRAS -->
     <main style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
         <h2 style="color: #FF6600; text-align: center; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; font-size: 2rem; margin-bottom: 10px;">
             PASILLOS DE COMPRAS ESPECIALIZADOS
@@ -78,114 +79,3 @@
         <p style="color: #00b4d8; font-size: 1.1rem; margin-bottom: 40px; font-weight: 600; text-align: center;">
             Selecciona una categoría para explorar el inventario técnico de alta gama
         </p>
-
-        <!-- Contenedor de las 5 Categorías / Pasillos -->
-        <div id="grid-pasillos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 50px;">
-            
-            <!-- Pasillo 1 -->
-            <div class="card-pasillo" onclick="filtrarPasillo('conectividad')" style="background: #0b1329; border: 1px solid #1a2744; border-radius: 14px; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.6); text-align: center;">
-                <div style="height: 160px; overflow: hidden; background: #070c17;">
-                    <img src="Media/LeprechaunGPS.jfif" alt="Smart Displays" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.3s;">
-                </div>
-                <div style="padding: 15px;">
-                    <h3 style="color: #fff; font-size: 1rem; margin: 0 0 8px; text-transform: uppercase;">📱 Smart Displays</h3>
-                    <span style="color: #FF6600; font-weight: bold; font-size: 0.8rem;">Entrar al pasillo &rarr;</span>
-                </div>
-            </div>
-
-            <!-- Pasillo 2 -->
-            <div class="card-pasillo" onclick="filtrarPasillo('iluminacion')" style="background: #0b1329; border: 1px solid #1a2744; border-radius: 14px; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.6); text-align: center;">
-                <div style="height: 160px; overflow: hidden; background: #070c17;">
-                    <img src="Media/LeprechaunLED.jfif" alt="Iluminación Pro" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.3s;">
-                </div>
-                <div style="padding: 15px;">
-                    <h3 style="color: #fff; font-size: 1rem; margin: 0 0 8px; text-transform: uppercase;">💡 Iluminación Pro</h3>
-                    <span style="color: #FF6600; font-weight: bold; font-size: 0.8rem;">Entrar al pasillo &rarr;</span>
-                </div>
-            </div>
-
-            <!-- Pasillo 3 -->
-            <div class="card-pasillo" onclick="filtrarPasillo('blindaje')" style="background: #0b1329; border: 1px solid #1a2744; border-radius: 14px; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.6); text-align: center;">
-                <div style="height: 160px; overflow: hidden; background: #070c17;">
-                    <img src="Media/LeprechaunSLIDER.jfif" alt="Blindaje & Sliders" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.3s;">
-                </div>
-                <div style="padding: 15px;">
-                    <h3 style="color: #fff; font-size: 1rem; margin: 0 0 8px; text-transform: uppercase;">🛡️ Blindaje & Sliders</h3>
-                    <span style="color: #FF6600; font-weight: bold; font-size: 0.8rem;">Entrar al pasillo &rarr;</span>
-                </div>
-            </div>
-
-            <!-- Pasillo 4 -->
-            <div class="card-pasillo" onclick="filtrarPasillo('seguridad')" style="background: #0b1329; border: 1px solid #1a2744; border-radius: 14px; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.6); text-align: center;">
-                <div style="height: 160px; overflow: hidden; background: #070c17;">
-                    <img src="Media/LeprechaunMAPS.jfif" alt="Seguridad & GPS" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.3s;">
-                </div>
-                <div style="padding: 15px;">
-                    <h3 style="color: #fff; font-size: 1rem; margin: 0 0 8px; text-transform: uppercase;">🔒 Seguridad & GPS</h3>
-                    <span style="color: #FF6600; font-weight: bold; font-size: 0.8rem;">Entrar al pasillo &rarr;</span>
-                </div>
-            </div>
-
-            <!-- Pasillo 5 -->
-            <div class="card-pasillo" onclick="filtrarPasillo('equipamiento')" style="background: #0b1329; border: 1px solid #1a2744; border-radius: 14px; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.6); text-align: center;">
-                <div style="height: 160px; overflow: hidden; background: #070c17;">
-                    <img src="Media/LeprechaunDRIVER.jfif" alt="Equipamiento Piloto" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.3s;">
-                </div>
-                <div style="padding: 15px;">
-                    <h3 style="color: #fff; font-size: 1rem; margin: 0 0 8px; text-transform: uppercase;">🧥 Equipamiento Piloto</h3>
-                    <span style="color: #FF6600; font-weight: bold; font-size: 0.8rem;">Entrar al pasillo &rarr;</span>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- SECCIÓN DE PRODUCTOS FILTRADOS Y BARRA DE ORDENAMIENTO -->
-        <div id="seccion-catalogo" style="border-top: 2px solid #1a2744; padding-top: 40px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
-                <h3 id="titulo-categoria-activa" style="color: #FF6600; font-size: 1.5rem; font-weight: 800; margin: 0; text-transform: uppercase;">SELECCIONA UN PASILLO ARRIBA</h3>
-                
-                <!-- Filtros de Ordenamiento -->
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <label for="ordenar" style="color: #cbd5e1; font-size: 0.9rem; font-weight: 600;">Ordenar por:</label>
-                    <select id="ordenar" onchange="cambiarOrden()" style="background: #0b1329; color: #fff; border: 1px solid #1a2744; padding: 8px 12px; border-radius: 8px; outline: none; cursor: pointer; font-weight: 600;">
-                        <option value="destacados">Más Vendidos / Destacados</option>
-                        <option value="recientes">Más Recientes</option>
-                        <option value="precio-bajo">Menor Precio</option>
-                        <option value="precio-alto">Mayor Precio</option>
-                    </select>
-                </div>
-            </div>
-
-            <div id="grid-productos" class="catalogo-grid">
-                <!-- Se llena dinámicamente con JavaScript -->
-            </div>
-        </div>
-    </main>
-
-    <!-- SCRIPT DE CARGA Y FILTRADO -->
-    <script src="productos.js"></script>
-    <script>
-        function filtrarPasillo(categoria) {
-            const titulo = document.getElementById("titulo-categoria-activa");
-            if(categoria === 'todos') {
-                titulo.innerText = "TODOS LOS PRODUCTOS";
-            } else {
-                titulo.innerText = "PASILLO: " + categoria.toUpperCase();
-            }
-            renderizarProductos(categoria);
-            
-            // Scroll suave hacia los productos
-            document.getElementById("seccion-catalogo").scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
-
-    <footer style="padding: 40px 20px; background: #050811; border-top: 1px solid #1a2744; text-align: center; color: #888; font-size: 0.85rem; margin-top: 50px;">
-        <div style="max-width: 1000px; margin: 0 auto; line-height: 1.5;">
-            <p style="color: #aaa; margin-bottom: 10px;">
-                <strong style="color: #FF6600;">ALLMOTOSYNC S.A.S.</strong> | Tienda Online Oficial de Tecnología y Conectividad para Motocicletas.
-            </p>
-            © 2026 Todos los derechos reservados.
-        </div>
-    </footer>
-</body>
-</html>
